@@ -200,8 +200,7 @@ class Dahu_Composite_Pricing {
 	 * Display amount of the TIER price (pro price).
 	 *
 	 * A tier may show its prices excluding tax even when the shop displays prices
-	 * including tax: that is the case of the Gold tier (French pros), for whom the
-	 * site shows “Gold Pro price (excl. tax)”. See get_tiers().
+	 * including tax (its `price_excluding_tax` flag). See get_tiers().
 	 *
 	 * @param WC_Product $product  Product.
 	 * @param float      $raw      Amount, storage base.
@@ -280,33 +279,16 @@ class Dahu_Composite_Pricing {
 	 * Price tiers: roles concerned, labels, and whether the tier price is shown
 	 * excluding tax.
 	 *
-	 * Default values taken from the behaviour of the site (see
-	 * RESUME_TECHNIQUE.md §2.6): the Gold tier groups French professionals, to
-	 * whom the site shows the pro price excluding tax next to a recommended resale
-	 * price including tax. The Silver tier groups professionals outside France,
-	 * for whom WooCommerce already computes no French VAT: no conversion to
-	 * apply.
+	 * No tier is predefined: a new shop starts with none, and the tiers are
+	 * the ones saved in the `dahu_composite_price_tiers` option (Settings
+	 * screen) plus the ones added through the `dahu_composite_price_tiers`
+	 * filter. A tier a filter adds keeps its saved values from one load to the
+	 * next.
 	 *
 	 * @return array[] Keyed by tier key.
 	 */
 	public static function get_tiers() {
-		$defaults = array(
-			'or'     => array(
-				'roles'               => array( 'Professionnel_Or' ),
-				'label'               => __( 'Gold trade price', 'dahu-composite' ),
-				'public_label'        => __( 'Suggested resale price, incl. tax', 'dahu-composite' ),
-				// Short label: summary only.
-				'public_label_short'  => __( 'Resale price, incl. tax', 'dahu-composite' ),
-				'price_excluding_tax' => true,
-			),
-			'argent' => array(
-				'roles'               => array( 'Professionnel_Argent' ),
-				'label'               => __( 'Silver trade price', 'dahu-composite' ),
-				'public_label'        => __( 'Suggested resale price', 'dahu-composite' ),
-				'public_label_short'  => __( 'Resale price', 'dahu-composite' ),
-				'price_excluding_tax' => false,
-			),
-		);
+		$defaults = array();
 
 		// The constant is not referenced here: the settings class is only loaded
 		// in the admin, while the prices are computed on the front end.
@@ -369,13 +351,13 @@ class Dahu_Composite_Pricing {
 	 * Source: the “Labels shown in front of the prices” setting of dahu-pricing
 	 * (WooCommerce › Pricing), read through its public function
 	 * dahu_pricing_get_price_labels( $tier ) — never by reading its option
-	 * directly. The key of the tier is the same on both sides (gold, silver).
+	 * directly. The key of the tier is the same on both sides.
 	 *
 	 * null when dahu-pricing is absent, too old or does not know that tier: the
 	 * labels of dahu-composite then apply.
 	 *
-	 * The trailing separator entered in dahu-pricing (“Gold Pro price (excl.
-	 * tax):”) is stripped: here the label and the amount are two separate
+	 * The trailing separator entered in dahu-pricing (a colon, for instance) is
+	 * stripped: here the label and the amount are two separate
 	 * elements, held apart by the markup.
 	 *
 	 * @param string $key Key of the tier.

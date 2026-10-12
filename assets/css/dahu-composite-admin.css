@@ -155,28 +155,36 @@
 	}
 }
 
-/* ---------- Appearance box ---------- */
+/* ---------- Appearance panel (product data tab) ---------- */
 
-.dahu-kit-admin__appearance {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px 32px;
+.dahu-kit-tab-panel {
+	padding: 9px 12px;
 }
 
-.dahu-kit-admin__appearance > .description {
-	flex-basis: 100%;
-	margin: 0;
+.dahu-kit-admin__appearance .form-table th {
+	width: 200px;
+	padding: 12px 10px 12px 0;
 }
 
-.dahu-kit-admin__appearance-field {
-	display: flex;
-	flex-direction: column;
-	gap: 4px;
+.dahu-kit-admin__appearance .form-table td {
+	padding: 10px 0;
 }
 
-.dahu-kit-admin__appearance-field legend {
-	margin-bottom: 4px;
-	font-weight: 600;
+.dahu-kit-admin__section-title {
+	margin: 18px 0 0;
+	padding-top: 14px;
+	border-top: 1px solid #dcdcde;
+	font-size: 14px;
+}
+
+.dahu-kit-admin__appearance-choice {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+/* Tab icons: the panels have no icon of their own in the product data block. */
+#woocommerce-product-data ul.wc-tabs li.dahu-kit-tab a::before {
+	content: "\f111";
 }
 
 .dahu-kit-admin__sim-appearance {

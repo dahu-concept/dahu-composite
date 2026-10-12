@@ -154,7 +154,7 @@ class Dahu_Composite_Frontend {
 					'none'           => __( 'None', 'dahu-composite' ),
 					'addToCart'      => __( 'Add to cart', 'dahu-composite' ),
 					'adding'         => __( 'Adding…', 'dahu-composite' ),
-					'added'          => __( 'The kit was added to your cart.', 'dahu-composite' ),
+					'added'          => __( 'The product was added to your cart.', 'dahu-composite' ),
 					'viewCart'       => __( 'View cart', 'dahu-composite' ),
 					'incomplete'     => __( 'Complete the following steps:', 'dahu-composite' ),
 					'bundleOptional' => __( 'Optional items', 'dahu-composite' ),
@@ -242,7 +242,7 @@ class Dahu_Composite_Frontend {
 					'savedChanged'        => __( 'Some choices are no longer available and were removed:', 'dahu-composite' ),
 					'savedLoginToOpen'    => __( 'Log in to reopen this saved configuration.', 'dahu-composite' ),
 					// ?dahu_kit_serial=… link that no longer matches the kit.
-					'serialInvalid'       => __( 'This configuration link no longer matches this kit: build your kit below.', 'dahu-composite' ),
+					'serialInvalid'       => __( 'This configuration link no longer matches this product: build your configuration below.', 'dahu-composite' ),
 					// Visitor: account creation from the Summary.
 					'guestIntro'           => __( 'Find it later in your account, under “My configurations”. No account yet? One is created at the same time, with no password to choose right now.', 'dahu-composite' ),
 					'guestRequired'        => __( 'required', 'dahu-composite' ),

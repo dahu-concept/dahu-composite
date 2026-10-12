@@ -168,7 +168,7 @@ class Dahu_Composite_Saved_Configs {
 		$name = self::clean_name( $name );
 		if ( '' === $name ) {
 			/* translators: %s: date */
-			$name = sprintf( __( 'My kit of %s', 'dahu-composite' ), date_i18n( get_option( 'date_format' ) ) );
+			$name = sprintf( __( 'My configuration of %s', 'dahu-composite' ), date_i18n( get_option( 'date_format' ) ) );
 		}
 
 		$entry = array(
@@ -263,7 +263,7 @@ class Dahu_Composite_Saved_Configs {
 
 		foreach ( $entry['selections'] as $cid => $selection ) {
 			if ( ! isset( $components[ $cid ] ) || ! is_array( $selection ) ) {
-				$general[] = __( 'A step of your configuration no longer exists in this kit: its choice was removed.', 'dahu-composite' );
+				$general[] = __( 'A step of your configuration no longer exists in this product: its choice was removed.', 'dahu-composite' );
 				continue;
 			}
 			$component = $components[ $cid ];
@@ -529,7 +529,7 @@ class Dahu_Composite_Saved_Configs {
 	private static function load_kit( $product_id ) {
 		$kit = Dahu_Composite_Engine::get_kit( $product_id );
 		if ( ! $kit || ( 'publish' !== $kit->get_status() && ! current_user_can( 'edit_post', $kit->get_id() ) ) ) {
-			return new WP_Error( 'dahu_kit_not_found', __( 'This kit is no longer available.', 'dahu-composite' ), array( 'status' => 404 ) );
+			return new WP_Error( 'dahu_kit_not_found', __( 'This product is no longer available.', 'dahu-composite' ), array( 'status' => 404 ) );
 		}
 		Dahu_Composite_Pricing::ensure_tax_context();
 		return $kit;
@@ -1116,12 +1116,12 @@ class Dahu_Composite_Saved_Configs {
 	public static function render_account() {
 		$entries = self::get_all( get_current_user_id() );
 		if ( ! $entries ) {
-			echo '<p class="dahu-kit-saved__empty">' . esc_html__( 'No saved configuration yet. On a kit’s Summary step, “Save my configuration” files it here.', 'dahu-composite' ) . '</p>';
+			echo '<p class="dahu-kit-saved__empty">' . esc_html__( 'No saved configuration yet. On the Summary step, “Save my configuration” files it here.', 'dahu-composite' ) . '</p>';
 			return;
 		}
 		echo '<table class="shop_table shop_table_responsive dahu-kit-saved"><thead><tr>';
 		echo '<th>' . esc_html__( 'Configuration', 'dahu-composite' ) . '</th>';
-		echo '<th>' . esc_html__( 'Kit', 'dahu-composite' ) . '</th>';
+		echo '<th>' . esc_html__( 'Product', 'dahu-composite' ) . '</th>';
 		echo '<th>' . esc_html__( 'Saved on', 'dahu-composite' ) . '</th>';
 		echo '<th><span class="screen-reader-text">' . esc_html__( 'Actions', 'dahu-composite' ) . '</span></th>';
 		echo '</tr></thead><tbody>';
@@ -1139,7 +1139,7 @@ class Dahu_Composite_Saved_Configs {
 				echo '</ul></details>';
 			}
 			echo '</td>';
-			echo '<td data-title="' . esc_attr__( 'Kit', 'dahu-composite' ) . '">' . ( $kit ? esc_html( $kit->get_name() ) : '—' ) . ( $live ? '' : ' <em>(' . esc_html__( 'no longer available', 'dahu-composite' ) . ')</em>' ) . '</td>';
+			echo '<td data-title="' . esc_attr__( 'Product', 'dahu-composite' ) . '">' . ( $kit ? esc_html( $kit->get_name() ) : '—' ) . ( $live ? '' : ' <em>(' . esc_html__( 'no longer available', 'dahu-composite' ) . ')</em>' ) . '</td>';
 			echo '<td data-title="' . esc_attr__( 'Saved on', 'dahu-composite' ) . '">' . esc_html( date_i18n( get_option( 'date_format' ), (int) $entry['created'] ) ) . '</td>';
 			echo '<td class="dahu-kit-saved__actions">';
 			if ( $url ) {

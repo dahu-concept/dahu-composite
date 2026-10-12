@@ -288,7 +288,7 @@
 	 * of the kit (the “Appearance” box).
 	 */
 	var DISPLAY_STYLES = [
-		['', L('styleDefault', 'Default (the kit’s general appearance)')],
+		['', L('styleDefault', 'Default (general appearance)')],
 		['image', L('styleImage', 'With image — cards in a grid')],
 		['row', L('styleRow', 'Inline — one expandable row per option')],
 		['small', L('styleSmall', 'Small — compact grid')],
@@ -428,8 +428,6 @@
 		// Open / closed kept from one render to the next (tiersOpen).
 		return '<details class="dahu-kit-admin__display dahu-kit-admin__tiers" data-tiers-panel' + (tiersOpen[component.id] ? ' open' : '') + '>' +
 			'<summary>' + esc(fmt(L('rangesPanel', 'Categories / ranges (%s)'), tiers.length)) + ' ▾</summary>' +
-			'<p class="description">' + esc(L('rangesHelp', 'One section per category, in this order.')) +
-				(tiers.length ? '' : ' ' + esc(L('rangesHelpEmpty', '“Range display” appears above as soon as there is one.'))) + '</p>' +
 			rows +
 			'<p><button type="button" class="button" data-tier-add>' + esc(L('rangeAdd', 'Add a category')) + '</button></p></details>';
 	}
@@ -653,7 +651,6 @@
 		}).join('');
 		return '<details class="dahu-kit-admin__display" data-panel="help"' + (panelOpen[component.id + ':help'] ? ' open' : '') + '>' +
 			'<summary>' + esc(L('helpImagePanel', 'Help image')) + ' ▾' + (count ? ' — ' + count : '') + '</summary>' +
-			'<p class="description">' + esc(L('helpImageHelp', 'On the back of the card, at the top of the description.')) + '</p>' +
 			rows + '</details>';
 	}
 
@@ -683,7 +680,6 @@
 		if (!rows) return '';
 		return '<details class="dahu-kit-admin__display" data-panel="variants"' + (panelOpen[component.id + ':variants'] ? ' open' : '') + '>' +
 			'<summary>' + esc(L('variantsPanel', 'Variations offered')) + ' ▾ — ' + esc(restricted ? fmt(L('variantsRestrictedCount', 'restricted on %s'), restricted) : L('variantsAll', 'all')) + '</summary>' +
-			'<p class="description">' + esc(L('variantsHelp', 'Unticked: the variation is no longer offered.')) + '</p>' +
 			rows + '</details>';
 	}
 
@@ -822,7 +818,7 @@
 	 * Image of the “None” card of the component (`none_image_id`): an optional
 	 * single-choice component only — neither a multiple choice nor an add-on (a
 	 * “Select” card or a question) has a “None” card. Empty: the shared image from
-	 * WooCommerce › Dahu Kits. The same picker as the image of an option.
+	 * the Appearance panel. The same picker as the image of an option.
 	 */
 	function noneImageHtml(component) {
 		if (!component.optional || component.selection_mode === 'multiple') return '';
@@ -833,7 +829,6 @@
 			: '';
 		return '<div class="dahu-kit-admin__none-image">' +
 			'<p class="dahu-kit-admin__option-title"><strong>' + esc(L('noneCard', '“None” card')) + '</strong></p>' +
-			'<p class="description">' + esc(L('noneCardHelp', 'Empty: the shared image (WooCommerce › Dahu Kits).')) + '</p>' +
 			'<p class="dahu-kit-admin__media">' +
 				preview +
 				'<button type="button" class="button" data-none-media>' + esc(imageId ? L('changeImage', 'Change the image') : L('chooseImage', 'Choose an image')) + '</button> ' +
@@ -872,7 +867,6 @@
 		}).join('');
 
 		return '<details class="dahu-kit-admin__display"><summary>' + esc(L('customiseDisplay', 'Customise the display')) + ' ▾</summary>' +
-			'<p class="description">' + esc(L('customiseDisplayHelp', 'Empty: the product’s own data.')) + '</p>' +
 			noneImageHtml(component) +
 			rows + '</details>';
 	}
@@ -918,7 +912,6 @@
 		}).join('');
 		return '<details class="dahu-kit-admin__display" data-visibility' + (visibilityOpen[component.id] ? ' open' : '') + '>' +
 			'<summary>' + esc(L('visibilityPanel', 'Public visibility')) + ' ▾ — ' + esc(count ? fmt(L('restrictedCount', 'Restricted: %s'), count) : L('everythingPublic', 'everything is public')) + '</summary>' +
-			'<p class="description">' + esc(L('visibilityHelp', 'Unticked: restricted to customers with an exception.')) + '</p>' +
 			rows + '</details>';
 	}
 
@@ -1075,9 +1068,6 @@
 								? '<label>' + esc(L('weightGrams', 'Grams')) + ' <input type="number" min="0" step="1" data-field="weight_grams" value="' + esc(c.weight_grams || 0) + '"></label>'
 								: '')) +
 					'</div>' +
-					(!isPath(c) && (c.title_role === 'secondary' || c.anchor_component_id)
-						? '<p class="description">' + esc(L('anchorNote', 'The add-on appears after the anchor card (same screen).')) + '</p>'
-						: '') +
 					'<label class="dahu-kit-admin__full">' + esc(L('descriptionField', 'Description (HTML allowed)')) + ' <textarea rows="3" data-field="description">' + esc(c.description) + '</textarea></label>' +
 					// Info bubble of the screen: an “i” icon next to the
 					// step number, and an expandable panel under the header.
@@ -1113,9 +1103,14 @@
 	 * Counter in the native title of the box: “Components (8)”.
 	 */
 	function updateBoxCount(boxId, label, count) {
+		var text = label + ' (' + count + ')';
 		var $title = $('#' + boxId).find('.hndle, .postbox-header .hndle').first();
-		if (!$title.length) return;
-		$title.text(label + ' (' + count + ')');
+		if ($title.length) {
+			$title.text(text);
+			return;
+		}
+		// A panel of the product data block: the counter goes on its tab.
+		$('.product_data_tabs a[href="#' + boxId + '"] span').first().text(text);
 	}
 
 	/**
@@ -1922,8 +1917,7 @@
 			// recomputed on every read — an option added later is hidden.
 			if (s.action === 'show_options' && targetIndex !== -1) {
 				maskedHtml = '<label class="dahu-kit-admin__full">' + esc(fmt(L('scenShownField', 'Options to keep visible in “%s”'), state.components[targetIndex].title)) + ' ' +
-					multiSelect('shown_options', valueChoices(state.components[targetIndex], false), s.shown_options || []) + '</label>' +
-					'<p class="description">' + esc(L('scenShownHelp', 'The other options are hidden when the conditions are true.')) + '</p>';
+					multiSelect('shown_options', valueChoices(state.components[targetIndex], false), s.shown_options || []) + '</label>';
 			}
 
 			var $box = $(
@@ -1956,7 +1950,7 @@
 							'<option value="block"' + (isBlock ? ' selected' : '') + '>' + esc(L('actionDeadEnd', 'Dead end (stop the configurator with a message)')) + '</option>' +
 						'</select></label>' +
 					'</div>' +
-					'<div class="dahu-kit-admin__conditions"><p class="description">' + esc(L('condHelp', 'Active when every condition is true.')) + '</p>' +
+					'<div class="dahu-kit-admin__conditions">' +
 						(conditionsHtml
 							? '<div class="dahu-kit-admin__conditions-list">' + conditionsHtml + '</div>'
 							: '<p class="description">' + esc(L('condNone', 'No condition possible: always active.')) + '</p>') + '</div>' +
@@ -2165,7 +2159,7 @@
 	/** Is the box of the simulator folded (or hidden)? */
 	function simulatorClosed() {
 		var $box = $('#dahu-kit-simulator-box');
-		return $box.length ? $box.hasClass('closed') : false;
+		return $box.length ? !$box.is(':visible') : false;
 	}
 
 	// A change came in while the simulator was folded:
@@ -2453,10 +2447,8 @@
 				+ encodeURIComponent(cfg.serialParam || 'dahu_kit_serial') + '=' + encodeURIComponent(serial);
 			$row.append($('<a class="button button-small" target="_blank" rel="noopener noreferrer">')
 				.attr('href', url)
-				.attr('title', L('simOpenTitle', 'Reopens the configurator on these choices (the kit’s saved configuration)'))
+				.attr('title', L('simOpenTitle', 'Reopens the configurator on these choices'))
 				.text(L('simOpenLink', 'Open on the site')));
-		} else {
-			$row.append($('<span class="description">').text(L('simOpenHelp', 'An “Open on the site” link once the kit is published.')));
 		}
 		return $row;
 	}
@@ -2848,8 +2840,13 @@
 
 	function toggleVisibility() {
 		var isKit = $('#product-type').val() === cfg.productType;
-		// All five boxes carry the same class (postbox_classes_product_*).
+		// The boxes carry the same class (postbox_classes_product_*); the
+		// tabs of the product data block have theirs.
 		$('.dahu-kit-postbox').toggle(isKit);
+		$('.product_data_tabs .dahu-kit-tab').toggle(isKit);
+		if (!isKit && $('.product_data_tabs li.active.dahu-kit-tab').length) {
+			$('.product_data_tabs li:visible').first().find('a').trigger('click');
+		}
 		// The warnings box only shows when there are any.
 		if (isKit) renderWarnings((sim.validation && sim.validation.config_warnings) || []);
 		// No price of its own for a kit: it is computed from the components.
@@ -2872,6 +2869,11 @@
 		// event after setting or removing the “closed” class. We use it
 		// to catch up on the computation of the simulator that was set aside.
 		$(document).on('postbox-toggled', function () {
+			if (simDirty && !simulatorClosed()) simRefresh();
+		});
+		// The simulator is a tab: catch up once its panel is shown. WooCommerce
+		// shows the panel in its own handler, which runs first.
+		$(document).on('click', '.product_data_tabs a[href="#dahu-kit-simulator-box"]', function () {
 			if (simDirty && !simulatorClosed()) simRefresh();
 		});
 

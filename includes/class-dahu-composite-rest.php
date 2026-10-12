@@ -293,11 +293,11 @@ class Dahu_Composite_Rest {
 	private static function load_kit( $product_id ) {
 		$kit = Dahu_Composite_Engine::get_kit( $product_id );
 		if ( ! $kit ) {
-			return new WP_Error( 'dahu_kit_not_found', __( 'Kit not found.', 'dahu-composite' ), array( 'status' => 404 ) );
+			return new WP_Error( 'dahu_kit_not_found', __( 'Product not found.', 'dahu-composite' ), array( 'status' => 404 ) );
 		}
 		$visible = 'publish' === $kit->get_status() || current_user_can( 'edit_post', $kit->get_id() );
 		if ( ! $visible ) {
-			return new WP_Error( 'dahu_kit_not_found', __( 'Kit not found.', 'dahu-composite' ), array( 'status' => 404 ) );
+			return new WP_Error( 'dahu_kit_not_found', __( 'Product not found.', 'dahu-composite' ), array( 'status' => 404 ) );
 		}
 
 		// Every route goes through here: taxation context initialised

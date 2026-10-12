@@ -110,8 +110,8 @@ class Dahu_Composite_Admin_Order {
 					// Same text as the configurator of the front end.
 					'missingChoice' => __( 'Choose a variation before continuing.', 'dahu-composite' ),
 					'blocked'       => __( 'This combination is not possible.', 'dahu-composite' ),
-					'loadError'     => __( 'The kit could not be loaded.', 'dahu-composite' ),
-					'saveError'     => __( 'The kit could not be added to the order.', 'dahu-composite' ),
+					'loadError'     => __( 'The product could not be loaded.', 'dahu-composite' ),
+					'saveError'     => __( 'The composite product could not be added to the order.', 'dahu-composite' ),
 					'product'       => __( 'Product', 'dahu-composite' ),
 					'sku'           => __( 'SKU', 'dahu-composite' ),
 				),
@@ -297,7 +297,7 @@ class Dahu_Composite_Admin_Order {
 		$order->add_order_note(
 			sprintf(
 				/* translators: 1: kit, 2: components */
-				__( 'Kit “%1$s” configured from the order screen: %2$s.', 'dahu-composite' ),
+				__( 'Composite product “%1$s” configured from the order screen: %2$s.', 'dahu-composite' ),
 				$kit->get_name(),
 				implode( ', ', $added )
 			) . ( $removed ? ' ' . sprintf( /* translators: %s: rows removed */ __( 'Lines removed: %s.', 'dahu-composite' ), implode( ', ', $removed ) ) : '' ),
@@ -359,7 +359,7 @@ class Dahu_Composite_Admin_Order {
 
 		$kit = $item->get_product();
 		if ( ! $kit instanceof WC_Product_Dahu_Kit || 'child' === Dahu_Composite_Order::kit_role( $item ) ) {
-			wp_send_json_error( array( 'message' => __( 'This line item is not a kit.', 'dahu-composite' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'This line item is not a composite product.', 'dahu-composite' ) ), 400 );
 		}
 
 		// Customer: the one chosen on the screen (“Customer” field, sent by the

@@ -609,7 +609,7 @@ class Dahu_Composite_Order {
 		);
 		$container    = $container_id ? $order->get_item( $container_id, false ) : null;
 		if ( ! $container ) {
-			return new WP_Error( 'dahu_kit_add_failed', __( 'The kit could not be added to the order.', 'dahu-composite' ) );
+			return new WP_Error( 'dahu_kit_add_failed', __( 'The composite product could not be added to the order.', 'dahu-composite' ) );
 		}
 		$container_key = md5( $container_id );
 

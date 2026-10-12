@@ -1,7 +1,9 @@
 <?php
 /**
- * Settings screen (WooCommerce > Dahu Kits): shipping class of the containers,
- * price tiers, “None” card of the configurator and state of the existing kits.
+ * Settings screen (WooCommerce > Composite products): shipping class of the
+ * containers, price tiers and state of the existing composite products. The
+ * “Show more info” and “None” card settings are options of this class, but
+ * their controls are in the Appearance panel of the product editor.
  *
  * @package Dahu_Composite
  */
@@ -17,15 +19,15 @@ class Dahu_Composite_Settings {
 
 	/**
 	 * “Show more info”: a link to the product page after its description, on the
-	 * cards of the configurator. 'yes' = ticked; option absent (the screen has
-	 * never been saved since the update) = unticked.
+	 * cards of the configurator. 'yes' = ticked; option absent (never saved) =
+	 * unticked.
 	 */
 	const OPTION_MORE_INFO = 'dahu_composite_more_info_link';
 
 	/**
 	 * Screen suffix returned by add_submenu_page() (in practice
-	 * “woocommerce_page_dahu-composite-settings”): the media library and the
-	 * script of the screen are loaded there only.
+	 * “woocommerce_page_dahu-composite-settings”): the stylesheet of the screen
+	 * is loaded there only.
 	 *
 	 * @var string|false
 	 */
@@ -49,8 +51,8 @@ class Dahu_Composite_Settings {
 	public static function menu() {
 		self::$hook = add_submenu_page(
 			'woocommerce',
-			__( 'Configurable kits', 'dahu-composite' ),
-			__( 'Configurable kits', 'dahu-composite' ),
+			__( 'Composite products', 'dahu-composite' ),
+			__( 'Composite products', 'dahu-composite' ),
 			'manage_woocommerce',
 			DAHU_COMPOSITE_SETTINGS_SLUG,
 			array( __CLASS__, 'render' )
@@ -70,8 +72,11 @@ class Dahu_Composite_Settings {
 
 		// “None” card: one image and one text for the WHOLE
 		// configurator — a global setting, neither per product nor per scenario.
+		// Edited in the Appearance panel of the product editor, so NOT in the
+		// group of this screen: options.php would otherwise blank every option
+		// of its group that the form does not post.
 		register_setting(
-			'dahu_composite',
+			'dahu_composite_appearance',
 			self::OPTION_NONE_IMAGE,
 			array(
 				'type'              => 'integer',
@@ -80,7 +85,7 @@ class Dahu_Composite_Settings {
 			)
 		);
 		register_setting(
-			'dahu_composite',
+			'dahu_composite_appearance',
 			self::OPTION_NONE_TEXT,
 			array(
 				'type'              => 'string',
@@ -89,10 +94,10 @@ class Dahu_Composite_Settings {
 			)
 		);
 
-		// General appearance. Nothing is written until the screen has been
-		// saved: the absent option means “unticked”.
+		// Nothing is written until the panel has been saved: the absent option
+		// means “unticked”.
 		register_setting(
-			'dahu_composite',
+			'dahu_composite_appearance',
 			self::OPTION_MORE_INFO,
 			array(
 				'type'              => 'string',
@@ -116,7 +121,7 @@ class Dahu_Composite_Settings {
 
 	/**
 	 * “more info…” link on the cards: the “Show more info” checkbox of the
-	 * general appearance.
+	 * Appearance panel.
 	 *
 	 * @return bool
 	 */
@@ -126,8 +131,8 @@ class Dahu_Composite_Settings {
 
 	/**
 	 * “None” card of the optional components, as the configurator receives it in
-	 * the schema (none_choice): text and image set in WooCommerce > Dahu Kits,
-	 * shared by every kit. null when nothing is set: the “None” card then stays
+	 * the schema (none_choice): text and image set in the Appearance panel,
+	 * shared by every composite product. null when nothing is set: the “None” card then stays
 	 * the one from before (the label alone).
 	 *
 	 * @return array|null { text: string, image: string|null, image_large: string|null }
@@ -148,7 +153,7 @@ class Dahu_Composite_Settings {
 
 	/**
 	 * “None” card of ONE component: its own image (`none_image_id`, set in the
-	 * kit editor, “Customise the display”), with the shared text. null when the
+	 * component editor, “Customise the display”), with the shared text. null when the
 	 * component has no image of its own (or when it has disappeared from the
 	 * media library): the configurator then takes the shared card
 	 * (none_choice()).
@@ -171,10 +176,7 @@ class Dahu_Composite_Settings {
 	}
 
 	/**
-	 * Media library and picker of the “None” image, on the settings screen only.
-	 * The script depends on “media-editor” and goes out in the page footer, after
-	 * wp.media: the earlier <script> block written into the page ran before it
-	 * and never wired the button up.
+	 * Stylesheet of the settings screen.
 	 *
 	 * @param string $hook Current screen.
 	 */
@@ -182,9 +184,7 @@ class Dahu_Composite_Settings {
 		if ( ! self::$hook || self::$hook !== $hook ) {
 			return;
 		}
-		wp_enqueue_media();
 		wp_enqueue_style( 'dahu-composite-settings', DAHU_COMPOSITE_URL . 'assets/css/dahu-composite-settings.css', array(), DAHU_COMPOSITE_VERSION );
-		wp_enqueue_script( 'dahu-composite-settings', DAHU_COMPOSITE_URL . 'assets/js/dahu-composite-settings.js', array( 'jquery', 'media-editor' ), DAHU_COMPOSITE_VERSION, true );
 	}
 
 	/**
@@ -207,6 +207,28 @@ class Dahu_Composite_Settings {
 				'public_label_short'  => isset( $posted['public_label_short'] ) ? sanitize_text_field( (string) $posted['public_label_short'] ) : ( isset( $tier['public_label_short'] ) ? $tier['public_label_short'] : '' ),
 				'price_excluding_tax' => ! empty( $posted['price_excluding_tax'] ),
 			);
+		}
+
+		// A new row (key “new”): kept when it names at least one role.
+		$new = ( is_array( $input ) && isset( $input['new'] ) && is_array( $input['new'] ) ) ? $input['new'] : array();
+		if ( $new ) {
+			$roles = isset( $new['roles'] ) ? array_values( array_filter( array_map( 'sanitize_text_field', array_map( 'trim', explode( ',', (string) $new['roles'] ) ) ) ) ) : array();
+			if ( $roles ) {
+				$label = isset( $new['label'] ) ? sanitize_text_field( (string) $new['label'] ) : '';
+				$base  = sanitize_key( '' !== $label ? $label : $roles[0] );
+				$base  = '' !== $base && 'new' !== $base ? $base : 'tier';
+				$key   = $base;
+				for ( $i = 2; isset( $output[ $key ] ); $i++ ) {
+					$key = $base . '-' . $i;
+				}
+				$output[ $key ] = array(
+					'roles'               => $roles,
+					'label'               => $label,
+					'public_label'        => isset( $new['public_label'] ) ? sanitize_text_field( (string) $new['public_label'] ) : '',
+					'public_label_short'  => isset( $new['public_label_short'] ) ? sanitize_text_field( (string) $new['public_label_short'] ) : '',
+					'price_excluding_tax' => ! empty( $new['price_excluding_tax'] ),
+				);
+			}
 		}
 
 		return $output;
@@ -232,10 +254,10 @@ class Dahu_Composite_Settings {
 		);
 		?>
 		<div class="wrap">
-			<h1><?php esc_html_e( 'Configurable kits', 'dahu-composite' ); ?></h1>
+			<h1><?php esc_html_e( 'Composite products', 'dahu-composite' ); ?></h1>
 
 			<p class="dahu-composite-settings__intro">
-				<?php esc_html_e( 'Dahu Composite builds a product a customer assembles themselves, step by step, from choices you define. These settings apply to every kit.', 'dahu-composite' ); ?>
+				<?php esc_html_e( 'Dahu Composite builds a product that customers assemble themselves, step by step, from choices you define. These settings apply to every composite product.', 'dahu-composite' ); ?>
 			</p>
 			<hr class="wp-header-end">
 
@@ -243,7 +265,7 @@ class Dahu_Composite_Settings {
 				<?php settings_fields( 'dahu_composite' ); ?>
 				<table class="form-table" role="presentation">
 					<tr>
-						<th scope="row"><label for="dahu-composite-shipping-class"><?php esc_html_e( 'Shipping class for kits', 'dahu-composite' ); ?></label></th>
+						<th scope="row"><label for="dahu-composite-shipping-class"><?php esc_html_e( 'Shipping class for composite products', 'dahu-composite' ); ?></label></th>
 						<td>
 							<select id="dahu-composite-shipping-class" name="<?php echo esc_attr( self::OPTION_SHIPPING_CLASS ); ?>">
 								<option value=""><?php esc_html_e( '— None —', 'dahu-composite' ); ?></option>
@@ -251,55 +273,11 @@ class Dahu_Composite_Settings {
 									<option value="<?php echo esc_attr( $term->slug ); ?>" <?php selected( $current, $term->slug ); ?>><?php echo esc_html( $term->name . ' (' . $term->slug . ')' ); ?></option>
 								<?php endforeach; ?>
 							</select>
-							<p class="description"><?php esc_html_e( 'Applied to the kit line in the cart.', 'dahu-composite' ); ?></p>
 						</td>
 					</tr>
 				</table>
-
-				<h2 class="title"><?php esc_html_e( 'General appearance', 'dahu-composite' ); ?></h2>
-				<table class="form-table" role="presentation">
-					<tr>
-						<th scope="row"><?php esc_html_e( 'Show more info', 'dahu-composite' ); ?></th>
-						<td>
-							<label for="dahu-composite-more-info">
-								<input type="checkbox" id="dahu-composite-more-info" name="<?php echo esc_attr( self::OPTION_MORE_INFO ); ?>" value="yes" <?php checked( self::more_info_enabled() ); ?>>
-								<?php esc_html_e( 'A “more info…” link after the product description on cards', 'dahu-composite' ); ?>
-							</label>
-							<p class="description"><?php esc_html_e( 'Opens the product page in a new window. Never on the “None” card, nor for a product with no public page.', 'dahu-composite' ); ?></p>
-						</td>
-					</tr>
-				</table>
-
-				<?php
-				$none_image_id = absint( get_option( self::OPTION_NONE_IMAGE, 0 ) );
-				$none_preview  = $none_image_id ? wp_get_attachment_image_url( $none_image_id, 'thumbnail' ) : '';
-				?>
-				<h2 class="title"><?php esc_html_e( 'The configurator’s “None” card', 'dahu-composite' ); ?></h2>
-				<p class="description"><?php esc_html_e( 'Used on every optional step; an image set on a component overrides it.', 'dahu-composite' ); ?></p>
-				<table class="form-table" role="presentation">
-					<tr>
-						<th scope="row"><?php esc_html_e( 'Image', 'dahu-composite' ); ?></th>
-						<td>
-							<input type="hidden" id="dahu-composite-none-image" name="<?php echo esc_attr( self::OPTION_NONE_IMAGE ); ?>" value="<?php echo esc_attr( $none_image_id ? (string) $none_image_id : '' ); ?>">
-							<img id="dahu-composite-none-preview" class="dahu-kit-settings__preview" src="<?php echo esc_url( $none_preview ); ?>" alt="" <?php echo $none_preview ? '' : 'hidden'; ?>>
-							<button type="button" class="button" id="dahu-composite-none-pick" data-frame-title="<?php esc_attr_e( 'Image for the “None” card', 'dahu-composite' ); ?>" data-frame-button="<?php esc_attr_e( 'Use this image', 'dahu-composite' ); ?>"><?php esc_html_e( 'Choose an image', 'dahu-composite' ); ?></button>
-							<button type="button" class="button-link delete" id="dahu-composite-none-clear" <?php echo $none_image_id ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove the image', 'dahu-composite' ); ?></button>
-						</td>
-					</tr>
-					<tr>
-						<th scope="row"><label for="dahu-composite-none-text"><?php esc_html_e( 'Text', 'dahu-composite' ); ?></label></th>
-						<td>
-							<input type="text" class="regular-text" id="dahu-composite-none-text" name="<?php echo esc_attr( self::OPTION_NONE_TEXT ); ?>" value="<?php echo esc_attr( (string) get_option( self::OPTION_NONE_TEXT, '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. I do not need one', 'dahu-composite' ); ?>">
-							<p class="description"><?php esc_html_e( 'Shown under “None”, on the card.', 'dahu-composite' ); ?></p>
-						</td>
-					</tr>
-				</table>
-				<?php // Picker: assets/js/dahu-composite-settings.js (enqueue()). ?>
 
 				<h2 class="title"><?php esc_html_e( 'Trade price tiers', 'dahu-composite' ); ?></h2>
-				<p class="description">
-					<?php esc_html_e( 'Public price and tier price, for these roles. “Short label” is used in the summary only.', 'dahu-composite' ); ?>
-				</p>
 				<table class="widefat striped dahu-kit-settings__table">
 					<thead>
 						<tr>
@@ -336,6 +314,15 @@ class Dahu_Composite_Settings {
 							<td><input type="checkbox" value="1" name="<?php echo $name; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>[price_excluding_tax]" <?php checked( $tier['price_excluding_tax'] ); ?>></td>
 						</tr>
 					<?php endforeach; ?>
+						<?php $new_name = esc_attr( self::OPTION_PRICE_TIERS . '[new]' ); ?>
+						<tr>
+							<td>—</td>
+							<td><input type="text" class="regular-text" name="<?php echo $new_name; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>[roles]" value=""></td>
+							<td><input type="text" name="<?php echo $new_name; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>[label]" value=""></td>
+							<td><input type="text" name="<?php echo $new_name; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>[public_label]" value=""></td>
+							<td><input type="text" name="<?php echo $new_name; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>[public_label_short]" value=""></td>
+							<td><input type="checkbox" value="1" name="<?php echo $new_name; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>[price_excluding_tax]"></td>
+						</tr>
 					</tbody>
 				</table>
 				<?php if ( $shared_any ) : ?>
@@ -351,11 +338,11 @@ class Dahu_Composite_Settings {
 				<?php submit_button(); ?>
 			</form>
 
-			<h2><?php esc_html_e( 'Kits', 'dahu-composite' ); ?></h2>
+			<h2><?php esc_html_e( 'Composite products', 'dahu-composite' ); ?></h2>
 			<table class="widefat striped">
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Kit', 'dahu-composite' ); ?></th>
+						<th><?php esc_html_e( 'Composite product', 'dahu-composite' ); ?></th>
 						<th><?php esc_html_e( 'Status', 'dahu-composite' ); ?></th>
 						<th><?php esc_html_e( 'Components', 'dahu-composite' ); ?></th>
 						<th><?php esc_html_e( 'Scenarios', 'dahu-composite' ); ?></th>
@@ -365,7 +352,7 @@ class Dahu_Composite_Settings {
 				</thead>
 				<tbody>
 				<?php if ( empty( $kits ) ) : ?>
-					<tr><td colspan="6"><?php esc_html_e( 'No kits yet. Create a product of type “Configurable kit (Dahu)”.', 'dahu-composite' ); ?></td></tr>
+					<tr><td colspan="6"><?php esc_html_e( 'No composite products yet. Create a product of type “Composite product”.', 'dahu-composite' ); ?></td></tr>
 				<?php endif; ?>
 				<?php foreach ( $kits as $kit ) : ?>
 					<?php

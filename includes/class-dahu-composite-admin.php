@@ -28,7 +28,7 @@ class Dahu_Composite_Admin {
 	 * All five share the SAME JavaScript state and the SAME save field: they
 	 * are only five mount points, the logic is not duplicated anywhere.
 	 *
-	 * Exception: the Appearance box. Its two settings are NOT part of the kit
+	 * Exception: the Appearance panel. Its settings are NOT part of the kit
 	 * configuration (neither of the JSON nor of import / export): they are
 	 * ordinary form fields, saved as separate metas (see
 	 * Dahu_Composite_Appearance and save()).
@@ -36,15 +36,30 @@ class Dahu_Composite_Admin {
 	 * 'closed' => collapsed on the first visit only (see postbox_classes).
 	 */
 	const BOXES = array(
-		'dahu-kit-appearance-box' => array( 'closed' => false ),
 		'dahu-kit-components-box' => array( 'closed' => false ),
 		'dahu-kit-scenarios-box'  => array( 'closed' => false ),
-		// Customer exceptions: same JavaScript state, same JSON.
-		'dahu-kit-exceptions-box' => array( 'closed' => true ),
 		'dahu-kit-warnings-box'   => array( 'closed' => false ),
-		'dahu-kit-simulator-box'  => array( 'closed' => true ),
-		'dahu-kit-io-box'         => array( 'closed' => true ),
 	);
+
+	/**
+	 * Panels of the “Product data” block, in display order: key of the panel
+	 * (also the id of its element, which the script mounts onto) => tab
+	 * priority and render method.
+	 *
+	 * The four parts that do not need the width of the page live here, next to
+	 * Inventory and Shipping; the three boxes above keep it. The ids are the
+	 * same as when these were boxes, and so are the form fields: saving does
+	 * not know the difference.
+	 */
+	const TABS = array(
+		'dahu-kit-appearance-box' => array( 'priority' => 35, 'render' => 'render_appearance_box' ),
+		'dahu-kit-simulator-box'  => array( 'priority' => 36, 'render' => 'render_simulator_box' ),
+		'dahu-kit-io-box'         => array( 'priority' => 37, 'render' => 'render_io_box' ),
+		'dahu-kit-exceptions-box' => array( 'priority' => 38, 'render' => 'render_exceptions_box' ),
+	);
+
+	/** Fields posted by the global settings shown in the Appearance panel. */
+	const GLOBALS_MARKER = 'dahu_composite_global_appearance';
 
 	/**
 	 * Box titles, keyed by box id.
@@ -112,7 +127,7 @@ class Dahu_Composite_Admin {
 			'choiceSingle'              => __( 'Single (one option)', 'dahu-composite' ),
 			'choiceMultiple'            => __( 'Multiple (several options, one row each)', 'dahu-composite' ),
 			'layoutField'               => __( 'Layout', 'dahu-composite' ),
-			'styleDefault'              => __( 'Default (the kit’s general appearance)', 'dahu-composite' ),
+			'styleDefault'              => __( 'Default (general appearance)', 'dahu-composite' ),
 			'styleImage'                => __( 'With image — cards in a grid', 'dahu-composite' ),
 			'styleRow'                  => __( 'Inline — one expandable row per option', 'dahu-composite' ),
 			'styleSmall'                => __( 'Small — compact grid', 'dahu-composite' ),
@@ -132,7 +147,7 @@ class Dahu_Composite_Admin {
 			'quantityMin'               => __( 'Min quantity', 'dahu-composite' ),
 			'quantityMax'               => __( 'Max quantity', 'dahu-composite' ),
 			'optionalField'             => __( 'Optional', 'dahu-composite' ),
-			'shippedIndividually'       => __( 'Shipped on its own (otherwise its weight is added to the kit parcel)', 'dahu-composite' ),
+			'shippedIndividually'       => __( 'Shipped on its own (otherwise its weight is added to the composite product parcel)', 'dahu-composite' ),
 			'weightModeField'           => __( 'Displayed weight', 'dahu-composite' ),
 			'weightModeProducts'        => __( 'Weight of the products', 'dahu-composite' ),
 			'weightModeFixed'           => __( 'Fixed value', 'dahu-composite' ),
@@ -163,12 +178,9 @@ class Dahu_Composite_Admin {
 			'anchorCard'                => __( 'Card', 'dahu-composite' ),
 			'anchorChosenCard'          => __( '— Chosen card —', 'dahu-composite' ),
 			'anchorAbsent'              => __( '%s (absent from the options)', 'dahu-composite' ),
-			'anchorNote'                => __( 'The add-on appears after the anchor card (same screen).', 'dahu-composite' ),
 
 			// Categories (ranges) of a component.
 			'rangesPanel'               => __( 'Categories / ranges (%s)', 'dahu-composite' ),
-			'rangesHelp'                => __( 'One section per category, in this order.', 'dahu-composite' ),
-			'rangesHelpEmpty'           => __( '“Range display” appears above as soon as there is one.', 'dahu-composite' ),
 			'rangeAdd'                  => __( 'Add a category', 'dahu-composite' ),
 			'rangeCreate'               => __( 'Create a category', 'dahu-composite' ),
 			'rangeField'                => __( 'Range', 'dahu-composite' ),
@@ -191,23 +203,18 @@ class Dahu_Composite_Admin {
 			'showSpecs'                 => __( 'Specifications', 'dahu-composite' ),
 			'showBundled'               => __( 'Included products', 'dahu-composite' ),
 			'customiseDisplay'          => __( 'Customise the display', 'dahu-composite' ),
-			'customiseDisplayHelp'      => __( 'Empty: the product’s own data.', 'dahu-composite' ),
 			'changeImage'               => __( 'Change the image', 'dahu-composite' ),
 			'chooseImage'               => __( 'Choose an image', 'dahu-composite' ),
 			'everyVariant'              => __( 'Every variant', 'dahu-composite' ),
 			'helpImagePanel'            => __( 'Help image', 'dahu-composite' ),
-			'helpImageHelp'             => __( 'On the back of the card, at the top of the description.', 'dahu-composite' ),
 			'variantsPanel'             => __( 'Variations offered', 'dahu-composite' ),
 			'variantsAll'               => __( 'all', 'dahu-composite' ),
 			'variantsRestrictedCount'   => __( 'restricted on %s', 'dahu-composite' ),
-			'variantsHelp'              => __( 'Unticked: the variation is no longer offered.', 'dahu-composite' ),
 			'visibilityPanel'           => __( 'Public visibility', 'dahu-composite' ),
-			'visibilityHelp'            => __( 'Unticked: restricted to customers with an exception.', 'dahu-composite' ),
 			'publicLabel'               => __( 'public', 'dahu-composite' ),
 			'restricted'                => __( 'restricted', 'dahu-composite' ),
 			'restrictedEveryVariant'    => __( 'restricted (every variant)', 'dahu-composite' ),
 			'noneCard'                  => __( '“None” card', 'dahu-composite' ),
-			'noneCardHelp'              => __( 'Empty: the shared image (WooCommerce › Configurable kits).', 'dahu-composite' ),
 			'valueNoSelection'          => __( '— No selection —', 'dahu-composite' ),
 			'valueEveryVariant'         => __( '%s — every variant', 'dahu-composite' ),
 			'valueVariantPending'       => __( '%s — variant not chosen yet', 'dahu-composite' ),
@@ -287,11 +294,9 @@ class Dahu_Composite_Admin {
 			'restartField'              => __( 'Resume at step', 'dahu-composite' ),
 			'scenMaskedField'           => __( 'Options to hide in “%s”', 'dahu-composite' ),
 			'scenShownField'            => __( 'Options to keep visible in “%s”', 'dahu-composite' ),
-			'scenShownHelp'             => __( 'The other options are hidden when the conditions are true.', 'dahu-composite' ),
 			'condOn'                    => __( 'Condition on', 'dahu-composite' ),
 			'condIsOneOf'               => __( 'is one of', 'dahu-composite' ),
 			'condIsNoneOf'              => __( 'is none of', 'dahu-composite' ),
-			'condHelp'                  => __( 'Active when every condition is true.', 'dahu-composite' ),
 			'condNone'                  => __( 'No condition possible: always active.', 'dahu-composite' ),
 			/* translators: %s is the customer condition, written out. */
 			'condCustomerLine'          => __( 'Customer condition: %s (import JSON).', 'dahu-composite' ),
@@ -384,8 +389,7 @@ class Dahu_Composite_Admin {
 			'simSerialPartialLabel'     => __( 'Configuration serial (partial configuration):', 'dahu-composite' ),
 			'simSerialNone'             => __( 'no serial as long as no choice is made.', 'dahu-composite' ),
 			'simOpenLink'               => __( 'Open on the site', 'dahu-composite' ),
-			'simOpenTitle'              => __( 'Reopens the configurator on these choices (the kit’s saved configuration)', 'dahu-composite' ),
-			'simOpenHelp'               => __( 'An “Open on the site” link once the kit is published.', 'dahu-composite' ),
+			'simOpenTitle'              => __( 'Reopens the configurator on these choices', 'dahu-composite' ),
 			'simViewVisitor'            => __( 'Visitor / customer with no exception', 'dahu-composite' ),
 			'simViewAs'                 => __( 'View as:', 'dahu-composite' ),
 			'simViewAsHelp'             => __( '(this customer’s hidden options; prices of the logged-in account)', 'dahu-composite' ),
@@ -419,6 +423,8 @@ class Dahu_Composite_Admin {
 
 	public static function init() {
 		add_action( 'add_meta_boxes_product', array( __CLASS__, 'add_meta_box' ) );
+		add_filter( 'woocommerce_product_data_tabs', array( __CLASS__, 'product_data_tabs' ) );
+		add_action( 'woocommerce_product_data_panels', array( __CLASS__, 'product_data_panels' ) );
 		add_action( 'woocommerce_admin_process_product_object', array( __CLASS__, 'save' ), 30 );
 		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'enqueue' ) );
 		// Nonce and save field: outside the boxes (see the method).
@@ -429,13 +435,9 @@ class Dahu_Composite_Admin {
 
 	public static function add_meta_box() {
 		$callbacks = array(
-			'dahu-kit-appearance-box' => 'render_appearance_box',
 			'dahu-kit-components-box' => 'render_components_box',
 			'dahu-kit-scenarios-box'  => 'render_scenarios_box',
-			'dahu-kit-exceptions-box' => 'render_exceptions_box',
 			'dahu-kit-warnings-box'   => 'render_warnings_box',
-			'dahu-kit-simulator-box'  => 'render_simulator_box',
-			'dahu-kit-io-box'         => 'render_io_box',
 		);
 
 		$titles = self::box_titles();
@@ -443,16 +445,15 @@ class Dahu_Composite_Admin {
 		foreach ( array_keys( self::BOXES ) as $id ) {
 			add_meta_box(
 				$id,
-				/* translators: %s: box name. */
-				sprintf( __( '%s (Dahu Composite)', 'dahu-composite' ), $titles[ $id ] ),
+				$titles[ $id ],
 				array( __CLASS__, $callbacks[ $id ] ),
 				'product',
 				'normal',
 				'high'
 			);
 
-			// Shared class: the script hides all five boxes at once
-			// when the product is not a kit.
+			// Shared class: the script hides the boxes at once
+			// when the product is not a composite product.
 			add_filter(
 				'postbox_classes_product_' . $id,
 				function ( $classes ) use ( $id ) {
@@ -471,6 +472,39 @@ class Dahu_Composite_Admin {
 	}
 
 	/**
+	 * Tabs of the “Product data” block, shown for this product type only
+	 * (the same show_if_ class as Inventory and Shipping, see
+	 * Dahu_Composite_Product_Type::product_data_tabs()).
+	 *
+	 * @param array $tabs Tabs.
+	 * @return array
+	 */
+	public static function product_data_tabs( $tabs ) {
+		$titles = self::box_titles();
+		foreach ( self::TABS as $id => $tab ) {
+			$tabs[ $id ] = array(
+				'label'    => $titles[ $id ],
+				'target'   => $id,
+				'class'    => array( 'show_if_' . DAHU_COMPOSITE_PRODUCT_TYPE, 'dahu-kit-tab', 'dahu_kit_tab_' . str_replace( '-', '_', $id ) ),
+				'priority' => $tab['priority'],
+			);
+		}
+		return $tabs;
+	}
+
+	/**
+	 * Panels of those tabs: one element per panel, with the id the script
+	 * mounts onto, inside the form of the product.
+	 */
+	public static function product_data_panels() {
+		foreach ( self::TABS as $id => $tab ) {
+			echo '<div id="' . esc_attr( $id ) . '" class="panel woocommerce_options_panel hidden dahu-kit-tab-panel">';
+			call_user_func( array( __CLASS__, $tab['render'] ) );
+			echo '</div>';
+		}
+	}
+
+	/**
 	 * @param string $hook Screen.
 	 */
 	public static function enqueue( $hook ) {
@@ -482,6 +516,9 @@ class Dahu_Composite_Admin {
 		// Per-option image picker (wp.media).
 		wp_enqueue_media();
 		wp_enqueue_style( 'dahu-composite-admin', DAHU_COMPOSITE_URL . 'assets/css/dahu-composite-admin.css', array(), DAHU_COMPOSITE_VERSION );
+		// “None” card image picker, now in the Appearance panel.
+		wp_enqueue_style( 'dahu-composite-settings', DAHU_COMPOSITE_URL . 'assets/css/dahu-composite-settings.css', array(), DAHU_COMPOSITE_VERSION );
+		wp_enqueue_script( 'dahu-composite-settings', DAHU_COMPOSITE_URL . 'assets/js/dahu-composite-settings.js', array( 'jquery', 'media-editor' ), DAHU_COMPOSITE_VERSION, true );
 		// Simulator category sections: same module as the front end.
 		wp_register_script( 'dahu-composite-tiers', DAHU_COMPOSITE_URL . 'assets/js/dahu-composite-tiers.js', array(), DAHU_COMPOSITE_VERSION, true );
 		wp_enqueue_script( 'dahu-composite-admin', DAHU_COMPOSITE_URL . 'assets/js/dahu-composite-admin.js', array( 'jquery', 'wc-enhanced-select', 'dahu-composite-tiers' ), DAHU_COMPOSITE_VERSION, true );
@@ -616,7 +653,12 @@ class Dahu_Composite_Admin {
 
 	/**
 	 * Configurator appearance for THIS product (Dahu_Composite_Appearance).
-	 * Ordinary form fields, outside the configuration JSON.
+	 * Ordinary form fields, outside the configuration JSON, laid out as an
+	 * ordinary WordPress settings table: one row per setting.
+	 *
+	 * The second table holds three GLOBAL options (they apply to every
+	 * composite product), under a heading that says so: their controls live
+	 * here, their values stay where they were (see save_global_appearance()).
 	 */
 	public static function render_appearance_box() {
 		$appearance = Dahu_Composite_Appearance::get( (int) get_the_ID() );
@@ -624,64 +666,113 @@ class Dahu_Composite_Admin {
 			'card_style'   => array(
 				'label'   => __( 'Card style', 'dahu-composite' ),
 				'options' => array(
-					'vignette' => __( 'Thumbnail — photo, subtitle and “More info”, no right-hand column', 'dahu-composite' ),
-					'card'     => __( 'Card — fixed-size cards, preview in the right-hand column', 'dahu-composite' ),
+					'vignette' => __( 'Thumbnail', 'dahu-composite' ),
+					'card'     => __( 'Card', 'dahu-composite' ),
 				),
 			),
 			'card_corners' => array(
 				'label'   => __( 'Corner shape', 'dahu-composite' ),
 				'options' => array(
-					'square'  => __( 'Square — summary and right-hand column with no rounding', 'dahu-composite' ),
-					'rounded' => __( 'Rounded — summary and right-hand column rounded', 'dahu-composite' ),
+					'square'  => __( 'Square', 'dahu-composite' ),
+					'rounded' => __( 'Rounded', 'dahu-composite' ),
 				),
 			),
 			'icons'        => array(
 				'label'   => __( 'Icons', 'dahu-composite' ),
 				'options' => array(
-					'on'  => __( 'Yes — card footer as icons (description, specifications, included products)', 'dahu-composite' ),
-					'off' => __( 'No — a “More info” button, sections shown as tabs once opened', 'dahu-composite' ),
+					'on'  => __( 'Yes', 'dahu-composite' ),
+					'off' => __( 'No', 'dahu-composite' ),
 				),
 			),
 			'info_desktop' => array(
 				'label'   => __( 'Info display (desktop)', 'dahu-composite' ),
 				'options' => array(
-					'card'     => __( 'Card — the card flips over', 'dahu-composite' ),
-					'lateral'  => __( 'Side — a drawer slides in from the side', 'dahu-composite' ),
-					'extended' => __( 'Expanded — the card widens over its neighbours', 'dahu-composite' ),
+					'card'     => __( 'Card', 'dahu-composite' ),
+					'lateral'  => __( 'Side', 'dahu-composite' ),
+					'extended' => __( 'Expanded', 'dahu-composite' ),
 				),
 			),
 			'info_mobile'  => array(
-				'label'   => __( 'Info display (mobile, below 64em)', 'dahu-composite' ),
+				'label'   => __( 'Info display (mobile)', 'dahu-composite' ),
 				'options' => array(
-					'lateral'  => __( 'Side — a drawer slides in from the side', 'dahu-composite' ),
-					'card'     => __( 'Card — the card flips over', 'dahu-composite' ),
-					'extended' => __( 'Expanded — falls back to a card when space runs short', 'dahu-composite' ),
+					'lateral'  => __( 'Side', 'dahu-composite' ),
+					'card'     => __( 'Card', 'dahu-composite' ),
+					'extended' => __( 'Expanded', 'dahu-composite' ),
 				),
 			),
 			'click'        => array(
-				'label'   => __( 'Click', 'dahu-composite' ),
+				'label'   => __( '“Select” button', 'dahu-composite' ),
 				'options' => array(
-					'on'  => __( 'Yes — a “Select” button on every card', 'dahu-composite' ),
-					'off' => __( 'No — clicking anywhere on the card selects it', 'dahu-composite' ),
+					'on'  => __( 'Yes', 'dahu-composite' ),
+					'off' => __( 'No', 'dahu-composite' ),
 				),
 			),
 		);
+		$none_image_id = absint( get_option( Dahu_Composite_Settings::OPTION_NONE_IMAGE, 0 ) );
+		$none_preview  = $none_image_id ? wp_get_attachment_image_url( $none_image_id, 'thumbnail' ) : '';
 		?>
 		<div class="dahu-kit-admin dahu-kit-admin__appearance">
-			<?php foreach ( $choices as $key => $choice ) : ?>
-				<fieldset class="dahu-kit-admin__appearance-field">
-					<legend><?php echo esc_html( $choice['label'] ); ?></legend>
-					<?php foreach ( $choice['options'] as $value => $label ) : ?>
-						<label>
-							<input type="radio" name="dahu_kit_<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $value ); ?>" <?php checked( $appearance[ $key ], $value ); ?>>
-							<?php echo esc_html( $label ); ?>
+			<table class="form-table" role="presentation">
+				<?php foreach ( $choices as $key => $choice ) : ?>
+					<tr>
+						<th scope="row"><?php echo esc_html( $choice['label'] ); ?></th>
+						<td>
+							<?php foreach ( $choice['options'] as $value => $label ) : ?>
+								<label class="dahu-kit-admin__appearance-choice">
+									<input type="radio" name="dahu_kit_<?php echo esc_attr( $key ); ?>" value="<?php echo esc_attr( $value ); ?>" <?php checked( $appearance[ $key ], $value ); ?>>
+									<?php echo esc_html( $label ); ?>
+								</label>
+							<?php endforeach; ?>
+						</td>
+					</tr>
+				<?php endforeach; ?>
+			</table>
+			<h4 class="dahu-kit-admin__section-title"><?php esc_html_e( 'Settings shared by every composite product', 'dahu-composite' ); ?></h4>
+			<table class="form-table" role="presentation">
+				<tr>
+					<th scope="row"><?php esc_html_e( 'Show more info', 'dahu-composite' ); ?></th>
+					<td>
+						<input type="hidden" name="<?php echo esc_attr( self::GLOBALS_MARKER ); ?>" value="1">
+						<label class="dahu-kit-admin__appearance-choice">
+							<input type="checkbox" name="<?php echo esc_attr( Dahu_Composite_Settings::OPTION_MORE_INFO ); ?>" value="yes" <?php checked( Dahu_Composite_Settings::more_info_enabled() ); ?>>
+							<?php esc_html_e( 'Yes', 'dahu-composite' ); ?>
 						</label>
-					<?php endforeach; ?>
-				</fieldset>
-			<?php endforeach; ?>
-			<p class="description"><?php esc_html_e( 'Not changed by the JSON import.', 'dahu-composite' ); ?></p>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><?php esc_html_e( '“None” card image', 'dahu-composite' ); ?></th>
+					<td>
+						<input type="hidden" id="dahu-composite-none-image" name="<?php echo esc_attr( Dahu_Composite_Settings::OPTION_NONE_IMAGE ); ?>" value="<?php echo esc_attr( $none_image_id ? (string) $none_image_id : '' ); ?>">
+						<img id="dahu-composite-none-preview" class="dahu-kit-settings__preview" src="<?php echo esc_url( $none_preview ); ?>" alt="" <?php echo $none_preview ? '' : 'hidden'; ?>>
+						<button type="button" class="button" id="dahu-composite-none-pick" data-frame-title="<?php esc_attr_e( 'Image for the “None” card', 'dahu-composite' ); ?>" data-frame-button="<?php esc_attr_e( 'Use this image', 'dahu-composite' ); ?>"><?php esc_html_e( 'Choose an image', 'dahu-composite' ); ?></button>
+						<button type="button" class="button-link delete" id="dahu-composite-none-clear" <?php echo $none_image_id ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove the image', 'dahu-composite' ); ?></button>
+					</td>
+				</tr>
+				<tr>
+					<th scope="row"><label for="dahu-composite-none-text"><?php esc_html_e( '“None” card text', 'dahu-composite' ); ?></label></th>
+					<td>
+						<input type="text" class="regular-text" id="dahu-composite-none-text" name="<?php echo esc_attr( Dahu_Composite_Settings::OPTION_NONE_TEXT ); ?>" value="<?php echo esc_attr( (string) get_option( Dahu_Composite_Settings::OPTION_NONE_TEXT, '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. I do not need one', 'dahu-composite' ); ?>">
+					</td>
+				</tr>
+			</table>
 		</div>
 		<?php
+	}
+
+	/**
+	 * The three GLOBAL settings shown in the Appearance panel (“Show more
+	 * info”, “None” card image and text). Same options, same sanitising as
+	 * on the settings screen they came from. Only when the panel was really
+	 * posted (marker), only for someone allowed to change settings, so a
+	 * product saved from anywhere else leaves them alone.
+	 */
+	private static function save_global_appearance() {
+		if ( ! isset( $_POST[ self::GLOBALS_MARKER ] ) || ! current_user_can( 'manage_woocommerce' ) ) {
+			return;
+		}
+		update_option( Dahu_Composite_Settings::OPTION_MORE_INFO, isset( $_POST[ Dahu_Composite_Settings::OPTION_MORE_INFO ] ) && 'yes' === sanitize_text_field( wp_unslash( $_POST[ Dahu_Composite_Settings::OPTION_MORE_INFO ] ) ) ? 'yes' : '' );
+		update_option( Dahu_Composite_Settings::OPTION_NONE_IMAGE, isset( $_POST[ Dahu_Composite_Settings::OPTION_NONE_IMAGE ] ) ? absint( wp_unslash( $_POST[ Dahu_Composite_Settings::OPTION_NONE_IMAGE ] ) ) : 0 );
+		update_option( Dahu_Composite_Settings::OPTION_NONE_TEXT, isset( $_POST[ Dahu_Composite_Settings::OPTION_NONE_TEXT ] ) ? sanitize_text_field( wp_unslash( $_POST[ Dahu_Composite_Settings::OPTION_NONE_TEXT ] ) ) : '' );
 	}
 
 	public static function render_components_box() {
@@ -722,9 +813,6 @@ class Dahu_Composite_Admin {
 	public static function render_exceptions_box() {
 		?>
 		<div class="dahu-kit-admin">
-			<p class="description">
-				<?php esc_html_e( 'Makes restricted options visible to a logged-in customer.', 'dahu-composite' ); ?>
-			</p>
 			<div id="dahu-kit-exceptions"></div>
 			<p><button type="button" class="button" id="dahu-kit-add-exception"><?php esc_html_e( 'Add an exception', 'dahu-composite' ); ?></button></p>
 			<div id="dahu-kit-generated" class="dahu-kit-admin__generated"></div>
@@ -743,9 +831,6 @@ class Dahu_Composite_Admin {
 	public static function render_simulator_box() {
 		?>
 		<div class="dahu-kit-admin">
-			<p class="description">
-				<?php esc_html_e( 'Tests the configuration on screen, saved or not.', 'dahu-composite' ); ?>
-			</p>
 			<div id="dahu-kit-simulator"></div>
 		</div>
 		<?php
@@ -754,7 +839,6 @@ class Dahu_Composite_Admin {
 	public static function render_io_box() {
 		?>
 		<div class="dahu-kit-admin">
-			<p class="description"><?php esc_html_e( 'Replaces the configuration on screen, which then has to be saved. A field left empty in the JSON keeps its current value.', 'dahu-composite' ); ?></p>
 			<textarea id="dahu-kit-import" rows="8" class="large-text code"></textarea>
 			<p>
 				<button type="button" class="button" id="dahu-kit-import-button"><?php esc_html_e( 'Import', 'dahu-composite' ); ?></button>
@@ -801,6 +885,7 @@ class Dahu_Composite_Admin {
 			}
 		}
 		Dahu_Composite_Appearance::save( $product->get_id(), $appearance );
+		self::save_global_appearance();
 
 		if ( ! isset( $_POST['dahu_kit_config_json'] ) || '' === $_POST['dahu_kit_config_json'] ) {
 			return;
@@ -809,7 +894,7 @@ class Dahu_Composite_Admin {
 		// JSON decoded, then fully normalised by Dahu_Composite_Kit_Config.
 		$config = json_decode( wp_unslash( $_POST['dahu_kit_config_json'] ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if ( ! is_array( $config ) ) {
-			self::store_notice( array( __( 'The kit configuration could not be read: nothing was saved.', 'dahu-composite' ) ) );
+			self::store_notice( array( __( 'The configuration could not be read: nothing was saved.', 'dahu-composite' ) ) );
 			return;
 		}
 
@@ -829,7 +914,7 @@ class Dahu_Composite_Admin {
 		$errors  = array_values( array_unique( array_merge( $errors, $checked['warnings'] ) ) );
 
 		if ( ! Dahu_Composite_Product_Type::get_container_shipping_class_id() ) {
-			$errors[] = __( 'The shipping class set for kits (Dahu Composite settings) does not exist: shipping plugins will not recognise this kit.', 'dahu-composite' );
+			$errors[] = __( 'The shipping class set for composite products (Dahu Composite settings) does not exist: shipping plugins will not recognise this product.', 'dahu-composite' );
 		}
 
 		if ( $errors ) {

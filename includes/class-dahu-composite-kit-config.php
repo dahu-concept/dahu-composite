@@ -409,7 +409,7 @@ class Dahu_Composite_Kit_Config {
 				'info'                 => isset( $item['info'] ) ? trim( wp_kses_post( (string) $item['info'] ) ) : '',
 				// Image of the “None” card of THIS component, an attachment
 				// from the media library, optional: it replaces the shared
-				// image (WooCommerce > Dahu Kits) for this component only.
+				// image (Appearance panel) for this component only.
 				// Of no object for a branch. An older configuration without
 				// the key: null, the shared image.
 				'none_image_id'        => ( 'path' !== $component_type && ! empty( $item['none_image_id'] ) && absint( $item['none_image_id'] ) ) ? absint( $item['none_image_id'] ) : null,
@@ -771,7 +771,7 @@ class Dahu_Composite_Kit_Config {
 				// Without a condition, a block would make the kit impossible to configure.
 				if ( empty( $conditions ) && null === $customer ) {
 					/* translators: %s: identifier of the scenario */
-					$errors[] = sprintf( __( 'Scenario “%s”: a block with no condition would make the kit impossible to configure; scenario ignored.', 'dahu-composite' ), $id );
+					$errors[] = sprintf( __( 'Scenario “%s”: a block with no condition would make the composite product impossible to configure; scenario ignored.', 'dahu-composite' ), $id );
 					continue;
 				}
 				$block = array(

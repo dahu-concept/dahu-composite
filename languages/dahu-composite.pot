@@ -7,14 +7,14 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2026-10-08 09:36+0000\n"
+"PO-Revision-Date: 2026-10-12 12:24+0000\n"
 "X-Domain: dahu-composite\n"
 
-#: includes/class-dahu-composite-admin.php:316 includes/class-dahu-composite-validator.php:639
+#: includes/class-dahu-composite-admin.php:321 includes/class-dahu-composite-validator.php:639
 msgid " and "
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:352 includes/class-dahu-composite-admin.php:353
+#: includes/class-dahu-composite-admin.php:357 includes/class-dahu-composite-admin.php:358
 msgid " — hides %1$s value of “%2$s” %3$s: %4$s"
 msgid_plural " — hides %1$s values of “%2$s” %3$s: %4$s"
 msgstr[0] ""
@@ -44,7 +44,7 @@ msgstr ""
 msgid "%1$s (stock adjusted: %2$s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:314
+#: includes/class-dahu-composite-admin.php:319
 msgid "%1$s if %2$s"
 msgstr ""
 
@@ -52,13 +52,13 @@ msgstr ""
 msgid "%1$s removed along with its variation (stock %2$s → %3$s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:337 includes/class-dahu-composite-admin.php:338
+#: includes/class-dahu-composite-admin.php:342 includes/class-dahu-composite-admin.php:343
 msgid "%1$s — %2$s: %3$s reserved value on top of the public ones"
 msgid_plural "%1$s — %2$s: %3$s reserved values on top of the public ones"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-dahu-composite-admin.php:334
+#: includes/class-dahu-composite-admin.php:339
 msgid "%1$s — %2$s: every restricted option and variation"
 msgstr ""
 
@@ -74,101 +74,97 @@ msgstr ""
 msgid "%d characters at most."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:447
-msgid "%s (Dahu Composite)"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:165
+#: includes/class-dahu-composite-admin.php:180
 msgid "%s (absent from the options)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:317
+#: includes/class-dahu-composite-admin.php:322
 msgid "%s (always active)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:237
+#: includes/class-dahu-composite-admin.php:244
 msgid "%s (copy)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:312
+#: includes/class-dahu-composite-admin.php:317
 msgid "%s (no value)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:104
+#: includes/class-dahu-composite-admin.php:119
 msgid "%s (not found)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:162
+#: includes/class-dahu-composite-admin.php:177
 msgid "%s (other screen)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:261
+#: includes/class-dahu-composite-admin.php:268
 msgid "%s badge(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:270
+#: includes/class-dahu-composite-admin.php:277
 msgid "%s card link(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:264
+#: includes/class-dahu-composite-admin.php:271
 msgid "%s component description(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:265
+#: includes/class-dahu-composite-admin.php:272
 msgid "%s component info bubble text(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:263
+#: includes/class-dahu-composite-admin.php:270
 msgid "%s component layout(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:262
+#: includes/class-dahu-composite-admin.php:269
 msgid "%s component title(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:257
+#: includes/class-dahu-composite-admin.php:264
 msgid "%s help image(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:256
+#: includes/class-dahu-composite-admin.php:263
 msgid "%s image(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:271
+#: includes/class-dahu-composite-admin.php:278
 msgid "%s offered variation choices"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:260
+#: includes/class-dahu-composite-admin.php:267
 msgid "%s option description(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:240 includes/class-dahu-composite-admin.php:241
+#: includes/class-dahu-composite-admin.php:247 includes/class-dahu-composite-admin.php:248
 msgid "%s option is attached to it: it will go back to having no category."
 msgid_plural "%s options are attached to it: they will go back to having no category."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-dahu-composite-admin.php:259
+#: includes/class-dahu-composite-admin.php:266
 msgid "%s option label(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:258
+#: includes/class-dahu-composite-admin.php:265
 msgid "%s option title(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:273
+#: includes/class-dahu-composite-admin.php:280
 msgid "%s range colour(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:267
+#: includes/class-dahu-composite-admin.php:274
 msgid "%s range info bubble text(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:268
+#: includes/class-dahu-composite-admin.php:275
 msgid "%s range media"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:269
+#: includes/class-dahu-composite-admin.php:276
 msgid "%s range video link(s)"
 msgstr ""
 
@@ -176,59 +172,59 @@ msgstr ""
 msgid "%s removed along with its variation"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:341 includes/class-dahu-composite-admin.php:342
+#: includes/class-dahu-composite-admin.php:346 includes/class-dahu-composite-admin.php:347
 msgid "%s reserved value"
 msgid_plural "%s reserved values"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-dahu-composite-admin.php:246 includes/class-dahu-composite-admin.php:247
+#: includes/class-dahu-composite-admin.php:253 includes/class-dahu-composite-admin.php:254
 msgid "%s scenario refers to it and will be deleted, or have this condition removed."
 msgid_plural "%s scenarios refer to it and will be deleted, or have this condition removed."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-dahu-composite-admin.php:272
+#: includes/class-dahu-composite-admin.php:279
 msgid "%s variant help images"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:212
+#: includes/class-dahu-composite-admin.php:219
 msgid "%s — every variant"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:213
+#: includes/class-dahu-composite-admin.php:220
 msgid "%s — variant not chosen yet"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:275
+#: includes/class-dahu-composite-admin.php:282
 msgid "%s “Badge” setting(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:276
+#: includes/class-dahu-composite-admin.php:283
 msgid "%s “Coloured background” setting(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:266
+#: includes/class-dahu-composite-admin.php:273
 msgid "%s “None” card image(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:274
+#: includes/class-dahu-composite-admin.php:281
 msgid "%s “On its own line” setting(s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:346
+#: includes/class-dahu-composite-admin.php:351
 msgid "(component?)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:347
+#: includes/class-dahu-composite-admin.php:352
 msgid "(customer to be chosen)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:93
+#: includes/class-dahu-composite-admin.php:108
 msgid "(no label)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:311
+#: includes/class-dahu-composite-admin.php:316
 msgid "(no option chosen)"
 msgstr ""
 
@@ -236,31 +232,27 @@ msgstr ""
 msgid "(optional)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:303
+#: includes/class-dahu-composite-admin.php:308
 msgid "(target missing)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:391
+#: includes/class-dahu-composite-admin.php:395
 msgid "(this customer’s hidden options; prices of the logged-in account)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:94
+#: includes/class-dahu-composite-admin.php:109
 msgid "(untitled)"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:252
+#: includes/class-dahu-composite-frontend.php:249
 msgid "* Required fields"
 msgstr ""
 
 #: includes/class-dahu-composite-saved-configs.php:266
-msgid "A step of your configuration no longer exists in this kit: its choice was removed."
+msgid "A step of your configuration no longer exists in this product: its choice was removed."
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:265
-msgid "A “more info…” link after the product description on cards"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:330
+#: includes/class-dahu-composite-admin.php:335
 msgid "Access to every restricted option and variation of this component"
 msgstr ""
 
@@ -276,7 +268,7 @@ msgstr ""
 msgid "Accessory display (bundle plugin fields)."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:281
+#: includes/class-dahu-composite-admin.php:288
 msgid "Action"
 msgstr ""
 
@@ -288,23 +280,19 @@ msgstr ""
 msgid "Actions"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:294
-msgid "Active when every condition is true."
-msgstr ""
-
-#: includes/class-dahu-composite-frontend.php:184
+#: includes/class-dahu-composite-frontend.php:181
 msgid "Add"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:172
+#: includes/class-dahu-composite-admin.php:184
 msgid "Add a category"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:692
+#: includes/class-dahu-composite-admin.php:783
 msgid "Add a component"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:714
+#: includes/class-dahu-composite-admin.php:805
 msgid "Add a scenario"
 msgstr ""
 
@@ -312,39 +300,39 @@ msgstr ""
 msgid "Add an accessory…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:729
+#: includes/class-dahu-composite-admin.php:817
 msgid "Add an exception"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:217
+#: includes/class-dahu-composite-admin.php:224
 msgid "Add an option"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:158 includes/class-wc-product-dahu-kit.php:206
+#: includes/class-dahu-composite-frontend.php:155 includes/class-wc-product-dahu-kit.php:206
 msgid "Add to cart"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:126
+#: includes/class-dahu-composite-admin.php:141
 msgid "Add-on presentation"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:185
+#: includes/class-dahu-composite-frontend.php:182
 msgid "Added"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:159
+#: includes/class-dahu-composite-frontend.php:156
 msgid "Adding…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:131
+#: includes/class-dahu-composite-admin.php:146
 msgid "Adjustable quantity"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:708
+#: includes/class-dahu-composite-admin.php:799
 msgid "All targets"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:255
+#: includes/class-dahu-composite-admin.php:262
 msgid "Already set in the admin and absent from the imported JSON, so kept: %s."
 msgstr ""
 
@@ -353,46 +341,38 @@ msgid "An account already exists with this email address. Log in and your config
 msgstr ""
 
 #: includes/class-dahu-composite-cart.php:596
-msgid "An incomplete kit was removed from your cart."
+msgid "An incomplete product was removed from your cart."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:388
-msgid "An “Open on the site” link once the kit is published."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:160
+#: includes/class-dahu-composite-admin.php:175
 msgid "Anchor next to"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:410
+#: includes/class-dahu-composite-admin.php:414
 msgid "Appearance"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:397
+#: includes/class-dahu-composite-admin.php:401
 msgid "Appearance on the product page: %1$s, corners %2$s, icons %3$s, info %4$s (desktop) / %5$s (mobile), click %6$s."
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:253
-msgid "Applied to the kit line in the cart."
-msgstr ""
-
-#: includes/class-dahu-composite-frontend.php:216
+#: includes/class-dahu-composite-frontend.php:213
 msgid "Back"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:164
+#: includes/class-dahu-composite-frontend.php:161
 msgid "Back to step"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:88 includes/class-dahu-composite-admin.php:178
+#: includes/class-dahu-composite-admin.php:103 includes/class-dahu-composite-admin.php:190
 msgid "Badge"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:149
+#: includes/class-dahu-composite-admin.php:164
 msgid "Branch"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:110
+#: includes/class-dahu-composite-admin.php:125
 msgid "Branch (no product)"
 msgstr ""
 
@@ -400,24 +380,16 @@ msgstr ""
 msgid "By Hugo Vial-Jaime — Dahu-Concept"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:258
+#: includes/class-dahu-composite-frontend.php:255
 msgid "Cancel"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:163 includes/class-dahu-composite-admin.php:398
+#: includes/class-dahu-composite-admin.php:178 includes/class-dahu-composite-admin.php:402 includes/class-dahu-composite-admin.php:670 includes/class-dahu-composite-admin.php:690 includes/class-dahu-composite-admin.php:699
 msgid "Card"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:625
+#: includes/class-dahu-composite-admin.php:667
 msgid "Card style"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:628
-msgid "Card — fixed-size cards, preview in the right-hand column"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:648 includes/class-dahu-composite-admin.php:657
-msgid "Card — the card flips over"
 msgstr ""
 
 #: includes/class-dahu-composite-included.php:670
@@ -432,39 +404,39 @@ msgstr ""
 msgid "Cart unavailable."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:169
+#: includes/class-dahu-composite-admin.php:183
 msgid "Categories / ranges (%s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:119
+#: includes/class-dahu-composite-admin.php:134
 msgid "Category icon"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:81
+#: includes/class-dahu-composite-admin.php:96
 msgid "Change"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:195
+#: includes/class-dahu-composite-admin.php:206
 msgid "Change the image"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:262 includes/class-dahu-composite-saved-configs.php:963 includes/class-dahu-composite-saved-configs.php:1002
+#: includes/class-dahu-composite-frontend.php:259 includes/class-dahu-composite-saved-configs.php:963 includes/class-dahu-composite-saved-configs.php:1002
 msgid "Check the fields flagged above."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:111
+#: includes/class-dahu-composite-admin.php:126
 msgid "Choice"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:83
+#: includes/class-dahu-composite-admin.php:98
 msgid "Choose"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:143
+#: includes/class-dahu-composite-frontend.php:140
 msgid "Choose a variation"
 msgstr ""
 
-#: includes/class-dahu-composite-admin-order.php:111 includes/class-dahu-composite-frontend.php:224
+#: includes/class-dahu-composite-admin-order.php:111 includes/class-dahu-composite-frontend.php:221
 msgid "Choose a variation before continuing."
 msgstr ""
 
@@ -472,11 +444,11 @@ msgstr ""
 msgid "Choose a variation for “%s”."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:196 includes/class-dahu-composite-settings.php:284
+#: includes/class-dahu-composite-admin.php:207 includes/class-dahu-composite-admin.php:747
 msgid "Choose an image"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:183
+#: includes/class-dahu-composite-admin.php:195
 msgid "Choose from the media library"
 msgstr ""
 
@@ -484,67 +456,68 @@ msgstr ""
 msgid "Choose…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:662
-msgid "Click"
-msgstr ""
-
-#: includes/class-dahu-composite-admin-order.php:180 includes/class-dahu-composite-frontend.php:205
+#: includes/class-dahu-composite-admin-order.php:180 includes/class-dahu-composite-frontend.php:202
 msgid "Close"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:777
+#: includes/class-dahu-composite-admin.php:861
 msgid "Collapse all"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:91
+#: includes/class-dahu-composite-admin.php:106
 msgid "Colour"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:179
+#: includes/class-dahu-composite-admin.php:191
 msgid "Coloured background"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:220 includes/class-dahu-composite-frontend.php:166
+#: includes/class-dahu-composite-admin.php:227 includes/class-dahu-composite-frontend.php:163
 msgid "Coming soon"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:162
+#: includes/class-dahu-composite-frontend.php:159
 msgid "Complete the following steps:"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:327 includes/class-dahu-composite-frontend.php:154 includes/class-dahu-composite-order.php:246
+#: includes/class-dahu-composite-admin.php:332 includes/class-dahu-composite-frontend.php:151 includes/class-dahu-composite-order.php:246
 msgid "Component"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:108
+#: includes/class-dahu-composite-admin.php:123
 msgid "Component type"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:107 includes/class-dahu-composite-admin.php:411 includes/class-dahu-composite-settings.php:359
+#: includes/class-dahu-composite-admin.php:122 includes/class-dahu-composite-admin.php:415 includes/class-dahu-composite-settings.php:347
 msgid "Components"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:360
+#: includes/class-dahu-composite-product-type.php:24 includes/class-dahu-composite-settings.php:345
+msgid "Composite product"
+msgstr ""
+
+#. translators: 1: kit, 2: components */
+#: includes/class-dahu-composite-admin-order.php:300
+msgid "Composite product “%1$s” configured from the order screen: %2$s."
+msgstr ""
+
+#: includes/class-dahu-composite-settings.php:54 includes/class-dahu-composite-settings.php:55 includes/class-dahu-composite-settings.php:257 includes/class-dahu-composite-settings.php:341
+msgid "Composite products"
+msgstr ""
+
+#: includes/class-dahu-composite-admin.php:365
 msgid "Computing…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:291
+#: includes/class-dahu-composite-admin.php:297
 msgid "Condition on"
-msgstr ""
-
-#: includes/class-dahu-composite-product-type.php:24
-msgid "Configurable kit (Dahu)"
-msgstr ""
-
-#: includes/class-dahu-composite-settings.php:52 includes/class-dahu-composite-settings.php:53 includes/class-dahu-composite-settings.php:235
-msgid "Configurable kits"
 msgstr ""
 
 #: includes/class-dahu-composite-saved-configs.php:1123 includes/class-dahu-composite-saved-configs.php:1133
 msgid "Configuration"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:380
+#: includes/class-dahu-composite-admin.php:385
 msgid "Configuration complete and valid"
 msgstr ""
 
@@ -552,15 +525,15 @@ msgstr ""
 msgid "Configuration deleted."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:254
+#: includes/class-dahu-composite-admin.php:261
 msgid "Configuration imported: save the product to apply it."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:381
+#: includes/class-dahu-composite-admin.php:386
 msgid "Configuration incomplete"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:235
+#: includes/class-dahu-composite-frontend.php:232
 msgid "Configuration name"
 msgstr ""
 
@@ -568,27 +541,27 @@ msgstr ""
 msgid "Configuration not found in your account."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:384
+#: includes/class-dahu-composite-admin.php:389
 msgid "Configuration serial (partial configuration):"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:383
+#: includes/class-dahu-composite-admin.php:388
 msgid "Configuration serial:"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:266
+#: includes/class-dahu-composite-frontend.php:263
 msgid "Configuration “%1$s” saved and account created for %2$s. To reach it, set your password from the login page."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:264
+#: includes/class-dahu-composite-frontend.php:261
 msgid "Configuration “%1$s” saved and account created. An email has just gone out to %2$s: the link in it lets you set your password. Your configuration is then waiting in your account, under “My configurations”."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:244
+#: includes/class-dahu-composite-frontend.php:241
 msgid "Configuration “%s” reopened, at today’s prices."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:241
+#: includes/class-dahu-composite-frontend.php:238
 msgid "Configuration “%s” saved."
 msgstr ""
 
@@ -596,35 +569,35 @@ msgstr ""
 msgid "Configure"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:99
+#: includes/class-dahu-composite-admin.php:114
 msgid "Copied"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:98
+#: includes/class-dahu-composite-admin.php:113
 msgid "Copy"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:100
+#: includes/class-dahu-composite-admin.php:115
 msgid "Copy failed"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:632
+#: includes/class-dahu-composite-admin.php:674
 msgid "Corner shape"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:230
+#: includes/class-dahu-composite-frontend.php:227
 msgid "Could not reach the server."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:173
+#: includes/class-dahu-composite-admin.php:185
 msgid "Create a category"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:254 includes/class-dahu-composite-frontend.php:257
+#: includes/class-dahu-composite-frontend.php:251 includes/class-dahu-composite-frontend.php:254
 msgid "Create my account and save"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:325
+#: includes/class-dahu-composite-admin.php:330
 msgid "Customer"
 msgstr ""
 
@@ -632,7 +605,7 @@ msgstr ""
 msgid "Customer #%d (not found)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:297
+#: includes/class-dahu-composite-admin.php:302
 msgid "Customer condition: %s (import JSON)."
 msgstr ""
 
@@ -640,47 +613,47 @@ msgstr ""
 msgid "Customer exception with no customer: ignored."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:323 includes/class-dahu-composite-admin.php:413
+#: includes/class-dahu-composite-admin.php:328 includes/class-dahu-composite-admin.php:417
 msgid "Customer exceptions"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:193
+#: includes/class-dahu-composite-admin.php:205
 msgid "Customise the display"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:854
+#: includes/class-dahu-composite-admin.php:939
 msgid "Dahu Composite"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:238
-msgid "Dahu Composite builds a product a customer assembles themselves, step by step, from choices you define. These settings apply to every kit."
+#: includes/class-dahu-composite-settings.php:260
+msgid "Dahu Composite builds a product that customers assemble themselves, step by step, from choices you define. These settings apply to every composite product."
 msgstr ""
 
 #: dahu-composite.php:64
 msgid "Dahu Composite requires WooCommerce."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:298 includes/class-dahu-composite-admin.php:306
+#: includes/class-dahu-composite-admin.php:303 includes/class-dahu-composite-admin.php:311
 msgid "Dead end"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:285
+#: includes/class-dahu-composite-admin.php:292
 msgid "Dead end (stop the configurator with a message)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:370
+#: includes/class-dahu-composite-admin.php:375
 msgid "Dead end."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:180
+#: includes/class-dahu-composite-admin.php:192
 msgid "Default (%s)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:115
-msgid "Default (the kit’s general appearance)"
+#: includes/class-dahu-composite-admin.php:130
+msgid "Default (general appearance)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:146
+#: includes/class-dahu-composite-admin.php:161
 msgid "Default option"
 msgstr ""
 
@@ -688,23 +661,23 @@ msgstr ""
 msgid "Default product #%1$d is not among the options of component “%2$s”: ignored."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:145
+#: includes/class-dahu-composite-admin.php:160
 msgid "Default selection"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:80 includes/class-dahu-composite-saved-configs.php:1151
+#: includes/class-dahu-composite-admin.php:95 includes/class-dahu-composite-saved-configs.php:1151
 msgid "Delete"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:238
+#: includes/class-dahu-composite-admin.php:245
 msgid "Delete the category “%s”?"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:244
+#: includes/class-dahu-composite-admin.php:251
 msgid "Delete the component “%s”?"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:249
+#: includes/class-dahu-composite-admin.php:256
 msgid "Delete the scenario “%s”?"
 msgstr ""
 
@@ -712,15 +685,15 @@ msgstr ""
 msgid "Delete this configuration?"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:218
+#: includes/class-dahu-composite-admin.php:225
 msgid "Delete this option"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:190 includes/class-dahu-composite-frontend.php:209 includes/class-dahu-composite-product-tabs.php:224
+#: includes/class-dahu-composite-admin.php:202 includes/class-dahu-composite-frontend.php:206 includes/class-dahu-composite-product-tabs.php:224
 msgid "Description"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:141
+#: includes/class-dahu-composite-admin.php:156
 msgid "Description (HTML allowed)"
 msgstr ""
 
@@ -728,23 +701,23 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:121
+#: includes/class-dahu-composite-admin.php:136
 msgid "Display group"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:176
+#: includes/class-dahu-composite-admin.php:188
 msgid "Display of the ranges:"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:188
+#: includes/class-dahu-composite-admin.php:200
 msgid "Displayed description (simple HTML)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:186
+#: includes/class-dahu-composite-admin.php:198
 msgid "Displayed title"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:136
+#: includes/class-dahu-composite-admin.php:151
 msgid "Displayed weight"
 msgstr ""
 
@@ -752,11 +725,11 @@ msgstr ""
 msgid "Done"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:101
+#: includes/class-dahu-composite-admin.php:116
 msgid "Drag to reorder"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:79
+#: includes/class-dahu-composite-admin.php:94
 msgid "Duplicate"
 msgstr ""
 
@@ -772,35 +745,27 @@ msgstr ""
 msgid "Email address"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:194
-msgid "Empty: the product’s own data."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:210
-msgid "Empty: the shared image (WooCommerce › Configurable kits)."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:130
+#: includes/class-dahu-composite-admin.php:145
 msgid "Empty: the title of the component"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:103
+#: includes/class-dahu-composite-admin.php:118
 msgid "Error %s"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:149
+#: includes/class-dahu-composite-frontend.php:146
 msgid "Estimated weight"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:379
+#: includes/class-dahu-composite-admin.php:384
 msgid "Estimated weight: %1$s %2$s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:302
+#: includes/class-dahu-composite-admin.php:307
 msgid "Every target"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:197
+#: includes/class-dahu-composite-admin.php:208
 msgid "Every variant"
 msgstr ""
 
@@ -824,35 +789,31 @@ msgstr ""
 msgid "Exception “%1$s”: “%2$s” is not restricted on “%3$s” (already public, or absent) — no effect."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:778
+#: includes/class-dahu-composite-admin.php:862
 msgid "Expand all"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:658
-msgid "Expanded — falls back to a card when space runs short"
+#: includes/class-dahu-composite-admin.php:692 includes/class-dahu-composite-admin.php:700
+msgid "Expanded"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:650
-msgid "Expanded — the card widens over its neighbours"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:763
+#: includes/class-dahu-composite-admin.php:847
 msgid "Export"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:223
+#: includes/class-dahu-composite-admin.php:230
 msgid "Filled in: the card is no longer a choice, it opens this page."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:707
+#: includes/class-dahu-composite-admin.php:798
 msgid "Filter by target component"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:250
+#: includes/class-dahu-composite-frontend.php:247
 msgid "Find it later in your account, under “My configurations”. No account yet? One is created at the same time, with no password to choose right now."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:237
+#: includes/class-dahu-composite-frontend.php:234
 msgid "Finish the configuration before saving it."
 msgstr ""
 
@@ -860,67 +821,59 @@ msgstr ""
 msgid "First name"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:138
+#: includes/class-dahu-composite-admin.php:153
 msgid "Fixed value"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:258
-msgid "General appearance"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:348
+#: includes/class-dahu-composite-admin.php:353
 msgid "Generated rules (read only)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:349
+#: includes/class-dahu-composite-admin.php:354
 msgid "Generated rules: none (nothing is restricted)."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:169
+#: includes/class-dahu-composite-frontend.php:166
 msgid "Go to"
 msgstr ""
 
-#: includes/class-dahu-composite-pricing.php:296
-msgid "Gold trade price"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:140
+#: includes/class-dahu-composite-admin.php:155
 msgid "Grams"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:198
+#: includes/class-dahu-composite-admin.php:209
 msgid "Help image"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:227
+#: includes/class-dahu-composite-admin.php:234
 msgid "Help image (back of the card)"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:188
+#: includes/class-dahu-composite-frontend.php:185
 msgid "Hide details"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:282
+#: includes/class-dahu-composite-admin.php:289
 msgid "Hide options"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:284
+#: includes/class-dahu-composite-admin.php:291
 msgid "Hide the whole step"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:301
+#: includes/class-dahu-composite-admin.php:306
 msgid "Hides options"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:308
+#: includes/class-dahu-composite-admin.php:313
 msgid "Hides options of %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:299
+#: includes/class-dahu-composite-admin.php:304
 msgid "Hides the step"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:307
+#: includes/class-dahu-composite-admin.php:312
 msgid "Hides the step %s"
 msgstr ""
 
@@ -928,43 +881,43 @@ msgstr ""
 msgid "I agree to my details being stored so that I can be contacted about my configuration."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:639
+#: includes/class-dahu-composite-admin.php:681
 msgid "Icons"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:89
+#: includes/class-dahu-composite-admin.php:104
 msgid "Identifier"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:84 includes/class-dahu-composite-settings.php:280
+#: includes/class-dahu-composite-admin.php:99
 msgid "Image"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:284
+#: includes/class-dahu-composite-admin.php:747
 msgid "Image for the “None” card"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:226
+#: includes/class-dahu-composite-admin.php:233
 msgid "Image of the option"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:229
+#: includes/class-dahu-composite-admin.php:236
 msgid "Image of the “None” card — %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:760
+#: includes/class-dahu-composite-admin.php:844
 msgid "Import"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:416
+#: includes/class-dahu-composite-admin.php:420
 msgid "Import / export"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:192 includes/class-dahu-composite-frontend.php:227
+#: includes/class-dahu-composite-admin.php:204 includes/class-dahu-composite-frontend.php:224
 msgid "Included products"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:212
+#: includes/class-dahu-composite-frontend.php:209
 msgid "Included products (soon)"
 msgstr ""
 
@@ -976,31 +929,31 @@ msgstr ""
 msgid "Incomplete configuration: finish it before saving."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:142
+#: includes/class-dahu-composite-admin.php:157
 msgid "Info bubble text (optional)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:646
+#: includes/class-dahu-composite-admin.php:688
 msgid "Info display (desktop)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:654
-msgid "Info display (mobile, below 64em)"
+#: includes/class-dahu-composite-admin.php:696
+msgid "Info display (mobile)"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:218
+#: includes/class-dahu-composite-frontend.php:215
 msgid "Information about: %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:117
+#: includes/class-dahu-composite-admin.php:132
 msgid "Inline — one expandable row per option"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:252
+#: includes/class-dahu-composite-admin.php:259
 msgid "Invalid JSON: %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:253
+#: includes/class-dahu-composite-admin.php:260
 msgid "Invalid JSON: the “components” key is missing."
 msgstr ""
 
@@ -1023,42 +976,25 @@ msgstr ""
 msgid "Invalid variation for “%s”."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:367 includes/class-dahu-composite-admin.php:368
+#: includes/class-dahu-composite-admin.php:372 includes/class-dahu-composite-admin.php:373
 msgid "Journey shown to the customer (%1$s step): %2$s"
 msgid_plural "Journey shown to the customer (%1$s steps): %2$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-dahu-composite-saved-configs.php:1124 includes/class-dahu-composite-saved-configs.php:1142 includes/class-dahu-composite-settings.php:357
-msgid "Kit"
-msgstr ""
-
-#: includes/class-dahu-composite-rest.php:296 includes/class-dahu-composite-rest.php:300
-msgid "Kit not found."
-msgstr ""
-
-#. translators: 1: kit, 2: components */
-#: includes/class-dahu-composite-admin-order.php:300
-msgid "Kit “%1$s” configured from the order screen: %2$s."
-msgstr ""
-
-#: includes/class-dahu-composite-settings.php:353
-msgid "Kits"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:86
+#: includes/class-dahu-composite-admin.php:101
 msgid "Label"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:308
+#: includes/class-dahu-composite-settings.php:287
 msgid "Label for the public price"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:307
+#: includes/class-dahu-composite-settings.php:286
 msgid "Label for the tier price"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:343
+#: includes/class-dahu-composite-settings.php:331
 msgid "Label taken from Dahu Pricing; change it there."
 msgstr ""
 
@@ -1066,7 +1002,7 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:114
+#: includes/class-dahu-composite-admin.php:129
 msgid "Layout"
 msgstr ""
 
@@ -1075,27 +1011,27 @@ msgstr ""
 msgid "Lines removed: %s."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:221
+#: includes/class-dahu-composite-admin.php:228
 msgid "Link (optional)"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:139 includes/class-dahu-composite-frontend.php:278
+#: includes/class-dahu-composite-frontend.php:136 includes/class-dahu-composite-frontend.php:274
 msgid "Loading the configurator…"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:206 includes/class-dahu-composite-frontend.php:213
+#: includes/class-dahu-composite-frontend.php:203 includes/class-dahu-composite-frontend.php:210
 msgid "Loading…"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:239
+#: includes/class-dahu-composite-frontend.php:236
 msgid "Log in"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:238
+#: includes/class-dahu-composite-frontend.php:235
 msgid "Log in to find it again in your account, under “My configurations”."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:246
+#: includes/class-dahu-composite-frontend.php:243
 msgid "Log in to reopen this saved configuration."
 msgstr ""
 
@@ -1103,116 +1039,100 @@ msgstr ""
 msgid "Log in to save your configuration."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:124
+#: includes/class-dahu-composite-admin.php:139
 msgid "Main (in the screen title)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:726
-msgid "Makes restricted options visible to a logged-in customer."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:133
+#: includes/class-dahu-composite-admin.php:148
 msgid "Max quantity"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:85
+#: includes/class-dahu-composite-admin.php:100
 msgid "Media"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:286
+#: includes/class-dahu-composite-admin.php:293
 msgid "Message shown (dead end)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:132
+#: includes/class-dahu-composite-admin.php:147
 msgid "Min quantity"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:202
+#: includes/class-dahu-composite-frontend.php:199
 msgid "More info"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:78
+#: includes/class-dahu-composite-admin.php:93
 msgid "Move down"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:77
+#: includes/class-dahu-composite-admin.php:92
 msgid "Move up"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:113
+#: includes/class-dahu-composite-admin.php:128
 msgid "Multiple (several options, one row each)"
+msgstr ""
+
+#: includes/class-dahu-composite-saved-configs.php:171
+msgid "My configuration of %s"
 msgstr ""
 
 #: includes/class-dahu-composite-saved-configs.php:1068 includes/class-dahu-composite-saved-configs.php:1077
 msgid "My configurations"
 msgstr ""
 
-#: includes/class-dahu-composite-saved-configs.php:171
-msgid "My kit of %s"
-msgstr ""
-
-#: includes/class-dahu-composite-frontend.php:236
+#: includes/class-dahu-composite-frontend.php:233
 msgid "Name (optional)"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:191
+#: includes/class-dahu-composite-admin.php:684 includes/class-dahu-composite-admin.php:707 includes/class-dahu-composite-frontend.php:188
 msgid "No"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:295
+#: includes/class-dahu-composite-settings.php:355
+msgid "No composite products yet. Create a product of type “Composite product”."
+msgstr ""
+
+#: includes/class-dahu-composite-admin.php:300
 msgid "No condition possible: always active."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:324
+#: includes/class-dahu-composite-admin.php:329
 msgid "No exception."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:207
+#: includes/class-dahu-composite-frontend.php:204
 msgid "No further information for this product."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:229
+#: includes/class-dahu-composite-frontend.php:226
 msgid "No included products"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:367
-msgid "No kits yet. Create a product of type “Configurable kit (Dahu)”."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:373
+#: includes/class-dahu-composite-admin.php:378
 msgid "No option available with these choices."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:243
+#: includes/class-dahu-composite-admin.php:250
 msgid "No option is attached to it."
 msgstr ""
 
 #: includes/class-dahu-composite-saved-configs.php:1119
-msgid "No saved configuration yet. On a kit’s Summary step, “Save my configuration” files it here."
+msgid "No saved configuration yet. On the Summary step, “Save my configuration” files it here."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:211
+#: includes/class-dahu-composite-frontend.php:208
 msgid "No specifications entered"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:361
+#: includes/class-dahu-composite-admin.php:366
 msgid "No step is visible with these choices."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:642
-msgid "No — a “More info” button, sections shown as tabs once opened"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:665
-msgid "No — clicking anywhere on the card selects it"
-msgstr ""
-
-#: includes/class-dahu-composite-admin-order.php:104 includes/class-dahu-composite-admin.php:95 includes/class-dahu-composite-frontend.php:157
+#: includes/class-dahu-composite-admin-order.php:104 includes/class-dahu-composite-admin.php:110 includes/class-dahu-composite-frontend.php:154
 msgid "None"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:682
-msgid "Not changed by the JSON import."
 msgstr ""
 
 #. translators: 1: product */
@@ -1220,27 +1140,19 @@ msgstr ""
 msgid "Not enough stock for “%s”."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:328
+#: includes/class-dahu-composite-admin.php:333
 msgid "Note (internal)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:332
+#: includes/class-dahu-composite-admin.php:337
 msgid "Nothing is restricted on this component."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:177
+#: includes/class-dahu-composite-admin.php:189
 msgid "On its own line"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:199
-msgid "On the back of the card, at the top of the description."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:170
-msgid "One section per category, in this order."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:331
+#: includes/class-dahu-composite-admin.php:336
 msgid "Only these, on top of the public ones:"
 msgstr ""
 
@@ -1248,47 +1160,43 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:386
+#: includes/class-dahu-composite-admin.php:391
 msgid "Open on the site"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:345
+#: includes/class-dahu-composite-settings.php:333
 msgid "Open the Dahu Pricing settings"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:267
-msgid "Opens the product page in a new window. Never on the “None” card, nor for a product with no public page."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:134
+#: includes/class-dahu-composite-admin.php:149
 msgid "Optional"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:163
+#: includes/class-dahu-composite-frontend.php:160
 msgid "Optional items"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:143
+#: includes/class-dahu-composite-admin.php:158
 msgid "Options (products)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:216
+#: includes/class-dahu-composite-admin.php:223
 msgid "Options of the branch"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:288
+#: includes/class-dahu-composite-admin.php:295
 msgid "Options to hide in “%s”"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:289
+#: includes/class-dahu-composite-admin.php:296
 msgid "Options to keep visible in “%s”"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:372
+#: includes/class-dahu-composite-admin.php:377
 msgid "Options unavailable (component renamed?)."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:154
+#: includes/class-dahu-composite-admin.php:169
 msgid "Options: %s"
 msgstr ""
 
@@ -1296,7 +1204,7 @@ msgstr ""
 msgid "Order or line item not found."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:145
+#: includes/class-dahu-composite-frontend.php:142
 msgid "Out of stock"
 msgstr ""
 
@@ -1312,103 +1220,87 @@ msgstr ""
 msgid "Preview restricted to users who can manage products."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:156
+#: includes/class-dahu-composite-frontend.php:153
 msgid "Price"
 msgstr ""
 
-#: includes/class-dahu-composite-admin-order.php:115 includes/class-dahu-composite-frontend.php:155
+#: includes/class-dahu-composite-admin-order.php:115 includes/class-dahu-composite-frontend.php:152 includes/class-dahu-composite-saved-configs.php:1124 includes/class-dahu-composite-saved-configs.php:1142
 msgid "Product"
 msgstr ""
 
-#: includes/class-dahu-composite-rest.php:288 includes/class-dahu-composite-rest.php:346
+#: includes/class-dahu-composite-rest.php:288 includes/class-dahu-composite-rest.php:296 includes/class-dahu-composite-rest.php:300 includes/class-dahu-composite-rest.php:346
 msgid "Product not found."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:109 includes/class-dahu-composite-admin.php:150
+#: includes/class-dahu-composite-admin.php:124 includes/class-dahu-composite-admin.php:165
 msgid "Products"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:300
-msgid "Public price and tier price, for these roles. “Short label” is used in the summary only."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:204
+#: includes/class-dahu-composite-admin.php:213
 msgid "Public visibility"
 msgstr ""
 
-#: includes/class-dahu-composite-admin-order.php:107 includes/class-dahu-composite-frontend.php:144
+#: includes/class-dahu-composite-admin-order.php:107 includes/class-dahu-composite-frontend.php:141
 msgid "Quantity"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:362
+#: includes/class-dahu-composite-settings.php:350
 msgid "REST schema"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:174
+#: includes/class-dahu-composite-admin.php:186
 msgid "Range"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:175
+#: includes/class-dahu-composite-admin.php:187
 msgid "Range: no category."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:155
+#: includes/class-dahu-composite-admin.php:170
 msgid "Ranges: %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:82 includes/class-dahu-composite-supply.php:738 includes/class-dahu-composite-supply.php:811
+#: includes/class-dahu-composite-admin.php:97 includes/class-dahu-composite-supply.php:738 includes/class-dahu-composite-supply.php:811
 msgid "Remove"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:285
+#: includes/class-dahu-composite-admin.php:748
 msgid "Remove the image"
 msgstr ""
 
+#: includes/class-dahu-composite-admin.php:392
+msgid "Reopens the configurator on these choices"
+msgstr ""
+
 #: includes/class-dahu-composite-admin.php:387
-msgid "Reopens the configurator on these choices (the kit’s saved configuration)"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:757
-msgid "Replaces the configuration on screen, which then has to be saved. A field left empty in the JSON keeps its current value."
-msgstr ""
-
-#: includes/class-dahu-composite-pricing.php:306
-msgid "Resale price"
-msgstr ""
-
-#: includes/class-dahu-composite-pricing.php:299
-msgid "Resale price, incl. tax"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:382
 msgid "Reset"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:156
+#: includes/class-dahu-composite-admin.php:171
 msgid "Restricted: %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:287
+#: includes/class-dahu-composite-admin.php:294
 msgid "Resume at step"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:371
+#: includes/class-dahu-composite-admin.php:376
 msgid "Resume offered at step: %s"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:306
+#: includes/class-dahu-composite-settings.php:285
 msgid "Roles (comma separated)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:635
-msgid "Rounded — summary and right-hand column rounded"
+#: includes/class-dahu-composite-admin.php:677
+msgid "Rounded"
 msgstr ""
 
 #: includes/class-dahu-composite-admin-order.php:116
 msgid "SKU"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:232 includes/class-dahu-composite-frontend.php:233
+#: includes/class-dahu-composite-frontend.php:229 includes/class-dahu-composite-frontend.php:230
 msgid "Save my configuration"
 msgstr ""
 
@@ -1416,7 +1308,7 @@ msgstr ""
 msgid "Saved on"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:234
+#: includes/class-dahu-composite-frontend.php:231
 msgid "Saving…"
 msgstr ""
 
@@ -1440,7 +1332,7 @@ msgid "Scenario “%1$s”: the condition refers to “%2$s”, which is no long
 msgstr ""
 
 #: includes/class-dahu-composite-kit-config.php:774
-msgid "Scenario “%s”: a block with no condition would make the kit impossible to configure; scenario ignored."
+msgid "Scenario “%s”: a block with no condition would make the composite product impossible to configure; scenario ignored."
 msgstr ""
 
 #: includes/class-dahu-composite-kit-config.php:799
@@ -1459,35 +1351,35 @@ msgstr ""
 msgid "Scenario “%s”: unknown target component; scenario ignored."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:279 includes/class-dahu-composite-admin.php:412 includes/class-dahu-composite-settings.php:360
+#: includes/class-dahu-composite-admin.php:286 includes/class-dahu-composite-admin.php:416 includes/class-dahu-composite-settings.php:348
 msgid "Scenarios"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:363
+#: includes/class-dahu-composite-admin.php:368
 msgid "Screen %1$s — %2$s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:326
+#: includes/class-dahu-composite-admin.php:331
 msgid "Search for a customer (name, e-mail)…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:144
+#: includes/class-dahu-composite-admin.php:159
 msgid "Search for a product…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:702
+#: includes/class-dahu-composite-admin.php:793
 msgid "Search scenarios"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:704
+#: includes/class-dahu-composite-admin.php:795
 msgid "Search…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:125
+#: includes/class-dahu-composite-admin.php:140
 msgid "Secondary (add-on, no title)"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:174 includes/class-dahu-composite-frontend.php:179 includes/class-dahu-composite-frontend.php:195 includes/class-dahu-composite-frontend.php:219
+#: includes/class-dahu-composite-frontend.php:171 includes/class-dahu-composite-frontend.php:176 includes/class-dahu-composite-frontend.php:192 includes/class-dahu-composite-frontend.php:216
 msgid "Select"
 msgstr ""
 
@@ -1495,7 +1387,7 @@ msgstr ""
 msgid "Select at least one component."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:180 includes/class-dahu-composite-frontend.php:220
+#: includes/class-dahu-composite-frontend.php:177 includes/class-dahu-composite-frontend.php:217
 msgid "Selected"
 msgstr ""
 
@@ -1503,7 +1395,7 @@ msgstr ""
 msgid "Session expired: reload the page."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:267
+#: includes/class-dahu-composite-frontend.php:264
 msgid "Set my password"
 msgstr ""
 
@@ -1511,79 +1403,75 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:135
-msgid "Shipped on its own (otherwise its weight is added to the kit parcel)"
+#: includes/class-dahu-composite-admin.php:730
+msgid "Settings shared by every composite product"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:361
+#: includes/class-dahu-composite-admin.php:150
+msgid "Shipped on its own (otherwise its weight is added to the composite product parcel)"
+msgstr ""
+
+#: includes/class-dahu-composite-settings.php:349
 msgid "Shipping class"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:245
-msgid "Shipping class for kits"
+#: includes/class-dahu-composite-settings.php:268
+msgid "Shipping class for composite products"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:309
+#: includes/class-dahu-composite-settings.php:288
 msgid "Short label (summary)"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:187
+#: includes/class-dahu-composite-frontend.php:184
 msgid "Show details"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:761
+#: includes/class-dahu-composite-admin.php:845
 msgid "Show export"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:261
+#: includes/class-dahu-composite-admin.php:733
 msgid "Show more info"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:283
+#: includes/class-dahu-composite-admin.php:290
 msgid "Show only these options"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:189
+#: includes/class-dahu-composite-admin.php:201
 msgid "Show the image"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:292
-msgid "Shown under “None”, on the card."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:310
+#: includes/class-dahu-composite-admin.php:315
 msgid "Shows in %1$s only %2$s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:300
+#: includes/class-dahu-composite-admin.php:305
 msgid "Shows only"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:649 includes/class-dahu-composite-admin.php:656
-msgid "Side — a drawer slides in from the side"
+#: includes/class-dahu-composite-admin.php:691 includes/class-dahu-composite-admin.php:698
+msgid "Side"
 msgstr ""
 
-#: includes/class-dahu-composite-pricing.php:304
-msgid "Silver trade price"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:415
+#: includes/class-dahu-composite-admin.php:419
 msgid "Simulator"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:112
+#: includes/class-dahu-composite-admin.php:127
 msgid "Single (one option)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:118
+#: includes/class-dahu-composite-admin.php:133
 msgid "Small — compact grid"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:245
+#: includes/class-dahu-composite-frontend.php:242
 msgid "Some choices are no longer available and were removed:"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:191 includes/class-dahu-composite-frontend.php:210 includes/class-dahu-composite-product-tabs.php:244
+#: includes/class-dahu-composite-admin.php:203 includes/class-dahu-composite-frontend.php:207 includes/class-dahu-composite-product-tabs.php:244
 msgid "Specifications"
 msgstr ""
 
@@ -1592,31 +1480,23 @@ msgstr ""
 msgid "Specify the variation chosen for “%s”."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:634
-msgid "Square — summary and right-hand column with no rounding"
+#: includes/class-dahu-composite-admin.php:676
+msgid "Square"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:358
+#: includes/class-dahu-composite-settings.php:346
 msgid "Status"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:141
+#: includes/class-dahu-composite-frontend.php:138
 msgid "Step"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:376
+#: includes/class-dahu-composite-admin.php:381
 msgid "Step to fill in."
 msgstr ""
 
-#: includes/class-dahu-composite-pricing.php:305
-msgid "Suggested resale price"
-msgstr ""
-
-#: includes/class-dahu-composite-pricing.php:297
-msgid "Suggested resale price, incl. tax"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:364 includes/class-dahu-composite-frontend.php:142
+#: includes/class-dahu-composite-admin.php:369 includes/class-dahu-composite-frontend.php:139
 msgid "Summary"
 msgstr ""
 
@@ -1632,60 +1512,32 @@ msgstr ""
 msgid "Supplied with"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:280
+#: includes/class-dahu-composite-admin.php:287
 msgid "Target component"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:747
-msgid "Tests the configuration on screen, saved or not."
-msgstr ""
-
-#: includes/class-dahu-composite-settings.php:289
-msgid "Text"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:129
+#: includes/class-dahu-composite-admin.php:144
 msgid "Text of the question"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:166
-msgid "The add-on appears after the anchor card (same screen)."
+#: includes/class-dahu-composite-admin-order.php:114 includes/class-dahu-composite-order.php:612
+msgid "The composite product could not be added to the order."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:140
-msgid "The configurator could not be loaded. Reload the page."
-msgstr ""
-
-#: includes/class-dahu-composite-frontend.php:279
-msgid "The configurator requires JavaScript."
-msgstr ""
-
-#: includes/class-dahu-composite-settings.php:276
-msgid "The configurator’s “None” card"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:812
-msgid "The kit configuration could not be read: nothing was saved."
+#: includes/class-dahu-composite-admin.php:897
+msgid "The configuration could not be read: nothing was saved."
 msgstr ""
 
 #: includes/class-dahu-composite-cart.php:224
-msgid "The kit configuration is incomplete or invalid."
+msgid "The configuration is incomplete or invalid."
 msgstr ""
 
-#: includes/class-dahu-composite-cart.php:286
-msgid "The kit could not be added to the cart."
+#: includes/class-dahu-composite-frontend.php:137
+msgid "The configurator could not be loaded. Reload the page."
 msgstr ""
 
-#: includes/class-dahu-composite-admin-order.php:114 includes/class-dahu-composite-order.php:612
-msgid "The kit could not be added to the order."
-msgstr ""
-
-#: includes/class-dahu-composite-admin-order.php:113
-msgid "The kit could not be loaded."
-msgstr ""
-
-#: includes/class-dahu-composite-frontend.php:160
-msgid "The kit was added to your cart."
+#: includes/class-dahu-composite-frontend.php:275
+msgid "The configurator requires JavaScript."
 msgstr ""
 
 #. translators: %s: component */
@@ -1698,12 +1550,20 @@ msgstr ""
 msgid "The option chosen for “%s” is not compatible with your earlier choices."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:290
-msgid "The other options are hidden when the conditions are true."
+#: includes/class-dahu-composite-cart.php:286
+msgid "The product could not be added to the cart."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:832
-msgid "The shipping class set for kits (Dahu Composite settings) does not exist: shipping plugins will not recognise this kit."
+#: includes/class-dahu-composite-admin-order.php:113
+msgid "The product could not be loaded."
+msgstr ""
+
+#: includes/class-dahu-composite-frontend.php:157
+msgid "The product was added to your cart."
+msgstr ""
+
+#: includes/class-dahu-composite-admin.php:917
+msgid "The shipping class set for composite products (Dahu Composite settings) does not exist: shipping plugins will not recognise this product."
 msgstr ""
 
 #: includes/class-dahu-composite-saved-configs.php:336
@@ -1722,7 +1582,7 @@ msgstr ""
 msgid "The variation chosen for “%s” no longer exists: please pick another."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:102
+#: includes/class-dahu-composite-admin.php:117
 msgid "This cannot be undone without reloading the page."
 msgstr ""
 
@@ -1734,31 +1594,23 @@ msgstr ""
 msgid "This component requires a product bundle plugin."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:248
-msgid "This configuration link no longer matches this kit: build your kit below."
+#: includes/class-dahu-composite-frontend.php:245
+msgid "This configuration link no longer matches this product: build your configuration below."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:260 includes/class-dahu-composite-saved-configs.php:722
+#: includes/class-dahu-composite-frontend.php:257 includes/class-dahu-composite-saved-configs.php:722
 msgid "This email address is not valid."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:259 includes/class-dahu-composite-saved-configs.php:725
+#: includes/class-dahu-composite-frontend.php:256 includes/class-dahu-composite-saved-configs.php:725
 msgid "This field is required."
 msgstr ""
 
-#: includes/class-dahu-composite-saved-configs.php:532
-msgid "This kit is no longer available."
-msgstr ""
-
-#: includes/class-dahu-composite-cart.php:183
-msgid "This kit must be configured before it can be added to the cart."
-msgstr ""
-
 #: includes/class-dahu-composite-admin-order.php:362
-msgid "This line item is not a kit."
+msgid "This line item is not a composite product."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:165
+#: includes/class-dahu-composite-frontend.php:162
 msgid "This option cannot be ordered yet. Check back soon."
 msgstr ""
 
@@ -1766,43 +1618,47 @@ msgstr ""
 msgid "This order can no longer be edited."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:208
+#: includes/class-dahu-composite-saved-configs.php:532
+msgid "This product is no longer available."
+msgstr ""
+
+#: includes/class-dahu-composite-cart.php:183
+msgid "This product must be configured before it can be added to the cart."
+msgstr ""
+
+#: includes/class-dahu-composite-frontend.php:205
 msgid "This product’s information could not be loaded."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:399
+#: includes/class-dahu-composite-admin.php:403 includes/class-dahu-composite-admin.php:669
 msgid "Thumbnail"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:627
-msgid "Thumbnail — photo, subtitle and “More info”, no right-hand column"
-msgstr ""
-
-#: includes/class-dahu-composite-frontend.php:261 includes/class-dahu-composite-saved-configs.php:956
+#: includes/class-dahu-composite-frontend.php:258 includes/class-dahu-composite-saved-configs.php:956
 msgid "Tick this box so that we may store your details."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:120
+#: includes/class-dahu-composite-admin.php:135
 msgid "Tickable chips"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:305
+#: includes/class-dahu-composite-settings.php:284
 msgid "Tier"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:310
+#: includes/class-dahu-composite-settings.php:289
 msgid "Tier price excluding tax"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:87
+#: includes/class-dahu-composite-admin.php:102
 msgid "Title"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:123
+#: includes/class-dahu-composite-admin.php:138
 msgid "Title on the screen"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:171
+#: includes/class-dahu-composite-frontend.php:168
 msgid "To choose"
 msgstr ""
 
@@ -1810,23 +1666,23 @@ msgstr ""
 msgid "Too many requests from your connection. Try again in an hour."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:181
+#: includes/class-dahu-composite-admin.php:193
 msgid "Tooltip image or video (optional)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:230
+#: includes/class-dahu-composite-admin.php:237
 msgid "Tooltip image or video “%s”"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:146
+#: includes/class-dahu-composite-frontend.php:143
 msgid "Total"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:377
+#: includes/class-dahu-composite-admin.php:382
 msgid "Total:"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:298
+#: includes/class-dahu-composite-settings.php:280
 msgid "Trade price tiers"
 msgstr ""
 
@@ -1834,28 +1690,16 @@ msgstr ""
 msgid "Two exceptions for customer #%1$d on “%2$s”: merged."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:205
-msgid "Unticked: restricted to customers with an exception."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:203
-msgid "Unticked: the variation is no longer offered."
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:232 includes/class-dahu-composite-settings.php:284
+#: includes/class-dahu-composite-admin.php:239 includes/class-dahu-composite-admin.php:747
 msgid "Use this image"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:233
+#: includes/class-dahu-composite-admin.php:240
 msgid "Use this media"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:231
+#: includes/class-dahu-composite-admin.php:238
 msgid "Use this visual"
-msgstr ""
-
-#: includes/class-dahu-composite-settings.php:277
-msgid "Used on every optional step; an image set on a component overrides it."
 msgstr ""
 
 #: includes/class-dahu-composite-admin-order.php:108
@@ -1871,7 +1715,7 @@ msgstr ""
 msgid "Variation display (bundle plugin fields)."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:200
+#: includes/class-dahu-composite-admin.php:210
 msgid "Variations offered"
 msgstr ""
 
@@ -1880,56 +1724,48 @@ msgstr ""
 msgid "Version %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:390
+#: includes/class-dahu-composite-admin.php:394
 msgid "View as:"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:161
+#: includes/class-dahu-composite-frontend.php:158
 msgid "View cart"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:242
+#: includes/class-dahu-composite-frontend.php:239
 msgid "View my configurations"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:389
+#: includes/class-dahu-composite-admin.php:393
 msgid "Visitor / customer with no exception"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:392 includes/class-dahu-composite-admin.php:414
+#: includes/class-dahu-composite-admin.php:396 includes/class-dahu-composite-admin.php:418
 msgid "Warnings"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:137
+#: includes/class-dahu-composite-admin.php:152
 msgid "Weight of the products"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:139
+#: includes/class-dahu-composite-admin.php:154
 msgid "Weight of the products minus…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:116
+#: includes/class-dahu-composite-admin.php:131
 msgid "With image — cards in a grid"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:393
+#: includes/class-dahu-composite-admin.php:397
 msgid "Worth checking"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:190
+#: includes/class-dahu-composite-admin.php:683 includes/class-dahu-composite-admin.php:706 includes/class-dahu-composite-admin.php:738 includes/class-dahu-composite-frontend.php:187
 msgid "Yes"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:128
+#: includes/class-dahu-composite-admin.php:143
 msgid "Yes / no question"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:664
-msgid "Yes — a “Select” button on every card"
-msgstr ""
-
-#: includes/class-dahu-composite-admin.php:641
-msgid "Yes — card footer as icons (description, specifications, included products)"
 msgstr ""
 
 #: includes/class-dahu-composite-saved-configs.php:157
@@ -1944,7 +1780,7 @@ msgstr ""
 msgid "Your choice is no longer offered: please choose again."
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:170
+#: includes/class-dahu-composite-frontend.php:167
 msgid "Your configuration"
 msgstr ""
 
@@ -1956,15 +1792,15 @@ msgstr ""
 msgid "Your session has expired: reload the page and try again."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:201
+#: includes/class-dahu-composite-admin.php:211
 msgid "all"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:403
+#: includes/class-dahu-composite-admin.php:407
 msgid "card"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:221
+#: includes/class-dahu-composite-frontend.php:218
 msgid "choose a variation on the card first"
 msgstr ""
 
@@ -1972,79 +1808,79 @@ msgstr ""
 msgid "coming soon"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:318
+#: includes/class-dahu-composite-admin.php:323
 msgid "customer #%s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:319
+#: includes/class-dahu-composite-admin.php:324
 msgid "customer ∈ {%s}"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:320
+#: includes/class-dahu-composite-admin.php:325
 msgid "customer ∉ {%s}"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:187
+#: includes/class-dahu-composite-admin.php:199
 msgid "e.g. Best seller"
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:291
+#: includes/class-dahu-composite-admin.php:754
 msgid "e.g. I do not need one"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:219
+#: includes/class-dahu-composite-admin.php:226
 msgid "e.g. New"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:329
+#: includes/class-dahu-composite-admin.php:334
 msgid "e.g. loyal customer, agreement of 12/09"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:345
+#: includes/class-dahu-composite-admin.php:350
 msgid "every one of its variants"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:157
+#: includes/class-dahu-composite-admin.php:172
 msgid "everything is public"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:404
+#: includes/class-dahu-composite-admin.php:408
 msgid "extended"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:356
+#: includes/class-dahu-composite-admin.php:361
 msgid "for %s only"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:355
+#: includes/class-dahu-composite-admin.php:360
 msgid "for everyone"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:357
+#: includes/class-dahu-composite-admin.php:362
 msgid "for everyone, except %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:90
+#: includes/class-dahu-composite-admin.php:105
 msgid "generated from the label"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:293
+#: includes/class-dahu-composite-admin.php:299
 msgid "is none of"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:292
+#: includes/class-dahu-composite-admin.php:298
 msgid "is one of"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:204
+#: includes/class-dahu-composite-frontend.php:201
 msgid "more info…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:151
+#: includes/class-dahu-composite-admin.php:166
 msgid "multiple choice"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:97
+#: includes/class-dahu-composite-admin.php:112
 msgid "no"
 msgstr ""
 
@@ -2056,11 +1892,11 @@ msgstr ""
 msgid "no selection"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:385
+#: includes/class-dahu-composite-admin.php:390
 msgid "no serial as long as no choice is made."
 msgstr ""
 
-#: includes/class-dahu-composite-settings.php:378
+#: includes/class-dahu-composite-settings.php:366
 msgid "none"
 msgstr ""
 
@@ -2072,87 +1908,87 @@ msgstr ""
 msgid "not purchasable, ignored in the cart"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:344
+#: includes/class-dahu-composite-admin.php:349
 msgid "nothing restricted"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:152
+#: includes/class-dahu-composite-admin.php:167
 msgid "optional"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:182
+#: includes/class-dahu-composite-admin.php:194
 msgid "or a video link (YouTube, Vimeo, .mp4 file)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:222
+#: includes/class-dahu-composite-admin.php:229
 msgid "page slug (contact) or https://…"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:206
+#: includes/class-dahu-composite-admin.php:214
 msgid "public"
 msgstr ""
 
-#: includes/class-dahu-composite-frontend.php:251
+#: includes/class-dahu-composite-frontend.php:248
 msgid "required"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:207
+#: includes/class-dahu-composite-admin.php:215
 msgid "restricted"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:208
+#: includes/class-dahu-composite-admin.php:216
 msgid "restricted (every variant)"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:202
+#: includes/class-dahu-composite-admin.php:212
 msgid "restricted on %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:400
+#: includes/class-dahu-composite-admin.php:404
 msgid "rounded"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:122
+#: includes/class-dahu-composite-admin.php:137
 msgid "same value = same screen"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:153
+#: includes/class-dahu-composite-admin.php:168
 msgid "screen: %s"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:402
+#: includes/class-dahu-composite-admin.php:406
 msgid "side"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:401
+#: includes/class-dahu-composite-admin.php:405
 msgid "square"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:96
+#: includes/class-dahu-composite-admin.php:111
 msgid "yes"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:161
+#: includes/class-dahu-composite-admin.php:176
 msgid "— Automatic (the chosen card of the first component on the screen) —"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:375
+#: includes/class-dahu-composite-admin.php:380
 msgid "— Choose a variant —"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:164
+#: includes/class-dahu-composite-admin.php:179
 msgid "— Chosen card —"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:211
+#: includes/class-dahu-composite-admin.php:218
 msgid "— No selection —"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:92 includes/class-dahu-composite-settings.php:248
+#: includes/class-dahu-composite-admin.php:107 includes/class-dahu-composite-settings.php:271
 msgid "— None —"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:374
+#: includes/class-dahu-composite-admin.php:379
 msgid "— Variant of %s —"
 msgstr ""
 
@@ -2248,7 +2084,7 @@ msgstr ""
 
 #. translators: %s: option */
 #: includes/class-dahu-composite-engine.php:581
-msgid "“%s” links to another page: it is not a kit choice."
+msgid "“%s” links to another page: it is not a choice of this product."
 msgstr ""
 
 #: includes/class-dahu-composite-saved-configs.php:328
@@ -2273,15 +2109,23 @@ msgstr ""
 msgid "“%s”: too many combinations to explore, so the dead-end check could not run. Check it by hand."
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:209
+#: includes/class-dahu-composite-admin.php:217
 msgid "“None” card"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:171
-msgid "“Range display” appears above as soon as there is one."
+#: includes/class-dahu-composite-admin.php:743
+msgid "“None” card image"
 msgstr ""
 
-#: includes/class-dahu-composite-admin.php:127
+#: includes/class-dahu-composite-admin.php:752
+msgid "“None” card text"
+msgstr ""
+
+#: includes/class-dahu-composite-admin.php:704
+msgid "“Select” button"
+msgstr ""
+
+#: includes/class-dahu-composite-admin.php:142
 msgid "“Select” card"
 msgstr ""
 

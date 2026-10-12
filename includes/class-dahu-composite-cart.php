@@ -180,7 +180,7 @@ class Dahu_Composite_Cart {
 	public static function block_direct_add( $passed, $product_id ) {
 		$product = wc_get_product( $product_id );
 		if ( $product instanceof WC_Product_Dahu_Kit ) {
-			wc_add_notice( __( 'This kit must be configured before it can be added to the cart.', 'dahu-composite' ), 'error' );
+			wc_add_notice( __( 'This product must be configured before it can be added to the cart.', 'dahu-composite' ), 'error' );
 			return false;
 		}
 		return $passed;
@@ -221,7 +221,7 @@ class Dahu_Composite_Cart {
 		if ( ! $validation['valid'] ) {
 			return new WP_Error(
 				'dahu_kit_invalid',
-				__( 'The kit configuration is incomplete or invalid.', 'dahu-composite' ),
+				__( 'The configuration is incomplete or invalid.', 'dahu-composite' ),
 				array(
 					'status'     => 400,
 					'validation' => $validation,
@@ -283,7 +283,7 @@ class Dahu_Composite_Cart {
 		);
 
 		if ( ! $container_key ) {
-			$failure_message = __( 'The kit could not be added to the cart.', 'dahu-composite' );
+			$failure_message = __( 'The product could not be added to the cart.', 'dahu-composite' );
 		} else {
 			foreach ( $lines as $line ) {
 				$child_qty = (int) $line['quantity'] * $quantity;
@@ -593,7 +593,7 @@ class Dahu_Composite_Cart {
 		$cart->set_cart_contents( $contents );
 
 		if ( $kit_removed && function_exists( 'wc_add_notice' ) && ! wp_doing_ajax() ) {
-			wc_add_notice( __( 'An incomplete kit was removed from your cart.', 'dahu-composite' ), 'notice' );
+			wc_add_notice( __( 'An incomplete product was removed from your cart.', 'dahu-composite' ), 'notice' );
 		}
 	}
 

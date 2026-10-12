@@ -578,7 +578,7 @@ class Dahu_Composite_Engine {
 					$errors[] = self::error( 'coming_soon', $cid, sprintf( /* translators: %s: option */ __( '“%s” cannot be ordered yet.', 'dahu-composite' ), $option['label'] ) );
 				} elseif ( ! empty( $option['link'] ) ) {
 					// “link” card: a pointer elsewhere, never a choice.
-					$errors[] = self::error( 'link_only', $cid, sprintf( /* translators: %s: option */ __( '“%s” links to another page: it is not a kit choice.', 'dahu-composite' ), $option['label'] ) );
+					$errors[] = self::error( 'link_only', $cid, sprintf( /* translators: %s: option */ __( '“%s” links to another page: it is not a choice of this product.', 'dahu-composite' ), $option['label'] ) );
 				}
 				continue;
 			}
@@ -1681,7 +1681,7 @@ class Dahu_Composite_Engine {
 			'weight_unit'     => get_option( 'woocommerce_weight_unit' ),
 			'components'      => $components,
 			// “None” card of the optional components: image and
-			// text shared by the whole configurator (WooCommerce > Dahu Kits).
+			// text shared by the whole configurator (Appearance panel).
 			// null = nothing set, the “None” card unchanged.
 			'none_choice'     => Dahu_Composite_Settings::none_choice(),
 			'defaults'        => (object) $defaults,
@@ -1811,7 +1811,7 @@ class Dahu_Composite_Engine {
 		$data['bundled']   = self::schema_bundled( $product );
 
 		// “more info…” link, the “Show more info” checkbox of
-		// WooCommerce > Dahu Kits. Key present only when the box is
+		// the Appearance panel. Key present only when the box is
 		// ticked AND the product page exists publicly: schema unchanged otherwise.
 		if ( Dahu_Composite_Settings::more_info_enabled() ) {
 			$url = self::public_product_url( $product );

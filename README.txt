@@ -73,10 +73,10 @@ This plugin does not contact any external service.
 1. Upload the plugin folder to `/wp-content/plugins/`, or install it from the
    Plugins screen.
 2. Activate it through the Plugins screen.
-3. Create a product and set its type to "Configurable kit (Dahu)".
-4. Add components and options in the Kit tab, then save.
+3. Create a product and set its type to "Composite product".
+4. Add components and options in the Components box, then save.
 
-Settings live under WooCommerce > Dahu Composite.
+Settings live under WooCommerce > Composite products.
 
 == Frequently Asked Questions ==
 
