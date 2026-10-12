@@ -1,0 +1,171 @@
+/*
+ * ------------------------------------------------------------------------
+ * SHARED ADMIN TOKENS
+ * ------------------------------------------------------------------------
+ *
+ * This block is identical in every Dahu plugin, deliberately. The plugins
+ * are independent — each has to work with none of the others installed — so
+ * they cannot share a stylesheet, and the only way for their screens to
+ * look like one family is for each to declare the same tokens under the
+ * same names. A shop running three of them sees one interface rather than
+ * three.
+ *
+ * Values follow WordPress's own admin palette rather than inventing a
+ * brand: a plugin screen that ignores the admin it lives in reads as a
+ * foreign object, however well designed it is on its own.
+ *
+ * The `--dahu-admin-` prefix is what makes a declaration on :root safe
+ * here. Two plugins declaring it write the same values, so neither can
+ * surprise the other, and nothing outside the family can collide with it.
+ *
+ * Single source of truth: /Dev/dahu-public/UI-ADMIN-DAHU.md
+ */
+
+:root {
+	/* Surfaces */
+	--dahu-admin-surface: #fff;
+	--dahu-admin-surface-sunken: #f6f7f7;
+	--dahu-admin-border: #dcdcde;
+	--dahu-admin-border-strong: #c3c4c7;
+
+	/* Text */
+	--dahu-admin-text: #1d2327;
+	--dahu-admin-text-muted: #646970;
+
+	/* Intent */
+	--dahu-admin-accent: #2271b1;
+	--dahu-admin-accent-text: #fff;
+	--dahu-admin-success: #008a20;
+	--dahu-admin-warning: #b32d2e;
+	--dahu-admin-caution: #996800;
+	--dahu-admin-neutral: #50575e;
+
+	/* Shape */
+	--dahu-admin-radius: 4px;
+	--dahu-admin-radius-lg: 6px;
+	--dahu-admin-shadow: 0 1px 2px rgba( 0, 0, 0, .06 );
+	--dahu-admin-shadow-lg: 0 6px 20px rgba( 0, 0, 0, .16 );
+
+	/* Rhythm */
+	--dahu-admin-gap: 8px;
+	--dahu-admin-gap-lg: 14px;
+
+	/* Reading widths */
+	--dahu-admin-measure: 900px;
+	--dahu-admin-measure-wide: 1100px;
+
+	/* Motion. Short, and switched off below for anybody who asked. */
+	--dahu-admin-transition: .15s ease;
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+
+	:root {
+		--dahu-admin-transition: 0s;
+	}
+}
+
+/* ------------------------------------------------------------------------
+ * The settings screen
+ * ------------------------------------------------------------------------
+ *
+ * A sheet of its own rather than a share of the kit editor's, per rule 2 of
+ * UI-ADMIN-DAHU.md: one stylesheet per screen, enqueued on that screen only.
+ *
+ * This file exists because of a regression caught in review. The three rules
+ * below replaced inline styles on this screen — and the kit editor's
+ * stylesheet, where they were first put, loads only when the current screen
+ * is `product`. So the rules were never loaded on the one screen that uses
+ * them: the image preview came out at its full thumbnail size, the price
+ * table lost its width, and a missing shipping class was announced in
+ * ordinary black. An inline style had worked regardless of which sheet
+ * loaded; a class does not.
+ *
+ * The lesson is rule 2's, and it now has a check: a class is only replaced by
+ * a stylesheet the screen rendering it actually enqueues.
+ */
+
+/*
+ * The trade-price-tiers table.
+ *
+ * `max-width` alone did not hold it: the row carries four text inputs, one of
+ * them `.regular-text` at 25em, and a table laid out automatically grows to fit
+ * its content whatever its max-width says. Measured in a browser at a 1440px
+ * viewport, the table came out 1333px wide in a 1280px content column and ran
+ * off the right edge, taking the last column's header with it.
+ *
+ * `table-layout: fixed` plus full-width inputs is what actually constrains it:
+ * the columns then divide the width available instead of demanding their own.
+ */
+.dahu-kit-settings__table {
+	width: 100%;
+	max-width: var( --dahu-admin-measure-wide );
+	table-layout: fixed;
+}
+
+/* The tier key, and the tax checkbox: both need very little room. */
+.dahu-kit-settings__table th:first-child,
+.dahu-kit-settings__table td:first-child {
+	width: 7em;
+}
+
+.dahu-kit-settings__table th:last-child,
+.dahu-kit-settings__table td:last-child {
+	width: 7em;
+}
+
+/*
+ * Inputs follow their column rather than setting it. The `.regular-text` width
+ * is overridden on purpose: inside a fixed-layout table it is a demand the
+ * column cannot meet.
+ */
+.dahu-kit-settings__table input[type="text"],
+.dahu-kit-settings__table input.regular-text {
+	width: 100%;
+	max-width: 100%;
+	box-sizing: border-box;
+}
+
+/* Long headers wrap instead of forcing the column wider. */
+.dahu-kit-settings__table th {
+	overflow-wrap: break-word;
+}
+
+/*
+ * The "None" card image preview.
+ *
+ * Deliberately NO `display` here. Whether the preview and its Remove button
+ * are shown is state, and state belongs on the element as the `hidden`
+ * attribute — which a stylesheet rule setting `display` would silently
+ * override, leaving an element that is hidden in the markup and visible on
+ * screen.
+ */
+.dahu-kit-settings__preview {
+	max-width: 96px;
+	height: auto;
+	margin-bottom: var( --dahu-admin-gap );
+}
+
+/*
+ * Something required that is not configured.
+ *
+ * The inline style used #a00 here while the rest of the family used #b32d2e
+ * for the same meaning — two reds for one idea, on neighbouring screens.
+ */
+.dahu-kit-settings__missing {
+	color: var( --dahu-admin-warning );
+}
+
+/* --- The one-line introduction under the page title ------------------- */
+
+/*
+ * Every Dahu screen carries one, and it is the same rule everywhere. A lede
+ * that runs the full width of a 1920px screen is not read; the reading measure
+ * is what makes it a sentence rather than a banner.
+ */
+.dahu-composite-settings__intro {
+	max-width: var( --dahu-admin-measure );
+	margin: 0 0 var( --dahu-admin-gap-lg );
+	color: var( --dahu-admin-text-muted );
+	font-size: 14px;
+}

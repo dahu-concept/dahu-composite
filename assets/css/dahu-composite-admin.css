@@ -1,0 +1,731 @@
+/*
+ * ------------------------------------------------------------------------
+ * SHARED ADMIN TOKENS
+ * ------------------------------------------------------------------------
+ *
+ * This block is identical in every Dahu plugin, deliberately. The plugins
+ * are independent — each has to work with none of the others installed — so
+ * they cannot share a stylesheet, and the only way for their screens to
+ * look like one family is for each to declare the same tokens under the
+ * same names. A shop running three of them sees one interface rather than
+ * three.
+ *
+ * Values follow WordPress's own admin palette rather than inventing a
+ * brand: a plugin screen that ignores the admin it lives in reads as a
+ * foreign object, however well designed it is on its own.
+ *
+ * The `--dahu-admin-` prefix is what makes a declaration on :root safe
+ * here. Two plugins declaring it write the same values, so neither can
+ * surprise the other, and nothing outside the family can collide with it.
+ *
+ * Single source of truth: /Dev/dahu-public/UI-ADMIN-DAHU.md
+ */
+
+:root {
+	/* Surfaces */
+	--dahu-admin-surface: #fff;
+	--dahu-admin-surface-sunken: #f6f7f7;
+	--dahu-admin-border: #dcdcde;
+	--dahu-admin-border-strong: #c3c4c7;
+
+	/* Text */
+	--dahu-admin-text: #1d2327;
+	--dahu-admin-text-muted: #646970;
+
+	/* Intent */
+	--dahu-admin-accent: #2271b1;
+	--dahu-admin-accent-text: #fff;
+	--dahu-admin-success: #008a20;
+	--dahu-admin-warning: #b32d2e;
+	--dahu-admin-caution: #996800;
+	--dahu-admin-neutral: #50575e;
+
+	/* Shape */
+	--dahu-admin-radius: 4px;
+	--dahu-admin-radius-lg: 6px;
+	--dahu-admin-shadow: 0 1px 2px rgba( 0, 0, 0, .06 );
+	--dahu-admin-shadow-lg: 0 6px 20px rgba( 0, 0, 0, .16 );
+
+	/* Rhythm */
+	--dahu-admin-gap: 8px;
+	--dahu-admin-gap-lg: 14px;
+
+	/* Reading widths */
+	--dahu-admin-measure: 900px;
+	--dahu-admin-measure-wide: 1100px;
+
+	/* Motion. Short, and switched off below for anybody who asked. */
+	--dahu-admin-transition: .15s ease;
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+
+	:root {
+		--dahu-admin-transition: 0s;
+	}
+}
+
+/* DAHU COMPOSITE — configuration metabox (functional). */
+
+.dahu-kit-admin__box {
+	margin: 0 0 12px;
+	padding: 10px 12px;
+	border: 1px solid var( --dahu-admin-border );
+	border-radius: 4px;
+	background: var( --dahu-admin-surface );
+}
+
+.dahu-kit-admin__box-head {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 8px;
+	cursor: pointer;
+}
+
+/* Collapsed block: the header is the whole block, so the bottom margin no
+   longer has any reason to be. */
+.dahu-kit-admin__box[data-folded] .dahu-kit-admin__box-head {
+	margin-bottom: 0;
+}
+
+.dahu-kit-admin__actions {
+	margin-left: auto;
+	/* The actions sit BESIDE the collapse button, not inside it: a click on one
+	   of them must not fold the block. */
+	flex: 0 0 auto;
+}
+
+/* ---------- Collapsing a block ----------
+   A real button: it carries aria-expanded and aria-controls, it is reachable
+   from the keyboard and it encloses no other action. Styling kept to the
+   minimum, staying within WordPress's own colours. */
+
+.dahu-kit-admin__toggle {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: 1 1 auto;
+	min-width: 0;
+	padding: 2px 0;
+	color: inherit;
+	font: inherit;
+	text-align: left;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.dahu-kit-admin__toggle:focus-visible {
+	outline: 2px solid var( --dahu-admin-accent );
+	outline-offset: 1px;
+}
+
+.dahu-kit-admin__caret {
+	flex: 0 0 auto;
+	opacity: .6;
+	transition: transform .15s ease;
+}
+
+.dahu-kit-admin__toggle[aria-expanded="true"] .dahu-kit-admin__caret {
+	transform: rotate(90deg);
+}
+
+/* The title can be long (the sentence of a scenario): it is truncated, and the
+   full text stays available as a tooltip. */
+.dahu-kit-admin__box-title {
+	flex: 0 1 auto;
+	min-width: 0;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	font-weight: 600;
+}
+
+/* The body stays in the DOM when it is collapsed: `hidden` hides it, nothing
+   is removed. In any case saving does not read these fields — it serialises
+   the state into the single hidden field. */
+.dahu-kit-admin__box-body[hidden] {
+	display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dahu-kit-admin__caret {
+		transition: none;
+	}
+}
+
+/* ---------- Appearance box ---------- */
+
+.dahu-kit-admin__appearance {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 32px;
+}
+
+.dahu-kit-admin__appearance > .description {
+	flex-basis: 100%;
+	margin: 0;
+}
+
+.dahu-kit-admin__appearance-field {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.dahu-kit-admin__appearance-field legend {
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+.dahu-kit-admin__sim-appearance {
+	margin: 0 0 8px;
+}
+
+/* ---------- Section toolbars ---------- */
+
+.dahu-kit-admin__foldbar {
+	display: flex;
+	gap: 12px;
+	margin: 0 0 8px;
+}
+
+.dahu-kit-admin__filters {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px 12px;
+	margin: 0 0 10px;
+}
+
+/*
+ * One filter control inside the row above.
+ *
+ * It had no rule at all: the class was in the markup and on a list of "known
+ * undefined" classes, which is how a wrapper that needs to line its label up
+ * with its input stays crooked without anyone noticing.
+ */
+.dahu-kit-admin__filter {
+	display: inline-flex;
+	align-items: center;
+	gap: var( --dahu-admin-gap );
+}
+
+.dahu-kit-admin__filter-count {
+	color: var( --dahu-admin-text-muted );
+	font-size: 12px;
+}
+
+/* During a drag and drop: every body is collapsed for the duration of the
+   gesture, otherwise a block expanded over several screens makes the drop
+   target impossible to aim at. Each one's collapsed state is left unchanged. */
+.dahu-kit-admin__box-body {
+	display: block;
+}
+
+#dahu-kit-components.is-reordering .dahu-kit-admin__box-body {
+	display: none;
+}
+
+#dahu-kit-components.is-reordering .dahu-kit-admin__box-head {
+	margin-bottom: 0;
+}
+
+.dahu-kit-admin__grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+	gap: 8px 16px;
+	margin-bottom: 8px;
+}
+
+.dahu-kit-admin__grid label,
+.dahu-kit-admin__id {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	font-weight: 600;
+}
+
+/* Read-only identifier in a grid: a badge, not a field. */
+.dahu-kit-admin__id code {
+	align-self: flex-start;
+	font-weight: 400;
+}
+
+.dahu-kit-admin__id em {
+	font-weight: 400;
+	opacity: .7;
+}
+
+/* Styling of the full-width fields (description, options, default selection,
+   dead-end message) — DISABLED.
+   These fields keep their .dahu-kit-admin__full class in the markup: it is
+   enough to uncomment this block to get the label back in a column, in bold,
+   above the field. Without it the label stays on the line of the field, which
+   makes the metabox markedly more compact.
+
+.dahu-kit-admin__full {
+	display: flex;
+	flex-direction: column;
+	gap: 3px;
+	margin-bottom: 8px;
+	font-weight: 600;
+}
+
+.dahu-kit-admin__full textarea {
+	width: 100%;
+	font-weight: 400;
+}
+*/
+
+.dahu-kit-admin__grid input[type="text"],
+.dahu-kit-admin__grid input[type="number"],
+.dahu-kit-admin__grid select {
+	width: 100%;
+	font-weight: 400;
+}
+
+/* The markup keeps the class: it is given only what it needs to stay readable
+   without the styling above. */
+.dahu-kit-admin__full {
+	display: block;
+	margin-bottom: 8px;
+}
+
+.dahu-kit-admin__full textarea,
+.dahu-kit-admin__full select {
+	width: 100%;
+}
+
+.dahu-kit-admin__check {
+	flex-direction: row !important;
+	align-items: center;
+	font-weight: 400 !important;
+}
+
+.dahu-kit-admin__conditions {
+	padding: 8px;
+	margin-bottom: 8px;
+	background: var( --dahu-admin-surface-sunken );
+}
+
+/* Conditions in columns rather than stacked: a scenario bearing on several
+   components used to take a whole screen's height. */
+.dahu-kit-admin__conditions-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+	gap: 8px 16px;
+}
+
+.dahu-kit-admin__condition {
+	margin-bottom: 0;
+	padding: 6px 8px;
+	background: var( --dahu-admin-surface );
+	border: 1px solid var( --dahu-admin-border );
+	border-radius: 4px;
+}
+
+.dahu-kit-admin__condition select[data-field="cond_mode"] {
+	margin: 4px 0;
+	max-width: 100%;
+}
+
+/* A condition that is not ticked has no content: it shrinks to its checkbox. */
+.dahu-kit-admin__condition .dahu-kit-admin__check {
+	margin: 0;
+}
+
+.dahu-kit-admin__json {
+	margin-top: 16px;
+}
+
+/* Display content per option */
+.dahu-kit-admin__display {
+	margin-bottom: 8px;
+	padding: 8px;
+	background: var( --dahu-admin-surface-sunken );
+	border-radius: 4px;
+}
+
+.dahu-kit-admin__display > summary {
+	cursor: pointer;
+	font-weight: 600;
+}
+
+.dahu-kit-admin__option {
+	margin-top: 8px;
+	padding: 8px;
+	background: var( --dahu-admin-surface );
+	border: 1px solid var( --dahu-admin-border );
+	border-radius: 4px;
+}
+
+.dahu-kit-admin__option-title {
+	margin: 0 0 6px;
+}
+
+.dahu-kit-admin__media {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 6px 0 0;
+}
+
+.dahu-kit-admin__thumb {
+	width: 48px;
+	height: 48px;
+	object-fit: contain;
+	border: 1px solid var( --dahu-admin-border );
+	border-radius: 4px;
+}
+
+/* ------------------------------------------------------------------ */
+/* Badges, drag and drop, warnings, simulator                          */
+/* ------------------------------------------------------------------ */
+
+.dahu-kit-admin__warnings {
+	margin-bottom: 12px;
+}
+
+.dahu-kit-admin__warnings ul {
+	margin: 0 0 8px 20px;
+	list-style: disc;
+}
+
+/* Type badges: the type of a component can be read without opening a field. */
+.dahu-kit-admin__badge {
+	display: inline-block;
+	padding: 1px 8px;
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 18px;
+	border-radius: 9px;
+	vertical-align: middle;
+}
+
+.dahu-kit-admin__badge--product {
+	color: #0a4b78;
+	background: #d3e9f7;
+}
+
+.dahu-kit-admin__badge--path {
+	color: #4a2c00;
+	background: #f7e3c4;
+}
+
+.dahu-kit-admin__badge--group {
+	color: #3c434a;
+	background: #e6e6e6;
+	font-weight: 400;
+}
+
+.dahu-kit-admin__badge--mask {
+	color: #3c434a;
+	background: #e6e6e6;
+}
+
+.dahu-kit-admin__badge--block {
+	color: #8a2424;
+	background: #f7d9d9;
+}
+
+.dahu-kit-admin__badge--count {
+	color: #3c434a;
+	background: #e6e6e6;
+	font-weight: 400;
+}
+
+.dahu-kit-admin__badge--optional {
+	color: #4a2c00;
+	background: #f2e6c9;
+	font-weight: 400;
+}
+
+/* Public visibility and customer exceptions */
+.dahu-kit-admin__badge--reserved {
+	color: #5b2a86;
+	background: #ece2f5;
+	font-weight: 400;
+}
+
+.dahu-kit-admin__vis-vars {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem 1.25rem;
+	margin: .25rem 0 .5rem 1.75rem;
+}
+
+.dahu-kit-admin__exc-access {
+	margin: .5rem 0;
+}
+
+.dahu-kit-admin__exc-access label {
+	display: block;
+	margin: .25rem 0;
+}
+
+.dahu-kit-admin__generated ul {
+	margin: .25rem 0 0 1.25rem;
+	list-style: disc;
+}
+
+.dahu-kit-admin__sim-customer select {
+	max-width: 100%;
+}
+
+/* Drag and drop of the components */
+.dahu-kit-admin__grip {
+	cursor: grab;
+	opacity: .5;
+	letter-spacing: -2px;
+}
+
+.dahu-kit-admin__box-head[draggable="true"] {
+	cursor: grab;
+}
+
+.dahu-kit-admin__box.is-dragging {
+	opacity: .5;
+}
+
+.dahu-kit-admin__box.is-drop-target {
+	outline: 2px dashed var( --dahu-admin-accent );
+	outline-offset: 2px;
+}
+
+/* Simulator */
+#dahu-kit-simulator.is-busy {
+	opacity: .6;
+}
+
+.dahu-kit-admin__sim-screen {
+	margin-bottom: 12px;
+	padding: 10px 12px;
+	background: var( --dahu-admin-surface );
+	border: 1px solid var( --dahu-admin-border );
+	border-radius: 4px;
+}
+
+.dahu-kit-admin__sim-screen h4 {
+	margin: 0 0 8px;
+}
+
+.dahu-kit-admin__sim-component + .dahu-kit-admin__sim-component {
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #f0f0f1;
+}
+
+.dahu-kit-admin__sim-label {
+	margin: 0 0 4px;
+	font-weight: 600;
+}
+
+.dahu-kit-admin__sim-label .dahu-kit-admin__badge {
+	margin-left: 6px;
+}
+
+.dahu-kit-admin__sim-options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 16px;
+}
+
+.dahu-kit-admin__sim-choice {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+}
+
+/* Description of the component in the simulator (as on the front end). */
+.dahu-kit-admin__sim-description {
+	margin: 0 0 6px;
+	color: var( --dahu-admin-neutral );
+}
+
+.dahu-kit-admin__sim-description > :first-child {
+	margin-top: 0;
+}
+
+.dahu-kit-admin__sim-description > :last-child {
+	margin-bottom: 0;
+}
+
+/* Image specific to the kit for a choice in the simulator (display_image_id). */
+.dahu-kit-admin__sim-thumb {
+	width: 32px;
+	height: 32px;
+	object-fit: contain;
+	border: 1px solid var( --dahu-admin-border );
+	border-radius: 3px;
+}
+
+/* Anchored add-on: right after the choice of its anchor card, in the same
+   list, as in the configurator. Boxed so that it reads as attached to that
+   choice. */
+.dahu-kit-admin__sim-options > .dahu-kit-admin__sim-component--anchored {
+	padding: 4px 8px;
+	border-left: 3px solid var( --dahu-admin-border-strong );
+	background: var( --dahu-admin-surface-sunken );
+}
+
+.dahu-kit-admin__sim-empty,
+.dahu-kit-admin__sim-missing {
+	margin: 4px 0 0;
+	color: #8a2424;
+}
+
+.dahu-kit-admin__sim-errors {
+	margin: 6px 0 0 18px;
+	list-style: disc;
+	color: #8a2424;
+}
+
+.dahu-kit-admin__sim-error {
+	color: #8a2424;
+	font-weight: 600;
+}
+
+.dahu-kit-admin__sim-footer {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 16px;
+	padding: 10px 12px;
+	background: var( --dahu-admin-surface-sunken );
+	border-radius: 4px;
+}
+
+.dahu-kit-admin__sim-total {
+	font-weight: 600;
+}
+
+/* Configuration serial: a full-width row at the top of the footer. */
+.dahu-kit-admin__sim-serial {
+	display: flex;
+	flex: 1 1 100%;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+.dahu-kit-admin__sim-serial-label {
+	font-weight: 600;
+}
+
+.dahu-kit-admin__sim-serial-code {
+	word-break: break-all;
+	user-select: all;
+}
+
+.dahu-kit-admin__sim-state.is-valid {
+	color: #1a6b33;
+}
+
+.dahu-kit-admin__sim-state.is-invalid {
+	color: #8a2424;
+}
+
+/* Categories (ranges) of a component */
+.dahu-kit-admin__tier {
+	margin-top: 8px;
+	padding: 8px;
+	background: var( --dahu-admin-surface );
+	border: 1px solid var( --dahu-admin-border );
+}
+
+.dahu-kit-admin__tier-head {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin: 0 0 6px;
+	cursor: grab;
+}
+
+.dahu-kit-admin__tier.is-dragging {
+	opacity: .5;
+}
+
+.dahu-kit-admin__tier.is-drop-target {
+	outline: 2px dashed var( --dahu-admin-accent );
+	outline-offset: 2px;
+}
+
+.dahu-kit-admin__tier-none {
+	margin: 0;
+	align-self: end;
+	color: var( --dahu-admin-text-muted );
+}
+
+.dahu-kit-admin__badge--tiers {
+	color: #3c434a;
+	background: #e6e6e6;
+	font-weight: 400;
+}
+
+.dahu-kit-admin__sim-tier {
+	margin: 8px 0 2px;
+}
+
+/* Ranges: display checkboxes of the component, and colour of every range — a
+   swatch of the chosen colour in front of the picker. The checkboxes sit in
+   the body of the component, above the “Categories / ranges” panel. */
+.dahu-kit-admin__tier-display {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 4px 12px;
+	margin: 8px 0;
+}
+
+.dahu-kit-admin__tier-display .dahu-kit-admin__check {
+	display: inline-flex;
+	gap: 4px;
+}
+
+.dahu-kit-admin__grid label.dahu-kit-admin__tier-color {
+	display: grid;
+	grid-template-columns: auto 1fr;
+	align-items: center;
+	gap: 3px 6px;
+}
+
+.dahu-kit-admin__grid label.dahu-kit-admin__tier-color select {
+	grid-column: 1 / -1;
+}
+
+.dahu-kit-admin__swatch {
+	display: inline-block;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	box-shadow: inset 0 0 0 1px rgba(0, 0, 0, .2);
+}
+
+/* “Help image” block: one row per option, then per variant — label of the
+   target aligned in a column. */
+.dahu-kit-admin__media--help .dahu-kit-admin__help-target {
+	display: inline-block;
+	min-width: 9rem;
+}
+
+/* “Supplied accessories” field of a variation: one row per item. */
+.dahu-supply__list {
+	margin: 0.25em 0 0.5em;
+}
+.dahu-supply__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0.25em 1em;
+	margin: 0;
+	padding: 0.35em 0;
+	border-bottom: 1px solid #f0f0f1;
+}
+.dahu-supply__name {
+	flex: 1 1 14em;
+}
+.dahu-supply__state {
+	color: var( --dahu-admin-warning );
+}

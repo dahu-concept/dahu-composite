@@ -1,0 +1,1658 @@
+/**
+ * DAHU COMPOSITE — FUNCTIONAL stylesheet of the configurator.
+ *
+ * Always loaded, with or without a theme. It holds only what the JavaScript
+ * would not work, or would be unusable, without:
+ *  - the grid (three columns, two in vignette mode) and the cell of the
+ *    product title;
+ *  - collapsing / expanding the summary below 64em;
+ *  - the size of the right-hand column (photo + short description);
+ *  - the size of the option cards (fixed square, or a 300 px vignette);
+ *  - the “More info” drawer (vignette mode).
+ *
+ * NO colour, NO typography, NO radius, NO shadow here: everything that is a
+ * matter of appearance lives elsewhere.
+ *  - with a theme that takes the styling over (the
+ *    dahu_composite_theme_provides_styles filter): the theme's stylesheet;
+ *  - without one: assets/css/dahu-composite-front.css of this plugin, which is
+ *    only enqueued when the theme does not supply its own
+ *    (see Dahu_Composite_Frontend::register_assets()).
+ *
+ * @package Dahu_Composite
+ */
+
+/* ---------- Waiting states ----------
+   Two distinct moments:
+     .is-loading  the script has not taken over yet (the starting state is
+                  dropped into the page, but the JS is deferred or the device
+                  is slow);
+     .is-busy     an action of the customer is waiting for /state to answer.
+
+   During .is-busy the screen does NOT go dark: the option that was clicked is
+   already shown as chosen (its name comes from the schema held in memory).
+   Only the total really waits for the server, so it is the only element dimmed.
+   Styling deliberately neutral: a theme may replace it. */
+
+.dahu-kit__loading {
+	display: flex;
+	align-items: center;
+	gap: .625rem;
+	justify-content: center;
+	min-height: 6rem;
+}
+
+.dahu-kit__spinner {
+	display: inline-block;
+	width: 1.125rem;
+	height: 1.125rem;
+	border: 2px solid currentColor;
+	border-top-color: transparent;
+	border-radius: 50%;
+	opacity: .55;
+	animation: dahu-kit-spin .7s linear infinite;
+}
+
+@keyframes dahu-kit-spin {
+	to { transform: rotate(360deg); }
+}
+
+.dahu-kit.is-busy {
+	cursor: progress;
+}
+
+.dahu-kit.is-busy .dahu-kit__recap-total-price,
+.dahu-kit.is-busy .dahu-kit__recap-total-weight,
+.dahu-kit.is-busy .dahu-kit__recap-toggle-price,
+.dahu-kit.is-busy .dahu-kit__total {
+	opacity: .4;
+	transition: opacity .15s linear;
+}
+
+/* Screen change pending: a small circle after the name of the step, under
+   .is-advancing (the answer of /state to a gesture of the customer, then the
+   delay of the automatic advance). It only appears after 150 ms: a fast answer
+   makes nothing flicker. The room is kept (visibility), so the title does not
+   move. */
+.dahu-kit__step-loading {
+	display: inline-flex;
+	align-items: center;
+	margin-left: .5em;
+	vertical-align: middle;
+	font-size: .85em;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .15s linear, visibility 0s linear .15s;
+}
+
+.dahu-kit__step-loading .dahu-kit__spinner {
+	width: 1em;
+	height: 1em;
+}
+
+.dahu-kit.is-advancing .dahu-kit__step-loading {
+	opacity: 1;
+	visibility: visible;
+	transition-delay: .15s, .15s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dahu-kit__spinner {
+		animation-duration: 2s;
+	}
+}
+
+/* Block to the right of “Add to cart” (the dahu_composite_summary_aside_html
+   filter): its elements on ONE row, from left to right. Row too narrow
+   (mobile): they wrap instead of overflowing. */
+.dahu-kit__cart-aside {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .35rem 1rem;
+	min-width: 0;
+}
+
+/* “more info…” link: a paragraph following the description of a product (back
+   of the card, column, expandable row, drawer). Colour of the theme's links. */
+.dahu-kit__more-info {
+	margin: .5em 0 0;
+}
+
+/* ---------- Layout ----------
+   Below 64em: one column (title, summary banner, picker, right-hand column).
+   Above:
+
+     default               "recap heading info"   summary | picker | 300 px
+                           "recap panel   info"
+     vignettes (.is-vignettes)  "recap heading"   summary | picker
+                                "recap panel"
+
+   The side columns span both rows and stretch over the WHOLE height of the
+   grid, whatever they hold; it is their content
+   (.dahu-kit__recap-body, .dahu-kit__info-inner) that stays sticky. The
+   minimum height of the grid (a full viewport, for instance) is the theme's
+   business. Row 2 at 1fr: the height of the picker never enlarges the title
+   row. With no title handed over by the theme (no .has-heading), the title row
+   disappears. */
+
+.dahu-kit__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1.5rem;
+	align-items: start;
+}
+
+.dahu-kit__info[hidden] {
+	display: none;
+}
+
+@media (min-width: 64em) {
+	.dahu-kit__layout {
+		grid-template-columns: minmax(0, .8fr) minmax(0, 2fr) 300px;
+		grid-template-areas: "recap panel info";
+		column-gap: 2.5rem;
+		row-gap: 1rem;
+	}
+
+	.dahu-kit__layout.has-heading {
+		grid-template-areas:
+			"recap heading info"
+			"recap panel   info";
+		grid-template-rows: auto 1fr;
+	}
+
+	.dahu-kit__layout.is-vignettes {
+		grid-template-columns: minmax(0, .8fr) minmax(0, 3fr);
+		grid-template-areas: "recap panel";
+	}
+
+	.dahu-kit__layout.is-vignettes.has-heading {
+		grid-template-areas:
+			"recap heading"
+			"recap panel";
+	}
+
+	.dahu-kit__layout > .dahu-kit__heading { grid-area: heading; }
+	.dahu-kit__layout > .dahu-kit__recap { grid-area: recap; }
+	.dahu-kit__layout > .dahu-kit__panel { grid-area: panel; }
+	.dahu-kit__layout > .dahu-kit__info { grid-area: info; }
+
+	.dahu-kit__layout > .dahu-kit__recap,
+	.dahu-kit__layout > .dahu-kit__info {
+		align-self: stretch;
+	}
+
+	.dahu-kit__recap-body,
+	.dahu-kit__info-inner {
+		position: sticky;
+		top: 1.5rem;
+	}
+}
+
+.dahu-kit__heading {
+	min-width: 0;
+}
+
+.dahu-kit__panel {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	min-width: 0;
+}
+
+.dahu-kit__recap-steps {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dahu-kit__recap-link,
+.dahu-kit__recap-toggle {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	width: 100%;
+	text-align: left;
+	cursor: pointer;
+}
+
+.dahu-kit__recap-text {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+/* One summary row = one screen: a heading, then one of these rows per
+   component of the screen (choice on the left, price on the right). A screen
+   that groups two components therefore shows two. */
+.dahu-kit__recap-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0 .5rem;
+}
+
+/* Screen not reached yet: listed, but not actionable. It is not a button in the
+   markup — the rule below only avoids inheriting the cursor of
+   .dahu-kit__recap-link. */
+.dahu-kit__recap-link--locked {
+	cursor: default;
+}
+
+/* Summary: a collapsible banner below 64em, a full-height column above. This is
+   the CSS counterpart of the button driven by the script. */
+@media (max-width: 63.999em) {
+	.dahu-kit__recap {
+		position: sticky;
+		top: 0;
+		z-index: 2;
+	}
+
+	.dahu-kit__recap-body {
+		display: none;
+	}
+
+	.dahu-kit__recap.is-expanded .dahu-kit__recap-body {
+		display: block;
+	}
+}
+
+@media (min-width: 64em) {
+	.dahu-kit__recap-toggle {
+		display: none;
+	}
+}
+
+/* ---------- Right-hand column: photo + short description ----------
+   300 px wide. Photo of the product at the top, inside a square (the whole
+   image, never cropped), then its name and its short description. Empty
+   (summary, dead end), it stays in place, at full height. Below 64em it moves
+   under the picker. */
+/* Fixed sizes (column, cards), inner padding included, whatever the theme. */
+.dahu-kit__info,
+.dahu-kit__option {
+	box-sizing: border-box;
+}
+
+.dahu-kit__info {
+	width: 300px;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.dahu-kit__info-inner {
+	display: flex;
+	flex-direction: column;
+	gap: .75rem;
+}
+
+/* Photo flush with the top of the column, edge to edge: the negative margins
+   cancel the inner padding of the column and the top corners take its radius.
+   The theme (or the fallback skin) declares both values on .dahu-kit__info:
+   --dahu-kit-info-pad (its padding) and --dahu-kit-info-radius (its
+   border-radius). No overflow: hidden on the column: it would break the sticky
+   content (.dahu-kit__info-inner). */
+.dahu-kit__info-media {
+	margin: calc(-1 * var(--dahu-kit-info-pad, 0px)) calc(-1 * var(--dahu-kit-info-pad, 0px)) 0;
+	padding: 0;
+	aspect-ratio: 1;
+	overflow: hidden;
+	border-radius: var(--dahu-kit-info-radius, 0px) var(--dahu-kit-info-radius, 0px) 0 0;
+}
+
+.dahu-kit__info-photo {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* Icon bar under the text of the right-hand column: Description,
+   Specifications, then the “products supplied with” key pushed to the right
+   (decorative for now). Colours and hover: styling. */
+.dahu-kit__info-tools {
+	display: flex;
+	align-items: center;
+	gap: .25rem;
+}
+
+.dahu-kit__info-tool {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+.dahu-kit__info-tool:disabled {
+	cursor: default;
+	opacity: .35;
+}
+
+.dahu-kit__info-tool--fournis {
+	margin-left: auto;
+	cursor: default;
+	opacity: .35;
+}
+
+/* Specifications table: the full width of the column. */
+.dahu-kit__info-text--caracteristiques table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+/* Description of a component (the “Description (HTML allowed)” admin field),
+   under its title and above its cards. Styling (opacity, size):
+   .dahu-kit__description, theme or fallback. Here, only the spacing; the
+   margins of the first and last paragraph entered do not add to it. */
+.dahu-kit__step-description {
+	margin: 0 0 1rem;
+}
+
+.dahu-kit__step-description > :first-child {
+	margin-top: 0;
+}
+
+.dahu-kit__step-description > :last-child {
+	margin-bottom: 0;
+}
+
+/* ---------- Options ----------
+   Cards in a column: name, price, variant row, buttons in the footer.
+
+   By default (--square): a card of FIXED size, 240 × 180 px
+   (--dahu-kit-option-width / --dahu-kit-option-height, adjustable by the
+   theme). The empty rows (price of a branch, variant of a simple product) keep
+   their height: the buttons land in the same place from one card to the next. A
+   click on the card shows the product in the right-hand column.
+
+   Vignettes (--vignette): 300 px wide, square photo at the top, height
+   following the text; the full width on a phone. */
+
+.dahu-kit {
+	--dahu-kit-option-width: 240px;
+	--dahu-kit-option-height: 180px;
+}
+
+.dahu-kit__option {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	min-width: 0;
+}
+
+.dahu-kit__option-body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	min-width: 0;
+}
+
+.dahu-kit__option-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	margin-top: auto;
+}
+
+.dahu-kit__option--square {
+	width: var(--dahu-kit-option-width);
+	height: var(--dahu-kit-option-height);
+	overflow: hidden;
+}
+
+/* The whole card selects (a click anywhere, the .dahu-kit__option-hit area from
+   the keyboard). Not the card of an “add-on” component: there, only the “Add”
+   button acts. Option out of stock: inert. */
+.dahu-kit__option {
+	cursor: pointer;
+}
+
+.dahu-kit__option.dahu-kit__option--addon,
+.dahu-kit__option.is-out-of-stock {
+	cursor: auto;
+}
+
+/* Button mode (data-dahu-kit-select="button"): “Select” is what chooses; a
+   click on a square card only previews, and a vignette or “None” has no
+   preview. */
+.is-select-button .dahu-kit__option--vignette,
+.is-select-button .dahu-kit__option--none {
+	cursor: auto;
+}
+
+/* Main area of the card (role="button"): the same stacking as the card, so that
+   photo, name, price and text keep their arrangement. */
+.dahu-kit__option-hit {
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+	min-width: 0;
+}
+
+.dahu-kit__addon-head {
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+	min-width: 0;
+}
+
+/* Slot of a component hidden by a scenario (.dahu-kit__slot, always present in
+   the DOM of the screen being shown, see fillSlot()). A theme that wants to
+   animate the appearance replaces this display: none with its own transition
+   (opacity, height…) on .is-hidden / .is-visible. */
+.dahu-kit__slot.is-hidden {
+	display: none;
+}
+
+/* “Next” button of a screen where only an optional add-on is still pending (see
+   renderStepNav()). Same principle as the slots: always present,
+   .is-visible / .is-hidden. */
+.dahu-kit__step-nav.is-hidden {
+	display: none;
+}
+
+/* Maximum width of the configurator screen: on a large display,
+   .dahu-kit__step (and the title row above it) no longer stretches to the
+   edge. The theme's wide width (theme.json, settings.layout.wideSize, published
+   by WordPress as --wp--style--global--wide-size), 80rem without it; a theme
+   may set it through --dahu-kit-step-max-width. Aligned left, against the
+   summary. */
+.dahu-kit__step,
+.dahu-kit__layout > .dahu-kit__heading {
+	max-width: var(--dahu-kit-step-max-width, var(--wp--style--global--wide-size, 80rem));
+}
+
+/* The “Next” row is the last element of the option grid (prepareStepNav()) —
+   right next to the last card, wrapping when space runs short, instead of being
+   pinned to the right edge of the screen. Centred on the height of the cards;
+   margins and alignment of the row under the screen (theme: justify-content,
+   margin-top) neutralised. */
+.dahu-kit__options > .dahu-kit__step-nav {
+	flex: 0 0 auto;
+	align-self: center;
+	justify-content: flex-start;
+	margin: 0;
+}
+
+/* Name: two lines at most, so the square does not grow. */
+.dahu-kit__option--square .dahu-kit__option-name {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+}
+
+.dahu-kit__option--square .dahu-kit__option-price {
+	min-height: 1.3em;
+}
+
+.dahu-kit__option--square .dahu-kit__option-variation {
+	min-height: 2.25rem;
+}
+
+.dahu-kit__option-variation .dahu-kit__select {
+	max-width: 100%;
+}
+
+/* Option retained with no variant: the message under the list. Placement only —
+   its colour is that of .dahu-kit__error (styling). */
+.dahu-kit__variation-required {
+	display: block;
+	margin-top: .35em;
+	font-size: .85em;
+	line-height: 1.3;
+}
+
+.dahu-kit__option--vignette {
+	width: 300px;
+}
+
+/* Branch vignettes (the “Kit type” step): five equal columns on the desktop
+   instead of 300 px (three or four per row), wrapping below 10rem; one per row
+   on a phone (see the 39.999em query). Product vignettes keep their 300 px.
+   10rem and not 11rem: at a 1280 px viewport the list only has 943 px next to
+   the right-hand column, that is 175.8 px per column — 11rem (176 px) left four
+   cards there and a fifth stretched across the whole row. */
+.dahu-kit__option--vignette.dahu-kit__option--path {
+	flex: 1 1 calc((100% - 4 * 1rem) / 5);
+	width: auto;
+	min-width: 10rem;
+}
+
+.dahu-kit__option--vignette .dahu-kit__option-variation:empty {
+	display: none;
+}
+
+/* Photo of the product at the top of the vignette: square, the whole image
+   (never cropped), as in the right-hand column. */
+.dahu-kit__option-media {
+	margin: 0;
+	aspect-ratio: 1;
+	overflow: hidden;
+}
+
+/* Image that opens the Description (renderOptionMedia()): a pointer cursor,
+   including when the rest of the card is not clickable (“Click” active). */
+.dahu-kit__option-media.is-info-trigger {
+	cursor: pointer;
+}
+
+.dahu-kit__option-photo {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* Vignettes with ranges: the ranges follow one another in a single list (see
+   renderCards()). Every cell stacks the range title row and the card; the empty
+   row of the following cards keeps the same height as the title, so that every
+   card of a row stays aligned. */
+.dahu-kit__option-cell {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	min-width: 0;
+}
+
+/* The title does not dictate the width of the cell (that of the card): a longer
+   title is cut off with “…”. */
+.dahu-kit__option-cell > .dahu-kit__tier {
+	width: 0;
+	min-width: 100%;
+	margin: 0 0 .5rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.dahu-kit__option-cell > .dahu-kit__tier--spacer {
+	display: block;
+	visibility: hidden;
+}
+
+.dahu-kit__option-cell > .dahu-kit__option {
+	flex: 1 1 auto;
+}
+
+/* Add-on anchored to a card (.dahu-kit__component--anchored): its slot is an
+   item of the option list, right after the card it targets (renderCards()) — to
+   its right, wrapping when space runs short. In a list with ranges, it reserves
+   the range title row above its card, so as to stay aligned with its
+   neighbours: --dahu-kit-tier-offset = height of that row + its gap (the theme
+   that fixes the height of the title fixes this token too). Hidden:
+   display: none (.dahu-kit__slot.is-hidden), taking up no room in the list. */
+.dahu-kit__options > .dahu-kit__component--anchored {
+	flex: 0 0 auto;
+	min-width: 0;
+}
+
+/* Same height as the cards of the row (like a cell). Not on .is-hidden:
+   display: none must win. */
+.dahu-kit__options > .dahu-kit__component--anchored:not(.is-hidden) {
+	display: flex;
+	flex-direction: column;
+}
+
+.dahu-kit__options > .dahu-kit__component--anchored > .dahu-kit__option {
+	flex: 1 1 auto;
+}
+
+.dahu-kit__options--tiered > .dahu-kit__component--anchored {
+	padding-top: var(--dahu-kit-tier-offset, calc(1.2em + .5rem));
+}
+
+/* ---------- Short label of the public price ----------
+   Dahu_Composite_Pricing::price_html() renders the full label
+   (.dahu-kit-price__label-full) and, when the tier has one, the short label
+   (.dahu-kit-price__label-short). The full one everywhere; the short one where
+   space runs short: summary (rows, total, mobile banner) and the yes / no
+   question of a card. */
+.dahu-kit-price__label-short {
+	display: none;
+}
+
+:is(.dahu-kit__recap, .dahu-kit__question) .dahu-kit-price__label-full {
+	display: none;
+}
+
+:is(.dahu-kit__recap, .dahu-kit__question) .dahu-kit-price__label-short {
+	display: inline;
+}
+
+/* ---------- Add-on presented as a yes / no question ----------
+   questionBlock(): a text and two answers, in the slot of the component
+   (.dahu-kit__component--question). Vignettes: the slot is carried by the chosen
+   card of the anchor component (.dahu-kit__component--in-card), on the BACK
+   (.dahu-kit__option-question, further down); square cards: an item of the list,
+   after the card. Functional only: arrangement, wrapping. Answer given:
+   .is-selected + aria-pressed. */
+.dahu-kit__question {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	min-width: 0;
+}
+
+.dahu-kit__question-text {
+	margin: 0;
+	overflow-wrap: anywhere;
+}
+
+.dahu-kit__question-answers {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: .5rem;
+}
+
+/* Two answers of equal width; the price of “Yes” under its label, and it wraps
+   rather than widening the card. */
+.dahu-kit__answer {
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: .15rem;
+	min-width: 0;
+	white-space: normal;
+}
+
+.dahu-kit__answer-price {
+	max-width: 100%;
+	font-weight: 400;
+}
+
+/* “+” in front of the price of “Yes”: a surcharge, not the price of the
+   choice. */
+.dahu-kit__answer-price > :first-child::before {
+	content: "+\00a0";
+}
+
+/* Professional tier: two labelled prices, one per row, and the two answers one
+   under the other — side by side, “Yes” would be three times taller than
+   “No”. */
+.dahu-kit__question-answers:has(.dahu-kit-price__tier) {
+	flex-direction: column;
+}
+
+/* Stacked: each at the height of its content (flex-basis 0 would mean a height
+   of zero in this direction). */
+.dahu-kit__question-answers:has(.dahu-kit-price__tier) > .dahu-kit__answer {
+	flex: 0 0 auto;
+}
+
+.dahu-kit__answer-price :is(.dahu-kit-price__public, .dahu-kit-price__tier) {
+	display: block;
+}
+
+.dahu-kit__question-more {
+	align-self: flex-start;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* The front-side control that used to flip the card onto the question
+   (.dahu-kit__question-toggle): removed, the front no longer hints at the
+   question (see openQuestion()). */
+
+/* List item (square cards): no wider than a card. */
+.dahu-kit__options > .dahu-kit__component--question {
+	max-width: 18rem;
+	justify-content: center;
+}
+
+/* ---------- “More info”: flipped / extended card ----------
+   data-dahu-kit-info="card|extended" on <body> (see readInfoMode()).
+   Functional only: the 3D pivot, the faces, scrolling of the back, the extended
+   column in overlay. Colours, shadows, durations: styling (the
+   --dahu-kit-flip-duration token).
+
+   The flip principle: a pivot > two stacked faces, the hidden one with
+   backface-visibility: hidden — without which nothing would turn.
+
+   The pivot is the CARD itself (.dahu-kit__option[data-info-key]), so that
+   everything the user reads as the card turns — content, footer (one per face)
+   and surface (background, rule, radius, shadow, set by the theme on the card).
+   Perspective inside the transform (perspective()), not on the parent: a
+   perspective shared by the list would distort the cards far from its centre.
+
+   Pitfalls for the theme (3D rendering flattened otherwise, and the flipped
+   card would show its front mirrored): on the card, no opacity < 1, no filter,
+   no overflow other than visible, no clip-path, no mix-blend-mode, no
+   isolation — put those on the faces. And do not redeclare `transform` in the
+   card's `transition` list with another duration: the flip follows
+   --dahu-kit-flip-duration. */
+
+.dahu-kit__option[data-info-key] {
+	position: relative;
+	transform-style: preserve-3d;
+	transform: perspective(var(--dahu-kit-flip-perspective, 1200px)) rotateY(0deg);
+	transition: transform var(--dahu-kit-flip-duration, .6s) ease;
+}
+
+.dahu-kit__option[data-info-key].is-flipped {
+	transform: perspective(var(--dahu-kit-flip-perspective, 1200px)) rotateY(180deg);
+}
+
+/* Stacks the faces (same grid cell); does not turn itself, but passes on the 3D
+   space of the card. */
+.dahu-kit__option-flip {
+	position: relative;
+	display: grid;
+	flex: 1 1 auto;
+	gap: inherit;
+	min-height: 0;
+	transform-style: preserve-3d;
+}
+
+/* Face: all the content of the card, footer included (.dahu-kit__option-actions
+   is the last child of every face). Lifted 1px off the plane of the card:
+   otherwise the face and the background of the card, in the same plane, fight
+   over which one shows during the rotation. */
+.dahu-kit__option-face {
+	grid-area: 1 / 1;
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+	min-width: 0;
+	transform: translateZ(1px);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+/* Back: exactly the size of the front (out of flow), so the card never changes
+   size. The content scrolls (.dahu-kit__option-info), the footer stays at the
+   bottom. */
+.dahu-kit__option-face--back {
+	position: absolute;
+	inset: 0;
+	transform: rotateY(180deg) translateZ(1px);
+}
+
+.dahu-kit__option-face--back > .dahu-kit__option-info {
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow: auto;
+	overscroll-behavior: contain;
+}
+
+.dahu-kit__option-face--back > .dahu-kit__option-actions {
+	flex: 0 0 auto;
+}
+
+/* Question of an add-on: a section of the back, like the description. An area
+   always present on the back of the card that carries the question, shown IN
+   PLACE of .dahu-kit__option-info when the card is open on the “question”
+   section (data-info-face, applyInfo()). It scrolls when the question is taller
+   than the card; centred otherwise. */
+.dahu-kit__option-face--back > .dahu-kit__option-question {
+	display: none;
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow: auto;
+	overscroll-behavior: contain;
+}
+
+.dahu-kit__option[data-info-face="question"] .dahu-kit__option-face--back > .dahu-kit__option-question {
+	display: flex;
+	flex-direction: column;
+}
+
+.dahu-kit__option-question > .dahu-kit__slot {
+	margin-block: auto;
+}
+
+/* Name of the chosen product, at the top of the back of the question; the
+   question stays centred in the room that is left. */
+.dahu-kit__option-question > .dahu-kit__option-question-product {
+	flex: 0 0 auto;
+	margin: 0;
+	overflow-wrap: anywhere;
+}
+
+.dahu-kit__option[data-info-face="question"] .dahu-kit__option-face--back > .dahu-kit__option-info {
+	display: none;
+}
+
+/* “Help image” of an option: at the top of the back, in the Description section
+   only (the script takes it out of the other sections), above
+   .dahu-kit__option-info. It hugs the card the way the photo on the front does:
+   edge to edge at the top, left and right (the inner padding of the card,
+   --dahu-kit-option-pad, set by the theme, + a 1px rule; 0 without a theme),
+   with the top corners at the radius of the card. Never more than half of the
+   back: the text keeps its room, and the image shrinks without being cropped. */
+.dahu-kit__option-help-visual {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	margin: 0;
+	overflow: hidden;
+	background-color: var(--color-surface-3, transparent);
+}
+
+.dahu-kit__option-help-visual img {
+	display: block;
+	flex: 0 1 auto;
+	min-height: 0;
+	width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+
+.dahu-kit__option-face--back > .dahu-kit__option-help-visual {
+	flex: 0 1 auto;
+	max-height: 50%;
+	margin: calc(-1 * (var(--dahu-kit-option-pad, -1px) + 1px)) calc(-1 * (var(--dahu-kit-option-pad, -1px) + 1px)) 0;
+	border-radius: var(--radius-large, 0px) var(--radius-large, 0px) 0 0;
+}
+
+.dahu-kit__option[data-info-face="question"] .dahu-kit__option-face--back > .dahu-kit__option-help-visual {
+	display: none;
+}
+
+.dahu-kit__option-extension > .dahu-kit__option-help-visual,
+.dahu-kit-drawer__pane > .dahu-kit__option-help-visual {
+	margin: 0 0 .75em;
+	border-radius: var(--dahu-kit-radius-small, 0px);
+}
+
+/* Switching section on a panel that is already open (switchInfoFace()): no new
+   flip, the content fades out then comes back. Duration: --dahu-kit-info-fade
+   (the theme puts its short fade there). Opacity on the content, not on the
+   card nor on .dahu-kit__option-flip: the 3D is not flattened. */
+.dahu-kit__option-info {
+	transition: opacity var(--dahu-kit-info-fade, .15s) ease;
+}
+
+.dahu-kit__option-info.is-changing {
+	opacity: 0;
+}
+
+/* The “Select” of the open info panel and the one of button mode swap through
+   the hidden attribute: it has to win over the display of the buttons. */
+.dahu-kit__option-actions > [hidden] {
+	display: none !important;
+}
+
+/* Tabs of the open panel, without the “Icons” toggle (fillInfo()): buttons that
+   keep the typography of the title (.dahu-kit__option-info-title). Styling
+   (active, hover): theme. */
+.dahu-kit__option-info-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem .75rem;
+}
+
+.dahu-kit__option-info-tab {
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+	text-align: left;
+	text-transform: inherit;
+	cursor: pointer;
+}
+
+/* Extended column: absent until the card is extended. */
+.dahu-kit__option-extension {
+	display: none;
+}
+
+/* Extended: the card keeps its place in the grid (nothing around it moves) and
+   its info column overflows onto its neighbours, above them.
+   Set by the script (extendedFit()): --dahu-kit-extend-width (two cards and two
+   gutters) and --dahu-kit-extend-shift (shift of the card to the left so as to
+   stay inside the panel: 0 when data-info-anchor="right", the whole column when
+   "left", in between when "shift"). A shift through transform moves nothing in
+   the grid. */
+.dahu-kit__option[data-info-key].is-extended {
+	z-index: 20;
+	overflow: visible;
+	transform: translateX(var(--dahu-kit-extend-shift, 0px));
+}
+
+.dahu-kit__option.is-extended > .dahu-kit__option-extension {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 100%;
+	display: block;
+	box-sizing: border-box;
+	width: var(--dahu-kit-extend-width, 200%);
+	overflow: auto;
+	overscroll-behavior: contain;
+	/* Background of the card (whatever it is): without it the column would be
+	   transparent above the neighbouring cards. */
+	background: inherit;
+}
+
+
+/* Products supplied: one row per product (thumbnail, name, quantity). */
+.dahu-kit__bundled {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dahu-kit__bundled-item {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+}
+
+.dahu-kit__bundled-photo {
+	flex: 0 0 auto;
+	width: 2.5rem;
+	height: 2.5rem;
+	object-fit: contain;
+}
+
+.dahu-kit__bundled-name {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+/* Reduced motion: no rotation, one face replaces the other (the extended one
+   keeps its anchor shift). */
+@media (prefers-reduced-motion: reduce) {
+	.dahu-kit__option[data-info-key]:not(.is-extended),
+	.dahu-kit__option[data-info-key].is-flipped {
+		transform: none;
+		transition: none;
+		animation: none;
+	}
+
+	.dahu-kit__option-face,
+	.dahu-kit__option-face--back {
+		transform: none;
+		-webkit-backface-visibility: visible;
+		backface-visibility: visible;
+	}
+
+	.dahu-kit__option-face--back {
+		visibility: hidden;
+	}
+
+	.dahu-kit__option.is-flipped .dahu-kit__option-face--back {
+		visibility: visible;
+	}
+
+	.dahu-kit__option.is-flipped .dahu-kit__option-face--front {
+		visibility: hidden;
+	}
+}
+
+/* ---------- Info bubble (step, range) ----------
+   Functional only: collapsing the panel, hiding, alignments. No colour, no
+   typography: the theme's styling. Settings exposed:
+     --dahu-kit-hint-duration       opening / closing duration (.25s)
+     --dahu-kit-hint-easing         curve (ease)
+     --dahu-kit-hint-fade           fade when the text changes (.15s)
+     --dahu-kit-hint-gap            gap under the open panel; equal to the gap
+                                    of the panel (.dahu-kit__panel, 1rem)
+     --dahu-kit-hint-scroll-margin  top margin when scrolling to the panel
+                                    (1rem; 4.5rem below 64em, where the summary
+                                    banner is sticky)
+
+   The panel is the first child of .dahu-kit__panel (a flex column with a gap):
+   closed, its negative bottom margin cancels the gap that follows it, so it
+   leaves no space; open, the inner spacer (.dahu-kit__hint-box) gives that gap
+   back under the text. Collapsing through grid-template-rows 0fr → 1fr, with no
+   measured height. Closed: visibility hidden AT THE END of the transition (a
+   delay), with inert set by the script. */
+.dahu-kit__hint {
+	display: grid;
+	grid-template-rows: 0fr;
+	min-width: 0;
+	margin-bottom: calc(-1 * var(--dahu-kit-hint-gap, 1rem));
+	scroll-margin-top: var(--dahu-kit-hint-scroll-margin, 1rem);
+	transition: grid-template-rows var(--dahu-kit-hint-duration, .25s) var(--dahu-kit-hint-easing, ease);
+}
+
+.dahu-kit__hint.is-open {
+	grid-template-rows: 1fr;
+}
+
+.dahu-kit__hint-inner {
+	min-height: 0;
+	overflow: hidden;
+	visibility: hidden;
+	transition: visibility 0s linear var(--dahu-kit-hint-duration, .25s);
+}
+
+.dahu-kit__hint.is-open > .dahu-kit__hint-inner {
+	visibility: visible;
+	transition-delay: 0s;
+}
+
+.dahu-kit__hint-box {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: var(--dahu-kit-hint-gap, 1rem);
+}
+
+.dahu-kit__hint-body {
+	flex: 1 1 auto;
+	min-width: 0;
+	transition: opacity var(--dahu-kit-hint-fade, .15s) ease;
+}
+
+.dahu-kit__hint-body.is-changing {
+	opacity: 0;
+}
+
+.dahu-kit__hint-close {
+	flex: 0 0 auto;
+}
+
+/* Screen change: collapsed immediately. */
+.dahu-kit__hint.is-instant,
+.dahu-kit__hint.is-instant > .dahu-kit__hint-inner {
+	transition: none;
+}
+
+/* “i”: in the title row (step, range), with no styling. */
+.dahu-kit__hint-btn {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.dahu-kit__hint-btn--placeholder {
+	visibility: hidden;
+}
+
+.dahu-kit__tier.has-hint {
+	display: flex;
+	align-items: center;
+}
+
+.dahu-kit__tier-label {
+	min-width: 0;
+}
+
+/* Display of the ranges (settings of the component in the kit editor), each one
+   independent of the others. Colour of the range: chosen in the editor, else the
+   one from the palette (DahuCompositeTiers.tierColor()), set on the card by the
+   script — --dahu-kit-tier-color, and --dahu-kit-tier-ink (black or white,
+   whichever reads on it).
+   - “New row”: div.dahu-kit__tier-break between two ranges of the vignette
+     list, across its whole width — the next range starts a new row (square
+     cards: one list per range, which is already the case);
+   - “Badge”: span.dahu-kit__option-tier (name of the range) to the right of the
+     name of the card, inside span.dahu-kit__option-heading;
+   - “Tinted background”: .has-tier-tint, a light background in the colour
+     (--dahu-kit-tier-bg, supplied with every colour of the palette); a code
+     outside the palette: the colour blended with white
+     (--dahu-kit-tier-tint, 17%).
+     A theme that paints the cards (hover, choice) takes the rule over at its
+     own level. */
+.dahu-kit__options > .dahu-kit__tier-break {
+	flex: 0 0 100%;
+	width: 100%;
+	height: 0;
+	margin: 0;
+}
+
+.dahu-kit__option-heading {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .25rem .5rem;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.dahu-kit__option-tier {
+	flex: 0 1 auto;
+	min-width: 0;
+	max-width: 100%;
+	padding: 0 .6em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: var(--dahu-kit-tier-ink, #fff);
+	background-color: var(--dahu-kit-tier-color, #1d1d1b);
+}
+
+.dahu-kit__option.has-tier-tint {
+	background-color: var(--dahu-kit-tier-bg, color-mix(in srgb, var(--dahu-kit-tier-color) var(--dahu-kit-tier-tint, 17%), #fff));
+}
+
+/* Vignettes: range title cut off with “…”, the “i” stays visible. */
+.dahu-kit__option-cell > .dahu-kit__tier.has-hint {
+	display: flex;
+}
+
+.dahu-kit__option-cell > .dahu-kit__tier.has-hint > .dahu-kit__tier-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* ---------- “?” popover of a range ----------
+   Functional only: the trigger in the title row, position, arrangement, media
+   edge to edge, fade in. Colours, typography, radius, shadow, inner margins of
+   the text column: the theme's styling (the fallback sheet otherwise).
+   The popover is a child of <body> (outside .dahu-kit). Settings exposed:
+     --dahu-kit-popover-width       width with no media (34rem)
+     --dahu-kit-popover-text-width  text column next to a media (20rem)
+     --dahu-kit-popover-media-max   maximum height of a media (24rem)
+     --dahu-kit-popover-inset       minimum gap to the edges of the window (16px)
+     --dahu-kit-popover-z           plane (998: under the drawer and its veil)
+     --dahu-kit-popover-duration    entrance (.18s)
+   --dahu-kit-popover-ratio (width / height of the media): set by the script.
+
+   FIXED and centred in the window, in landscape format (it used to be anchored
+   under its “?”, above it when there was no room, with a tip):
+   - with no media: a text column of --dahu-kit-popover-width;
+   - with a media, window of 40em and over: media on the LEFT, at the height of
+     the popover and at its own proportion — never cropped, edge to edge (top,
+     bottom, left); text on the right, scrolling when it is longer. Height:
+     --dahu-kit-popover-media-max, reduced so that media and text fit in the
+     width of the window;
+   - with a media, phone: media at the top, at full width, edge to edge; text
+     under it, the whole thing scrolling. */
+.dahu-kit__tier-help {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.dahu-kit__tier-help--placeholder {
+	visibility: hidden;
+}
+
+.dahu-kit__tier-help-icon {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.dahu-kit-popover {
+	--dahu-kit-popover-inset-x2: calc(2 * var(--dahu-kit-popover-inset, 16px));
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: var(--dahu-kit-popover-z, 998);
+	box-sizing: border-box;
+	width: min(var(--dahu-kit-popover-width, 34rem), calc(100vw - var(--dahu-kit-popover-inset-x2)));
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(.98);
+	transition: opacity var(--dahu-kit-popover-duration, .18s) ease, transform var(--dahu-kit-popover-duration, .18s) ease;
+}
+
+.dahu-kit-popover[hidden] {
+	display: none;
+}
+
+.dahu-kit-popover.is-open {
+	opacity: 1;
+	transform: translate(-50%, -50%);
+}
+
+.dahu-kit-popover:focus {
+	outline: none;
+}
+
+/* Scrolls as a whole (phone, text only); clips the media at the rounded corners
+   of the styling. */
+.dahu-kit-popover__box {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	max-height: calc(100vh - var(--dahu-kit-popover-inset-x2));
+	overflow-x: hidden;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.dahu-kit-popover__content {
+	box-sizing: border-box;
+	min-width: 0;
+}
+
+.dahu-kit-popover__head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.dahu-kit-popover__title {
+	flex: 1 1 auto;
+	min-width: 0;
+	margin: 0;
+}
+
+.dahu-kit-popover__close {
+	flex: 0 0 auto;
+	cursor: pointer;
+}
+
+.dahu-kit-popover__media[hidden],
+.dahu-kit-popover__text[hidden] {
+	display: none;
+}
+
+/* Media edge to edge, at its own proportion: at the width of the popover
+   (phone), or at the height of the popover (landscape, further down). No margin
+   and no cropping. */
+.dahu-kit-popover__media {
+	flex: 0 0 auto;
+	line-height: 0;
+}
+
+.dahu-kit-popover__media img,
+.dahu-kit-popover__media video {
+	display: block;
+	width: 100%;
+	max-width: none;
+	height: auto;
+}
+
+/* Embedded video (YouTube, Vimeo…): 16/9, whatever dimensions the provider
+   sets. */
+.dahu-kit-popover__media iframe {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+	border: 0;
+}
+
+.dahu-kit-popover__text > :first-child {
+	margin-top: 0;
+}
+
+.dahu-kit-popover__text > :last-child {
+	margin-bottom: 0;
+}
+
+.dahu-kit-popover__text img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Landscape with a media: width = media (height × proportion) + text column,
+   set explicitly (a popover centred by left: 50% would only size itself on half
+   of the window). */
+@media (min-width: 40em) {
+	.dahu-kit-popover.has-media {
+		--dahu-kit-popover-media-h: min(
+			var(--dahu-kit-popover-media-max, 24rem),
+			calc(100vh - var(--dahu-kit-popover-inset-x2)),
+			calc((100vw - var(--dahu-kit-popover-inset-x2) - var(--dahu-kit-popover-text-width, 20rem)) / var(--dahu-kit-popover-ratio, 1))
+		);
+		width: calc(var(--dahu-kit-popover-media-h) * var(--dahu-kit-popover-ratio, 1) + var(--dahu-kit-popover-text-width, 20rem));
+	}
+
+	/* content-box: the height that is set is that of the media, plus the rule of
+	   the styling — the media keeps its exact proportion. */
+	.dahu-kit-popover.has-media .dahu-kit-popover__box {
+		box-sizing: content-box;
+		flex-direction: row;
+		height: var(--dahu-kit-popover-media-h);
+		overflow: hidden;
+	}
+
+	.dahu-kit-popover.has-media .dahu-kit-popover__media {
+		width: calc(var(--dahu-kit-popover-media-h) * var(--dahu-kit-popover-ratio, 1));
+		height: 100%;
+	}
+
+	.dahu-kit-popover.has-media .dahu-kit-popover__media img,
+	.dahu-kit-popover.has-media .dahu-kit-popover__media video,
+	.dahu-kit-popover.has-media .dahu-kit-popover__media iframe {
+		width: 100%;
+		height: 100%;
+	}
+
+	/* The text column absorbs the rule of the styling (the media keeps its exact
+	   proportion) and scrolls when the text is longer. */
+	.dahu-kit-popover.has-media .dahu-kit-popover__content {
+		flex: 1 1 var(--dahu-kit-popover-text-width, 20rem);
+		overflow-y: auto;
+		overscroll-behavior: contain;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dahu-kit-popover,
+	.dahu-kit-popover.is-open {
+		transition: none;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@media (max-width: 63.999em) {
+	.dahu-kit__hint {
+		scroll-margin-top: var(--dahu-kit-hint-scroll-margin, 4.5rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dahu-kit__hint,
+	.dahu-kit__hint-inner,
+	.dahu-kit__hint-body,
+	.dahu-kit__option-info {
+		transition: none;
+	}
+}
+
+/* Phone: one vignette per row, across the whole width. */
+@media (max-width: 39.999em) {
+	.dahu-kit__option--vignette,
+	.dahu-kit__option-cell,
+	.dahu-kit__options > .dahu-kit__component--anchored {
+		width: 100%;
+	}
+
+	/* Branches: the five-column rule, being heavier, would win over the row above
+	   (two or three per row between 21 and 40em). */
+	.dahu-kit__option--vignette.dahu-kit__option--path {
+		flex: 1 1 100%;
+	}
+
+	/* One card per row: nothing left to align, the empty row disappears
+	   (and the reserve of the anchored add-on with it). */
+	.dahu-kit__option-cell > .dahu-kit__tier--spacer,
+	.dahu-kit__option-cell > .dahu-kit__tier--spacer.has-hint {
+		display: none;
+	}
+
+	.dahu-kit__options--tiered > .dahu-kit__component--anchored {
+		padding-top: 0;
+	}
+}
+
+/* ---------- “More info” drawer (vignettes) ---------- */
+/* Fixed position, slide in from the right and scroll locking: without these
+   rules the drawer would show up in the flow and the script would have no
+   visible effect. */
+
+.dahu-kit-drawer__overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 999;
+	opacity: 0;
+	transition: opacity .25s ease;
+}
+
+body.dahu-kit-drawer-is-open .dahu-kit-drawer__overlay {
+	opacity: 1;
+}
+
+.dahu-kit-drawer__overlay[hidden] {
+	display: none;
+}
+
+body.dahu-kit-drawer-is-open {
+	overflow: hidden;
+}
+
+.dahu-kit-drawer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100vh;
+	height: 100dvh;
+	overflow: hidden;
+	transform: translateX(100%);
+	transition: transform .3s ease-out;
+}
+
+.dahu-kit-drawer[hidden] {
+	display: none;
+}
+
+.dahu-kit-drawer.is-open {
+	transform: translateX(0);
+}
+
+@media (min-width: 40em) {
+	.dahu-kit-drawer {
+		width: min(28rem, 100%);
+		padding: 1rem; /* the real padding value we want */
+	}
+}
+
+@media (min-width: 64em) {
+	.dahu-kit-drawer {
+		width: min(30rem, 100%);
+	}
+}
+
+.dahu-kit-drawer__inner {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.dahu-kit-drawer__close {
+	position: absolute;
+	top: .75rem;
+	right: .75rem;
+	z-index: 1;
+	cursor: pointer;
+}
+
+/* Tab bar: the buttons on the left, “Select” pushed to the right. */
+.dahu-kit-drawer__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .5rem;
+}
+
+.dahu-kit-drawer__tabs[hidden] {
+	display: none;
+}
+
+.dahu-kit-drawer__pane[hidden] {
+	display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dahu-kit-drawer,
+	.dahu-kit-drawer__overlay {
+		transition: none;
+	}
+}
+
+.dahu-kit__option-image {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Saved configurations: the “Save my configuration” block at the foot of the
+   Summary, the head of a reopened configuration and the banner for a failed
+   reopening. Layout only: colours and buttons come from the existing classes
+   (.dahu-kit__message, .button). */
+.dahu-kit__save {
+	margin-top: 1.5em;
+}
+
+.dahu-kit__save-title,
+.dahu-kit__restore-title {
+	margin: 0 0 .5em;
+	font-weight: 600;
+}
+
+.dahu-kit__save-form {
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.dahu-kit__save-name input {
+	min-width: 14em;
+	max-width: 100%;
+}
+
+/* Visitor: the account creation form of the save block. Two columns, a single
+   one below 480 px; the address takes the whole width. The fields are wrapped in
+   .dahu-kit__save-name, like the name field: a theme that styles that one styles
+   the form. Here, the arrangement and the bare minimum for it to be readable
+   without a theme (label above, error under the field, checkbox aligned on its
+   wording). */
+.dahu-kit__save-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: .75em 1em;
+	margin: .75em 0;
+}
+
+.dahu-kit__save-field {
+	min-width: 0;
+}
+
+.dahu-kit__save-field--address {
+	grid-column: 1 / -1;
+}
+
+.dahu-kit__save-label {
+	display: block;
+	margin: 0 0 .25em;
+	font-size: .9375em;
+	font-weight: 600;
+}
+
+.dahu-kit__save-required {
+	border: 0;
+	text-decoration: none;
+	cursor: inherit;
+}
+
+.dahu-kit__save-field .dahu-kit__save-name {
+	display: block;
+	max-width: none;
+}
+
+.dahu-kit__save-field .dahu-kit__save-name input {
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 0;
+}
+
+.dahu-kit__save-field.has-error .dahu-kit__save-name input {
+	border-color: var(--color-error, #a00);
+}
+
+.dahu-kit__save-field-error {
+	display: block;
+	margin-top: .25em;
+	font-size: .875em;
+	color: var(--color-error, #a00);
+}
+
+.dahu-kit__save-consent {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: .25em .6em;
+	align-items: start;
+	margin: .75em 0 .25em;
+}
+
+.dahu-kit__save-consent input {
+	width: 1.25em;
+	height: 1.25em;
+	margin: .15em 0 0;
+}
+
+.dahu-kit__save-consent label {
+	margin: 0;
+	cursor: pointer;
+}
+
+.dahu-kit__save-consent .dahu-kit__save-field-error {
+	grid-column: 2;
+	margin-top: 0;
+}
+
+.dahu-kit__save-note {
+	font-size: .875em;
+}
+
+/* Honeypot field: never visible, never reached from the keyboard. */
+.dahu-kit__save-trap {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.dahu-kit__save-cancel {
+	min-height: 2.75rem;
+	padding: 0 .5em;
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: 0;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.dahu-kit__save-exists .dahu-kit__buttons {
+	margin-top: .75em;
+}
+
+@media (max-width: 480px) {
+	.dahu-kit__save-fields {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.dahu-kit__restore {
+	margin-bottom: 1em;
+}
+
+.dahu-kit__restore-intro {
+	margin: 0 0 .25em;
+}
+
+.dahu-kit__restore-issues {
+	margin: 0 0 0 1.2em;
+}
+
+.dahu-kit__start-notice {
+	margin-bottom: 1em;
+}
+
+/* “link” card of a branch: the card points to a page (contact, dealer map…)
+   instead of being a choice; the whole card is clickable, and its “Go” button
+   (.dahu-kit__choose--link, role="link") opens the page. */
+.dahu-kit__option.dahu-kit__option--link,
+.is-select-button .dahu-kit__option--link {
+	cursor: pointer;
+}

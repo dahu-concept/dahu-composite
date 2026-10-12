@@ -1,0 +1,922 @@
+/**
+ * DAHU COMPOSITE — configurator styles.
+ *
+ * The plugin's fallback skin, standalone (no theme required).
+ * Theme CSS variables are used, ALWAYS with a fallback value: the plugin has
+ * to stay usable on a site that does not define them.
+ *
+ * The fallback skin is light and neutral, so it reads on an ordinary WordPress
+ * page; a theme that defines the palette variables overrides it entirely. The
+ * accent keeps its brand fallback. One
+ * exception, noted in RESUME_TECHNIQUE.md: the theme exposes no error / alert
+ * token, hence var(--color-error, …) and var(--color-warning, …), which wait
+ * for a variable yet to come.
+ *
+ * Typography: nothing is declared here, the font is inherited from the body.
+ * Buttons: the plugin draws its own (see "Buttons" below) from the tokens
+ * above; it does not rely on any WooCommerce or theme stylesheet being loaded.
+ */
+
+.dahu-kit {
+	--dahu-kit-surface: var(--color-surface-2, #F6F7F7);
+	--dahu-kit-surface-inner: var(--color-surface-3, #ECEEEF);
+	--dahu-kit-text: var(--color-on-surface, #1D2327);
+	--dahu-kit-border: var(--color-border, #C9CDD1);
+	--dahu-kit-accent: var(--color-brand-green, #D5EB17);
+	--dahu-kit-on-accent: var(--color-on-brand-green, #1C1A1A);
+	--dahu-kit-radius: var(--radius-large, 1.25rem);
+	--dahu-kit-radius-small: var(--radius, 0);
+	--dahu-kit-shadow: var(--shadow, 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12));
+	--dahu-kit-transition: var(--transition, 0.2s ease);
+
+	margin: 1.5em 0;
+	color: var(--dahu-kit-text);
+	clear: both;
+}
+
+/* Buttons.
+   A block theme loads no classic WooCommerce stylesheet, so a bare .button
+   would be the browser's own grey control. These rules give it a skin from the
+   tokens above. :where() keeps their specificity at zero: a theme or a
+   WooCommerce sheet that does style .button wins, and is not dressed twice. */
+:where(.dahu-kit) :where(.button) {
+	display: inline-block;
+	box-sizing: border-box;
+	padding: .7em 1.4em;
+	border: 1px solid var(--dahu-kit-accent);
+	border-radius: var(--dahu-kit-radius);
+	background-color: var(--dahu-kit-accent);
+	color: var(--dahu-kit-on-accent);
+	font: inherit;
+	font-weight: 600;
+	line-height: 1.3;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color var(--dahu-kit-transition), border-color var(--dahu-kit-transition), color var(--dahu-kit-transition);
+}
+
+/* Without .alt: the secondary button, outlined. */
+:where(.dahu-kit) :where(.button:not(.alt)) {
+	border-color: var(--dahu-kit-border);
+	background-color: transparent;
+	color: var(--dahu-kit-text);
+}
+
+:where(.dahu-kit) :where(.button:hover:not(:disabled)) {
+	background-color: color-mix(in srgb, var(--dahu-kit-accent) 85%, var(--dahu-kit-on-accent));
+	border-color: color-mix(in srgb, var(--dahu-kit-accent) 85%, var(--dahu-kit-on-accent));
+	color: var(--dahu-kit-on-accent);
+}
+
+:where(.dahu-kit) :where(.button:not(.alt):hover:not(:disabled)) {
+	background-color: color-mix(in srgb, var(--dahu-kit-text) 8%, transparent);
+	border-color: var(--dahu-kit-text);
+	color: var(--dahu-kit-text);
+}
+
+:where(.dahu-kit) :where(.button:focus-visible) {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* Disabled: a flat tint, a dashed rule and a full-strength label. WooCommerce's
+   block-theme sheet dims a disabled .button to half opacity from a selector this
+   cannot outrank, so the label is kept dark enough to read once dimmed. */
+:where(.dahu-kit) :where(.button:disabled, .button[aria-disabled="true"]) {
+	border-style: dashed;
+	border-color: var(--dahu-kit-text);
+	background-color: var(--dahu-kit-surface);
+	color: var(--dahu-kit-text);
+	cursor: not-allowed;
+}
+
+.dahu-kit.is-busy .dahu-kit__step {
+	opacity: .65;
+	transition: opacity var(--dahu-kit-transition);
+}
+
+/* Step */
+.dahu-kit__step-title {
+	display: flex;
+	flex-direction: column;
+	gap: .2em;
+	margin: 0 0 .6em;
+}
+
+.dahu-kit__step-index {
+	font-size: .55em;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	opacity: .75;
+}
+
+.dahu-kit__description {
+	margin-bottom: 1em;
+	opacity: .85;
+}
+
+/* Options */
+.dahu-kit__options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .8em;
+	margin-bottom: 1em;
+}
+
+/* Same border as the right-hand column (.dahu-kit__info): no rule visible
+   outside a selection, same radius, same background. The transparent rule
+   keeps the room for the selection outline. */
+.dahu-kit__option {
+	padding: 1em;
+	border: 1px solid transparent;
+	border-radius: var(--dahu-kit-radius);
+	background: var(--dahu-kit-surface);
+	transition: border-color var(--dahu-kit-transition), background-color var(--dahu-kit-transition);
+}
+
+.dahu-kit__option.is-previewed {
+	border-color: var(--dahu-kit-border);
+}
+
+.dahu-kit__option.is-selected {
+	border-color: var(--dahu-kit-accent);
+	box-shadow: 0 0 0 1px var(--dahu-kit-accent);
+}
+
+.dahu-kit__option.is-out-of-stock {
+	opacity: .5;
+	cursor: not-allowed;
+}
+
+.dahu-kit__option-media {
+	position: relative;
+	flex: none;
+}
+
+.dahu-kit__option-image {
+	width: 3.5em;
+	height: 3.5em;
+	object-fit: contain;
+	border-radius: var(--dahu-kit-radius-small);
+}
+
+.dahu-kit__option-badge {
+	display: inline-block;
+	padding: .1em .5em;
+	border-radius: 999px;
+	background: var(--dahu-kit-accent);
+	color: var(--dahu-kit-on-accent);
+	font-size: .7em;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .03em;
+}
+
+.dahu-kit__option-media .dahu-kit__option-badge {
+	position: absolute;
+	top: -.4em;
+	left: -.4em;
+}
+
+.dahu-kit__option-body {
+	display: flex;
+	flex-direction: column;
+	gap: .2em;
+	min-width: 0;
+}
+
+.dahu-kit__option-name {
+	font-weight: 600;
+}
+
+.dahu-kit__option-price {
+	font-size: .9rem;
+}
+
+.dahu-kit__option-media {
+	border-radius: var(--dahu-kit-radius-small);
+	background: var(--dahu-kit-surface-inner);
+}
+
+.dahu-kit__option-description {
+	font-size: .9em;
+	opacity: .85;
+}
+
+.dahu-kit__option-detail {
+	margin-bottom: 1em;
+}
+
+.dahu-kit__option-stock {
+	color: var(--color-error, #a00);
+	font-size: .85em;
+}
+
+/* Prices: public price and professional tier price, rendered by the server (no
+   recomputation script). Two <span>: the public price is a recommended resale
+   price, and is never struck through. */
+.dahu-kit-price__label {
+	display: inline-block;
+	font-size: .85em;
+	opacity: .8;
+}
+
+.dahu-kit-price__public {
+	display: block;
+	opacity: .7;
+}
+
+.dahu-kit-price__tier {
+	display: block;
+	font-weight: 600;
+}
+
+.dahu-kit__select {
+	max-width: 100%;
+	margin-bottom: 1em;
+}
+
+.dahu-kit__any-attribute {
+	display: block;
+	margin-bottom: .6em;
+}
+
+.dahu-kit__bundle {
+	margin-bottom: 1em;
+	padding: .7em;
+	background: var(--dahu-kit-surface-inner);
+	border-radius: var(--dahu-kit-radius);
+}
+
+.dahu-kit__bundle-title {
+	margin: 0 0 .4em;
+	font-weight: 600;
+}
+
+.dahu-kit__bundle-items {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.dahu-kit__bundle-item-label {
+	display: flex;
+	gap: .5em;
+	align-items: center;
+}
+
+.dahu-kit__quantity input {
+	width: 5em;
+}
+
+.dahu-kit__errors {
+	margin: 0 0 1em;
+	padding: .6em 1em;
+	list-style: none;
+	border-left: 3px solid var(--color-error, #a00);
+	background: var(--dahu-kit-surface-inner);
+	color: var(--color-error, #a00);
+	border-radius: var(--dahu-kit-radius-small);
+}
+
+.dahu-kit__buttons {
+	display: flex;
+	justify-content: space-between;
+	gap: .6em;
+	margin-top: 1em;
+}
+
+/* Summary */
+.dahu-kit__table-wrap {
+	overflow-x: auto;
+}
+
+.dahu-kit__summary-edit {
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--dahu-kit-text);
+	text-decoration: underline;
+	text-decoration-color: var(--dahu-kit-accent);
+	text-decoration-thickness: 2px;
+	text-underline-offset: .2em;
+	cursor: pointer;
+	font: inherit;
+}
+
+.dahu-kit__total {
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
+.dahu-kit__incomplete {
+	color: var(--color-warning, #a05a00);
+}
+
+.dahu-kit__cart {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1em;
+	margin-top: 1em;
+}
+
+.dahu-kit__message {
+	margin-top: 1em;
+	padding: .7em 1em;
+	border-radius: var(--dahu-kit-radius);
+	background: var(--dahu-kit-surface-inner);
+}
+
+.dahu-kit__message.is-error {
+	color: var(--color-error, #a00);
+}
+
+.dahu-kit__error {
+	color: var(--color-error, #a00);
+}
+
+/* Cart / mini-cart: components indented under the kit */
+.dahu-kit-child .product-name,
+.woocommerce-mini-cart-item.dahu-kit-child {
+	padding-left: 1.5em;
+}
+
+.dahu-kit-component-label {
+	opacity: .8;
+	font-size: .9em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Branches, grouped screens, ranges, dead ends                        */
+/* ------------------------------------------------------------------ */
+
+/* Several components on one screen (display_group). */
+.dahu-kit__component + .dahu-kit__component {
+	margin-top: 1.75rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--color-border, #C9CDD1);
+}
+
+.dahu-kit__component-title {
+	margin: 0 0 0.75rem;
+	font-size: 1.05rem;
+}
+
+/* Range subheadings inside a component. */
+.dahu-kit__tier {
+	margin: 1.25rem 0 0.5rem;
+	font-size: 0.95rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	opacity: 0.8;
+}
+
+.dahu-kit__option-groups > .dahu-kit__tier:first-child {
+	margin-top: 0;
+}
+
+/* Branch: no price, the card stays plain. */
+.dahu-kit__option--path .dahu-kit__option-name {
+	font-weight: 600;
+}
+
+/* Dead end (a “block” scenario) and “coming soon” option. */
+.dahu-kit__step--blocked,
+.dahu-kit__step--coming-soon {
+	text-align: left;
+}
+
+.dahu-kit__blocked-text,
+.dahu-kit__coming-soon {
+	margin: 0 0 1.25rem;
+	padding: 1rem 1.25rem;
+	border-radius: var(--radius-large, 1.25rem);
+	background: var(--color-surface-3, #ECEEEF);
+	color: var(--color-on-surface, #1D2327);
+}
+
+.dahu-kit__summary-path td {
+	opacity: 0.85;
+}
+
+/* ------------------------------------------------------------------ */
+/* Two columns, persistent summary, info drawer                        */
+/* ------------------------------------------------------------------ */
+
+/* ---------- Layout ---------- */
+
+.dahu-kit__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1.5rem;
+	align-items: start;
+}
+
+/* The picker carries the theme's buybox classes: without a theme it has to be
+   given the same vertical stacking. :where() keeps specificity at zero, so the
+   theme's rules win when it is active. */
+:where(.dahu-kit__panel) {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	min-width: 0;
+}
+
+/* ---------- Left-hand column: summary ---------- */
+
+.dahu-kit__recap {
+	padding: 1rem;
+	border-radius: var(--dahu-kit-radius);
+	background: var(--dahu-kit-surface);
+}
+
+@media (min-width: 64em) {
+	.dahu-kit__recap {
+		padding: 1.25rem 1.25rem 1.25rem 1.75rem;
+	}
+}
+
+/* Right-hand column: photo + short description. */
+.dahu-kit__info {
+	--dahu-kit-info-pad: 1rem;
+	--dahu-kit-info-radius: var(--dahu-kit-radius);
+	padding: var(--dahu-kit-info-pad);
+	border-radius: var(--dahu-kit-info-radius);
+	background: var(--dahu-kit-surface);
+}
+
+/* “Square” corner shape (a product setting, the attribute set by the server):
+   both side columns with no rounding. The photo of the right-hand column
+   follows through --dahu-kit-info-radius. */
+.dahu-kit[data-dahu-kit-card-corners="square"] :is(.dahu-kit__recap, .dahu-kit__info) {
+	--dahu-kit-info-radius: 0px;
+	border-radius: 0;
+}
+
+.dahu-kit__info-name {
+	margin: 0;
+	font-weight: 600;
+}
+
+.dahu-kit__info-text > :first-child {
+	margin-top: 0;
+}
+
+.dahu-kit__info-text > :last-child {
+	margin-bottom: 0;
+}
+
+/* Icon bar of the right-hand column (Description, Specifications, the
+   “products supplied with” key). Active icon: a light background. */
+.dahu-kit__info-tool {
+	border-radius: var(--dahu-kit-radius-small);
+	transition: background-color .15s ease, opacity .15s ease;
+}
+
+.dahu-kit__info-tool:not(:disabled):not(.is-soon):hover,
+.dahu-kit__info-tool.is-active {
+	background-color: rgba(0, 0, 0, .06);
+}
+
+.dahu-kit__info-tool:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 1px;
+}
+
+/* Specifications table in the column: tight rows. */
+.dahu-kit__info-text--caracteristiques :is(th, td) {
+	padding: .35rem 0;
+	text-align: left;
+	vertical-align: top;
+}
+
+.dahu-kit__info-text--caracteristiques th {
+	padding-right: .75rem;
+	font-weight: 600;
+}
+
+.dahu-kit__recap-title {
+	margin: 0 0 .75rem;
+	font-size: .95rem;
+	font-weight: 600;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+	opacity: .8;
+}
+
+.dahu-kit__recap-steps {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.dahu-kit__recap-step {
+	border-top: 1px solid var(--dahu-kit-border);
+}
+
+.dahu-kit__recap-step:first-child {
+	border-top: 0;
+}
+
+.dahu-kit__recap-link {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	width: 100%;
+	padding: .6rem 0;
+	text-align: left;
+	color: inherit;
+	background: none;
+	border: 0;
+	cursor: pointer;
+	transition: opacity var(--dahu-kit-transition);
+}
+
+.dahu-kit__recap-link:hover {
+	opacity: 1;
+}
+
+.dahu-kit__recap-link:focus-visible {
+	outline: 2px solid var(--dahu-kit-accent);
+	outline-offset: 2px;
+}
+
+/* States: upcoming steps dimmed, the current step brought forward. */
+.dahu-kit__recap-step.is-todo .dahu-kit__recap-link {
+	opacity: .55;
+}
+
+.dahu-kit__recap-step.is-current .dahu-kit__recap-link {
+	opacity: 1;
+}
+
+.dahu-kit__recap-step.is-current .dahu-kit__recap-label {
+	color: var(--dahu-kit-text);
+	text-decoration: underline;
+	text-decoration-color: var(--dahu-kit-accent);
+	text-decoration-thickness: 2px;
+	text-underline-offset: .2em;
+}
+
+.dahu-kit__recap-thumb {
+	flex: 0 0 auto;
+	width: 2.5rem;
+	height: 2.5rem;
+	object-fit: contain;
+	border-radius: var(--dahu-kit-radius-small);
+	background: var(--dahu-kit-surface-inner);
+}
+
+.dahu-kit__recap-bullet {
+	flex: 0 0 auto;
+	width: .6rem;
+	height: .6rem;
+	margin: 0 .95rem;
+	border-radius: 50%;
+	background: currentColor;
+	opacity: .4;
+}
+
+.dahu-kit__recap-step.is-done .dahu-kit__recap-bullet {
+	background: var(--dahu-kit-accent);
+	opacity: 1;
+}
+
+.dahu-kit__recap-text {
+	display: flex;
+	flex-direction: column;
+	gap: .15rem;
+	min-width: 0;
+}
+
+.dahu-kit__recap-label {
+	font-size: .8rem;
+	letter-spacing: .03em;
+	text-transform: uppercase;
+	opacity: .75;
+}
+
+.dahu-kit__recap-value {
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.dahu-kit__recap-value--empty {
+	font-weight: 400;
+	opacity: .7;
+}
+
+.dahu-kit__recap-price {
+	font-size: .9rem;
+}
+
+.dahu-kit__recap-total {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: .5rem;
+	margin-top: 1rem;
+	padding-top: .85rem;
+	border-top: 1px solid var(--dahu-kit-border);
+}
+
+.dahu-kit__recap-total-label {
+	font-weight: 600;
+}
+
+.dahu-kit__recap-total-price {
+	margin-left: auto;
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+.dahu-kit__recap-total-weight {
+	flex: 1 0 100%;
+	font-size: .85rem;
+	opacity: .75;
+}
+
+/* ---------- Collapsible banner (below 64em) ---------- */
+
+.dahu-kit__recap-toggle {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	width: 100%;
+	padding: 0;
+	text-align: left;
+	color: inherit;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.dahu-kit__recap-toggle-step {
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.dahu-kit__recap-toggle-price {
+	margin-left: auto;
+	font-weight: 700;
+}
+
+.dahu-kit__recap-toggle-icon {
+	flex: 0 0 auto;
+	width: .6rem;
+	height: .6rem;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(45deg) translate(-.15rem, -.15rem);
+	transition: transform var(--dahu-kit-transition);
+}
+
+.dahu-kit__recap.is-expanded .dahu-kit__recap-toggle-icon {
+	transform: rotate(-135deg) translate(-.15rem, -.15rem);
+}
+
+/* Collapsed by default on mobile; always expanded in two columns. */
+@media (max-width: 63.999em) {
+	.dahu-kit__recap {
+		position: sticky;
+		top: 0;
+		z-index: 2;
+	}
+
+	.dahu-kit__recap-body {
+		display: none;
+		margin-top: .85rem;
+	}
+
+	.dahu-kit__recap.is-expanded .dahu-kit__recap-body {
+		display: block;
+	}
+}
+
+@media (min-width: 64em) {
+	.dahu-kit__recap-toggle {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dahu-kit__recap-toggle-icon {
+		transition: none;
+	}
+}
+
+/* ------------------------------------------------------------------ */
+/* Vignette mode (data-dahu-kit-card-style="vignette" on .dahu-kit)    */
+/* ------------------------------------------------------------------ */
+/* Fallback skin only: the bare minimum for the vignettes and the drawer to
+   stay readable. */
+
+.dahu-kit__option-text {
+	font-size: .9rem;
+	line-height: 1.5;
+	opacity: .85;
+}
+
+.dahu-kit__option-text > :first-child {
+	margin-top: 0;
+}
+
+.dahu-kit__option-text > :last-child {
+	margin-bottom: 0;
+}
+
+.dahu-kit__option-actions {
+	padding-top: .25rem;
+}
+
+/* “More info” drawer: light background, like a product page panel. */
+.dahu-kit-drawer__overlay {
+	background: rgba(0, 0, 0, .55);
+}
+
+.dahu-kit-drawer {
+	color: #1C1A1A;
+	background: #FFFFFF;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, .25);
+}
+
+.dahu-kit-drawer__close {
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	font-size: 1.5rem;
+	line-height: 1;
+	color: inherit;
+	background: none;
+	border: 0;
+}
+
+.dahu-kit-drawer__inner {
+	padding: 4rem 1.5rem 2.5rem;
+}
+
+@media (min-width: 40em) {
+	.dahu-kit-drawer__inner {
+		padding-inline: 2.5rem;
+	}
+}
+
+.dahu-kit-drawer__title {
+	margin: 0 0 1.25rem;
+	line-height: 1.15;
+}
+
+.dahu-kit-drawer__title:focus {
+	outline: none; /* programmatic focus target on opening */
+}
+
+.dahu-kit-drawer__tabs {
+	margin-bottom: 1.25rem;
+}
+
+.dahu-kit-drawer__tab {
+	padding: .4rem .85rem;
+	color: inherit;
+	background: none;
+	border: 1px solid currentColor;
+	opacity: .65;
+	cursor: pointer;
+}
+
+.dahu-kit-drawer__tab.is-active {
+	opacity: 1;
+	color: var(--dahu-kit-on-accent, #1C1A1A);
+	background: var(--color-brand-green, #D5EB17);
+	border-color: var(--color-brand-green, #D5EB17);
+}
+
+.dahu-kit-drawer__body {
+	line-height: 1.7;
+}
+
+/* Saved configurations — fallback skin. */
+.dahu-kit__restore {
+	padding: .8em 1em;
+	border-left: 3px solid var(--dahu-kit-accent);
+	background: var(--dahu-kit-surface-inner);
+	border-radius: var(--dahu-kit-radius-small);
+}
+
+.dahu-kit__restore.has-issues {
+	border-left-color: var(--color-error, #a00);
+}
+
+.dahu-kit__restore-issue {
+	font-style: italic;
+}
+
+/* ---------- Add-on presented as a yes / no question ----------
+   The front-side row (.dahu-kit__question-toggle) has been removed. */
+/* Name of the chosen product at the top of the back of the question. */
+.dahu-kit__option-question-product {
+	font-size: .8em;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+}
+
+.dahu-kit__question-text {
+	font-weight: 600;
+}
+
+.dahu-kit__answer.is-selected {
+	border-color: var(--dahu-kit-accent);
+	box-shadow: inset 0 0 0 1px var(--dahu-kit-accent);
+}
+
+.dahu-kit__question-more {
+	font-size: .85em;
+	opacity: .8;
+}
+
+/* “?” popover of a range — fallback skin. The popover is a child of <body>,
+   outside .dahu-kit: it declares its own tokens, on the same theme variables,
+   with the same fallbacks. */
+.dahu-kit__tier-help {
+	width: 1.15em;
+	height: 1.15em;
+	padding: 0;
+	margin: 0;
+	color: inherit;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+}
+
+.dahu-kit__tier-help[aria-expanded="true"] {
+	color: var(--dahu-kit-text);
+	box-shadow: 0 0 0 2px var(--color-brand-green, #D5EB17);
+}
+
+.dahu-kit__tier-help:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 1px;
+}
+
+.dahu-kit-popover {
+	--dahu-kit-popover-surface: var(--color-surface-2, #F6F7F7);
+	--dahu-kit-popover-text: var(--color-on-surface, #1D2327);
+	--dahu-kit-popover-border: var(--color-border, #C9CDD1);
+}
+
+/* Fixed and centred: the media is edge to edge, and the inner padding moves to
+   the text column (.dahu-kit-popover__content). */
+.dahu-kit-popover__box {
+	font-size: .95rem;
+	line-height: 1.5;
+	color: var(--dahu-kit-popover-text);
+	background: var(--dahu-kit-popover-surface);
+	border: 1px solid var(--dahu-kit-popover-border);
+	border-radius: var(--radius-large, 1.25rem);
+	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+}
+
+.dahu-kit-popover__content {
+	padding: .75rem .75rem 1rem 1rem;
+}
+
+.dahu-kit-popover__title {
+	font-weight: 700;
+}
+
+.dahu-kit-popover__close {
+	width: 2rem;
+	height: 2rem;
+	margin: -.25rem -.25rem 0 .5rem;
+	padding: .35rem;
+	color: inherit;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+}
+
+.dahu-kit-popover__text {
+	margin-top: .5rem;
+}
+
+.dahu-kit-popover__text a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+/* Waiting text of an empty range. */
+.dahu-kit-popover__placeholder {
+	opacity: .7;
+}
+
+/* Range badge on the cards: a rounded pill, in the colour of the range (the
+   functional stylesheet). */
+.dahu-kit__option-tier {
+	font-size: .75em;
+	font-weight: 600;
+	line-height: 1.7;
+	border-radius: 999px;
+}
