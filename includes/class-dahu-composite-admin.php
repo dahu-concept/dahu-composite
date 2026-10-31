@@ -115,7 +115,9 @@ class Dahu_Composite_Admin {
 			'copyFailed'                => __( 'Copy failed', 'dahu-composite' ),
 			'dragToReorder'             => __( 'Drag to reorder', 'dahu-composite' ),
 			'cannotBeUndone'            => __( 'This cannot be undone without reloading the page.', 'dahu-composite' ),
+			/* translators: %s: HTTP status code returned by the request. */
 			'httpError'                 => __( 'Error %s', 'dahu-composite' ),
+			/* translators: %s: name of the item that could not be found. */
 			'notFound'                  => __( '%s (not found)', 'dahu-composite' ),
 
 			// Component box: type, choice mode, screen and quantity.
@@ -165,21 +167,28 @@ class Dahu_Composite_Admin {
 			'badgeProducts'             => __( 'Products', 'dahu-composite' ),
 			'badgeMultiple'             => __( 'multiple choice', 'dahu-composite' ),
 			'badgeOptional'             => __( 'optional', 'dahu-composite' ),
+			/* translators: %s: name of the screen the component is shown on. */
 			'badgeScreen'               => __( 'screen: %s', 'dahu-composite' ),
+			/* translators: %s: number of options. */
 			'optionCount'               => __( 'Options: %s', 'dahu-composite' ),
+			/* translators: %s: number of ranges. */
 			'rangeCount'                => __( 'Ranges: %s', 'dahu-composite' ),
+			/* translators: %s: number of restricted options. */
 			'restrictedCount'           => __( 'Restricted: %s', 'dahu-composite' ),
 			'everythingPublic'          => __( 'everything is public', 'dahu-composite' ),
 
 			// Anchoring an add-on to the card of another component.
 			'anchorNextTo'              => __( 'Anchor next to', 'dahu-composite' ),
 			'anchorAutomatic'           => __( '— Automatic (the chosen card of the first component on the screen) —', 'dahu-composite' ),
+			/* translators: %s: name of the component, which sits on another screen. */
 			'anchorOtherScreen'         => __( '%s (other screen)', 'dahu-composite' ),
 			'anchorCard'                => __( 'Card', 'dahu-composite' ),
 			'anchorChosenCard'          => __( '— Chosen card —', 'dahu-composite' ),
+			/* translators: %s: name of the card that is no longer among the options. */
 			'anchorAbsent'              => __( '%s (absent from the options)', 'dahu-composite' ),
 
 			// Categories (ranges) of a component.
+			/* translators: %s: number of categories. */
 			'rangesPanel'               => __( 'Categories / ranges (%s)', 'dahu-composite' ),
 			'rangeAdd'                  => __( 'Add a category', 'dahu-composite' ),
 			'rangeCreate'               => __( 'Create a category', 'dahu-composite' ),
@@ -189,6 +198,7 @@ class Dahu_Composite_Admin {
 			'rangeNewline'              => __( 'On its own line', 'dahu-composite' ),
 			'rangeBadge'                => __( 'Badge', 'dahu-composite' ),
 			'rangeTint'                 => __( 'Coloured background', 'dahu-composite' ),
+			/* translators: %s: the default colour, in hexadecimal. */
 			'colourDefault'             => __( 'Default (%s)', 'dahu-composite' ),
 			'tierMedia'                 => __( 'Tooltip image or video (optional)', 'dahu-composite' ),
 			'tierMediaUrl'              => __( 'or a video link (YouTube, Vimeo, .mp4 file)', 'dahu-composite' ),
@@ -209,6 +219,7 @@ class Dahu_Composite_Admin {
 			'helpImagePanel'            => __( 'Help image', 'dahu-composite' ),
 			'variantsPanel'             => __( 'Variations offered', 'dahu-composite' ),
 			'variantsAll'               => __( 'all', 'dahu-composite' ),
+			/* translators: %s: the variants the restriction applies to. */
 			'variantsRestrictedCount'   => __( 'restricted on %s', 'dahu-composite' ),
 			'visibilityPanel'           => __( 'Public visibility', 'dahu-composite' ),
 			'publicLabel'               => __( 'public', 'dahu-composite' ),
@@ -216,7 +227,9 @@ class Dahu_Composite_Admin {
 			'restrictedEveryVariant'    => __( 'restricted (every variant)', 'dahu-composite' ),
 			'noneCard'                  => __( '“None” card', 'dahu-composite' ),
 			'valueNoSelection'          => __( '— No selection —', 'dahu-composite' ),
+			/* translators: %s: name of the value. */
 			'valueEveryVariant'         => __( '%s — every variant', 'dahu-composite' ),
+			/* translators: %s: name of the value. */
 			'valueVariantPending'       => __( '%s — variant not chosen yet', 'dahu-composite' ),
 
 			// Options of a branch component.
@@ -234,6 +247,7 @@ class Dahu_Composite_Admin {
 			'mediaHelpImage'            => __( 'Help image (back of the card)', 'dahu-composite' ),
 			/* translators: %s is the title of the component. */
 			'mediaNoneImage'            => __( 'Image of the “None” card — %s', 'dahu-composite' ),
+			/* translators: %s: name of the category the media belongs to. */
 			'mediaTierTooltip'          => __( 'Tooltip image or video “%s”', 'dahu-composite' ),
 			'mediaUseThisVisual'        => __( 'Use this visual', 'dahu-composite' ),
 			'mediaUseThisImage'         => __( 'Use this image', 'dahu-composite' ),
@@ -242,44 +256,74 @@ class Dahu_Composite_Admin {
 			// Duplicating and deleting.
 			/* translators: %s is the name of the item being duplicated. */
 			'copySuffix'                => __( '%s (copy)', 'dahu-composite' ),
+			/* translators: %s: name of the category about to be deleted. */
 			'tierDeleteConfirm'         => __( 'Delete the category “%s”?', 'dahu-composite' ),
 			'tierDeleteAttached'        => array(
+				/* translators: %s: number of options attached to the category. */
 				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 1, 'dahu-composite' ),
+				/* translators: %s: number of options attached to the category. */
 				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 2, 'dahu-composite' ),
 			),
 			'tierDeleteNoOption'        => __( 'No option is attached to it.', 'dahu-composite' ),
+			/* translators: %s: name of the component about to be deleted. */
 			'componentDeleteConfirm'    => __( 'Delete the component “%s”?', 'dahu-composite' ),
 			'componentDeleteLinked'     => array(
+				/* translators: %s: number of scenarios that refer to the component. */
 				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 1, 'dahu-composite' ),
+				/* translators: %s: number of scenarios that refer to the component. */
 				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 2, 'dahu-composite' ),
 			),
+			/* translators: %s: name of the scenario about to be deleted. */
 			'scenarioDeleteConfirm'     => __( 'Delete the scenario “%s”?', 'dahu-composite' ),
 
 			// Import and export of the configuration JSON.
+			/* translators: %s: the error reported by the JSON parser. */
 			'importInvalidJson'         => __( 'Invalid JSON: %s', 'dahu-composite' ),
 			'importNoComponents'        => __( 'Invalid JSON: the “components” key is missing.', 'dahu-composite' ),
 			'importDone'                => __( 'Configuration imported: save the product to apply it.', 'dahu-composite' ),
+			/* translators: %s: the list of things that were kept, built from the lines below. */
 			'importKept'                => __( 'Already set in the admin and absent from the imported JSON, so kept: %s.', 'dahu-composite' ),
+			/* translators: %s: number of images. */
 			'keptImages'                => __( '%s image(s)', 'dahu-composite' ),
+			/* translators: %s: number of help images. */
 			'keptHelpImages'            => __( '%s help image(s)', 'dahu-composite' ),
+			/* translators: %s: number of option titles. */
 			'keptOptionTitles'          => __( '%s option title(s)', 'dahu-composite' ),
+			/* translators: %s: number of option labels. */
 			'keptOptionLabels'          => __( '%s option label(s)', 'dahu-composite' ),
+			/* translators: %s: number of option descriptions. */
 			'keptOptionDescriptions'    => __( '%s option description(s)', 'dahu-composite' ),
+			/* translators: %s: number of badges. */
 			'keptBadges'                => __( '%s badge(s)', 'dahu-composite' ),
+			/* translators: %s: number of component titles. */
 			'keptComponentTitles'       => __( '%s component title(s)', 'dahu-composite' ),
+			/* translators: %s: number of component layouts. */
 			'keptComponentLayouts'      => __( '%s component layout(s)', 'dahu-composite' ),
+			/* translators: %s: number of component descriptions. */
 			'keptComponentDescriptions' => __( '%s component description(s)', 'dahu-composite' ),
+			/* translators: %s: number of component info bubble texts. */
 			'keptComponentInfo'         => __( '%s component info bubble text(s)', 'dahu-composite' ),
+			/* translators: %s: number of “None” card images. */
 			'keptNoneImages'            => __( '%s “None” card image(s)', 'dahu-composite' ),
+			/* translators: %s: number of range info bubble texts. */
 			'keptRangeInfo'             => __( '%s range info bubble text(s)', 'dahu-composite' ),
+			/* translators: %s: number of range media. */
 			'keptRangeMedia'            => __( '%s range media', 'dahu-composite' ),
+			/* translators: %s: number of range video links. */
 			'keptRangeVideoLinks'       => __( '%s range video link(s)', 'dahu-composite' ),
+			/* translators: %s: number of card links. */
 			'keptCardLinks'             => __( '%s card link(s)', 'dahu-composite' ),
+			/* translators: %s: number of offered variation choices. */
 			'keptOfferedVariations'     => __( '%s offered variation choices', 'dahu-composite' ),
+			/* translators: %s: number of variant help images. */
 			'keptVariantHelpImages'     => __( '%s variant help images', 'dahu-composite' ),
+			/* translators: %s: number of range colours. */
 			'keptRangeColours'          => __( '%s range colour(s)', 'dahu-composite' ),
+			/* translators: %s: number of “On its own line” settings. */
 			'keptRangeNewline'          => __( '%s “On its own line” setting(s)', 'dahu-composite' ),
+			/* translators: %s: number of “Badge” settings. */
 			'keptRangeBadge'            => __( '%s “Badge” setting(s)', 'dahu-composite' ),
+			/* translators: %s: number of “Coloured background” settings. */
 			'keptRangeTint'             => __( '%s “Coloured background” setting(s)', 'dahu-composite' ),
 
 			// Scenarios box: fields, actions and conditions.
@@ -293,7 +337,9 @@ class Dahu_Composite_Admin {
 			'actionDeadEnd'             => __( 'Dead end (stop the configurator with a message)', 'dahu-composite' ),
 			'blockMessageField'         => __( 'Message shown (dead end)', 'dahu-composite' ),
 			'restartField'              => __( 'Resume at step', 'dahu-composite' ),
+			/* translators: %s: name of the component whose options can be hidden. */
 			'scenMaskedField'           => __( 'Options to hide in “%s”', 'dahu-composite' ),
+			/* translators: %s: name of the component whose options can be kept visible. */
 			'scenShownField'            => __( 'Options to keep visible in “%s”', 'dahu-composite' ),
 			'condOn'                    => __( 'Condition on', 'dahu-composite' ),
 			'condIsOneOf'               => __( 'is one of', 'dahu-composite' ),
@@ -310,20 +356,28 @@ class Dahu_Composite_Admin {
 
 			// Scenarios box: readable sentence of a scenario.
 			'scenDeadEnd'               => __( 'Dead end', 'dahu-composite' ),
+			/* translators: %s: name of the step that is hidden. */
 			'scenHidesStep'             => __( 'Hides the step %s', 'dahu-composite' ),
+			/* translators: %s: names of the steps that are hidden. */
 			'scenHidesSteps'            => __( 'Hides the steps %s', 'dahu-composite' ),
+			/* translators: %s: name of the component whose options are hidden. */
 			'scenHidesOptions'          => __( 'Hides options of %s', 'dahu-composite' ),
 			/* translators: 1: name of the target component, 2: the list of options kept visible. */
 			'scenShowsOnly'             => __( 'Shows in %1$s only %2$s', 'dahu-composite' ),
 			'scenNoOptionChosen'        => __( '(no option chosen)', 'dahu-composite' ),
+			/* translators: %s: name of the component that carries no value. */
 			'scenNoValue'               => __( '%s (no value)', 'dahu-composite' ),
 			/* translators: 1: what the scenario does, 2: the list of its conditions. */
 			'scenIf'                    => __( '%1$s if %2$s', 'dahu-composite' ),
 			/* translators: joins two conditions of a scenario; keep the surrounding spaces. */
 			'scenAnd'                   => __( ' and ', 'dahu-composite' ),
+			/* translators: %s: name of the scenario. */
 			'scenAlwaysActive'          => __( '%s (always active)', 'dahu-composite' ),
+			/* translators: %s: the customer number. */
 			'customerNumber'            => __( 'customer #%s', 'dahu-composite' ),
+			/* translators: %s: the list of customers the condition includes. */
 			'customerIn'                => __( 'customer ∈ {%s}', 'dahu-composite' ),
+			/* translators: %s: the list of customers the condition excludes. */
 			'customerNotIn'             => __( 'customer ∉ {%s}', 'dahu-composite' ),
 
 			// Customer exceptions and the rules the server generates from them.
@@ -341,11 +395,15 @@ class Dahu_Composite_Admin {
 			'excSentenceAll'            => __( '%1$s — %2$s: every restricted option and variation', 'dahu-composite' ),
 			/* translators: 1: name of the customer, 2: name of the component, 3: number of reserved values. */
 			'excSentenceList'           => array(
+				/* translators: 1: name of the component, 2: name of the value, 3: number of reserved values. */
 				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 1, 'dahu-composite' ),
+				/* translators: 1: name of the component, 2: name of the value, 3: number of reserved values. */
 				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 2, 'dahu-composite' ),
 			),
 			'reservedValues'            => array(
+				/* translators: %s: number of reserved values. */
 				_n( '%s reserved value', '%s reserved values', 1, 'dahu-composite' ),
+				/* translators: %s: number of reserved values. */
 				_n( '%s reserved value', '%s reserved values', 2, 'dahu-composite' ),
 			),
 			'nothingRestricted'         => __( 'nothing restricted', 'dahu-composite' ),
@@ -356,11 +414,15 @@ class Dahu_Composite_Admin {
 			'generatedNone'             => __( 'Generated rules: none (nothing is restricted).', 'dahu-composite' ),
 			/* translators: 1: number of values hidden, 2: name of the component, 3: who the rule applies to, 4: the values. */
 			'generatedLine'             => array(
+				/* translators: 1: number of hidden values, 2: name of the component, 3: who the restriction applies to, 4: the hidden values themselves. */
 				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 1, 'dahu-composite' ),
+				/* translators: 1: number of hidden values, 2: name of the component, 3: who the restriction applies to, 4: the hidden values themselves. */
 				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 2, 'dahu-composite' ),
 			),
 			'generatedForEveryone'      => __( 'for everyone', 'dahu-composite' ),
+			/* translators: %s: who the generated journey is reserved for. */
 			'generatedOnlyFor'          => __( 'for %s only', 'dahu-composite' ),
+			/* translators: %s: who the generated journey is not offered to. */
 			'generatedExceptFor'        => __( 'for everyone, except %s', 'dahu-composite' ),
 
 			// Simulator: journey, totals and configuration serial.
@@ -371,13 +433,17 @@ class Dahu_Composite_Admin {
 			'simSummaryStep'            => __( 'Summary', 'dahu-composite' ),
 			/* translators: 1: number of steps, 2: the steps, joined by an arrow. */
 			'simPath'                   => array(
+				/* translators: 1: number of steps, 2: the steps themselves. */
 				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 1, 'dahu-composite' ),
+				/* translators: 1: number of steps, 2: the steps themselves. */
 				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 2, 'dahu-composite' ),
 			),
 			'simDeadEnd'                => __( 'Dead end.', 'dahu-composite' ),
+			/* translators: %s: name of the step the customer can resume at. */
 			'simRestartAt'              => __( 'Resume offered at step: %s', 'dahu-composite' ),
 			'simOptionsUnavailable'     => __( 'Options unavailable (component renamed?).', 'dahu-composite' ),
 			'simNoOptionAvailable'      => __( 'No option available with these choices.', 'dahu-composite' ),
+			/* translators: %s: name of the parent product. */
 			'simVariantOf'              => __( '— Variant of %s —', 'dahu-composite' ),
 			'simChooseVariant'          => __( '— Choose a variant —', 'dahu-composite' ),
 			'simStepToFill'             => __( 'Step to fill in.', 'dahu-composite' ),
@@ -685,6 +751,7 @@ class Dahu_Composite_Admin {
 				'options' => array(
 					'vignette' => __( 'Thumbnail', 'dahu-composite' ),
 					'card'     => __( 'Card', 'dahu-composite' ),
+					'grid'     => __( 'Grid', 'dahu-composite' ),
 				),
 			),
 			'card_corners' => array(

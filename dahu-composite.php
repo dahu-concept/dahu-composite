@@ -5,7 +5,7 @@
  * Description: Server-driven configurable product kits for WooCommerce. Structure, scenarios, validation, pricing and weight are computed server side and exposed through a REST API, so the configurator stays fast and the cart always matches what was validated.
  * Version:     0.78.1
  * Author:      Hugo Vial-Jaime
- * Author URI:  mailto:contact@dahu-concept.fr
+ * Author URI:  https://dahu-concept.fr
  * License:     MIT
  * License URI: https://opensource.org/licenses/MIT
  * Text Domain: dahu-composite
@@ -14,7 +14,7 @@
  * Requires PHP:      7.4
  * Requires Plugins: woocommerce
  * WC requires at least: 7.0
- * WC tested up to:   11.1
+ * WC tested up to:   11.2
  *
  * @package DahuComposite
  */

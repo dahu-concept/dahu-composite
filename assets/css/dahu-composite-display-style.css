@@ -488,7 +488,7 @@
 /* Added: a solid pill, with a tick in front of the name. */
 .dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple.is-added {
 	border-color: var(--dahu-kit-accent, #5b6800);
-	background: color-mix(in srgb, var(--color-brand-green, #d5eb17) 70%, transparent);
+	background: color-mix(in srgb, var(--color-brand-green, #1FA396) 70%, transparent);
 }
 
 .dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple.is-added .dahu-kit__option-name::before {

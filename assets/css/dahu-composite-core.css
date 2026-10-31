@@ -1725,6 +1725,57 @@ body.dahu-kit-drawer-is-open {
 	border-radius: var(--dahu-kit-radius) 0 0 var(--dahu-kit-radius);
 }
 
+/* ---------------------------------------------------------------------------
+   GRID CARDS: the photo on top, the text under it.
+   ---------------------------------------------------------------------------
+   Added 2026-10-31. Until then a single-choice component could show the photo
+   BESIDE the text (`vignette`) or no photo at all (`card`, whose name says the
+   opposite of what it does). The product grid every WooCommerce shopper knows
+   — photo, name, price, button, stacked — existed only for MULTIPLE-choice
+   components, through the per-component `display_style = image`. Nobody
+   expects that distinction from the outside, and the screenshot of a
+   configurator is the first thing a visitor judges.
+
+   No new markup: `grid` renders exactly what `vignette` renders, and only the
+   layout differs. The front's readMode() returns true for both, and these
+   rules put the figure back in the flow. That is why the selectors below
+   mirror the vignette ones above, with the root attribute added — same
+   elements, different placement.
+
+   The figure is pulled out to the card's edges with negative margins rather
+   than by removing the card's padding: the text under it keeps the padding it
+   needs, and the photo still reaches the rounded corners.
+
+   The attribute sits ON `.dahu-kit`, not on an ancestor of it. Written the
+   other way round — `[data-…] .dahu-kit` — these rules match nothing at all
+   and the cards keep their vignette layout in silence, which is exactly what
+   the first attempt did.
+   --------------------------------------------------------------------------- */
+
+.dahu-kit[data-dahu-kit-card-style="grid"] .dahu-kit__option:is(.dahu-kit__option--vignette, .dahu-kit__option--square):not(.dahu-kit__option--path) > .dahu-kit__option-flip > .dahu-kit__option-face--front:has(> .dahu-kit__option-media),
+.dahu-kit[data-dahu-kit-card-style="grid"] .dahu-kit__option:is(.dahu-kit__option--vignette, .dahu-kit__option--square):not(.dahu-kit__option--path):not(:has(> .dahu-kit__option-flip)):has(> .dahu-kit__option-media) {
+	/* The left gutter existed only to clear the absolutely placed thumbnail. */
+	padding-left: var( --dahu-kit-option-pad );
+	min-height: 0;
+}
+
+.dahu-kit[data-dahu-kit-card-style="grid"] .dahu-kit__option.dahu-kit__option--vignette:not(.dahu-kit__option--path) > .dahu-kit__option-flip > .dahu-kit__option-face--front > .dahu-kit__option-media,
+.dahu-kit[data-dahu-kit-card-style="grid"] .dahu-kit__option.dahu-kit__option--vignette:not(.dahu-kit__option--path) > .dahu-kit__option-media {
+	position: static;
+	width: auto;
+	height: auto;
+	aspect-ratio: 4 / 3;
+	margin: calc( -1 * var( --dahu-kit-option-pad ) ) calc( -1 * var( --dahu-kit-option-pad ) ) .5rem;
+	border-radius: var( --dahu-kit-radius ) var( --dahu-kit-radius ) 0 0;
+}
+
+.dahu-kit[data-dahu-kit-card-style="grid"] .dahu-kit__option--vignette:not(.dahu-kit__option--path) {
+	/* Narrower than the 300 px of a vignette: a grid of cards wants several
+	   per row, and the name now has the card's whole width to sit on. */
+	width: 15rem;
+}
+
+
 .dahu-kit .dahu-kit__option.dahu-kit__option--vignette:not(.dahu-kit__option--path) > .dahu-kit__option-media {
 	top: -1px;
 	bottom: -1px;

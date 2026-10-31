@@ -89,7 +89,7 @@ The configurator reads its palette from CSS custom properties, each with a light
 | `--color-surface-3` | `#ECEEEF` | inner surfaces |
 | `--color-on-surface` | `#1D2327` | text |
 | `--color-border` | `#C9CDD1` | borders, separators |
-| `--color-brand-green` | `#D5EB17` | accent (selected state, primary buttons) |
+| `--color-brand-green` | `#1FA396` | accent (selected state, primary buttons) |
 | `--color-on-brand-green` | `#1C1A1A` | text on the accent |
 
 A theme imposes its own palette by defining these on `:root`; the theme's values always win over the fallbacks. For a dark theme, define the surface and text variables and the whole configurator follows:

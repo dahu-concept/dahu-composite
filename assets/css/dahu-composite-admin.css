@@ -177,6 +177,55 @@
 	font-size: 14px;
 }
 
+/* WooCommerce floats EVERY label in an options panel, and that is the cause.
+ *
+ * `.woocommerce_options_panel label, .woocommerce_options_panel legend` sets
+ * `float: left; width: 150px`, because WooCommerce's own markup in these panels
+ * is `<p class="form-field"><label>Field</label><input></p>` — the label IS the
+ * left column there. Our panels put the field name in a `<th>` and use `<label>`
+ * for the individual choices, so every choice became a 150px floated block and
+ * they stacked on top of one another and on the `<th>`.
+ *
+ * Measured on 2026-10-31 in a browser: on the Appearance tab, "Card style" and
+ * "Thumbnail" were painted over each other, and so were the two radio labels.
+ * Same on the Simulator tab. It reads as a broken screen, and it is.
+ *
+ * The specificity is the whole point: WooCommerce's selector scores (0,2,0),
+ * and `.dahu-kit-admin__appearance-choice` alone scores (0,1,0), so the plain
+ * class never stood a chance — a floated element is blockified anyway, which is
+ * why its `display: inline-block` had no visible effect either. Adding the
+ * `label` element to our selector makes it (0,2,1), which wins without an `id`,
+ * without `!important`, and without depending on which sheet loads last.
+ *
+ * THREE properties, not two. WooCommerce's rule is
+ * `float: left; width: 150px; margin: 0 0 0 -150px` — the negative margin is
+ * what pulls its label into the gutter left of the field. Resetting only
+ * `float` and `width` left that pull in place, and the choices were then
+ * painted 150px to the LEFT of their own cell, inside the `<th>`, in what
+ * looked like reversed order. Measured in the browser: `marginLeft: -150px` on
+ * every one of them.
+ *
+ * Worth recording how that was nearly missed: the first reading of the cascade
+ * asked the browser for `float`, `width` and `display` only, so the fourth
+ * declaration of the very rule being read never appeared. A probe that filters
+ * the properties it prints can hide the half of the rule that matters.
+ *
+ * Only these three are reset. Each class keeps its own layout below: that is
+ * the cause fixed once, not six symptoms patched separately — which is what
+ * `__check`'s two `!important` and `__tier-color`'s `label.` prefix were, each
+ * discovered on its own and each fighting this same rule.
+ */
+.woocommerce_options_panel label.dahu-kit-admin__appearance-choice,
+.woocommerce_options_panel label.dahu-kit-admin__filter,
+.woocommerce_options_panel label.dahu-kit-admin__check,
+.woocommerce_options_panel label.dahu-kit-admin__full,
+.woocommerce_options_panel label.dahu-kit-admin__sim-choice,
+.woocommerce_options_panel label.dahu-kit-admin__tier-color {
+	float: none;
+	width: auto;
+	margin-left: 0;
+}
+
 .dahu-kit-admin__appearance-choice {
 	display: inline-block;
 	margin-right: 20px;

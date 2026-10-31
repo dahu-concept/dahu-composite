@@ -22,7 +22,19 @@
 	--dahu-kit-surface-inner: var(--color-surface-3, #ECEEEF);
 	--dahu-kit-text: var(--color-on-surface, #1D2327);
 	--dahu-kit-border: var(--color-border, #C9CDD1);
-	--dahu-kit-accent: var(--color-brand-green, #D5EB17);
+	/* The fallback is the plugin's own green, not a shop's.
+	 *
+	 * It used to be #D5EB17, the brand green of the shop this plugin was ported
+	 * from. A theme that defines `--color-brand-green` still wins, which is the
+	 * point of the variable; but a plugin published on wordpress.org must not
+	 * carry one shop's brand colour as its default, and the chantier rule is
+	 * explicit that nothing specific to that shop ships here.
+	 *
+	 * #1FA396 measured against the ink already used on the accent (#1C1A1A):
+	 * 5.56:1, past the 4.5:1 a text needs. White on it measures 3.12:1 and is
+	 * therefore NOT an option — the dark ink stays. Both figures measured, not
+	 * estimated: the first draft of this comment said 6.6:1 from a guess. */
+	--dahu-kit-accent: var(--color-brand-green, #1FA396);
 	--dahu-kit-on-accent: var(--color-on-brand-green, #1C1A1A);
 	--dahu-kit-radius: var(--radius-large, 1.25rem);
 	--dahu-kit-radius-small: var(--radius, 0);
@@ -789,8 +801,8 @@
 .dahu-kit-drawer__tab.is-active {
 	opacity: 1;
 	color: var(--dahu-kit-on-accent, #1C1A1A);
-	background: var(--color-brand-green, #D5EB17);
-	border-color: var(--color-brand-green, #D5EB17);
+	background: var(--color-brand-green, #1FA396);
+	border-color: var(--color-brand-green, #1FA396);
 }
 
 .dahu-kit-drawer__body {
@@ -853,7 +865,7 @@
 
 .dahu-kit__tier-help[aria-expanded="true"] {
 	color: var(--dahu-kit-text);
-	box-shadow: 0 0 0 2px var(--color-brand-green, #D5EB17);
+	box-shadow: 0 0 0 2px var(--color-brand-green, #1FA396);
 }
 
 .dahu-kit__tier-help:focus-visible {

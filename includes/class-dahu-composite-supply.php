@@ -542,9 +542,12 @@ class Dahu_Composite_Supply {
 	private static function throw_add_error( $message ) {
 		$route_exception = 'Automattic\WooCommerce\StoreApi\Exceptions\RouteException';
 		if ( class_exists( $route_exception ) && self::is_store_api_request() ) {
-			throw new $route_exception( 'dahu_supply_add_failed', $message, 409 );
+			/* RouteException takes the error CODE first and the message second,
+			 * so it is the second argument that reaches the customer and the
+			 * second argument that has to be escaped. */
+			throw new $route_exception( 'dahu_supply_add_failed', esc_html( $message ), 409 );
 		}
-		throw new Exception( $message );
+		throw new Exception( esc_html( $message ) );
 	}
 
 	/**

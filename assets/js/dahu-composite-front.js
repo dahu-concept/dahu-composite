@@ -336,7 +336,17 @@
 	 * the summary on the left serves as navigation.
 	 */
 	function readMode(root) {
-		return root.getAttribute('data-dahu-kit-card-style') === 'vignette';
+		/*
+		 * True means “this card carries a photo”, not “this card is a vignette”.
+		 *
+		 * `grid` joined `vignette` on 2026-10-31. Both render the same markup —
+		 * the media figure plus the text — and only their LAYOUT differs, which
+		 * the stylesheet decides from `data-dahu-kit-card-style` on the root.
+		 * Threading a third mode through the renderer would have touched a file
+		 * of 282 kB covered by 258 checks to change nothing but a position.
+		 */
+		var mode = root.getAttribute('data-dahu-kit-card-style');
+		return mode === 'vignette' || mode === 'grid';
 	}
 
 	/**

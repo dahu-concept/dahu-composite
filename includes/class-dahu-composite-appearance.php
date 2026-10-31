@@ -5,7 +5,18 @@
  * the default) and its attribute on the container of the configurator. Adding
  * a setting = one line here; box, saving, attributes and simulator follow.
  *
- *  - card_style   : vignette | card
+ *  - card_style   : vignette | card | grid
+ *
+ *    vignette : the photo beside the text, in a narrow column on the left.
+ *    card     : a square card with NO photo. The name says the opposite of
+ *               what it does, and it predates this comment.
+ *    grid     : the photo ON TOP, the text under it — the shape a WooCommerce
+ *               shop shows its products in, and the one visitors recognise.
+ *               Added 2026-10-31: until then a single-choice component could
+ *               only have the photo beside the text or no photo at all, and
+ *               the product grid existed solely for MULTIPLE-choice components
+ *               (`display_style = image`), which is a distinction nobody
+ *               expects from the outside.
  *      vignette = cards with a photo, a subtitle and “More info”, with no
  *                 right-hand column; card = fixed-size cards, with a preview
  *                 in the right-hand column.
@@ -57,7 +68,7 @@ class Dahu_Composite_Appearance {
 	 * container.
 	 */
 	const SETTINGS = array(
-		'card_style'   => array( 'meta' => '_dahu_kit_card_style', 'values' => array( 'vignette', 'card' ), 'attribute' => 'data-dahu-kit-card-style' ),
+		'card_style'   => array( 'meta' => '_dahu_kit_card_style', 'values' => array( 'vignette', 'card', 'grid' ), 'attribute' => 'data-dahu-kit-card-style' ),
 		'card_corners' => array( 'meta' => '_dahu_kit_card_corners', 'values' => array( 'square', 'rounded' ), 'attribute' => 'data-dahu-kit-card-corners' ),
 		'icons'        => array( 'meta' => '_dahu_kit_icons', 'values' => array( 'on', 'off' ), 'attribute' => 'data-dahu-kit-icons' ),
 		'info_desktop' => array( 'meta' => '_dahu_kit_info_desktop', 'values' => array( 'card', 'lateral', 'extended' ), 'attribute' => 'data-dahu-kit-info-desktop' ),
