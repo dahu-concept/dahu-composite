@@ -1,0 +1,510 @@
+/*
+ * dahu-composite — layouts of a multiple-choice component (the “Layout”
+ * setting of the component, display_style key).
+ *
+ * Everything is scoped to .dahu-kit__component--style-<layout>: the other
+ * components, and this component in the “Default” layout, are not affected.
+ * Rendering only.
+ *
+ *   --style-image  With image: product cards in a grid
+ *   --style-row    Inline: one row per option, expandable
+ *   --style-small  Small · --style-icon  Category icon
+ *   --style-chips  Tickable chips
+ */
+
+/* ---------- With image: product cards in a grid ---------- */
+
+.dahu-kit .dahu-kit__component--style-image .dahu-kit__options {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+	align-items: stretch;
+	gap: 1rem;
+}
+
+@media (min-width: 40em) {
+	.dahu-kit .dahu-kit__component--style-image .dahu-kit__options {
+		grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+	}
+}
+
+.dahu-kit .dahu-kit__component--style-image .dahu-kit__options > .dahu-kit__option {
+	width: auto;
+	height: auto;
+	min-height: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-image .dahu-kit__option--style-image .dahu-kit__option-actions {
+	margin-top: auto;
+}
+
+.dahu-kit .dahu-kit__component--style-image .dahu-kit__option--style-image .dahu-kit__add {
+	flex: 1 1 auto;
+	justify-content: center;
+}
+
+/* “Next”: a full-width row under the grid. */
+.dahu-kit .dahu-kit__component--style-image .dahu-kit__options > .dahu-kit__step-nav {
+	grid-column: 1 / -1;
+	justify-self: end;
+}
+
+/* ---------- Inline: one row per option, expandable ---------- */
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__options {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	align-items: stretch;
+	gap: .5rem;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__options > .dahu-kit__option {
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 0 1rem;
+	width: auto;
+	height: auto;
+	min-height: 0;
+	padding: .1rem 1rem .6rem;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option .dahu-kit__option-media,
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option .dahu-kit__option-text {
+	display: none;
+}
+
+/* Name on the left, price to the right of the name, just before the button. */
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__addon-head,
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option-hit {
+	flex: 1 1 12rem;
+	min-width: 0;
+	margin-top: .5rem;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option-body {
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: .25rem 1rem;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option-name {
+	flex: 1 1 auto;
+	-webkit-line-clamp: unset;
+	line-clamp: unset;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option-price {
+	min-height: 0;
+	white-space: nowrap;
+}
+
+/* Price per tier (two labelled prices): they wrap one under the other when
+   space runs short, instead of overflowing the card; each amount stays
+   unbreakable. */
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option-price:has(.dahu-kit-price__tier) {
+	min-width: 0;
+	white-space: normal;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option-price:has(.dahu-kit-price__tier) .woocommerce-Price-amount {
+	white-space: nowrap;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option-variation {
+	flex: 0 1 auto;
+	margin: .5rem 0 0;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option-variation:empty {
+	display: none;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option-actions {
+	flex: 0 0 auto;
+	flex-wrap: nowrap;
+	align-items: center;
+	/* Wrapped (phone): controls on the right, the arrow at the end of the row. */
+	margin: .5rem 0 0 auto;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__options > .dahu-kit__step-nav {
+	align-self: flex-end;
+}
+
+/* Expandable row: a click on the row, on the “i” icon or on the arrow opens the
+   detail (photo and short description) under the row.
+   Height animated without measuring: a one-track grid, 0fr (collapsed) → 1fr
+   (open), with the child .dahu-kit__row-detail-inner at min-height: 0 and
+   overflow: hidden. visibility switches at the end of the close (the script
+   also sets inert + aria-hidden). Duration and curve: --dahu-kit-row-duration,
+   --dahu-kit-row-ease (a theme puts its own tokens there). */
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option--expandable {
+	cursor: pointer;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-toggle {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	min-height: 0;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	background: transparent;
+	box-shadow: none;
+	color: inherit;
+	cursor: pointer;
+	/* To the right of the row, after the button (which a theme may reorder). */
+	order: 99;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-toggle svg {
+	display: block;
+	transition: transform var(--dahu-kit-row-duration, .25s) var(--dahu-kit-row-ease, ease);
+}
+
+/* Arrow pointing down, flipped when the row is open. */
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option.is-open .dahu-kit__row-toggle svg {
+	transform: rotate(180deg);
+}
+
+/* Last element of the row, across its whole width. */
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-detail {
+	display: grid;
+	flex: 0 0 100%;
+	grid-template-rows: 0fr;
+	min-width: 0;
+	visibility: hidden;
+	cursor: auto;
+	transition:
+		grid-template-rows var(--dahu-kit-row-duration, .25s) var(--dahu-kit-row-ease, ease),
+		visibility 0s linear var(--dahu-kit-row-duration, .25s);
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__option.is-open > .dahu-kit__row-detail {
+	grid-template-rows: 1fr;
+	visibility: visible;
+	transition:
+		grid-template-rows var(--dahu-kit-row-duration, .25s) var(--dahu-kit-row-ease, ease),
+		visibility 0s linear 0s;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-detail-inner {
+	min-width: 0;
+	min-height: 0;
+	overflow: hidden;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-detail-body {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	gap: .75rem 1.25rem;
+	padding: 1.25rem 0 .4rem;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-media {
+	flex: 0 0 auto;
+	width: 7.5rem;
+	max-width: 40%;
+	margin: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-photo {
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-text {
+	flex: 1 1 14rem;
+	min-width: 0;
+	margin: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-text > :first-child {
+	margin-top: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-text > :last-child {
+	margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-toggle svg,
+	.dahu-kit .dahu-kit__component--style-row .dahu-kit__row-detail,
+	.dahu-kit .dahu-kit__component--style-row .dahu-kit__option.is-open > .dahu-kit__row-detail {
+		transition: none;
+	}
+}
+
+/* ---------- Small, Category icon, Tickable chips ----------
+   From the “Accessory display styles” mockup: 3 — Small, 5 — Category icon,
+   6 — Tickable chips. Common to all three: no photo, no subtitle, no info
+   icons. */
+
+.dahu-kit :is(.dahu-kit__component--style-small, .dahu-kit__component--style-icon, .dahu-kit__component--style-chips) .dahu-kit__option--multiple :is(.dahu-kit__option-media, .dahu-kit__option-text, .dahu-kit__addon-more) {
+	display: none;
+}
+
+.dahu-kit :is(.dahu-kit__component--style-small, .dahu-kit__component--style-icon, .dahu-kit__component--style-chips) .dahu-kit__options > .dahu-kit__option {
+	width: auto;
+	height: auto;
+	min-height: 0;
+}
+
+.dahu-kit :is(.dahu-kit__component--style-small, .dahu-kit__component--style-icon, .dahu-kit__component--style-chips) .dahu-kit__option-variation:empty {
+	display: none;
+}
+
+/* ----- Small: compact vignettes, 5 to 6 per row ----- */
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__options {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+	align-items: stretch;
+	gap: .85rem;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__options > .dahu-kit__option {
+	align-items: center;
+	gap: .4rem;
+	padding: .85rem .75rem;
+	text-align: center;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__option-body {
+	align-items: center;
+	gap: .25rem;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__option-name {
+	font-size: .8rem;
+	line-height: 1.2;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__option-price {
+	min-height: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__option-actions {
+	justify-content: center;
+	margin-top: auto;
+}
+
+/* Round button: “+”, then a tick once it is added. The label stays for screen
+   readers. */
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__option--multiple .dahu-kit__add {
+	position: relative;
+	flex: 0 0 auto;
+	width: 1.9rem;
+	min-width: 0;
+	height: 1.9rem;
+	min-height: 0;
+	padding: 0;
+	border-radius: 50%;
+	font-size: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__option--multiple .dahu-kit__add .dahu-kit__add-icon {
+	display: none !important;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__option--multiple .dahu-kit__add-label {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__option--multiple .dahu-kit__add::after {
+	content: "+";
+	position: absolute;
+	inset: 0;
+	display: grid;
+	place-items: center;
+	font-size: 1.05rem;
+	font-weight: 800;
+	line-height: 1;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__option--multiple .dahu-kit__add.is-added::after {
+	content: "\2713";
+	font-size: .9rem;
+}
+
+.dahu-kit .dahu-kit__component--style-small .dahu-kit__options > .dahu-kit__step-nav {
+	grid-column: 1 / -1;
+	justify-self: end;
+}
+
+/* ----- Category icon: pictogram, name and price, button ----- */
+
+.dahu-kit .dahu-kit__component--style-icon .dahu-kit__options {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(17rem, 1fr));
+	align-items: stretch;
+	gap: 1rem;
+}
+
+.dahu-kit .dahu-kit__component--style-icon .dahu-kit__options > .dahu-kit__option {
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .5rem .85rem;
+	padding: .9rem 1rem;
+}
+
+.dahu-kit .dahu-kit__component--style-icon .dahu-kit__addon-head {
+	display: flex;
+	flex: 1 1 9rem;
+	flex-direction: row;
+	align-items: center;
+	gap: .85rem;
+	min-width: 0;
+}
+
+.dahu-kit .dahu-kit__category-icon {
+	display: grid;
+	flex: 0 0 auto;
+	place-items: center;
+	width: 2.75rem;
+	height: 2.75rem;
+	border-radius: .6rem;
+	background: rgba(0, 0, 0, .06);
+	opacity: .8;
+}
+
+.dahu-kit .dahu-kit__component--style-icon .dahu-kit__option-body {
+	flex: 1 1 auto;
+	gap: .1rem;
+	min-width: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-icon .dahu-kit__option-name {
+	font-size: .9rem;
+	-webkit-line-clamp: unset;
+	line-clamp: unset;
+}
+
+.dahu-kit .dahu-kit__component--style-icon .dahu-kit__option-price {
+	min-height: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-icon .dahu-kit__option-actions {
+	flex: 0 0 auto;
+	margin: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-icon .dahu-kit__options > .dahu-kit__step-nav {
+	grid-column: 1 / -1;
+	justify-self: end;
+}
+
+/* ----- Tickable chips: a cloud of clickable pills, prices included ----- */
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__options {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	gap: .6rem;
+}
+
+/* The whole pill is the button: “Add” / “Added” covers it, invisibly (its label
+   is still read out by screen readers). */
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__options > .dahu-kit__option--multiple {
+	position: relative;
+	flex: 0 0 auto;
+	flex-direction: row;
+	align-items: center;
+	gap: .5rem;
+	max-width: 100%;
+	padding: .5rem 1rem;
+	border: 1.5px solid currentColor;
+	border-radius: 999px;
+	box-shadow: none;
+	font-size: .8rem;
+}
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple .dahu-kit__addon-head {
+	min-width: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple .dahu-kit__option-body {
+	flex-direction: row;
+	align-items: center;
+	gap: .5rem;
+}
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple .dahu-kit__option-name {
+	font-size: inherit;
+	font-weight: 600;
+	-webkit-line-clamp: unset;
+	line-clamp: unset;
+}
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple .dahu-kit__option-price {
+	min-height: 0;
+	font-size: inherit !important;
+	white-space: nowrap;
+}
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple .dahu-kit__option-actions {
+	position: static;
+	margin: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple .dahu-kit__add {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 0;
+	padding: 0;
+	border-radius: inherit;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* The button is invisible: keyboard focus shows on the pill. */
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple:has(.dahu-kit__add:focus-visible) {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple .dahu-kit__add-icon {
+	display: none;
+}
+
+/* Added: a solid pill, with a tick in front of the name. */
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple.is-added {
+	border-color: var(--dahu-kit-accent, #5b6800);
+	background: color-mix(in srgb, var(--color-brand-green, #d5eb17) 70%, transparent);
+}
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple.is-added .dahu-kit__option-name::before {
+	content: "\2713\00a0";
+	font-weight: 800;
+}
+
+/* Variant: its list goes above the button that covers the pill. */
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__option--multiple .dahu-kit__option-variation {
+	position: relative;
+	z-index: 1;
+	margin: 0;
+}
+
+.dahu-kit .dahu-kit__component--style-chips .dahu-kit__options > .dahu-kit__step-nav {
+	flex: 1 0 100%;
+	justify-content: flex-end;
+}
+
