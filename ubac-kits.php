@@ -30,7 +30,7 @@ define( 'UBAC_KITS_BASENAME', plugin_basename( __FILE__ ) );
 define( 'UBAC_KITS_PRODUCT_TYPE', 'ubac_kit' );
 
 /** Slug of the settings screen (WooCommerce submenu). */
-define( 'UBAC_KITS_SETTINGS_SLUG', 'ubac-composite-settings' );
+define( 'UBAC_KITS_SETTINGS_SLUG', 'ubac-kits-settings' );
 
 /* -------------------------------------------------------------------------
  * Translations
