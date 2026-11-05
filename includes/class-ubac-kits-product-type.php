@@ -23,21 +23,21 @@ class Ubac_Kits_Product_Type {
 	/**
 	 * Makes sure the product_type term exists.
 	 *
-	 * POURQUOI CECI EXISTE. Ajouter un type de produit au selecteur ne suffit
-	 * pas : WooCommerce range le type d'un produit dans la taxonomie
-	 * `product_type`, et il n'y insere QUE ses propres types, au moment de sa
-	 * propre installation. Une boutique qui installe WooCommerce puis cette
-	 * extension -- l'ordre habituel -- n'a donc jamais le terme, et un produit
-	 * enregistre en « produit compose » retombe en produit simple sans rien
-	 * dire. C'est a l'extension qui ajoute le type de creer son terme.
+	 * WHY THIS EXISTS. Adding a product type to the selector is not enough:
+	 * WooCommerce files a product's type in the `product_type` taxonomy, and
+	 * it inserts ONLY its own types there, at its own installation. A shop
+	 * that installs WooCommerce and then this plugin -- the usual order --
+	 * therefore never has the term, and a product saved as a composite
+	 * product falls back to a simple product without a word.  Creating the
+	 * term is the job of the plugin that adds the type.
 	 *
-	 * Trouve le 5 novembre : le banc portait un terme herite d'une
-	 * installation anterieure, ce qui masquait le defaut. Le renommage interne
-	 * a change le nom du type, le terme n'a pas suivi, et la suite composite
-	 * est tombee en erreur fatale -- sur le bon motif, pour une fois.
+	 * The bench had a term inherited from an earlier installation, which hid
+	 * the defect: renaming the type internally left the term behind, and the
+	 * composite suite died on a fatal error -- for the right reason, for
+	 * once.
 	 *
-	 * L'identifiant du terme est garde en option autochargee : le controle ne
-	 * coute donc aucune requete tant qu'il est en place.
+	 * The term's id is kept in an autoloaded option, so the check costs no
+	 * query at all while it is in place.
 	 *
 	 * @return void
 	 */

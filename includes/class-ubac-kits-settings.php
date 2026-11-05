@@ -25,9 +25,15 @@ class Ubac_Kits_Settings {
 	const OPTION_MORE_INFO = 'ubac_kits_more_info_link';
 
 	/**
-	 * Screen suffix returned by add_submenu_page() (in practice
-	 * “woocommerce_page_ubac-kits-settings”): the stylesheet of the screen
-	 * is loaded there only.
+	 * Screen suffix returned by add_submenu_page(): the stylesheet of the
+	 * screen is loaded there only.
+	 *
+	 * The suffix is “woocommerce_page_” followed by UBAC_KITS_SETTINGS_SLUG,
+	 * and that slug is NOT the one the handles and file names use. It says
+	 * “composite”, never “kit”, because it shows in the admin URL and a human
+	 * reads it. Do not write the value out here: this docblock already said
+	 * “…_ubac-kits-settings” once, which read as a mismatch and got the slug
+	 * itself changed to match — breaking the rule the bench guards.
 	 *
 	 * @var string|false
 	 */

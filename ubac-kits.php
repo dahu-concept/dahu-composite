@@ -30,7 +30,16 @@ define( 'UBAC_KITS_BASENAME', plugin_basename( __FILE__ ) );
 define( 'UBAC_KITS_PRODUCT_TYPE', 'ubac_kit' );
 
 /** Slug of the settings screen (WooCommerce submenu). */
-define( 'UBAC_KITS_SETTINGS_SLUG', 'ubac-kits-settings' );
+/* THE SCREEN'S SLUG DOES NOT SAY "kit", AND THAT IS NOT AN OVERSIGHT.
+ * It shows in the admin URL, so a human reads it, and this plugin is called
+ * "Ubac Composite Products" everywhere it addresses anyone: no English
+ * string and no translation contains the word. Only code identifiers --
+ * the ubac-kits folder, the handles and the file names -- carry it, and
+ * nobody reads those. _bench/t-composite.php holds this rule with an
+ * assertion. It fell once because this slug had been aligned on the
+ * handles: it was the settings class's docblock that was wrong, not this
+ * value. */
+define( 'UBAC_KITS_SETTINGS_SLUG', 'ubac-composite-settings' );
 
 /* -------------------------------------------------------------------------
  * Translations
@@ -183,8 +192,8 @@ register_activation_hook(
 	static function () {
 		Ubac_Welcome::mark_activated( 'ubac-kits' );
 
-		// Le terme de taxonomie du type de produit : voir
-		// Ubac_Kits_Product_Type::ensure_term() pour la raison.
+		// The product type's taxonomy term: see
+		// Ubac_Kits_Product_Type::ensure_term() for the reason.
 		if ( class_exists( 'Ubac_Kits_Product_Type' ) ) {
 			Ubac_Kits_Product_Type::ensure_term();
 		}
