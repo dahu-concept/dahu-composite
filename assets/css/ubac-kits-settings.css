@@ -18,7 +18,8 @@
  * here. Two plugins declaring it write the same values, so neither can
  * surprise the other, and nothing outside the family can collide with it.
  *
- * Single source of truth: /Dev/dahu-public/UI-ADMIN-DAHU.md
+ * These rules are kept in one place and copied into each extension of the
+ * range, so that the same screen reads the same way everywhere.
  */
 
 :root {
@@ -70,7 +71,7 @@
  * ------------------------------------------------------------------------
  *
  * A sheet of its own rather than a share of the kit editor's, per rule 2 of
- * UI-ADMIN-DAHU.md: one stylesheet per screen, enqueued on that screen only.
+ * The range's rule: one stylesheet per screen, enqueued on that screen only.
  *
  * This file exists because of a regression caught in review. The three rules
  * below replaced inline styles on this screen — and the kit editor's
