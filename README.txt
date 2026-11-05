@@ -1,5 +1,5 @@
 === Ubac Composite Products ===
-Contributors: ubacconcept
+Contributors: dahuconcept
 Tags: composite products, product kits, made to measure, accessories, add-ons
 Requires at least: 6.0
 Tested up to: 7.1
