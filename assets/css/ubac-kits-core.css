@@ -1,0 +1,1954 @@
+/**
+ * UBAC COMPOSITE — FUNCTIONAL stylesheet of the configurator.
+ *
+ * Always loaded, with or without a theme. It holds only what the JavaScript
+ * would not work, or would be unusable, without:
+ *  - the grid (three columns, two in vignette mode) and the cell of the
+ *    product title;
+ *  - collapsing / expanding the summary below 64em;
+ *  - the size of the right-hand column (photo + short description);
+ *  - the size of the option cards (fixed square, or a 300 px vignette);
+ *  - the “More info” drawer (vignette mode).
+ *
+ * NO colour, NO typography, NO radius, NO shadow here: everything that is a
+ * matter of appearance lives elsewhere.
+ *  - with a theme that takes the styling over (the
+ *    ubac_kits_theme_provides_styles filter): the theme's stylesheet;
+ *  - without one: assets/css/ubac-kits-front.css of this plugin, which is
+ *    only enqueued when the theme does not supply its own
+ *    (see Ubac_Kits_Frontend::register_assets()).
+ *
+ * @package Ubac_Kits
+ */
+
+/* ---------- Waiting states ----------
+   Two distinct moments:
+     .is-loading  the script has not taken over yet (the starting state is
+                  dropped into the page, but the JS is deferred or the device
+                  is slow);
+     .is-busy     an action of the customer is waiting for /state to answer.
+
+   During .is-busy the screen does NOT go dark: the option that was clicked is
+   already shown as chosen (its name comes from the schema held in memory).
+   Only the total really waits for the server, so it is the only element dimmed.
+   Styling deliberately neutral: a theme may replace it. */
+
+.ubac-kit__loading {
+	display: flex;
+	align-items: center;
+	gap: .625rem;
+	justify-content: center;
+	min-height: 6rem;
+}
+
+.ubac-kit__spinner {
+	display: inline-block;
+	width: 1.125rem;
+	height: 1.125rem;
+	border: 2px solid currentColor;
+	border-top-color: transparent;
+	border-radius: 50%;
+	opacity: .55;
+	animation: ubac-kit-spin .7s linear infinite;
+}
+
+@keyframes ubac-kit-spin {
+	to { transform: rotate(360deg); }
+}
+
+.ubac-kit.is-busy {
+	cursor: progress;
+}
+
+.ubac-kit.is-busy .ubac-kit__recap-total-price,
+.ubac-kit.is-busy .ubac-kit__recap-total-weight,
+.ubac-kit.is-busy .ubac-kit__recap-toggle-price,
+.ubac-kit.is-busy .ubac-kit__total {
+	opacity: .4;
+	transition: opacity .15s linear;
+}
+
+/* Screen change pending: a small circle after the name of the step, under
+   .is-advancing (the answer of /state to a gesture of the customer, then the
+   delay of the automatic advance). It only appears after 150 ms: a fast answer
+   makes nothing flicker. The room is kept (visibility), so the title does not
+   move. */
+.ubac-kit__step-loading {
+	display: inline-flex;
+	align-items: center;
+	margin-left: .5em;
+	vertical-align: middle;
+	font-size: .85em;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity .15s linear, visibility 0s linear .15s;
+}
+
+.ubac-kit__step-loading .ubac-kit__spinner {
+	width: 1em;
+	height: 1em;
+}
+
+.ubac-kit.is-advancing .ubac-kit__step-loading {
+	opacity: 1;
+	visibility: visible;
+	transition-delay: .15s, .15s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ubac-kit__spinner {
+		animation-duration: 2s;
+	}
+}
+
+/* Block to the right of “Add to cart” (the ubac_kits_summary_aside_html
+   filter): its elements on ONE row, from left to right. Row too narrow
+   (mobile): they wrap instead of overflowing. */
+.ubac-kit__cart-aside {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .35rem 1rem;
+	min-width: 0;
+}
+
+/* “more info…” link: a paragraph following the description of a product (back
+   of the card, column, expandable row, drawer). Colour of the theme's links. */
+.ubac-kit__more-info {
+	margin: .5em 0 0;
+}
+
+/* ---------- Layout ----------
+   Below 64em: one column (title, summary banner, picker, right-hand column).
+   Above:
+
+     default               "recap heading info"   summary | picker | 300 px
+                           "recap panel   info"
+     vignettes (.is-vignettes)  "recap heading"   summary | picker
+                                "recap panel"
+
+   The side columns span both rows and stretch over the WHOLE height of the
+   grid, whatever they hold; it is their content
+   (.ubac-kit__recap-body, .ubac-kit__info-inner) that stays sticky. The
+   minimum height of the grid (a full viewport, for instance) is the theme's
+   business. Row 2 at 1fr: the height of the picker never enlarges the title
+   row. With no title handed over by the theme (no .has-heading), the title row
+   disappears. */
+
+.ubac-kit__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1.5rem;
+	align-items: start;
+}
+
+.ubac-kit__info[hidden] {
+	display: none;
+}
+
+@media (min-width: 64em) {
+	.ubac-kit__layout {
+		grid-template-columns: minmax(0, .8fr) minmax(0, 2fr) 300px;
+		grid-template-areas: "recap panel info";
+		column-gap: 2.5rem;
+		row-gap: 1rem;
+	}
+
+	.ubac-kit__layout.has-heading {
+		grid-template-areas:
+			"recap heading info"
+			"recap panel   info";
+		grid-template-rows: auto 1fr;
+	}
+
+	.ubac-kit__layout.is-vignettes {
+		grid-template-columns: minmax(0, .8fr) minmax(0, 3fr);
+		grid-template-areas: "recap panel";
+	}
+
+	.ubac-kit__layout.is-vignettes.has-heading {
+		grid-template-areas:
+			"recap heading"
+			"recap panel";
+	}
+
+	.ubac-kit__layout > .ubac-kit__heading { grid-area: heading; }
+	.ubac-kit__layout > .ubac-kit__recap { grid-area: recap; }
+	.ubac-kit__layout > .ubac-kit__panel { grid-area: panel; }
+	.ubac-kit__layout > .ubac-kit__info { grid-area: info; }
+
+	.ubac-kit__layout > .ubac-kit__recap,
+	.ubac-kit__layout > .ubac-kit__info {
+		align-self: stretch;
+	}
+
+	.ubac-kit__recap-body,
+	.ubac-kit__info-inner {
+		position: sticky;
+		top: 1.5rem;
+	}
+}
+
+.ubac-kit__heading {
+	min-width: 0;
+}
+
+.ubac-kit__panel {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	min-width: 0;
+}
+
+.ubac-kit__recap-steps {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ubac-kit__recap-link,
+.ubac-kit__recap-toggle {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	width: 100%;
+	text-align: left;
+	cursor: pointer;
+}
+
+.ubac-kit__recap-text {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+/* One summary row = one screen: a heading, then one of these rows per
+   component of the screen (choice on the left, price on the right). A screen
+   that groups two components therefore shows two. */
+.ubac-kit__recap-head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 0 .5rem;
+}
+
+/* Screen not reached yet: listed, but not actionable. It is not a button in the
+   markup — the rule below only avoids inheriting the cursor of
+   .ubac-kit__recap-link. */
+.ubac-kit__recap-link--locked {
+	cursor: default;
+}
+
+/* Summary: a collapsible banner below 64em, a full-height column above. This is
+   the CSS counterpart of the button driven by the script. */
+@media (max-width: 63.999em) {
+	.ubac-kit__recap {
+		position: sticky;
+		top: 0;
+		z-index: 2;
+	}
+
+	.ubac-kit__recap-body {
+		display: none;
+	}
+
+	.ubac-kit__recap.is-expanded .ubac-kit__recap-body {
+		display: block;
+	}
+}
+
+@media (min-width: 64em) {
+	.ubac-kit__recap-toggle {
+		display: none;
+	}
+}
+
+/* ---------- Right-hand column: photo + short description ----------
+   300 px wide. Photo of the product at the top, inside a square (the whole
+   image, never cropped), then its name and its short description. Empty
+   (summary, dead end), it stays in place, at full height. Below 64em it moves
+   under the picker. */
+/* Fixed sizes (column, cards), inner padding included, whatever the theme. */
+.ubac-kit__info,
+.ubac-kit__option {
+	box-sizing: border-box;
+}
+
+.ubac-kit__info {
+	width: 300px;
+	max-width: 100%;
+	min-width: 0;
+}
+
+.ubac-kit__info-inner {
+	display: flex;
+	flex-direction: column;
+	gap: .75rem;
+}
+
+/* Photo flush with the top of the column, edge to edge: the negative margins
+   cancel the inner padding of the column and the top corners take its radius.
+   The theme (or the fallback skin) declares both values on .ubac-kit__info:
+   --ubac-kit-info-pad (its padding) and --ubac-kit-info-radius (its
+   border-radius). No overflow: hidden on the column: it would break the sticky
+   content (.ubac-kit__info-inner). */
+.ubac-kit__info-media {
+	margin: calc(-1 * var(--ubac-kit-info-pad, 0px)) calc(-1 * var(--ubac-kit-info-pad, 0px)) 0;
+	padding: 0;
+	aspect-ratio: 1;
+	overflow: hidden;
+	border-radius: var(--ubac-kit-info-radius, 0px) var(--ubac-kit-info-radius, 0px) 0 0;
+}
+
+.ubac-kit__info-photo {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* Icon bar under the text of the right-hand column: Description,
+   Specifications, then the “products supplied with” key pushed to the right
+   (decorative for now). Colours and hover: styling. */
+.ubac-kit__info-tools {
+	display: flex;
+	align-items: center;
+	gap: .25rem;
+}
+
+.ubac-kit__info-tool {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2.25rem;
+	height: 2.25rem;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	cursor: pointer;
+}
+
+.ubac-kit__info-tool:disabled,
+.ubac-kit__info-tool[aria-disabled="true"] {
+	cursor: default;
+	opacity: .35;
+}
+
+.ubac-kit__info-tool--fournis {
+	margin-left: auto;
+	cursor: default;
+	opacity: .35;
+}
+
+/* Specifications table: the full width of the column. */
+.ubac-kit__info-text--caracteristiques table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+/* Description of a component (the “Description (HTML allowed)” admin field),
+   under its title and above its cards. Styling (opacity, size):
+   .ubac-kit__description, theme or fallback. Here, only the spacing; the
+   margins of the first and last paragraph entered do not add to it. */
+.ubac-kit__step-description {
+	margin: 0 0 1rem;
+}
+
+.ubac-kit__step-description > :first-child {
+	margin-top: 0;
+}
+
+.ubac-kit__step-description > :last-child {
+	margin-bottom: 0;
+}
+
+/* ---------- Options ----------
+   Cards in a column: name, price, variant row, buttons in the footer.
+
+   By default (--square): a card of FIXED size, 240 × 180 px
+   (--ubac-kit-option-width / --ubac-kit-option-height, adjustable by the
+   theme). The empty rows (price of a branch, variant of a simple product) keep
+   their height: the buttons land in the same place from one card to the next. A
+   click on the card shows the product in the right-hand column.
+
+   Vignettes (--vignette): 300 px wide, square photo at the top, height
+   following the text; the full width on a phone. */
+
+.ubac-kit {
+	--ubac-kit-option-width: 240px;
+	--ubac-kit-option-height: 180px;
+}
+
+.ubac-kit__option {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	min-width: 0;
+}
+
+.ubac-kit__option-body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	min-width: 0;
+}
+
+.ubac-kit__option-actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .5rem;
+	margin-top: auto;
+}
+
+.ubac-kit__option--square {
+	width: var(--ubac-kit-option-width);
+	height: var(--ubac-kit-option-height);
+	overflow: hidden;
+}
+
+/* The whole card selects (a click anywhere, the .ubac-kit__option-hit area from
+   the keyboard). Not the card of an “add-on” component: there, only the “Add”
+   button acts. Option out of stock: inert. */
+.ubac-kit__option {
+	cursor: pointer;
+}
+
+.ubac-kit__option.ubac-kit__option--addon,
+.ubac-kit__option.is-out-of-stock {
+	cursor: auto;
+}
+
+/* Button mode (data-ubac-kit-select="button"): “Select” is what chooses; a
+   click on a square card only previews, and a vignette or “None” has no
+   preview. */
+.is-select-button .ubac-kit__option--vignette,
+.is-select-button .ubac-kit__option--none {
+	cursor: auto;
+}
+
+/* Main area of the card (role="button"): the same stacking as the card, so that
+   photo, name, price and text keep their arrangement. */
+.ubac-kit__option-hit {
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+	min-width: 0;
+}
+
+.ubac-kit__addon-head {
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+	min-width: 0;
+}
+
+/* Slot of a component hidden by a scenario (.ubac-kit__slot, always present in
+   the DOM of the screen being shown, see fillSlot()). A theme that wants to
+   animate the appearance replaces this display: none with its own transition
+   (opacity, height…) on .is-hidden / .is-visible. */
+.ubac-kit__slot.is-hidden {
+	display: none;
+}
+
+/* “Next” button of a screen where only an optional add-on is still pending (see
+   renderStepNav()). Same principle as the slots: always present,
+   .is-visible / .is-hidden. */
+.ubac-kit__step-nav.is-hidden {
+	display: none;
+}
+
+/* Maximum width of the configurator screen: on a large display,
+   .ubac-kit__step (and the title row above it) no longer stretches to the
+   edge. The theme's wide width (theme.json, settings.layout.wideSize, published
+   by WordPress as --wp--style--global--wide-size), 80rem without it; a theme
+   may set it through --ubac-kit-step-max-width. Aligned left, against the
+   summary. */
+.ubac-kit__step,
+.ubac-kit__layout > .ubac-kit__heading {
+	max-width: var(--ubac-kit-step-max-width, var(--wp--style--global--wide-size, 80rem));
+}
+
+/* The “Next” row is the last element of the option grid (prepareStepNav()) —
+   right next to the last card, wrapping when space runs short, instead of being
+   pinned to the right edge of the screen. Centred on the height of the cards;
+   margins and alignment of the row under the screen (theme: justify-content,
+   margin-top) neutralised. */
+.ubac-kit__options > .ubac-kit__step-nav {
+	flex: 0 0 auto;
+	align-self: center;
+	justify-content: flex-start;
+	margin: 0;
+}
+
+/* Name: two lines at most, so the square does not grow. */
+.ubac-kit__option--square .ubac-kit__option-name {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+}
+
+.ubac-kit__option--square .ubac-kit__option-price {
+	min-height: 1.3em;
+}
+
+.ubac-kit__option--square .ubac-kit__option-variation {
+	min-height: 2.25rem;
+}
+
+.ubac-kit__option-variation .ubac-kit__select {
+	max-width: 100%;
+}
+
+/* Option retained with no variant: the message under the list. Placement only —
+   its colour is that of .ubac-kit__error (styling). */
+.ubac-kit__variation-required {
+	display: block;
+	margin-top: .35em;
+	font-size: .85em;
+	line-height: 1.3;
+}
+
+.ubac-kit__option--vignette {
+	width: 300px;
+}
+
+/* Branch vignettes (the “Kit type” step): five equal columns on the desktop
+   instead of 300 px (three or four per row), wrapping below 10rem; one per row
+   on a phone (see the 39.999em query). Product vignettes keep their 300 px.
+   10rem and not 11rem: at a 1280 px viewport the list only has 943 px next to
+   the right-hand column, that is 175.8 px per column — 11rem (176 px) left four
+   cards there and a fifth stretched across the whole row. */
+.ubac-kit__option--vignette.ubac-kit__option--path {
+	flex: 1 1 calc((100% - 4 * 1rem) / 5);
+	width: auto;
+	min-width: 10rem;
+}
+
+.ubac-kit__option--vignette .ubac-kit__option-variation:empty {
+	display: none;
+}
+
+/* Photo of the product at the top of the vignette: square, the whole image
+   (never cropped), as in the right-hand column. */
+.ubac-kit__option-media {
+	margin: 0;
+	aspect-ratio: 1;
+	overflow: hidden;
+}
+
+/* Image that opens the Description (renderOptionMedia()): a pointer cursor,
+   including when the rest of the card is not clickable (“Click” active). */
+.ubac-kit__option-media.is-info-trigger {
+	cursor: pointer;
+}
+
+.ubac-kit__option-photo {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* Vignettes with ranges: the ranges follow one another in a single list (see
+   renderCards()). Every cell stacks the range title row and the card; the empty
+   row of the following cards keeps the same height as the title, so that every
+   card of a row stays aligned. */
+.ubac-kit__option-cell {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	min-width: 0;
+}
+
+/* The title does not dictate the width of the cell (that of the card): a longer
+   title is cut off with “…”. */
+.ubac-kit__option-cell > .ubac-kit__tier {
+	width: 0;
+	min-width: 100%;
+	margin: 0 0 .5rem;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.ubac-kit__option-cell > .ubac-kit__tier--spacer {
+	display: block;
+	visibility: hidden;
+}
+
+.ubac-kit__option-cell > .ubac-kit__option {
+	flex: 1 1 auto;
+}
+
+/* Add-on anchored to a card (.ubac-kit__component--anchored): its slot is an
+   item of the option list, right after the card it targets (renderCards()) — to
+   its right, wrapping when space runs short. In a list with ranges, it reserves
+   the range title row above its card, so as to stay aligned with its
+   neighbours: --ubac-kit-tier-offset = height of that row + its gap (the theme
+   that fixes the height of the title fixes this token too). Hidden:
+   display: none (.ubac-kit__slot.is-hidden), taking up no room in the list. */
+.ubac-kit__options > .ubac-kit__component--anchored {
+	flex: 0 0 auto;
+	min-width: 0;
+}
+
+/* Same height as the cards of the row (like a cell). Not on .is-hidden:
+   display: none must win. */
+.ubac-kit__options > .ubac-kit__component--anchored:not(.is-hidden) {
+	display: flex;
+	flex-direction: column;
+}
+
+.ubac-kit__options > .ubac-kit__component--anchored > .ubac-kit__option {
+	flex: 1 1 auto;
+}
+
+.ubac-kit__options--tiered > .ubac-kit__component--anchored {
+	padding-top: var(--ubac-kit-tier-offset, calc(1.2em + .5rem));
+}
+
+/* ---------- Short label of the public price ----------
+   Ubac_Kits_Pricing::price_html() renders the full label
+   (.ubac-kit-price__label-full) and, when the tier has one, the short label
+   (.ubac-kit-price__label-short). The full one everywhere; the short one where
+   space runs short: summary (rows, total, mobile banner) and the yes / no
+   question of a card. */
+.ubac-kit-price__label-short {
+	display: none;
+}
+
+:is(.ubac-kit__recap, .ubac-kit__question) .ubac-kit-price__label-full {
+	display: none;
+}
+
+:is(.ubac-kit__recap, .ubac-kit__question) .ubac-kit-price__label-short {
+	display: inline;
+}
+
+/* ---------- Add-on presented as a yes / no question ----------
+   questionBlock(): a text and two answers, in the slot of the component
+   (.ubac-kit__component--question). Vignettes: the slot is carried by the chosen
+   card of the anchor component (.ubac-kit__component--in-card), on the BACK
+   (.ubac-kit__option-question, further down); square cards: an item of the list,
+   after the card. Functional only: arrangement, wrapping. Answer given:
+   .is-selected + aria-pressed. */
+.ubac-kit__question {
+	display: flex;
+	flex-direction: column;
+	gap: .5rem;
+	min-width: 0;
+}
+
+.ubac-kit__question-text {
+	margin: 0;
+	overflow-wrap: anywhere;
+}
+
+.ubac-kit__question-answers {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	gap: .5rem;
+}
+
+/* Two answers of equal width; the price of “Yes” under its label, and it wraps
+   rather than widening the card. */
+.ubac-kit__answer {
+	display: flex;
+	flex: 1 1 0;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: .15rem;
+	min-width: 0;
+	white-space: normal;
+}
+
+.ubac-kit__answer-price {
+	max-width: 100%;
+	font-weight: 400;
+}
+
+/* “+” in front of the price of “Yes”: a surcharge, not the price of the
+   choice. */
+.ubac-kit__answer-price > :first-child::before {
+	content: "+\00a0";
+}
+
+/* Professional tier: two labelled prices, one per row, and the two answers one
+   under the other — side by side, “Yes” would be three times taller than
+   “No”. */
+.ubac-kit__question-answers:has(.ubac-kit-price__tier) {
+	flex-direction: column;
+}
+
+/* Stacked: each at the height of its content (flex-basis 0 would mean a height
+   of zero in this direction). */
+.ubac-kit__question-answers:has(.ubac-kit-price__tier) > .ubac-kit__answer {
+	flex: 0 0 auto;
+}
+
+.ubac-kit__answer-price :is(.ubac-kit-price__public, .ubac-kit-price__tier) {
+	display: block;
+}
+
+.ubac-kit__question-more {
+	align-self: flex-start;
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+/* The front-side control that used to flip the card onto the question
+   (.ubac-kit__question-toggle): removed, the front no longer hints at the
+   question (see openQuestion()). */
+
+/* List item (square cards): no wider than a card. */
+.ubac-kit__options > .ubac-kit__component--question {
+	max-width: 18rem;
+	justify-content: center;
+}
+
+/* ---------- “More info”: flipped / extended card ----------
+   data-ubac-kit-info="card|extended" on <body> (see readInfoMode()).
+   Functional only: the 3D pivot, the faces, scrolling of the back, the extended
+   column in overlay. Colours, shadows, durations: styling (the
+   --ubac-kit-flip-duration token).
+
+   The flip principle: a pivot > two stacked faces, the hidden one with
+   backface-visibility: hidden — without which nothing would turn.
+
+   The pivot is the CARD itself (.ubac-kit__option[data-info-key]), so that
+   everything the user reads as the card turns — content, footer (one per face)
+   and surface (background, rule, radius, shadow, set by the theme on the card).
+   Perspective inside the transform (perspective()), not on the parent: a
+   perspective shared by the list would distort the cards far from its centre.
+
+   Pitfalls for the theme (3D rendering flattened otherwise, and the flipped
+   card would show its front mirrored): on the card, no opacity < 1, no filter,
+   no overflow other than visible, no clip-path, no mix-blend-mode, no
+   isolation — put those on the faces. And do not redeclare `transform` in the
+   card's `transition` list with another duration: the flip follows
+   --ubac-kit-flip-duration. */
+
+.ubac-kit__option[data-info-key] {
+	position: relative;
+	transform-style: preserve-3d;
+	transform: perspective(var(--ubac-kit-flip-perspective, 1200px)) rotateY(0deg);
+	transition: transform var(--ubac-kit-flip-duration, .6s) ease;
+}
+
+.ubac-kit__option[data-info-key].is-flipped {
+	transform: perspective(var(--ubac-kit-flip-perspective, 1200px)) rotateY(180deg);
+}
+
+/* Stacks the faces (same grid cell); does not turn itself, but passes on the 3D
+   space of the card. */
+.ubac-kit__option-flip {
+	position: relative;
+	display: grid;
+	flex: 1 1 auto;
+	gap: inherit;
+	min-height: 0;
+	transform-style: preserve-3d;
+}
+
+/* Face: all the content of the card, footer included (.ubac-kit__option-actions
+   is the last child of every face). Lifted 1px off the plane of the card:
+   otherwise the face and the background of the card, in the same plane, fight
+   over which one shows during the rotation. */
+.ubac-kit__option-face {
+	grid-area: 1 / 1;
+	display: flex;
+	flex-direction: column;
+	gap: inherit;
+	min-width: 0;
+	transform: translateZ(1px);
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+/* Back: exactly the size of the front (out of flow), so the card never changes
+   size. The content scrolls (.ubac-kit__option-info), the footer stays at the
+   bottom. */
+.ubac-kit__option-face--back {
+	position: absolute;
+	inset: 0;
+	transform: rotateY(180deg) translateZ(1px);
+}
+
+.ubac-kit__option-face--back > .ubac-kit__option-info {
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow: auto;
+	overscroll-behavior: contain;
+}
+
+.ubac-kit__option-face--back > .ubac-kit__option-actions {
+	flex: 0 0 auto;
+}
+
+/* Question of an add-on: a section of the back, like the description. An area
+   always present on the back of the card that carries the question, shown IN
+   PLACE of .ubac-kit__option-info when the card is open on the “question”
+   section (data-info-face, applyInfo()). It scrolls when the question is taller
+   than the card; centred otherwise. */
+.ubac-kit__option-face--back > .ubac-kit__option-question {
+	display: none;
+	flex: 1 1 auto;
+	min-height: 0;
+	overflow: auto;
+	overscroll-behavior: contain;
+}
+
+.ubac-kit__option[data-info-face="question"] .ubac-kit__option-face--back > .ubac-kit__option-question {
+	display: flex;
+	flex-direction: column;
+}
+
+.ubac-kit__option-question > .ubac-kit__slot {
+	margin-block: auto;
+}
+
+/* Name of the chosen product, at the top of the back of the question; the
+   question stays centred in the room that is left. */
+.ubac-kit__option-question > .ubac-kit__option-question-product {
+	flex: 0 0 auto;
+	margin: 0;
+	overflow-wrap: anywhere;
+}
+
+.ubac-kit__option[data-info-face="question"] .ubac-kit__option-face--back > .ubac-kit__option-info {
+	display: none;
+}
+
+/* “Help image” of an option: at the top of the back, in the Description section
+   only (the script takes it out of the other sections), above
+   .ubac-kit__option-info. It hugs the card the way the photo on the front does:
+   edge to edge at the top, left and right (the inner padding of the card,
+   --ubac-kit-option-pad, set by the theme, + a 1px rule; 0 without a theme),
+   with the top corners at the radius of the card. Never more than half of the
+   back: the text keeps its room, and the image shrinks without being cropped. */
+.ubac-kit__option-help-visual {
+	display: flex;
+	flex-direction: column;
+	min-height: 0;
+	margin: 0;
+	overflow: hidden;
+	background-color: var(--color-surface-3, transparent);
+}
+
+.ubac-kit__option-help-visual img {
+	display: block;
+	flex: 0 1 auto;
+	min-height: 0;
+	width: 100%;
+	height: auto;
+	object-fit: contain;
+}
+
+.ubac-kit__option-face--back > .ubac-kit__option-help-visual {
+	flex: 0 1 auto;
+	max-height: 50%;
+	margin: calc(-1 * (var(--ubac-kit-option-pad, -1px) + 1px)) calc(-1 * (var(--ubac-kit-option-pad, -1px) + 1px)) 0;
+	border-radius: var(--radius-large, 0px) var(--radius-large, 0px) 0 0;
+}
+
+.ubac-kit__option[data-info-face="question"] .ubac-kit__option-face--back > .ubac-kit__option-help-visual {
+	display: none;
+}
+
+.ubac-kit__option-extension > .ubac-kit__option-help-visual,
+.ubac-kit-drawer__pane > .ubac-kit__option-help-visual {
+	margin: 0 0 .75em;
+	border-radius: var(--ubac-kit-radius-small, 0px);
+}
+
+/* Switching section on a panel that is already open (switchInfoFace()): no new
+   flip, the content fades out then comes back. Duration: --ubac-kit-info-fade
+   (the theme puts its short fade there). Opacity on the content, not on the
+   card nor on .ubac-kit__option-flip: the 3D is not flattened. */
+.ubac-kit__option-info {
+	transition: opacity var(--ubac-kit-info-fade, .15s) ease;
+}
+
+.ubac-kit__option-info.is-changing {
+	opacity: 0;
+}
+
+/* The “Select” of the open info panel and the one of button mode swap through
+   the hidden attribute: it has to win over the display of the buttons. */
+.ubac-kit__option-actions > [hidden] {
+	display: none !important;
+}
+
+/* Tabs of the open panel, without the “Icons” toggle (fillInfo()): buttons that
+   keep the typography of the title (.ubac-kit__option-info-title). Styling
+   (active, hover): theme. */
+.ubac-kit__option-info-tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .25rem .75rem;
+}
+
+.ubac-kit__option-info-tab {
+	padding: 0;
+	border: 0;
+	background: none;
+	color: inherit;
+	font: inherit;
+	letter-spacing: inherit;
+	text-align: left;
+	text-transform: inherit;
+	cursor: pointer;
+}
+
+/* Extended column: absent until the card is extended. */
+.ubac-kit__option-extension {
+	display: none;
+}
+
+/* Extended: the card keeps its place in the grid (nothing around it moves) and
+   its info column overflows onto its neighbours, above them.
+   Set by the script (extendedFit()): --ubac-kit-extend-width (two cards and two
+   gutters) and --ubac-kit-extend-shift (shift of the card to the left so as to
+   stay inside the panel: 0 when data-info-anchor="right", the whole column when
+   "left", in between when "shift"). A shift through transform moves nothing in
+   the grid. */
+.ubac-kit__option[data-info-key].is-extended {
+	z-index: 20;
+	overflow: visible;
+	transform: translateX(var(--ubac-kit-extend-shift, 0px));
+}
+
+.ubac-kit__option.is-extended > .ubac-kit__option-extension {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 100%;
+	display: block;
+	box-sizing: border-box;
+	width: var(--ubac-kit-extend-width, 200%);
+	overflow: auto;
+	overscroll-behavior: contain;
+	/* Background of the card (whatever it is): without it the column would be
+	   transparent above the neighbouring cards. */
+	background: inherit;
+}
+
+
+/* Products supplied: one row per product (thumbnail, name, quantity). */
+.ubac-kit__bundled {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ubac-kit__bundled-item {
+	display: flex;
+	align-items: center;
+	gap: .5rem;
+}
+
+.ubac-kit__bundled-photo {
+	flex: 0 0 auto;
+	width: 2.5rem;
+	height: 2.5rem;
+	object-fit: contain;
+}
+
+.ubac-kit__bundled-name {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+/* Reduced motion: no rotation, one face replaces the other (the extended one
+   keeps its anchor shift). */
+@media (prefers-reduced-motion: reduce) {
+	.ubac-kit__option[data-info-key]:not(.is-extended),
+	.ubac-kit__option[data-info-key].is-flipped {
+		transform: none;
+		transition: none;
+		animation: none;
+	}
+
+	.ubac-kit__option-face,
+	.ubac-kit__option-face--back {
+		transform: none;
+		-webkit-backface-visibility: visible;
+		backface-visibility: visible;
+	}
+
+	.ubac-kit__option-face--back {
+		visibility: hidden;
+	}
+
+	.ubac-kit__option.is-flipped .ubac-kit__option-face--back {
+		visibility: visible;
+	}
+
+	.ubac-kit__option.is-flipped .ubac-kit__option-face--front {
+		visibility: hidden;
+	}
+}
+
+/* ---------- Info bubble (step, range) ----------
+   Functional only: collapsing the panel, hiding, alignments. No colour, no
+   typography: the theme's styling. Settings exposed:
+     --ubac-kit-hint-duration       opening / closing duration (.25s)
+     --ubac-kit-hint-easing         curve (ease)
+     --ubac-kit-hint-fade           fade when the text changes (.15s)
+     --ubac-kit-hint-gap            gap under the open panel; equal to the gap
+                                    of the panel (.ubac-kit__panel, 1rem)
+     --ubac-kit-hint-scroll-margin  top margin when scrolling to the panel
+                                    (1rem; 4.5rem below 64em, where the summary
+                                    banner is sticky)
+
+   The panel is the first child of .ubac-kit__panel (a flex column with a gap):
+   closed, its negative bottom margin cancels the gap that follows it, so it
+   leaves no space; open, the inner spacer (.ubac-kit__hint-box) gives that gap
+   back under the text. Collapsing through grid-template-rows 0fr → 1fr, with no
+   measured height. Closed: visibility hidden AT THE END of the transition (a
+   delay), with inert set by the script. */
+.ubac-kit__hint {
+	display: grid;
+	grid-template-rows: 0fr;
+	min-width: 0;
+	margin-bottom: calc(-1 * var(--ubac-kit-hint-gap, 1rem));
+	scroll-margin-top: var(--ubac-kit-hint-scroll-margin, 1rem);
+	transition: grid-template-rows var(--ubac-kit-hint-duration, .25s) var(--ubac-kit-hint-easing, ease);
+}
+
+.ubac-kit__hint.is-open {
+	grid-template-rows: 1fr;
+}
+
+.ubac-kit__hint-inner {
+	min-height: 0;
+	overflow: hidden;
+	visibility: hidden;
+	transition: visibility 0s linear var(--ubac-kit-hint-duration, .25s);
+}
+
+.ubac-kit__hint.is-open > .ubac-kit__hint-inner {
+	visibility: visible;
+	transition-delay: 0s;
+}
+
+.ubac-kit__hint-box {
+	display: flex;
+	align-items: flex-start;
+	margin-bottom: var(--ubac-kit-hint-gap, 1rem);
+}
+
+.ubac-kit__hint-body {
+	flex: 1 1 auto;
+	min-width: 0;
+	transition: opacity var(--ubac-kit-hint-fade, .15s) ease;
+}
+
+.ubac-kit__hint-body.is-changing {
+	opacity: 0;
+}
+
+.ubac-kit__hint-close {
+	flex: 0 0 auto;
+}
+
+/* Screen change: collapsed immediately. */
+.ubac-kit__hint.is-instant,
+.ubac-kit__hint.is-instant > .ubac-kit__hint-inner {
+	transition: none;
+}
+
+/* “i”: in the title row (step, range), with no styling. */
+.ubac-kit__hint-btn {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.ubac-kit__hint-btn--placeholder {
+	visibility: hidden;
+}
+
+.ubac-kit__tier.has-hint {
+	display: flex;
+	align-items: center;
+}
+
+.ubac-kit__tier-label {
+	min-width: 0;
+}
+
+/* Display of the ranges (settings of the component in the kit editor), each one
+   independent of the others. Colour of the range: chosen in the editor, else the
+   one from the palette (UbacKitsTiers.tierColor()), set on the card by the
+   script — --ubac-kit-tier-color, and --ubac-kit-tier-ink (black or white,
+   whichever reads on it).
+   - “New row”: div.ubac-kit__tier-break between two ranges of the vignette
+     list, across its whole width — the next range starts a new row (square
+     cards: one list per range, which is already the case);
+   - “Badge”: span.ubac-kit__option-tier (name of the range) to the right of the
+     name of the card, inside span.ubac-kit__option-heading;
+   - “Tinted background”: .has-tier-tint, a light background in the colour
+     (--ubac-kit-tier-bg, supplied with every colour of the palette); a code
+     outside the palette: the colour blended with white
+     (--ubac-kit-tier-tint, 17%).
+     A theme that paints the cards (hover, choice) takes the rule over at its
+     own level. */
+.ubac-kit__options > .ubac-kit__tier-break {
+	flex: 0 0 100%;
+	width: 100%;
+	height: 0;
+	margin: 0;
+}
+
+.ubac-kit__option-heading {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .25rem .5rem;
+	min-width: 0;
+	max-width: 100%;
+}
+
+.ubac-kit__option-tier {
+	flex: 0 1 auto;
+	min-width: 0;
+	max-width: 100%;
+	padding: 0 .6em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	color: var(--ubac-kit-tier-ink, #fff);
+	background-color: var(--ubac-kit-tier-color, #1d1d1b);
+}
+
+.ubac-kit__option.has-tier-tint {
+	background-color: var(--ubac-kit-tier-bg, color-mix(in srgb, var(--ubac-kit-tier-color) var(--ubac-kit-tier-tint, 17%), #fff));
+}
+
+/* Vignettes: range title cut off with “…”, the “i” stays visible. */
+.ubac-kit__option-cell > .ubac-kit__tier.has-hint {
+	display: flex;
+}
+
+.ubac-kit__option-cell > .ubac-kit__tier.has-hint > .ubac-kit__tier-label {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* ---------- “?” popover of a range ----------
+   Functional only: the trigger in the title row, position, arrangement, media
+   edge to edge, fade in. Colours, typography, radius, shadow, inner margins of
+   the text column: the theme's styling (the fallback sheet otherwise).
+   The popover is a child of <body> (outside .ubac-kit). Settings exposed:
+     --ubac-kit-popover-width       width with no media (34rem)
+     --ubac-kit-popover-text-width  text column next to a media (20rem)
+     --ubac-kit-popover-media-max   maximum height of a media (24rem)
+     --ubac-kit-popover-inset       minimum gap to the edges of the window (16px)
+     --ubac-kit-popover-z           plane (998: under the drawer and its veil)
+     --ubac-kit-popover-duration    entrance (.18s)
+   --ubac-kit-popover-ratio (width / height of the media): set by the script.
+
+   FIXED and centred in the window, in landscape format (it used to be anchored
+   under its “?”, above it when there was no room, with a tip):
+   - with no media: a text column of --ubac-kit-popover-width;
+   - with a media, window of 40em and over: media on the LEFT, at the height of
+     the popover and at its own proportion — never cropped, edge to edge (top,
+     bottom, left); text on the right, scrolling when it is longer. Height:
+     --ubac-kit-popover-media-max, reduced so that media and text fit in the
+     width of the window;
+   - with a media, phone: media at the top, at full width, edge to edge; text
+     under it, the whole thing scrolling. */
+.ubac-kit__tier-help {
+	display: inline-flex;
+	flex: 0 0 auto;
+	align-items: center;
+	justify-content: center;
+	vertical-align: middle;
+	cursor: pointer;
+}
+
+.ubac-kit__tier-help--placeholder {
+	visibility: hidden;
+}
+
+.ubac-kit__tier-help-icon {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.ubac-kit-popover {
+	--ubac-kit-popover-inset-x2: calc(2 * var(--ubac-kit-popover-inset, 16px));
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: var(--ubac-kit-popover-z, 998);
+	box-sizing: border-box;
+	width: min(var(--ubac-kit-popover-width, 34rem), calc(100vw - var(--ubac-kit-popover-inset-x2)));
+	opacity: 0;
+	transform: translate(-50%, -50%) scale(.98);
+	transition: opacity var(--ubac-kit-popover-duration, .18s) ease, transform var(--ubac-kit-popover-duration, .18s) ease;
+}
+
+.ubac-kit-popover[hidden] {
+	display: none;
+}
+
+.ubac-kit-popover.is-open {
+	opacity: 1;
+	transform: translate(-50%, -50%);
+}
+
+.ubac-kit-popover:focus {
+	outline: none;
+}
+
+/* Scrolls as a whole (phone, text only); clips the media at the rounded corners
+   of the styling. */
+.ubac-kit-popover__box {
+	position: relative;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	max-height: calc(100vh - var(--ubac-kit-popover-inset-x2));
+	overflow-x: hidden;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.ubac-kit-popover__content {
+	box-sizing: border-box;
+	min-width: 0;
+}
+
+.ubac-kit-popover__head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+}
+
+.ubac-kit-popover__title {
+	flex: 1 1 auto;
+	min-width: 0;
+	margin: 0;
+}
+
+.ubac-kit-popover__close {
+	flex: 0 0 auto;
+	cursor: pointer;
+}
+
+.ubac-kit-popover__media[hidden],
+.ubac-kit-popover__text[hidden] {
+	display: none;
+}
+
+/* Media edge to edge, at its own proportion: at the width of the popover
+   (phone), or at the height of the popover (landscape, further down). No margin
+   and no cropping. */
+.ubac-kit-popover__media {
+	flex: 0 0 auto;
+	line-height: 0;
+}
+
+.ubac-kit-popover__media img,
+.ubac-kit-popover__media video {
+	display: block;
+	width: 100%;
+	max-width: none;
+	height: auto;
+}
+
+/* Embedded video (YouTube, Vimeo…): 16/9, whatever dimensions the provider
+   sets. */
+.ubac-kit-popover__media iframe {
+	display: block;
+	width: 100%;
+	height: auto;
+	aspect-ratio: 16 / 9;
+	border: 0;
+}
+
+.ubac-kit-popover__text > :first-child {
+	margin-top: 0;
+}
+
+.ubac-kit-popover__text > :last-child {
+	margin-bottom: 0;
+}
+
+.ubac-kit-popover__text img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Landscape with a media: width = media (height × proportion) + text column,
+   set explicitly (a popover centred by left: 50% would only size itself on half
+   of the window). */
+@media (min-width: 40em) {
+	.ubac-kit-popover.has-media {
+		--ubac-kit-popover-media-h: min(
+			var(--ubac-kit-popover-media-max, 24rem),
+			calc(100vh - var(--ubac-kit-popover-inset-x2)),
+			calc((100vw - var(--ubac-kit-popover-inset-x2) - var(--ubac-kit-popover-text-width, 20rem)) / var(--ubac-kit-popover-ratio, 1))
+		);
+		width: calc(var(--ubac-kit-popover-media-h) * var(--ubac-kit-popover-ratio, 1) + var(--ubac-kit-popover-text-width, 20rem));
+	}
+
+	/* content-box: the height that is set is that of the media, plus the rule of
+	   the styling — the media keeps its exact proportion. */
+	.ubac-kit-popover.has-media .ubac-kit-popover__box {
+		box-sizing: content-box;
+		flex-direction: row;
+		height: var(--ubac-kit-popover-media-h);
+		overflow: hidden;
+	}
+
+	.ubac-kit-popover.has-media .ubac-kit-popover__media {
+		width: calc(var(--ubac-kit-popover-media-h) * var(--ubac-kit-popover-ratio, 1));
+		height: 100%;
+	}
+
+	.ubac-kit-popover.has-media .ubac-kit-popover__media img,
+	.ubac-kit-popover.has-media .ubac-kit-popover__media video,
+	.ubac-kit-popover.has-media .ubac-kit-popover__media iframe {
+		width: 100%;
+		height: 100%;
+	}
+
+	/* The text column absorbs the rule of the styling (the media keeps its exact
+	   proportion) and scrolls when the text is longer. */
+	.ubac-kit-popover.has-media .ubac-kit-popover__content {
+		flex: 1 1 var(--ubac-kit-popover-text-width, 20rem);
+		overflow-y: auto;
+		overscroll-behavior: contain;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ubac-kit-popover,
+	.ubac-kit-popover.is-open {
+		transition: none;
+		transform: translate(-50%, -50%);
+	}
+}
+
+@media (max-width: 63.999em) {
+	.ubac-kit__hint {
+		scroll-margin-top: var(--ubac-kit-hint-scroll-margin, 4.5rem);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ubac-kit__hint,
+	.ubac-kit__hint-inner,
+	.ubac-kit__hint-body,
+	.ubac-kit__option-info {
+		transition: none;
+	}
+}
+
+/* Phone: one vignette per row, across the whole width. */
+@media (max-width: 39.999em) {
+	.ubac-kit__option--vignette,
+	.ubac-kit__option-cell,
+	.ubac-kit__options > .ubac-kit__component--anchored {
+		width: 100%;
+	}
+
+	/* Branches: the five-column rule, being heavier, would win over the row above
+	   (two or three per row between 21 and 40em). */
+	.ubac-kit__option--vignette.ubac-kit__option--path {
+		flex: 1 1 100%;
+	}
+
+	/* One card per row: nothing left to align, the empty row disappears
+	   (and the reserve of the anchored add-on with it). */
+	.ubac-kit__option-cell > .ubac-kit__tier--spacer,
+	.ubac-kit__option-cell > .ubac-kit__tier--spacer.has-hint {
+		display: none;
+	}
+
+	.ubac-kit__options--tiered > .ubac-kit__component--anchored {
+		padding-top: 0;
+	}
+}
+
+/* ---------- “More info” drawer (vignettes) ---------- */
+/* Fixed position, slide in from the right and scroll locking: without these
+   rules the drawer would show up in the flow and the script would have no
+   visible effect. */
+
+.ubac-kit-drawer__overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 999;
+	opacity: 0;
+	transition: opacity .25s ease;
+}
+
+body.ubac-kit-drawer-is-open .ubac-kit-drawer__overlay {
+	opacity: 1;
+}
+
+.ubac-kit-drawer__overlay[hidden] {
+	display: none;
+}
+
+body.ubac-kit-drawer-is-open {
+	overflow: hidden;
+}
+
+.ubac-kit-drawer {
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 1000;
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	height: 100vh;
+	height: 100dvh;
+	overflow: hidden;
+	transform: translateX(100%);
+	transition: transform .3s ease-out;
+}
+
+.ubac-kit-drawer[hidden] {
+	display: none;
+}
+
+.ubac-kit-drawer.is-open {
+	transform: translateX(0);
+}
+
+@media (min-width: 40em) {
+	.ubac-kit-drawer {
+		width: min(28rem, 100%);
+		padding: 1rem; /* the real padding value we want */
+	}
+}
+
+@media (min-width: 64em) {
+	.ubac-kit-drawer {
+		width: min(30rem, 100%);
+	}
+}
+
+.ubac-kit-drawer__inner {
+	flex: 1 1 auto;
+	overflow-y: auto;
+	overscroll-behavior: contain;
+}
+
+.ubac-kit-drawer__close {
+	position: absolute;
+	top: .75rem;
+	right: .75rem;
+	z-index: 1;
+	cursor: pointer;
+}
+
+/* Tab bar: the buttons on the left, “Select” pushed to the right. */
+.ubac-kit-drawer__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: .5rem;
+}
+
+.ubac-kit-drawer__tabs[hidden] {
+	display: none;
+}
+
+.ubac-kit-drawer__pane[hidden] {
+	display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ubac-kit-drawer,
+	.ubac-kit-drawer__overlay {
+		transition: none;
+	}
+}
+
+.ubac-kit__option-image {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+/* Saved configurations: the “Save my configuration” block at the foot of the
+   Summary, the head of a reopened configuration and the banner for a failed
+   reopening. Layout only: colours and buttons come from the existing classes
+   (.ubac-kit__message, .button). */
+.ubac-kit__save {
+	margin-top: 1.5em;
+}
+
+.ubac-kit__save-title,
+.ubac-kit__restore-title {
+	margin: 0 0 .5em;
+	font-weight: 600;
+}
+
+.ubac-kit__save-form {
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.ubac-kit__save-name input {
+	min-width: 14em;
+	max-width: 100%;
+}
+
+/* Visitor: the account creation form of the save block. Two columns, a single
+   one below 480 px; the address takes the whole width. The fields are wrapped in
+   .ubac-kit__save-name, like the name field: a theme that styles that one styles
+   the form. Here, the arrangement and the bare minimum for it to be readable
+   without a theme (label above, error under the field, checkbox aligned on its
+   wording). */
+.ubac-kit__save-fields {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: .75em 1em;
+	margin: .75em 0;
+}
+
+.ubac-kit__save-field {
+	min-width: 0;
+}
+
+.ubac-kit__save-field--address {
+	grid-column: 1 / -1;
+}
+
+.ubac-kit__save-label {
+	display: block;
+	margin: 0 0 .25em;
+	font-size: .9375em;
+	font-weight: 600;
+}
+
+.ubac-kit__save-required {
+	border: 0;
+	text-decoration: none;
+	cursor: inherit;
+}
+
+.ubac-kit__save-field .ubac-kit__save-name {
+	display: block;
+	max-width: none;
+}
+
+.ubac-kit__save-field .ubac-kit__save-name input {
+	box-sizing: border-box;
+	width: 100%;
+	min-width: 0;
+}
+
+.ubac-kit__save-field.has-error .ubac-kit__save-name input {
+	border-color: var(--color-error, #a00);
+}
+
+.ubac-kit__save-field-error {
+	display: block;
+	margin-top: .25em;
+	font-size: .875em;
+	color: var(--color-error, #a00);
+}
+
+.ubac-kit__save-consent {
+	display: grid;
+	grid-template-columns: auto minmax(0, 1fr);
+	gap: .25em .6em;
+	align-items: start;
+	margin: .75em 0 .25em;
+}
+
+.ubac-kit__save-consent input {
+	width: 1.25em;
+	height: 1.25em;
+	margin: .15em 0 0;
+}
+
+.ubac-kit__save-consent label {
+	margin: 0;
+	cursor: pointer;
+}
+
+.ubac-kit__save-consent .ubac-kit__save-field-error {
+	grid-column: 2;
+	margin-top: 0;
+}
+
+.ubac-kit__save-note {
+	font-size: .875em;
+}
+
+/* Honeypot field: never visible, never reached from the keyboard. */
+.ubac-kit__save-trap {
+	position: absolute;
+	left: -9999px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.ubac-kit__save-cancel {
+	min-height: 2.75rem;
+	padding: 0 .5em;
+	font: inherit;
+	color: inherit;
+	background: none;
+	border: 0;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+.ubac-kit__save-exists .ubac-kit__buttons {
+	margin-top: .75em;
+}
+
+@media (max-width: 480px) {
+	.ubac-kit__save-fields {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.ubac-kit__restore {
+	margin-bottom: 1em;
+}
+
+.ubac-kit__restore-intro {
+	margin: 0 0 .25em;
+}
+
+.ubac-kit__restore-issues {
+	margin: 0 0 0 1.2em;
+}
+
+.ubac-kit__start-notice {
+	margin-bottom: 1em;
+}
+
+/* “link” card of a branch: the card points to a page (contact, dealer map…)
+   instead of being a choice; the whole card is clickable, and its “Go” button
+   (.ubac-kit__choose--link, role="link") opens the page. */
+.ubac-kit__option.ubac-kit__option--link,
+.is-select-button .ubac-kit__option--link {
+	cursor: pointer;
+}
+
+/* ---------- Compact cards, horizontal format ----------
+   Product cards of the screens (Thumbnail and Card styles, single or multiple
+   choice, “None”): a small photo on the left, edge to edge over the whole
+   height; on the right the name, the badge, the text, the prices, the variant
+   and the stock; the buttons at the bottom right. Several columns on the
+   desktop (16rem at least), a single full-width column on a phone, horizontal
+   either way. Branches (the “Kit type” step, .ubac-kit__option--path) are left
+   alone. Appearance only: markup, click, keyboard, flipping and data are
+   unchanged. The specificity (0,4,0 and more) stays above the card rules
+   higher up in this sheet and above a theme that dresses the cards. */
+.ubac-kit .ubac-kit__options > .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path),
+.ubac-kit .ubac-kit__options > .ubac-kit__option-cell {
+	flex: 1 1 16rem;
+	width: auto;
+	min-width: 0;
+	max-width: calc((100% - 1rem) / 2);
+}
+
+.ubac-kit .ubac-kit__options:has(> :nth-child(3)) > .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path),
+.ubac-kit .ubac-kit__options:has(> :nth-child(3)) > .ubac-kit__option-cell {
+	max-width: calc((100% - 2rem) / 3);
+}
+
+.ubac-kit .ubac-kit__option-cell > .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square) {
+	width: 100%;
+}
+
+.ubac-kit .ubac-kit__option.ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) {
+	--ubac-kit-option-pad: .75rem;
+	--ubac-kit-thumb: 5.5rem;
+	height: auto;
+	min-height: 0;
+	gap: .35rem;
+}
+
+/* Front face: the photo leaves the flow (left, edge to edge), the rest lines
+   up in the right-hand column. Two places, as in the card rules above: the
+   front of a flippable card, or the card itself (side display). */
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) > .ubac-kit__option-flip > .ubac-kit__option-face--front,
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path):not(:has(> .ubac-kit__option-flip)) {
+	position: relative;
+	gap: .3rem;
+}
+
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) > .ubac-kit__option-flip > .ubac-kit__option-face--front:has(> .ubac-kit__option-media) {
+	min-height: calc(var(--ubac-kit-thumb) - 2 * var(--ubac-kit-option-pad));
+	padding-left: calc(var(--ubac-kit-thumb) - var(--ubac-kit-option-pad) + .75rem);
+}
+
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path):not(:has(> .ubac-kit__option-flip)):has(> .ubac-kit__option-media) {
+	min-height: var(--ubac-kit-thumb);
+	padding-left: calc(var(--ubac-kit-thumb) + .75rem);
+}
+
+.ubac-kit .ubac-kit__option.ubac-kit__option--vignette:not(.ubac-kit__option--path) > .ubac-kit__option-flip > .ubac-kit__option-face--front > .ubac-kit__option-media,
+.ubac-kit .ubac-kit__option.ubac-kit__option--vignette:not(.ubac-kit__option--path) > .ubac-kit__option-media {
+	position: absolute;
+	top: calc(-1 * var(--ubac-kit-option-pad) - 1px);
+	bottom: calc(-1 * var(--ubac-kit-option-pad) - 1px);
+	left: calc(-1 * var(--ubac-kit-option-pad) - 1px);
+	width: var(--ubac-kit-thumb);
+	height: auto;
+	margin: 0;
+	aspect-ratio: auto;
+	border-radius: var(--ubac-kit-radius) 0 0 var(--ubac-kit-radius);
+}
+
+/* ---------------------------------------------------------------------------
+   GRID CARDS: the photo on top, the text under it.
+   ---------------------------------------------------------------------------
+   Added 2026-10-31. Until then a single-choice component could show the photo
+   BESIDE the text (`vignette`) or no photo at all (`card`, whose name says the
+   opposite of what it does). The product grid every WooCommerce shopper knows
+   — photo, name, price, button, stacked — existed only for MULTIPLE-choice
+   components, through the per-component `display_style = image`. Nobody
+   expects that distinction from the outside, and the screenshot of a
+   configurator is the first thing a visitor judges.
+
+   No new markup: `grid` renders exactly what `vignette` renders, and only the
+   layout differs. The front's readMode() returns true for both, and these
+   rules put the figure back in the flow. That is why the selectors below
+   mirror the vignette ones above, with the root attribute added — same
+   elements, different placement.
+
+   The figure is pulled out to the card's edges with negative margins rather
+   than by removing the card's padding: the text under it keeps the padding it
+   needs, and the photo still reaches the rounded corners.
+
+   The attribute sits ON `.ubac-kit`, not on an ancestor of it. Written the
+   other way round — `[data-…] .ubac-kit` — these rules match nothing at all
+   and the cards keep their vignette layout in silence, which is exactly what
+   the first attempt did.
+   --------------------------------------------------------------------------- */
+
+.ubac-kit[data-ubac-kit-card-style="grid"] .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) > .ubac-kit__option-flip > .ubac-kit__option-face--front:has(> .ubac-kit__option-media),
+.ubac-kit[data-ubac-kit-card-style="grid"] .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path):not(:has(> .ubac-kit__option-flip)):has(> .ubac-kit__option-media) {
+	/* The left gutter existed only to clear the absolutely placed thumbnail. */
+	padding-left: var( --ubac-kit-option-pad );
+	min-height: 0;
+}
+
+.ubac-kit[data-ubac-kit-card-style="grid"] .ubac-kit__option.ubac-kit__option--vignette:not(.ubac-kit__option--path) > .ubac-kit__option-flip > .ubac-kit__option-face--front > .ubac-kit__option-media,
+.ubac-kit[data-ubac-kit-card-style="grid"] .ubac-kit__option.ubac-kit__option--vignette:not(.ubac-kit__option--path) > .ubac-kit__option-media {
+	position: static;
+	width: auto;
+	height: auto;
+	aspect-ratio: 4 / 3;
+	margin: calc( -1 * var( --ubac-kit-option-pad ) ) calc( -1 * var( --ubac-kit-option-pad ) ) .5rem;
+	border-radius: var( --ubac-kit-radius ) var( --ubac-kit-radius ) 0 0;
+}
+
+.ubac-kit[data-ubac-kit-card-style="grid"] .ubac-kit__option--vignette:not(.ubac-kit__option--path) {
+	/* Narrower than the 300 px of a vignette: a grid of cards wants several
+	   per row, and the name now has the card's whole width to sit on. */
+	width: 15rem;
+}
+
+
+.ubac-kit .ubac-kit__option.ubac-kit__option--vignette:not(.ubac-kit__option--path) > .ubac-kit__option-media {
+	top: -1px;
+	bottom: -1px;
+	left: -1px;
+}
+
+.ubac-kit .ubac-kit__option.ubac-kit__option--vignette:not(.ubac-kit__option--path) .ubac-kit__option-media > img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+/* Texts: the name and the text on two lines at most (the whole of it on the
+   back, in the drawer or behind “More info”), the price never cut. */
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) :is(.ubac-kit__option-name, .ubac-kit__option-text) {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+}
+
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) .ubac-kit__option-text {
+	margin: 0;
+	font-size: .8rem;
+	line-height: 1.35;
+}
+
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) :is(.ubac-kit__option-hit, .ubac-kit__addon-head, .ubac-kit__option-body) {
+	gap: .15rem;
+}
+
+.ubac-kit .ubac-kit__option.ubac-kit__option--square:not(.ubac-kit__option--path) .ubac-kit__option-variation {
+	min-height: 0;
+}
+
+/* Buttons at the bottom right, a 44 px touch target. */
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) .ubac-kit__option-actions {
+	justify-content: flex-end;
+	align-items: center;
+	gap: .25rem .4rem;
+	margin-top: auto;
+}
+
+/* The buttons of the card are named one by one (renderCards(), addon cards):
+   a theme that stretches .button inside the card would undo the row. */
+body .ubac-kit .ubac-kit__option.ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) .ubac-kit__option-actions > :is(.ubac-kit__choose, .ubac-kit__more, .ubac-kit__add, .ubac-kit__info-back) {
+	flex: 0 0 auto;
+	width: auto;
+	min-height: 44px;
+	padding: .4rem .9rem;
+	font-size: .85rem;
+}
+
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path) .ubac-kit__option-tool {
+	min-width: 44px;
+	min-height: 44px;
+}
+
+/* Back face: it must not set the height of the card while the card is not
+   flipped (the info text would make it taller); flipped, the card takes the
+   height of its back. */
+.ubac-kit .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path):not(.is-flipped) > .ubac-kit__option-flip > .ubac-kit__option-face--back {
+	contain: size;
+	overflow: hidden;
+}
+
+/* Phone: one full-width card per row, horizontal all the same. */
+@media (max-width: 39.999em) {
+	.ubac-kit .ubac-kit__options > .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path),
+	.ubac-kit .ubac-kit__options > .ubac-kit__option-cell,
+	.ubac-kit .ubac-kit__options:has(> :nth-child(3)) > .ubac-kit__option:is(.ubac-kit__option--vignette, .ubac-kit__option--square):not(.ubac-kit__option--path),
+	.ubac-kit .ubac-kit__options:has(> :nth-child(3)) > .ubac-kit__option-cell {
+		flex: 1 1 100%;
+		max-width: none;
+	}
+}
+
+/* ==========================================================================
+   Phone width and narrow columns: layout only
+   --------------------------------------------------------------------------
+   No colour, no brand value, no catalogue assumption here: only sizes and
+   stacking. Every selector degrades to nothing when the matching element is
+   absent, so a theme that renders a reduced markup is not affected.
+   ========================================================================== */
+
+/* Touch targets. One token, so a theme can raise or lower it in one place.
+   2.75rem = 44px at the default root size, the usual minimum for a finger. */
+.ubac-kit {
+	--ubac-kit-touch-target: 2.75rem;
+}
+
+@media (max-width: 63.999em) {
+	.ubac-kit :is(.ubac-kit__add, .ubac-kit__recap-toggle, .ubac-kit__summary-edit),
+	.ubac-kit .ubac-kit__option-actions > :is(button, a) {
+		min-height: var(--ubac-kit-touch-target);
+	}
+}
+
+/* Fixed widths (the 300 px right-hand column, the 300 px vignette) become the
+   full width of the row below 40em: at 360 px of viewport, minus the padding of
+   the theme, a 300 px box plus its own padding pushed the page into a sideways
+   scroll. */
+@media (max-width: 39.999em) {
+	.ubac-kit .ubac-kit__info,
+	.ubac-kit .ubac-kit__option--vignette {
+		width: 100%;
+		max-width: 100%;
+	}
+}
+
+/* Summary header: "Your configuration" then "Step X / Y" on its right. The
+   step index is pushed to the end of the row and never breaks in two. */
+.ubac-kit__recap-head > .ubac-kit__step-index {
+	margin-inline-start: auto;
+	white-space: nowrap;
+}
+
+/* The summary body becomes a size container: what matters for the header below
+   is the width of the COLUMN, not of the window — the same column is a sidebar
+   on a desktop and a banner on a phone. container-type: inline-size only
+   constrains the inline axis, so it leaves the sticky banner untouched. */
+.ubac-kit__recap-body {
+	container-type: inline-size;
+	container-name: ubac-recap;
+}
+
+/* Narrow summary — a column under 300 px (laptops), or the banner below 64em:
+   the index takes the place of the title, which stays read by assistive
+   technology but leaves the screen. Without this the two overlapped. */
+@container ubac-recap (max-width: 300px) {
+	.ubac-kit .ubac-kit__recap-head > .ubac-kit__recap-title {
+		position: absolute !important;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.ubac-kit .ubac-kit__recap-head > .ubac-kit__step-index {
+		margin-inline-start: 0;
+	}
+}
+
+@media (max-width: 63.999em) {
+	.ubac-kit .ubac-kit__recap-head > .ubac-kit__recap-title {
+		position: absolute !important;
+		width: 1px;
+		height: 1px;
+		margin: -1px;
+		padding: 0;
+		overflow: hidden;
+		clip: rect(1px, 1px, 1px, 1px);
+		clip-path: inset(50%);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	.ubac-kit .ubac-kit__recap-head > .ubac-kit__step-index {
+		margin-inline-start: 0;
+	}
+}
+
+/* Specifications table in the right-hand column: it holds its own words, so on
+   a phone it scrolls inside its block instead of widening the page. */
+@media (max-width: 63.999em) {
+	.ubac-kit__info-text--caracteristiques {
+		max-width: 100%;
+		overflow-x: auto;
+	}
+}

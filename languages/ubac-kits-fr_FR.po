@@ -7,7 +7,7 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "PO-Revision-Date: 2026-10-31 15:01+0000\n"
-"X-Generator: dahu i18n-build\n"
+"X-Generator: ubac i18n-build\n"
 
 #: includes/class-ubac-kits-admin.php:323 includes/class-ubac-kits-validator.php:641
 msgid " and "
@@ -319,7 +319,7 @@ msgstr "Ajouter une exception"
 msgid "Add an option"
 msgstr "Ajouter une option"
 
-#: includes/class-ubac-kits-frontend.php:155 includes/class-wc-product-dahu-kit.php:207
+#: includes/class-ubac-kits-frontend.php:155 includes/class-wc-product-ubac-kit.php:207
 msgid "Add to cart"
 msgstr "Ajouter au panier"
 
@@ -580,7 +580,7 @@ msgstr "Configuration « %s » rouverte, aux prix du jour."
 msgid "Configuration “%s” saved."
 msgstr "Configuration « %s » enregistrée."
 
-#: includes/class-ubac-kits-admin-order.php:170 includes/class-wc-product-dahu-kit.php:200
+#: includes/class-ubac-kits-admin-order.php:170 includes/class-wc-product-ubac-kit.php:200
 msgid "Configure"
 msgstr "Configurer"
 
@@ -637,12 +637,12 @@ msgid "Customise the display"
 msgstr "Personnaliser l’affichage"
 
 #: includes/class-ubac-kits-admin.php:996
-msgid "Dahu Composite"
-msgstr "Dahu Composite"
+msgid "Ubac Composite"
+msgstr "Ubac Composite"
 
 #: ubac-kits.php:65
-msgid "Dahu Composite requires WooCommerce."
-msgstr "Dahu Composite nécessite WooCommerce."
+msgid "Ubac Composite requires WooCommerce."
+msgstr "Ubac Composite nécessite WooCommerce."
 
 #: includes/class-ubac-kits-admin.php:732
 msgid "Dark"
@@ -1026,8 +1026,8 @@ msgid "Label for the tier price"
 msgstr "Libellé du prix du palier"
 
 #: includes/class-ubac-kits-settings.php:400
-msgid "Label taken from Dahu Pricing; change it there."
-msgstr "Libellé repris de Dahu Pricing ; modifiez-le là-bas."
+msgid "Label taken from Ubac Pricing; change it there."
+msgstr "Libellé repris de Ubac Pricing ; modifiez-le là-bas."
 
 #: includes/class-ubac-kits-saved-configs.php:641
 msgid "Last name"
@@ -1212,8 +1212,8 @@ msgid "Open on the site"
 msgstr "Ouvrir sur le site"
 
 #: includes/class-ubac-kits-settings.php:402
-msgid "Open the Dahu Pricing settings"
-msgstr "Ouvrir les réglages de Dahu Pricing"
+msgid "Open the Ubac Pricing settings"
+msgstr "Ouvrir les réglages de Ubac Pricing"
 
 #: includes/class-ubac-kits-admin.php:149
 msgid "Optional"
@@ -1638,8 +1638,8 @@ msgid "The product was added to your cart. Taking you to the cart…"
 msgstr "Le produit a été ajouté à votre panier. Direction le panier…"
 
 #: includes/class-ubac-kits-admin.php:974
-msgid "The shipping class set for composite products (Dahu Composite settings) does not exist: shipping plugins will not recognise this product."
-msgstr "La classe de livraison définie pour les produits composites (réglages Dahu Composite) n’existe pas : les extensions de livraison ne reconnaîtront pas ce produit."
+msgid "The shipping class set for composite products (Ubac Composite settings) does not exist: shipping plugins will not recognise this product."
+msgstr "La classe de livraison définie pour les produits composites (réglages Ubac Composite) n’existe pas : les extensions de livraison ne reconnaîtront pas ce produit."
 
 #: ubac-kits.php:268
 msgid "The total follows the choices, in the cart and on the order."

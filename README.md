@@ -1,4 +1,4 @@
-# Dahu Composite
+# Ubac Composite
 
 Server-driven configurable product kits for WooCommerce.
 
@@ -6,7 +6,7 @@ Developed and maintained by [Hugo Vial-Jaime — Dahu-Concept](https://dahu-conc
 
 ## What it does
 
-Dahu Composite turns a WooCommerce product into a guided configurator. The
+Ubac Composite turns a WooCommerce product into a guided configurator. The
 customer walks through steps, picks an option at each one, and ends on a summary
 with a price and a weight that the **server** worked out.
 
@@ -26,7 +26,7 @@ The front end is a thin client. It calls one REST route on every customer
 action:
 
 ```
-POST /wp-json/dahu-composite/v1/state
+POST /wp-json/ubac-kits/v1/state
      { product_id, selections, quantity }
   -> corrected selections, validity, price, weight, lines — in one response
 ```
@@ -74,7 +74,7 @@ on the customer's role.
 
 ## Optional integrations
 
-The plugin works on its own. When they are present it also talks to **Dahu
+The plugin works on its own. When they are present it also talks to **Ubac
 Pricing** (role-based price labels and tiers) and to a **product bundle plugin**
 (components offering a bundle as an option). Neither is required, and neither is
 bundled.
@@ -106,7 +106,7 @@ A theme imposes its own palette by defining these on `:root`; the theme's values
 Take over the configurator's styling:
 
 ```php
-add_filter( 'dahu_composite_theme_provides_styles', '__return_true' );
+add_filter( 'ubac_kits_theme_provides_styles', '__return_true' );
 ```
 
 The plugin then enqueues only its functional stylesheet — drawer position,
@@ -115,7 +115,7 @@ animation, scroll locking, column grid — and leaves the skin to you.
 Render the detail tabs yourself:
 
 ```php
-add_filter( 'dahu_composite_product_tabs_callback', static function () {
+add_filter( 'ubac_kits_product_tabs_callback', static function () {
     return 'my_theme_product_tabs'; // ( WC_Product $product, string[] $slugs )
 } );
 ```
@@ -127,40 +127,40 @@ what the plugin does on its own.
 
 | Filter | Default | What it changes |
 |---|---|---|
-| `dahu_composite_theme_provides_styles` | `false` | `true` leaves the skin to the theme and keeps only the functional stylesheet |
-| `dahu_composite_product_tabs_callback` | `''` | Name of a callable that renders the detail tabs instead of the plugin |
-| `dahu_composite_category_icons` | English keywords | Keyword table of the “Category icon” layout: the pictogram is derived from the product name, so a catalogue in another language replaces the table |
-| `dahu_composite_includes_label` | `Includes` | Label of the “Includes” mention shown under a kit in the cart, the order and the Store API |
-| `dahu_composite_summary_aside_html` | `''` | HTML block beside the “Add to cart” button of the Summary |
-| `dahu_composite_recap_note` | `''` | Note under the Summary |
-| `dahu_composite_help_placeholder` | `''` | Placeholder of the help panel |
-| `dahu_composite_option_subtitle` | `''` | Subtitle of an option card |
-| `dahu_composite_option_generation` | `''` | Generation badge of an option |
-| `dahu_composite_option_has_specs` | `null` | Whether an option has specifications to show |
-| `dahu_composite_option_weight` | the product weight | Weight used for the kit parcel |
-| `dahu_composite_option_unit_price` | the product price | Unit price of an option |
-| `dahu_composite_option_unit_regular_price` | the regular price | Regular unit price of an option |
-| `dahu_composite_kit_price_html` | `''` | Price HTML of the kit on the product page |
-| `dahu_composite_price_tiers` | the tiers found | Price tiers offered |
-| `dahu_composite_container_shipping_class_slug` | the kit's own class | Shipping class slug of the kit container |
-| `dahu_composite_bundle_configuration` | the computed configuration | Configuration handed to a bundle component |
-| `dahu_composite_inline_boot_state` | `true` | `false` stops the boot state being printed inline |
-| `dahu_composite_saved_configs_enabled` | `true` | `false` turns saved configurations off for a kit |
-| `dahu_composite_guest_save_enabled` | WooCommerce can create a customer | Whether a visitor may save a configuration |
-| `dahu_composite_guest_save_fields` | name and e-mail | Fields of the visitor save form |
-| `dahu_composite_guest_save_limit` | `10` | Saves allowed per visitor |
-| `dahu_composite_remove_data_on_uninstall` | `false` | `true` wipes kit definitions and saved configurations on uninstall |
+| `ubac_kits_theme_provides_styles` | `false` | `true` leaves the skin to the theme and keeps only the functional stylesheet |
+| `ubac_kits_product_tabs_callback` | `''` | Name of a callable that renders the detail tabs instead of the plugin |
+| `ubac_kits_category_icons` | English keywords | Keyword table of the “Category icon” layout: the pictogram is derived from the product name, so a catalogue in another language replaces the table |
+| `ubac_kits_includes_label` | `Includes` | Label of the “Includes” mention shown under a kit in the cart, the order and the Store API |
+| `ubac_kits_summary_aside_html` | `''` | HTML block beside the “Add to cart” button of the Summary |
+| `ubac_kits_recap_note` | `''` | Note under the Summary |
+| `ubac_kits_help_placeholder` | `''` | Placeholder of the help panel |
+| `ubac_kits_option_subtitle` | `''` | Subtitle of an option card |
+| `ubac_kits_option_generation` | `''` | Generation badge of an option |
+| `ubac_kits_option_has_specs` | `null` | Whether an option has specifications to show |
+| `ubac_kits_option_weight` | the product weight | Weight used for the kit parcel |
+| `ubac_kits_option_unit_price` | the product price | Unit price of an option |
+| `ubac_kits_option_unit_regular_price` | the regular price | Regular unit price of an option |
+| `ubac_kits_kit_price_html` | `''` | Price HTML of the kit on the product page |
+| `ubac_kits_price_tiers` | the tiers found | Price tiers offered |
+| `ubac_kits_container_shipping_class_slug` | the kit's own class | Shipping class slug of the kit container |
+| `ubac_kits_bundle_configuration` | the computed configuration | Configuration handed to a bundle component |
+| `ubac_kits_inline_boot_state` | `true` | `false` stops the boot state being printed inline |
+| `ubac_kits_saved_configs_enabled` | `true` | `false` turns saved configurations off for a kit |
+| `ubac_kits_guest_save_enabled` | WooCommerce can create a customer | Whether a visitor may save a configuration |
+| `ubac_kits_guest_save_fields` | name and e-mail | Fields of the visitor save form |
+| `ubac_kits_guest_save_limit` | `10` | Saves allowed per visitor |
+| `ubac_kits_remove_data_on_uninstall` | `false` | `true` wipes kit definitions and saved configurations on uninstall |
 
 Two of them carry wording rather than behaviour, and both are documented with a
-worked example in the source: `dahu_composite_category_icons`
-(`Dahu_Composite_Frontend::category_icons()`) and
-`dahu_composite_includes_label` (`Dahu_Composite_Included::includes_label()`).
+worked example in the source: `ubac_kits_category_icons`
+(`Ubac_Kits_Frontend::category_icons()`) and
+`ubac_kits_includes_label` (`Ubac_Kits_Included::includes_label()`).
 
 ## Uninstalling
 
 Deleting the plugin removes its settings and caches. Kit definitions and saved
 customer configurations are **kept**, because an uninstall is often just a step
-in reinstalling. To wipe everything, set `dahu_composite_remove_data_on_uninstall`
+in reinstalling. To wipe everything, set `ubac_kits_remove_data_on_uninstall`
 to a truthy value before deleting.
 
 ## External services

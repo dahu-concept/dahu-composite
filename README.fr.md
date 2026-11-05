@@ -1,4 +1,4 @@
-# Dahu Composite
+# Ubac Composite
 
 Des kits de produits configurables pour WooCommerce, calculés par le serveur.
 
@@ -9,7 +9,7 @@ elle qui fait foi : c'est elle qui part sur wordpress.org.*
 
 ## À quoi ça sert
 
-Dahu Composite transforme un produit WooCommerce en configurateur guidé. Le
+Ubac Composite transforme un produit WooCommerce en configurateur guidé. Le
 client parcourt des étapes, choisit une option à chacune, et arrive sur un
 récapitulatif dont le prix et le poids ont été calculés par le **serveur**.
 
@@ -31,7 +31,7 @@ Le front est un client mince. Il appelle une seule route REST à chaque action d
 client :
 
 ```
-POST /wp-json/dahu-composite/v1/state
+POST /wp-json/ubac-kits/v1/state
      { product_id, selections, quantity }
   -> sélections corrigées, validité, prix, poids, lignes — en une réponse
 ```
@@ -80,7 +80,7 @@ parce qu'un prix dépend du rôle du client.
 ## Les intégrations facultatives
 
 L'extension fonctionne seule. Quand elles sont présentes, elle dialogue aussi
-avec **Dahu Pricing** (libellés de prix et paliers par rôle) et avec une
+avec **Ubac Pricing** (libellés de prix et paliers par rôle) et avec une
 **extension de lots de produits** (un composant qui propose un lot comme
 option). Aucune des deux n'est nécessaire, aucune n'est embarquée.
 
@@ -111,7 +111,7 @@ Un thème impose sa propre palette en définissant ces variables sur `:root` ; s
 Reprendre l'habillage du configurateur :
 
 ```php
-add_filter( 'dahu_composite_theme_provides_styles', '__return_true' );
+add_filter( 'ubac_kits_theme_provides_styles', '__return_true' );
 ```
 
 L'extension ne charge alors que sa feuille de style fonctionnelle — position du
@@ -121,7 +121,7 @@ l'habillage.
 Rendre les onglets de détail vous-même :
 
 ```php
-add_filter( 'dahu_composite_product_tabs_callback', static function () {
+add_filter( 'ubac_kits_product_tabs_callback', static function () {
     return 'my_theme_product_tabs'; // ( WC_Product $product, string[] $slugs )
 } );
 ```
@@ -133,42 +133,42 @@ par défaut sont ce que fait l'extension livrée à elle-même.
 
 | Filtre | Défaut | Ce qu'il change |
 |---|---|---|
-| `dahu_composite_theme_provides_styles` | `false` | `true` laisse l'habillage au thème et ne garde que la feuille de style fonctionnelle |
-| `dahu_composite_product_tabs_callback` | `''` | Nom d'un appelable qui rend les onglets de détail à la place de l'extension |
-| `dahu_composite_category_icons` | mots-clés anglais | Table de mots-clés de la mise en page « Icône de catégorie » : le pictogramme est déduit du nom du produit, donc un catalogue dans une autre langue remplace la table |
-| `dahu_composite_includes_label` | `Includes` | Libellé de la mention « Comprend » affichée sous un kit dans le panier, la commande et la Store API |
-| `dahu_composite_summary_aside_html` | `''` | Bloc HTML à côté du bouton « Ajouter au panier » du récapitulatif |
-| `dahu_composite_recap_note` | `''` | Note sous le récapitulatif |
-| `dahu_composite_help_placeholder` | `''` | Texte d'attente du panneau d'aide |
-| `dahu_composite_option_subtitle` | `''` | Sous-titre d'une carte d'option |
-| `dahu_composite_option_generation` | `''` | Badge de génération d'une option |
-| `dahu_composite_option_has_specs` | `null` | Si une option a des spécifications à montrer |
-| `dahu_composite_option_weight` | le poids du produit | Poids retenu pour le colis du kit |
-| `dahu_composite_option_unit_price` | le prix du produit | Prix unitaire d'une option |
-| `dahu_composite_option_unit_regular_price` | le prix normal | Prix unitaire normal d'une option |
-| `dahu_composite_kit_price_html` | `''` | HTML du prix du kit sur la page produit |
-| `dahu_composite_price_tiers` | les paliers trouvés | Paliers tarifaires proposés |
-| `dahu_composite_container_shipping_class_slug` | la classe du kit lui-même | Identifiant de classe de livraison du conteneur du kit |
-| `dahu_composite_bundle_configuration` | la configuration calculée | Configuration remise à un composant de type lot |
-| `dahu_composite_inline_boot_state` | `true` | `false` cesse d'imprimer l'état initial dans la page |
-| `dahu_composite_saved_configs_enabled` | `true` | `false` coupe les configurations enregistrées pour un kit |
-| `dahu_composite_guest_save_enabled` | WooCommerce peut créer un client | Si un visiteur peut enregistrer une configuration |
-| `dahu_composite_guest_save_fields` | nom et adresse e-mail | Champs du formulaire d'enregistrement par un visiteur |
-| `dahu_composite_guest_save_limit` | `10` | Enregistrements autorisés par visiteur |
-| `dahu_composite_remove_data_on_uninstall` | `false` | `true` efface les définitions de kits et les configurations enregistrées à la désinstallation |
+| `ubac_kits_theme_provides_styles` | `false` | `true` laisse l'habillage au thème et ne garde que la feuille de style fonctionnelle |
+| `ubac_kits_product_tabs_callback` | `''` | Nom d'un appelable qui rend les onglets de détail à la place de l'extension |
+| `ubac_kits_category_icons` | mots-clés anglais | Table de mots-clés de la mise en page « Icône de catégorie » : le pictogramme est déduit du nom du produit, donc un catalogue dans une autre langue remplace la table |
+| `ubac_kits_includes_label` | `Includes` | Libellé de la mention « Comprend » affichée sous un kit dans le panier, la commande et la Store API |
+| `ubac_kits_summary_aside_html` | `''` | Bloc HTML à côté du bouton « Ajouter au panier » du récapitulatif |
+| `ubac_kits_recap_note` | `''` | Note sous le récapitulatif |
+| `ubac_kits_help_placeholder` | `''` | Texte d'attente du panneau d'aide |
+| `ubac_kits_option_subtitle` | `''` | Sous-titre d'une carte d'option |
+| `ubac_kits_option_generation` | `''` | Badge de génération d'une option |
+| `ubac_kits_option_has_specs` | `null` | Si une option a des spécifications à montrer |
+| `ubac_kits_option_weight` | le poids du produit | Poids retenu pour le colis du kit |
+| `ubac_kits_option_unit_price` | le prix du produit | Prix unitaire d'une option |
+| `ubac_kits_option_unit_regular_price` | le prix normal | Prix unitaire normal d'une option |
+| `ubac_kits_kit_price_html` | `''` | HTML du prix du kit sur la page produit |
+| `ubac_kits_price_tiers` | les paliers trouvés | Paliers tarifaires proposés |
+| `ubac_kits_container_shipping_class_slug` | la classe du kit lui-même | Identifiant de classe de livraison du conteneur du kit |
+| `ubac_kits_bundle_configuration` | la configuration calculée | Configuration remise à un composant de type lot |
+| `ubac_kits_inline_boot_state` | `true` | `false` cesse d'imprimer l'état initial dans la page |
+| `ubac_kits_saved_configs_enabled` | `true` | `false` coupe les configurations enregistrées pour un kit |
+| `ubac_kits_guest_save_enabled` | WooCommerce peut créer un client | Si un visiteur peut enregistrer une configuration |
+| `ubac_kits_guest_save_fields` | nom et adresse e-mail | Champs du formulaire d'enregistrement par un visiteur |
+| `ubac_kits_guest_save_limit` | `10` | Enregistrements autorisés par visiteur |
+| `ubac_kits_remove_data_on_uninstall` | `false` | `true` efface les définitions de kits et les configurations enregistrées à la désinstallation |
 
 Deux d'entre eux portent du texte et non un comportement, et tous deux sont
 documentés avec un exemple complet dans le code source :
-`dahu_composite_category_icons`
-(`Dahu_Composite_Frontend::category_icons()`) et
-`dahu_composite_includes_label` (`Dahu_Composite_Included::includes_label()`).
+`ubac_kits_category_icons`
+(`Ubac_Kits_Frontend::category_icons()`) et
+`ubac_kits_includes_label` (`Ubac_Kits_Included::includes_label()`).
 
 ## À la désinstallation
 
 Supprimer l'extension supprime ses réglages et ses caches. Les définitions de
 kits et les configurations enregistrées par les clients **restent**, parce
 qu'une désinstallation n'est souvent qu'une étape d'une réinstallation. Pour
-tout effacer, mettez `dahu_composite_remove_data_on_uninstall` à une valeur
+tout effacer, mettez `ubac_kits_remove_data_on_uninstall` à une valeur
 vraie avant de supprimer.
 
 ## Services externes

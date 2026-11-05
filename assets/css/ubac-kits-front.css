@@ -1,0 +1,958 @@
+/**
+ * UBAC COMPOSITE — configurator styles.
+ *
+ * The plugin's fallback skin, standalone (no theme required).
+ * Theme CSS variables are used, ALWAYS with a fallback value: the plugin has
+ * to stay usable on a site that does not define them.
+ *
+ * The fallback skin is light and neutral, so it reads on an ordinary WordPress
+ * page; a theme that defines the palette variables overrides it entirely. The
+ * accent keeps its brand fallback. One
+ * exception, noted in RESUME_TECHNIQUE.md: the theme exposes no error / alert
+ * token, hence var(--color-error, …) and var(--color-warning, …), which wait
+ * for a variable yet to come.
+ *
+ * Typography: nothing is declared here, the font is inherited from the body.
+ * Buttons: the plugin draws its own (see "Buttons" below) from the tokens
+ * above; it does not rely on any WooCommerce or theme stylesheet being loaded.
+ */
+
+.ubac-kit {
+	--ubac-kit-surface: var(--color-surface-2, #F6F7F7);
+	--ubac-kit-surface-inner: var(--color-surface-3, #ECEEEF);
+	--ubac-kit-text: var(--color-on-surface, #1D2327);
+	--ubac-kit-border: var(--color-border, #C9CDD1);
+	/* The fallback is the plugin's own green, not a shop's.
+	 *
+	 * It used to be #D5EB17, the brand green of the shop this plugin was ported
+	 * from. A theme that defines `--color-brand-green` still wins, which is the
+	 * point of the variable; but a plugin published on wordpress.org must not
+	 * carry one shop's brand colour as its default, and the chantier rule is
+	 * explicit that nothing specific to that shop ships here.
+	 *
+	 * #1FA396 measured against the ink already used on the accent (#1C1A1A):
+	 * 5.56:1, past the 4.5:1 a text needs. White on it measures 3.12:1 and is
+	 * therefore NOT an option — the dark ink stays. Both figures measured, not
+	 * estimated: the first draft of this comment said 6.6:1 from a guess. */
+	--ubac-kit-accent: var(--color-brand-green, #1FA396);
+	--ubac-kit-on-accent: var(--color-on-brand-green, #1C1A1A);
+	--ubac-kit-radius: var(--radius-large, 1.25rem);
+	--ubac-kit-radius-small: var(--radius, 0);
+	--ubac-kit-shadow: var(--shadow, 0 0.5rem 1.5rem rgba(0, 0, 0, 0.12));
+	--ubac-kit-transition: var(--transition, 0.2s ease);
+
+	margin: 1.5em 0;
+	color: var(--ubac-kit-text);
+	clear: both;
+}
+
+/* Buttons.
+   A block theme loads no classic WooCommerce stylesheet, so a bare .button
+   would be the browser's own grey control. These rules give it a skin from the
+   tokens above. :where() keeps their specificity at zero: a theme or a
+   WooCommerce sheet that does style .button wins, and is not dressed twice. */
+:where(.ubac-kit) :where(.button) {
+	display: inline-block;
+	box-sizing: border-box;
+	padding: .7em 1.4em;
+	border: 1px solid var(--ubac-kit-accent);
+	border-radius: var(--ubac-kit-radius);
+	background-color: var(--ubac-kit-accent);
+	color: var(--ubac-kit-on-accent);
+	font: inherit;
+	font-weight: 600;
+	line-height: 1.3;
+	text-align: center;
+	text-decoration: none;
+	cursor: pointer;
+	transition: background-color var(--ubac-kit-transition), border-color var(--ubac-kit-transition), color var(--ubac-kit-transition);
+}
+
+/* Without .alt: the secondary button, outlined. */
+:where(.ubac-kit) :where(.button:not(.alt)) {
+	border-color: var(--ubac-kit-border);
+	background-color: transparent;
+	color: var(--ubac-kit-text);
+}
+
+:where(.ubac-kit) :where(.button:hover:not(:disabled)) {
+	background-color: color-mix(in srgb, var(--ubac-kit-accent) 85%, var(--ubac-kit-on-accent));
+	border-color: color-mix(in srgb, var(--ubac-kit-accent) 85%, var(--ubac-kit-on-accent));
+	color: var(--ubac-kit-on-accent);
+}
+
+:where(.ubac-kit) :where(.button:not(.alt):hover:not(:disabled)) {
+	background-color: color-mix(in srgb, var(--ubac-kit-text) 8%, transparent);
+	border-color: var(--ubac-kit-text);
+	color: var(--ubac-kit-text);
+}
+
+:where(.ubac-kit) :where(.button:focus-visible) {
+	outline: 2px solid currentColor;
+	outline-offset: 2px;
+}
+
+/* Disabled: a flat tint, a dashed rule and a full-strength label. WooCommerce's
+   block-theme sheet dims a disabled .button to half opacity from a selector this
+   cannot outrank, so the label is kept dark enough to read once dimmed. */
+:where(.ubac-kit) :where(.button:disabled, .button[aria-disabled="true"]) {
+	border-style: dashed;
+	border-color: var(--ubac-kit-text);
+	background-color: var(--ubac-kit-surface);
+	color: var(--ubac-kit-text);
+	cursor: not-allowed;
+}
+
+.ubac-kit.is-busy .ubac-kit__step {
+	opacity: .65;
+	transition: opacity var(--ubac-kit-transition);
+}
+
+/* Step */
+.ubac-kit__step-title {
+	display: flex;
+	flex-direction: column;
+	gap: .2em;
+	margin: 0 0 .6em;
+}
+
+.ubac-kit__step-index {
+	font-size: .55em;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	opacity: .75;
+}
+
+.ubac-kit__description {
+	margin-bottom: 1em;
+	opacity: .85;
+}
+
+/* Options */
+.ubac-kit__options {
+	display: flex;
+	flex-wrap: wrap;
+	gap: .8em;
+	margin-bottom: 1em;
+}
+
+/* Same border as the right-hand column (.ubac-kit__info): no rule visible
+   outside a selection, same radius, same background. The transparent rule
+   keeps the room for the selection outline. */
+.ubac-kit__option {
+	padding: 1em;
+	border: 1px solid transparent;
+	border-radius: var(--ubac-kit-radius);
+	background: var(--ubac-kit-surface);
+	transition: border-color var(--ubac-kit-transition), background-color var(--ubac-kit-transition);
+}
+
+.ubac-kit__option.is-previewed {
+	border-color: var(--ubac-kit-border);
+}
+
+.ubac-kit__option.is-selected {
+	border-color: var(--ubac-kit-accent);
+	box-shadow: 0 0 0 1px var(--ubac-kit-accent);
+}
+
+.ubac-kit__option.is-out-of-stock {
+	opacity: .5;
+	cursor: not-allowed;
+}
+
+.ubac-kit__option-media {
+	position: relative;
+	flex: none;
+}
+
+.ubac-kit__option-image {
+	width: 3.5em;
+	height: 3.5em;
+	object-fit: contain;
+	border-radius: var(--ubac-kit-radius-small);
+}
+
+.ubac-kit__option-badge {
+	display: inline-block;
+	padding: .1em .5em;
+	border-radius: 999px;
+	background: var(--ubac-kit-accent);
+	color: var(--ubac-kit-on-accent);
+	font-size: .7em;
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: .03em;
+}
+
+.ubac-kit__option-media .ubac-kit__option-badge {
+	position: absolute;
+	top: -.4em;
+	left: -.4em;
+}
+
+.ubac-kit__option-body {
+	display: flex;
+	flex-direction: column;
+	gap: .2em;
+	min-width: 0;
+}
+
+.ubac-kit__option-name {
+	font-weight: 600;
+}
+
+.ubac-kit__option-price {
+	font-size: .9rem;
+}
+
+.ubac-kit__option-media {
+	border-radius: var(--ubac-kit-radius-small);
+	background: var(--ubac-kit-surface-inner);
+}
+
+.ubac-kit__option-description {
+	font-size: .9em;
+	opacity: .85;
+}
+
+.ubac-kit__option-detail {
+	margin-bottom: 1em;
+}
+
+.ubac-kit__option-stock {
+	color: var(--color-error, #a00);
+	font-size: .85em;
+}
+
+/* Prices: public price and professional tier price, rendered by the server (no
+   recomputation script). Two <span>: the public price is a recommended resale
+   price, and is never struck through. */
+.ubac-kit-price__label {
+	display: inline-block;
+	font-size: .85em;
+	opacity: .8;
+}
+
+.ubac-kit-price__public {
+	display: block;
+	opacity: .7;
+}
+
+.ubac-kit-price__tier {
+	display: block;
+	font-weight: 600;
+}
+
+.ubac-kit__select {
+	max-width: 100%;
+	margin-bottom: 1em;
+}
+
+.ubac-kit__any-attribute {
+	display: block;
+	margin-bottom: .6em;
+}
+
+.ubac-kit__bundle {
+	margin-bottom: 1em;
+	padding: .7em;
+	background: var(--ubac-kit-surface-inner);
+	border-radius: var(--ubac-kit-radius);
+}
+
+.ubac-kit__bundle-title {
+	margin: 0 0 .4em;
+	font-weight: 600;
+}
+
+.ubac-kit__bundle-items {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ubac-kit__bundle-item-label {
+	display: flex;
+	gap: .5em;
+	align-items: center;
+}
+
+.ubac-kit__quantity input {
+	width: 5em;
+}
+
+.ubac-kit__errors {
+	margin: 0 0 1em;
+	padding: .6em 1em;
+	list-style: none;
+	border-left: 3px solid var(--color-error, #a00);
+	background: var(--ubac-kit-surface-inner);
+	color: var(--color-error, #a00);
+	border-radius: var(--ubac-kit-radius-small);
+}
+
+.ubac-kit__buttons {
+	display: flex;
+	justify-content: space-between;
+	gap: .6em;
+	margin-top: 1em;
+}
+
+/* Summary */
+.ubac-kit__table-wrap {
+	overflow-x: auto;
+}
+
+.ubac-kit__summary-edit {
+	padding: 0;
+	border: 0;
+	background: none;
+	color: var(--ubac-kit-text);
+	text-decoration: underline;
+	text-decoration-color: var(--ubac-kit-accent);
+	text-decoration-thickness: 2px;
+	text-underline-offset: .2em;
+	cursor: pointer;
+	font: inherit;
+}
+
+.ubac-kit__total {
+	font-size: 1.2em;
+	font-weight: 700;
+}
+
+.ubac-kit__incomplete {
+	color: var(--color-warning, #a05a00);
+}
+
+.ubac-kit__cart {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 1em;
+	margin-top: 1em;
+}
+
+.ubac-kit__message {
+	margin-top: 1em;
+	padding: .7em 1em;
+	border-radius: var(--ubac-kit-radius);
+	background: var(--ubac-kit-surface-inner);
+}
+
+.ubac-kit__message.is-error {
+	color: var(--color-error, #a00);
+}
+
+.ubac-kit__error {
+	color: var(--color-error, #a00);
+}
+
+/* Cart / mini-cart: components indented under the kit */
+.ubac-kit-child .product-name,
+.woocommerce-mini-cart-item.ubac-kit-child {
+	padding-left: 1.5em;
+}
+
+.ubac-kit-component-label {
+	opacity: .8;
+	font-size: .9em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Branches, grouped screens, ranges, dead ends                        */
+/* ------------------------------------------------------------------ */
+
+/* Several components on one screen (display_group). */
+.ubac-kit__component + .ubac-kit__component {
+	margin-top: 1.75rem;
+	padding-top: 1.5rem;
+	border-top: 1px solid var(--color-border, #C9CDD1);
+}
+
+.ubac-kit__component-title {
+	margin: 0 0 0.75rem;
+	font-size: 1.05rem;
+}
+
+/* Range subheadings inside a component. */
+.ubac-kit__tier {
+	margin: 1.25rem 0 0.5rem;
+	font-size: 0.95rem;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	opacity: 0.8;
+}
+
+.ubac-kit__option-groups > .ubac-kit__tier:first-child {
+	margin-top: 0;
+}
+
+/* Branch: no price, the card stays plain. */
+.ubac-kit__option--path .ubac-kit__option-name {
+	font-weight: 600;
+}
+
+/* Dead end (a “block” scenario) and “coming soon” option. */
+.ubac-kit__step--blocked,
+.ubac-kit__step--coming-soon {
+	text-align: left;
+}
+
+.ubac-kit__blocked-text,
+.ubac-kit__coming-soon {
+	margin: 0 0 1.25rem;
+	padding: 1rem 1.25rem;
+	border-radius: var(--radius-large, 1.25rem);
+	background: var(--color-surface-3, #ECEEEF);
+	color: var(--color-on-surface, #1D2327);
+}
+
+.ubac-kit__summary-path td {
+	opacity: 0.85;
+}
+
+/* ------------------------------------------------------------------ */
+/* Two columns, persistent summary, info drawer                        */
+/* ------------------------------------------------------------------ */
+
+/* ---------- Layout ---------- */
+
+.ubac-kit__layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 1.5rem;
+	align-items: start;
+}
+
+/* The picker carries the theme's buybox classes: without a theme it has to be
+   given the same vertical stacking. :where() keeps specificity at zero, so the
+   theme's rules win when it is active. */
+:where(.ubac-kit__panel) {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	min-width: 0;
+}
+
+/* ---------- Left-hand column: summary ---------- */
+
+.ubac-kit__recap {
+	padding: 1rem;
+	border-radius: var(--ubac-kit-radius);
+	background: var(--ubac-kit-surface);
+}
+
+@media (min-width: 64em) {
+	.ubac-kit__recap {
+		padding: 1.25rem 1.25rem 1.25rem 1.75rem;
+	}
+}
+
+/* Right-hand column: photo + short description. */
+.ubac-kit__info {
+	--ubac-kit-info-pad: 1rem;
+	--ubac-kit-info-radius: var(--ubac-kit-radius);
+	padding: var(--ubac-kit-info-pad);
+	border-radius: var(--ubac-kit-info-radius);
+	background: var(--ubac-kit-surface);
+}
+
+/* “Square” corner shape (a product setting, the attribute set by the server):
+   both side columns with no rounding. The photo of the right-hand column
+   follows through --ubac-kit-info-radius. */
+.ubac-kit[data-ubac-kit-card-corners="square"] :is(.ubac-kit__recap, .ubac-kit__info) {
+	--ubac-kit-info-radius: 0px;
+	border-radius: 0;
+}
+
+.ubac-kit__info-name {
+	margin: 0;
+	font-weight: 600;
+}
+
+.ubac-kit__info-text > :first-child {
+	margin-top: 0;
+}
+
+.ubac-kit__info-text > :last-child {
+	margin-bottom: 0;
+}
+
+/* Icon bar of the right-hand column (Description, Specifications, the
+   “products supplied with” key). Active icon: a light background. */
+.ubac-kit__info-tool {
+	border-radius: var(--ubac-kit-radius-small);
+	transition: background-color .15s ease, opacity .15s ease;
+}
+
+.ubac-kit__info-tool:not(:disabled):not([aria-disabled="true"]):not(.is-soon):hover,
+.ubac-kit__info-tool.is-active {
+	background-color: rgba(0, 0, 0, .06);
+}
+
+.ubac-kit__info-tool:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 1px;
+}
+
+/* Specifications table in the column: tight rows. */
+.ubac-kit__info-text--caracteristiques :is(th, td) {
+	padding: .35rem 0;
+	text-align: left;
+	vertical-align: top;
+}
+
+.ubac-kit__info-text--caracteristiques th {
+	padding-right: .75rem;
+	font-weight: 600;
+}
+
+.ubac-kit__recap-title {
+	margin: 0 0 .75rem;
+	font-size: .95rem;
+	font-weight: 600;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+	opacity: .8;
+}
+
+.ubac-kit__recap-steps {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.ubac-kit__recap-step {
+	border-top: 1px solid var(--ubac-kit-border);
+}
+
+.ubac-kit__recap-step:first-child {
+	border-top: 0;
+}
+
+.ubac-kit__recap-link {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	width: 100%;
+	padding: .6rem 0;
+	text-align: left;
+	color: inherit;
+	background: none;
+	border: 0;
+	cursor: pointer;
+	transition: opacity var(--ubac-kit-transition);
+}
+
+.ubac-kit__recap-link:hover {
+	opacity: 1;
+}
+
+.ubac-kit__recap-link:focus-visible {
+	outline: 2px solid var(--ubac-kit-accent);
+	outline-offset: 2px;
+}
+
+/* States: upcoming steps dimmed, the current step brought forward. */
+.ubac-kit__recap-step.is-todo .ubac-kit__recap-link {
+	opacity: .55;
+}
+
+.ubac-kit__recap-step.is-current .ubac-kit__recap-link {
+	opacity: 1;
+}
+
+.ubac-kit__recap-step.is-current .ubac-kit__recap-label {
+	color: var(--ubac-kit-text);
+	text-decoration: underline;
+	text-decoration-color: var(--ubac-kit-accent);
+	text-decoration-thickness: 2px;
+	text-underline-offset: .2em;
+}
+
+.ubac-kit__recap-thumb {
+	flex: 0 0 auto;
+	width: 2.5rem;
+	height: 2.5rem;
+	object-fit: contain;
+	border-radius: var(--ubac-kit-radius-small);
+	background: var(--ubac-kit-surface-inner);
+}
+
+.ubac-kit__recap-bullet {
+	flex: 0 0 auto;
+	width: .6rem;
+	height: .6rem;
+	margin: 0 .95rem;
+	border-radius: 50%;
+	background: currentColor;
+	opacity: .4;
+}
+
+.ubac-kit__recap-step.is-done .ubac-kit__recap-bullet {
+	background: var(--ubac-kit-accent);
+	opacity: 1;
+}
+
+.ubac-kit__recap-text {
+	display: flex;
+	flex-direction: column;
+	gap: .15rem;
+	min-width: 0;
+}
+
+.ubac-kit__recap-label {
+	font-size: .8rem;
+	letter-spacing: .03em;
+	text-transform: uppercase;
+	opacity: .75;
+}
+
+.ubac-kit__recap-value {
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.ubac-kit__recap-value--empty {
+	font-weight: 400;
+	opacity: .7;
+}
+
+.ubac-kit__recap-price {
+	font-size: .9rem;
+}
+
+.ubac-kit__recap-total {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: .5rem;
+	margin-top: 1rem;
+	padding-top: .85rem;
+	border-top: 1px solid var(--ubac-kit-border);
+}
+
+.ubac-kit__recap-total-label {
+	font-weight: 600;
+}
+
+.ubac-kit__recap-total-price {
+	margin-left: auto;
+	font-size: 1.25rem;
+	font-weight: 700;
+}
+
+.ubac-kit__recap-total-weight {
+	flex: 1 0 100%;
+	font-size: .85rem;
+	opacity: .75;
+}
+
+/* ---------- Collapsible banner (below 64em) ---------- */
+
+.ubac-kit__recap-toggle {
+	display: flex;
+	align-items: center;
+	gap: .75rem;
+	width: 100%;
+	padding: 0;
+	text-align: left;
+	color: inherit;
+	background: none;
+	border: 0;
+	cursor: pointer;
+}
+
+.ubac-kit__recap-toggle-step {
+	font-weight: 600;
+	overflow-wrap: anywhere;
+}
+
+.ubac-kit__recap-toggle-price {
+	margin-left: auto;
+	font-weight: 700;
+}
+
+.ubac-kit__recap-toggle-icon {
+	flex: 0 0 auto;
+	width: .6rem;
+	height: .6rem;
+	border-right: 2px solid currentColor;
+	border-bottom: 2px solid currentColor;
+	transform: rotate(45deg) translate(-.15rem, -.15rem);
+	transition: transform var(--ubac-kit-transition);
+}
+
+.ubac-kit__recap.is-expanded .ubac-kit__recap-toggle-icon {
+	transform: rotate(-135deg) translate(-.15rem, -.15rem);
+}
+
+/* Collapsed by default on mobile; always expanded in two columns. */
+@media (max-width: 63.999em) {
+	.ubac-kit__recap {
+		position: sticky;
+		top: 0;
+		z-index: 2;
+	}
+
+	.ubac-kit__recap-body {
+		display: none;
+		margin-top: .85rem;
+	}
+
+	.ubac-kit__recap.is-expanded .ubac-kit__recap-body {
+		display: block;
+	}
+}
+
+@media (min-width: 64em) {
+	.ubac-kit__recap-toggle {
+		display: none;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.ubac-kit__recap-toggle-icon {
+		transition: none;
+	}
+}
+
+/* ------------------------------------------------------------------ */
+/* Vignette mode (data-ubac-kit-card-style="vignette" on .ubac-kit)    */
+/* ------------------------------------------------------------------ */
+/* Fallback skin only: the bare minimum for the vignettes and the drawer to
+   stay readable. */
+
+.ubac-kit__option-text {
+	font-size: .9rem;
+	line-height: 1.5;
+	opacity: .85;
+}
+
+.ubac-kit__option-text > :first-child {
+	margin-top: 0;
+}
+
+.ubac-kit__option-text > :last-child {
+	margin-bottom: 0;
+}
+
+.ubac-kit__option-actions {
+	padding-top: .25rem;
+}
+
+/* “More info” drawer: light background, like a product page panel. */
+.ubac-kit-drawer__overlay {
+	background: rgba(0, 0, 0, .55);
+}
+
+.ubac-kit-drawer {
+	color: #1C1A1A;
+	background: #FFFFFF;
+	box-shadow: 0 0 2rem rgba(0, 0, 0, .25);
+}
+
+.ubac-kit-drawer__close {
+	width: 2.75rem;
+	height: 2.75rem;
+	padding: 0;
+	font-size: 1.5rem;
+	line-height: 1;
+	color: inherit;
+	background: none;
+	border: 0;
+}
+
+.ubac-kit-drawer__inner {
+	padding: 4rem 1.5rem 2.5rem;
+}
+
+@media (min-width: 40em) {
+	.ubac-kit-drawer__inner {
+		padding-inline: 2.5rem;
+	}
+}
+
+.ubac-kit-drawer__title {
+	margin: 0 0 1.25rem;
+	line-height: 1.15;
+}
+
+.ubac-kit-drawer__title:focus {
+	outline: none; /* programmatic focus target on opening */
+}
+
+.ubac-kit-drawer__tabs {
+	margin-bottom: 1.25rem;
+}
+
+.ubac-kit-drawer__tab {
+	padding: .4rem .85rem;
+	color: inherit;
+	background: none;
+	border: 1px solid currentColor;
+	opacity: .65;
+	cursor: pointer;
+}
+
+.ubac-kit-drawer__tab.is-active {
+	opacity: 1;
+	color: var(--ubac-kit-on-accent, #1C1A1A);
+	background: var(--color-brand-green, #1FA396);
+	border-color: var(--color-brand-green, #1FA396);
+}
+
+.ubac-kit-drawer__body {
+	line-height: 1.7;
+}
+
+/* Saved configurations — fallback skin. */
+.ubac-kit__restore {
+	padding: .8em 1em;
+	border-left: 3px solid var(--ubac-kit-accent);
+	background: var(--ubac-kit-surface-inner);
+	border-radius: var(--ubac-kit-radius-small);
+}
+
+.ubac-kit__restore.has-issues {
+	border-left-color: var(--color-error, #a00);
+}
+
+.ubac-kit__restore-issue {
+	font-style: italic;
+}
+
+/* ---------- Add-on presented as a yes / no question ----------
+   The front-side row (.ubac-kit__question-toggle) has been removed. */
+/* Name of the chosen product at the top of the back of the question. */
+.ubac-kit__option-question-product {
+	font-size: .8em;
+	font-weight: 700;
+	letter-spacing: .04em;
+	text-transform: uppercase;
+}
+
+.ubac-kit__question-text {
+	font-weight: 600;
+}
+
+.ubac-kit__answer.is-selected {
+	border-color: var(--ubac-kit-accent);
+	box-shadow: inset 0 0 0 1px var(--ubac-kit-accent);
+}
+
+.ubac-kit__question-more {
+	font-size: .85em;
+	opacity: .8;
+}
+
+/* “?” popover of a range — fallback skin. The popover is a child of <body>,
+   outside .ubac-kit: it declares its own tokens, on the same theme variables,
+   with the same fallbacks. */
+.ubac-kit__tier-help {
+	width: 1.15em;
+	height: 1.15em;
+	padding: 0;
+	margin: 0;
+	color: inherit;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+}
+
+.ubac-kit__tier-help[aria-expanded="true"] {
+	color: var(--ubac-kit-text);
+	box-shadow: 0 0 0 2px var(--color-brand-green, #1FA396);
+}
+
+.ubac-kit__tier-help:focus-visible {
+	outline: 2px solid currentColor;
+	outline-offset: 1px;
+}
+
+.ubac-kit-popover {
+	--ubac-kit-popover-surface: var(--color-surface-2, #F6F7F7);
+	--ubac-kit-popover-text: var(--color-on-surface, #1D2327);
+	--ubac-kit-popover-border: var(--color-border, #C9CDD1);
+}
+
+/* Fixed and centred: the media is edge to edge, and the inner padding moves to
+   the text column (.ubac-kit-popover__content). */
+.ubac-kit-popover__box {
+	font-size: .95rem;
+	line-height: 1.5;
+	color: var(--ubac-kit-popover-text);
+	background: var(--ubac-kit-popover-surface);
+	border: 1px solid var(--ubac-kit-popover-border);
+	border-radius: var(--radius-large, 1.25rem);
+	box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.25);
+}
+
+.ubac-kit-popover__content {
+	padding: .75rem .75rem 1rem 1rem;
+}
+
+.ubac-kit-popover__title {
+	font-weight: 700;
+}
+
+.ubac-kit-popover__close {
+	width: 2rem;
+	height: 2rem;
+	margin: -.25rem -.25rem 0 .5rem;
+	padding: .35rem;
+	color: inherit;
+	background: none;
+	border: 0;
+	border-radius: 50%;
+}
+
+.ubac-kit-popover__text {
+	margin-top: .5rem;
+}
+
+.ubac-kit-popover__text a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+/* Waiting text of an empty range. */
+.ubac-kit-popover__placeholder {
+	opacity: .7;
+}
+
+/* Range badge on the cards: a rounded pill, in the colour of the range (the
+   functional stylesheet). */
+.ubac-kit__option-tier {
+	font-size: .75em;
+	font-weight: 600;
+	line-height: 1.7;
+	border-radius: 999px;
+}
+
+/* ---------- Summary background: dark ----------
+   Per-kit setting “Summary background” (Appearance box), carried by the
+   container as data-ubac-kit-recap-bg. Light (the default) changes nothing.
+   Dark re-scopes the skin tokens inside the summary only — the right-hand
+   column on the desktop, the bar and the details panel below the layout
+   threshold — so every rule of the section above keeps working unchanged and
+   nothing needs !important. The accent is left alone: a dark summary uses the
+   same accent as the rest of the configurator, whatever the site set it to. */
+.ubac-kit[data-ubac-kit-recap-bg="dark"] .ubac-kit__recap {
+	--ubac-kit-surface: #2B2B2B;
+	--ubac-kit-surface-inner: #3A3A3A;
+	--ubac-kit-text: #F5F5F5;
+	--ubac-kit-border: color-mix(in srgb, #F5F5F5 20%, transparent);
+
+	color: var(--ubac-kit-text);
+}
+
+/* Prices inside the summary: their colour comes from the page (WooCommerce or
+   the theme styles .price), so it would stay dark on a dark panel. */
+.ubac-kit[data-ubac-kit-recap-bg="dark"] .ubac-kit__recap :is(.price, .ubac-kit__recap-price, .ubac-kit__recap-toggle-price),
+.ubac-kit[data-ubac-kit-recap-bg="dark"] .ubac-kit__recap :is(.price, .ubac-kit__recap-price, .ubac-kit__recap-toggle-price) * {
+	color: var(--ubac-kit-text);
+}

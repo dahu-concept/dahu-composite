@@ -1,0 +1,229 @@
+/*
+ * ------------------------------------------------------------------------
+ * SHARED ADMIN TOKENS
+ * ------------------------------------------------------------------------
+ *
+ * This block is identical in every Ubac plugin, deliberately. The plugins
+ * are independent — each has to work with none of the others installed — so
+ * they cannot share a stylesheet, and the only way for their screens to
+ * look like one family is for each to declare the same tokens under the
+ * same names. A shop running three of them sees one interface rather than
+ * three.
+ *
+ * Values follow WordPress's own admin palette rather than inventing a
+ * brand: a plugin screen that ignores the admin it lives in reads as a
+ * foreign object, however well designed it is on its own.
+ *
+ * The `--ubac-admin-` prefix is what makes a declaration on :root safe
+ * here. Two plugins declaring it write the same values, so neither can
+ * surprise the other, and nothing outside the family can collide with it.
+ *
+ * Single source of truth: /Dev/dahu-public/UI-ADMIN-DAHU.md
+ */
+
+:root {
+	/* Surfaces */
+	--ubac-admin-surface: #fff;
+	--ubac-admin-surface-sunken: #f6f7f7;
+	--ubac-admin-border: #dcdcde;
+	--ubac-admin-border-strong: #c3c4c7;
+
+	/* Text */
+	--ubac-admin-text: #1d2327;
+	--ubac-admin-text-muted: #646970;
+
+	/* Intent */
+	--ubac-admin-accent: #2271b1;
+	--ubac-admin-accent-text: #fff;
+	--ubac-admin-success: #008a20;
+	--ubac-admin-warning: #b32d2e;
+	--ubac-admin-caution: #996800;
+	--ubac-admin-neutral: #50575e;
+
+	/* Shape */
+	--ubac-admin-radius: 4px;
+	--ubac-admin-radius-lg: 6px;
+	--ubac-admin-shadow: 0 1px 2px rgba( 0, 0, 0, .06 );
+	--ubac-admin-shadow-lg: 0 6px 20px rgba( 0, 0, 0, .16 );
+
+	/* Rhythm */
+	--ubac-admin-gap: 8px;
+	--ubac-admin-gap-lg: 14px;
+
+	/* Reading widths */
+	--ubac-admin-measure: 900px;
+	--ubac-admin-measure-wide: 1100px;
+
+	/* Motion. Short, and switched off below for anybody who asked. */
+	--ubac-admin-transition: .15s ease;
+}
+
+@media ( prefers-reduced-motion: reduce ) {
+
+	:root {
+		--ubac-admin-transition: 0s;
+	}
+}
+
+/**
+ * Order screen: “Configure” window of a kit row.
+ * An internal tool: WooCommerce's wc-backbone-modal window, with minimal
+ * styling of the component blocks.
+ */
+
+.ubac-kit-configure-item {
+	margin-top: 8px;
+}
+
+.ubac-kit-modal .wc-backbone-modal-content {
+	max-width: 760px;
+}
+
+.ubac-kit-modal article {
+	max-height: 70vh;
+	overflow-y: auto;
+}
+
+.ubac-kit-modal__form.is-busy {
+	opacity: 0.6;
+}
+
+.ubac-kit-modal__blocked {
+	margin: 0 0 16px;
+	padding: 8px 12px;
+	border-left: 4px solid #d63638;
+	background: #fcf0f1;
+}
+
+/* “Done” button at the bottom left, message beside it. */
+.ubac-kit-modal footer .inner.ubac-kit-modal__footer {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	float: none;
+	text-align: left;
+}
+
+.ubac-kit-modal__status.is-error {
+	color: #d63638;
+}
+
+.ubac-kit-modal #btn-ok[disabled] {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.ubac-kit-component {
+	padding: 0 0 16px;
+	margin: 0 0 16px;
+	border-bottom: 1px solid var( --ubac-admin-border );
+}
+
+.ubac-kit-component:last-child {
+	border-bottom: 0;
+	margin-bottom: 0;
+}
+
+.ubac-kit-component__title {
+	margin: 0 0 10px;
+	font-size: 16px;
+}
+
+.ubac-kit-component__optional {
+	font-weight: 400;
+	color: var( --ubac-admin-text-muted );
+}
+
+.ubac-kit-component__field {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+.ubac-kit-component__field .select2-container {
+	flex: 1 1 auto;
+}
+
+.ubac-kit-component__quantity {
+	width: 70px;
+}
+
+.ubac-kit-component__choices {
+	margin: 0;
+}
+
+.ubac-kit-component__choice {
+	margin: 0 0 8px;
+}
+
+.ubac-kit-component__variation-label {
+	margin-left: 24px;
+}
+
+.ubac-kit-component__bundle {
+	margin: 8px 0 0 24px;
+}
+
+.ubac-kit-component__bundle-item {
+	margin: 0 0 6px;
+}
+
+.ubac-kit-component.has-error .select2-container .select2-selection {
+	border-color: #d63638;
+}
+
+.ubac-kit-component__error {
+	margin: 6px 0 0;
+	color: #d63638;
+}
+
+/* Preview: photo on the left, text on the right. */
+.ubac-kit-preview {
+	display: flex;
+	gap: 16px;
+	margin-top: 12px;
+}
+
+.ubac-kit-preview__image {
+	flex: 0 0 auto;
+	width: 150px;
+	height: 150px;
+	object-fit: contain;
+	border: 1px solid var( --ubac-admin-border );
+	background: var( --ubac-admin-surface );
+}
+
+/* Multiple choice: one preview per ticked option, more compact. */
+.ubac-kit-component__choice .ubac-kit-preview__image {
+	width: 80px;
+	height: 80px;
+}
+
+.ubac-kit-preview__body {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.ubac-kit-preview__meta {
+	color: var( --ubac-admin-text-muted );
+}
+
+.ubac-kit-preview__description p {
+	margin: 4px 0;
+}
+
+.ubac-kit-stock {
+	font-weight: 600;
+}
+
+.ubac-kit-stock.is-instock {
+	color: #00a32a;
+}
+
+.ubac-kit-stock.is-outofstock {
+	color: #d63638;
+}
+
+.ubac-kit-stock.is-onbackorder {
+	color: #dba617;
+}

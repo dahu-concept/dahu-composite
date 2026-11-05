@@ -2,7 +2,7 @@
 # This file is distributed under the MIT licence.
 msgid ""
 msgstr ""
-"Project-Id-Version: Dahu Composite\n"
+"Project-Id-Version: Ubac Composite\n"
 "Report-Msgid-Bugs-To: https://dahu-concept.fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -320,7 +320,7 @@ msgstr ""
 msgid "Add an option"
 msgstr ""
 
-#: includes/class-ubac-kits-frontend.php:155 includes/class-wc-product-dahu-kit.php:207
+#: includes/class-ubac-kits-frontend.php:155 includes/class-wc-product-ubac-kit.php:207
 msgid "Add to cart"
 msgstr ""
 
@@ -581,7 +581,7 @@ msgstr ""
 msgid "Configuration “%s” saved."
 msgstr ""
 
-#: includes/class-ubac-kits-admin-order.php:170 includes/class-wc-product-dahu-kit.php:200
+#: includes/class-ubac-kits-admin-order.php:170 includes/class-wc-product-ubac-kit.php:200
 msgid "Configure"
 msgstr ""
 
@@ -638,11 +638,11 @@ msgid "Customise the display"
 msgstr ""
 
 #: includes/class-ubac-kits-admin.php:996
-msgid "Dahu Composite"
+msgid "Ubac Composite"
 msgstr ""
 
 #: ubac-kits.php:65
-msgid "Dahu Composite requires WooCommerce."
+msgid "Ubac Composite requires WooCommerce."
 msgstr ""
 
 #: includes/class-ubac-kits-admin.php:732
@@ -1027,7 +1027,7 @@ msgid "Label for the tier price"
 msgstr ""
 
 #: includes/class-ubac-kits-settings.php:400
-msgid "Label taken from Dahu Pricing; change it there."
+msgid "Label taken from Ubac Pricing; change it there."
 msgstr ""
 
 #: includes/class-ubac-kits-saved-configs.php:641
@@ -1213,7 +1213,7 @@ msgid "Open on the site"
 msgstr ""
 
 #: includes/class-ubac-kits-settings.php:402
-msgid "Open the Dahu Pricing settings"
+msgid "Open the Ubac Pricing settings"
 msgstr ""
 
 #: includes/class-ubac-kits-admin.php:149
@@ -1639,7 +1639,7 @@ msgid "The product was added to your cart. Taking you to the cart…"
 msgstr ""
 
 #: includes/class-ubac-kits-admin.php:974
-msgid "The shipping class set for composite products (Dahu Composite settings) does not exist: shipping plugins will not recognise this product."
+msgid "The shipping class set for composite products (Ubac Composite settings) does not exist: shipping plugins will not recognise this product."
 msgstr ""
 
 #: ubac-kits.php:268

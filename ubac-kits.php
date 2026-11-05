@@ -15,22 +15,22 @@
  * WC requires at least: 7.0
  * WC tested up to:   11.2
  *
- * @package DahuComposite
+ * @package UbacKits
  */
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'DAHU_COMPOSITE_VERSION', '0.78.1' );
-define( 'DAHU_COMPOSITE_FILE', __FILE__ );
-define( 'DAHU_COMPOSITE_DIR', plugin_dir_path( __FILE__ ) );
-define( 'DAHU_COMPOSITE_URL', plugin_dir_url( __FILE__ ) );
-define( 'DAHU_COMPOSITE_BASENAME', plugin_basename( __FILE__ ) );
+define( 'UBAC_KITS_VERSION', '0.78.1' );
+define( 'UBAC_KITS_FILE', __FILE__ );
+define( 'UBAC_KITS_DIR', plugin_dir_path( __FILE__ ) );
+define( 'UBAC_KITS_URL', plugin_dir_url( __FILE__ ) );
+define( 'UBAC_KITS_BASENAME', plugin_basename( __FILE__ ) );
 
 /** WooCommerce product type of the engine. */
-define( 'DAHU_COMPOSITE_PRODUCT_TYPE', 'dahu_kit' );
+define( 'UBAC_KITS_PRODUCT_TYPE', 'ubac_kit' );
 
 /** Slug of the settings screen (WooCommerce submenu). */
-define( 'DAHU_COMPOSITE_SETTINGS_SLUG', 'dahu-composite-settings' );
+define( 'UBAC_KITS_SETTINGS_SLUG', 'ubac-composite-settings' );
 
 /* -------------------------------------------------------------------------
  * Translations
@@ -63,57 +63,57 @@ add_action(
 				'admin_notices',
 				static function () {
 					echo '<div class="notice notice-error"><p>'
-						. esc_html__( 'Dahu Composite requires WooCommerce.', 'ubac-kits' )
+						. esc_html__( 'Ubac Composite requires WooCommerce.', 'ubac-kits' )
 						. '</p></div>';
 				}
 			);
 			return;
 		}
 
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-wc-product-dahu-kit.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-kit-config.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-appearance.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-scenarios.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-customer-access.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-pricing.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-engine.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-product-type.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-composition.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-cart.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-order.php';
+		require_once UBAC_KITS_DIR . 'includes/class-wc-product-ubac-kit.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-kit-config.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-appearance.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-scenarios.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-customer-access.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-pricing.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-engine.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-product-type.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-composition.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-cart.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-order.php';
 		// Supply of a variation: mandatory accessories of a variable product.
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-supply.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-supply.php';
 		// “What is included”: a Product Bundles bundle and a supply answer the
 		// same calls (contract: RESUME_TECHNIQUE.md, §2 bis).
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-included.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/dahu-composite-functions.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-validator.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-product-tabs.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-rest.php';
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-frontend.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-included.php';
+		require_once UBAC_KITS_DIR . 'includes/ubac-kits-functions.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-validator.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-product-tabs.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-rest.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-frontend.php';
 		// Saved configurations, My account › My configurations.
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-saved-configs.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-saved-configs.php';
 		// Settings: read outside the admin too (“None” card of the schema).
-		require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-settings.php';
+		require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-settings.php';
 
-		Dahu_Composite_Product_Type::init();
-		Dahu_Composite_Cart::init();
-		Dahu_Composite_Order::init();
-		Dahu_Composite_Supply::init();
-		Dahu_Composite_Included::init();
-		Dahu_Composite_Rest::init();
-		Dahu_Composite_Frontend::init();
-		Dahu_Composite_Saved_Configs::init();
+		Ubac_Kits_Product_Type::init();
+		Ubac_Kits_Cart::init();
+		Ubac_Kits_Order::init();
+		Ubac_Kits_Supply::init();
+		Ubac_Kits_Included::init();
+		Ubac_Kits_Rest::init();
+		Ubac_Kits_Frontend::init();
+		Ubac_Kits_Saved_Configs::init();
 		// Data migrations, once per site.
-		add_action( 'init', array( 'Dahu_Composite_Kit_Config', 'maybe_migrate' ), 20 );
+		add_action( 'init', array( 'Ubac_Kits_Kit_Config', 'maybe_migrate' ), 20 );
 
 		if ( is_admin() ) {
-			require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-admin.php';
-			Dahu_Composite_Admin::init();
-			Dahu_Composite_Settings::init();
+			require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-admin.php';
+			Ubac_Kits_Admin::init();
+			Ubac_Kits_Settings::init();
 			// Assembled kit in the order screen.
-			require_once DAHU_COMPOSITE_DIR . 'includes/class-dahu-composite-admin-order.php';
-			Dahu_Composite_Admin_Order::init();
+			require_once UBAC_KITS_DIR . 'includes/class-ubac-kits-admin-order.php';
+			Ubac_Kits_Admin_Order::init();
 		}
 	},
 	20
@@ -124,9 +124,9 @@ add_action(
  * only appears in the meta row below.
  */
 add_filter(
-	'plugin_action_links_' . DAHU_COMPOSITE_BASENAME,
+	'plugin_action_links_' . UBAC_KITS_BASENAME,
 	static function ( $links ) {
-		$settings = '<a href="' . esc_url( admin_url( 'admin.php?page=' . DAHU_COMPOSITE_SETTINGS_SLUG ) ) . '">'
+		$settings = '<a href="' . esc_url( admin_url( 'admin.php?page=' . UBAC_KITS_SETTINGS_SLUG ) ) . '">'
 			. esc_html__( 'Settings', 'ubac-kits' ) . '</a>';
 
 		array_unshift( $links, $settings );
@@ -142,8 +142,8 @@ add_filter(
 add_filter(
 	'plugin_row_meta',
 	static function ( $links, $file ) {
-		if ( DAHU_COMPOSITE_BASENAME === $file ) {
-			$header = get_file_data( DAHU_COMPOSITE_FILE, array( 'Version' => 'Version' ) );
+		if ( UBAC_KITS_BASENAME === $file ) {
+			$header = get_file_data( UBAC_KITS_FILE, array( 'Version' => 'Version' ) );
 			$links  = array(
 				sprintf( /* translators: %s: plugin version number. */ esc_html__( 'Version %s', 'ubac-kits' ), esc_html( $header['Version'] ) ),
 				sprintf(
@@ -170,7 +170,7 @@ add_filter(
  * Registered here rather than inside the admin include, because the
  * activation flag has to be set whatever else is loaded.
  */
-require_once DAHU_COMPOSITE_DIR . 'includes/dahu-welcome.php';
+require_once UBAC_KITS_DIR . 'includes/ubac-welcome.php';
 
 /*
  * The flag, not a redirect: an activation hook that redirects breaks bulk
@@ -181,21 +181,27 @@ require_once DAHU_COMPOSITE_DIR . 'includes/dahu-welcome.php';
 register_activation_hook(
 	__FILE__,
 	static function () {
-		Dahu_Welcome::mark_activated( 'dahu-composite' );
+		Ubac_Welcome::mark_activated( 'ubac-kits' );
+
+		// Le terme de taxonomie du type de produit : voir
+		// Ubac_Kits_Product_Type::ensure_term() pour la raison.
+		if ( class_exists( 'Ubac_Kits_Product_Type' ) ) {
+			Ubac_Kits_Product_Type::ensure_term();
+		}
 	}
 );
 
 add_action(
 	'init',
 	static function () {
-		Dahu_Welcome::register(
+		Ubac_Welcome::register(
 			array(
-				'slug'       => 'dahu-composite',
+				'slug'       => 'ubac-kits',
 				'name'       => __( 'Composite products', 'ubac-kits' ),
 				'tagline'    => __( 'Products built from parts the customer chooses.', 'ubac-kits' ),
-				'file'       => DAHU_COMPOSITE_FILE,
-				'version'    => DAHU_COMPOSITE_VERSION,
-				'textdomain' => 'dahu-composite',
+				'file'       => UBAC_KITS_FILE,
+				'version'    => UBAC_KITS_VERSION,
+				'textdomain' => 'ubac-kits',
 				'mark'       => array(
 					'view'  => '0 0 112 112',
 					'paths' => array(
@@ -231,7 +237,7 @@ add_action(
 				 * editor cannot serve as the tour's screen either — its hook is
 				 * `post.php`, which also fires on a blog post.
 				 */
-				'tour_screen' => 'woocommerce_page_dahu-composite-settings',
+				'tour_screen' => 'woocommerce_page_' . UBAC_KITS_SETTINGS_SLUG,
 				/*
 				 * Three steps, and the number is the family's rule. They point at
 				 * controls that really exist on this screen: a step whose target
@@ -240,17 +246,17 @@ add_action(
 				 */
 				'tour'        => array(
 					array(
-						'selector' => '#dahu-composite-shipping-class',
+						'selector' => '#ubac-kits-shipping-class',
 						'title'    => __( 'Where the parcel comes from', 'ubac-kits' ),
 						'text'     => __( 'A composite product ships as one parcel. This shipping class is what carries it, and every composite product uses it.', 'ubac-kits' ),
 					),
 					array(
-						'selector' => '.dahu-kit-settings__table',
+						'selector' => '.ubac-kit-settings__table',
 						'title'    => __( 'Trade prices', 'ubac-kits' ),
 						'text'     => __( 'A tier gives one or more roles their own price on every option. Without a tier, everybody sees the public price.', 'ubac-kits' ),
 					),
 					array(
-						'selector' => '.dahu-ui-table',
+						'selector' => '.ubac-ui-table',
 						'title'    => __( 'Your composite products', 'ubac-kits' ),
 						'text'     => __( 'Each one shows how many components and scenarios it has, and the address a shop front can read its schema from.', 'ubac-kits' ),
 					),

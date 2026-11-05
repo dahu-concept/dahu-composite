@@ -15,10 +15,10 @@
  *   explicitly asked for a full wipe.
  *
  * A merchant who genuinely wants everything gone sets the
- * `dahu_composite_remove_data_on_uninstall` option to a truthy value before
+ * `ubac_kits_remove_data_on_uninstall` option to a truthy value before
  * deleting the plugin.
  *
- * @package DahuComposite
+ * @package UbacKits
  */
 
 defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
@@ -26,48 +26,48 @@ defined( 'WP_UNINSTALL_PLUGIN' ) || exit;
 /**
  * Plugin settings. Always removed.
  */
-const DAHU_COMPOSITE_UNINSTALL_OPTIONS = array(
-	'dahu_composite_container_shipping_class',
-	'dahu_composite_container_shipping_class_slug',
-	'dahu_composite_price_tiers',
-	'dahu_composite_none_image_id',
-	'dahu_composite_none_text',
-	'dahu_composite_more_info_link',
-	'dahu_composite_help_placeholder',
-	'dahu_composite_guest_save_enabled',
-	'dahu_composite_guest_save_fields',
-	'dahu_composite_guest_save_limit',
-	'dahu_composite_rewrite_version',
-	'dahu_composite_migrations',
-	'dahu_composite_remove_data_on_uninstall',
+const UBAC_KITS_UNINSTALL_OPTIONS = array(
+	'ubac_kits_container_shipping_class',
+	'ubac_kits_container_shipping_class_slug',
+	'ubac_kits_price_tiers',
+	'ubac_kits_none_image_id',
+	'ubac_kits_none_text',
+	'ubac_kits_more_info_link',
+	'ubac_kits_help_placeholder',
+	'ubac_kits_guest_save_enabled',
+	'ubac_kits_guest_save_fields',
+	'ubac_kits_guest_save_limit',
+	'ubac_kits_rewrite_version',
+	'ubac_kits_migrations',
+	'ubac_kits_remove_data_on_uninstall',
 );
 
 /**
  * Post meta holding merchant content. Removed only on an explicit wipe.
  */
-const DAHU_COMPOSITE_UNINSTALL_POST_META = array(
-	'_dahu_kit',
-	'_dahu_kit_components',
-	'_dahu_kit_scenarios',
-	'_dahu_kit_icons',
-	'_dahu_kit_card_style',
-	'_dahu_kit_card_corners',
-	'_dahu_kit_click',
-	'_dahu_kit_info_desktop',
-	'_dahu_kit_info_mobile',
-	'_dahu_kit_customer_exceptions',
-	'_dahu_supply',
-	'_dahu_supply_data',
-	'_dahu_composition',
-	'_dahu_composition_id',
+const UBAC_KITS_UNINSTALL_POST_META = array(
+	'_ubac_kit',
+	'_ubac_kit_components',
+	'_ubac_kit_scenarios',
+	'_ubac_kit_icons',
+	'_ubac_kit_card_style',
+	'_ubac_kit_card_corners',
+	'_ubac_kit_click',
+	'_ubac_kit_info_desktop',
+	'_ubac_kit_info_mobile',
+	'_ubac_kit_customer_exceptions',
+	'_ubac_supply',
+	'_ubac_supply_data',
+	'_ubac_composition',
+	'_ubac_composition_id',
 );
 
 /**
  * User meta holding customer content. Removed only on an explicit wipe.
  */
-const DAHU_COMPOSITE_UNINSTALL_USER_META = array(
-	'_dahu_kit_saved_configs',
-	'_dahu_kit_contact_consent',
+const UBAC_KITS_UNINSTALL_USER_META = array(
+	'_ubac_kit_saved_configs',
+	'_ubac_kit_contact_consent',
 );
 
 /**
@@ -75,31 +75,31 @@ const DAHU_COMPOSITE_UNINSTALL_USER_META = array(
  *
  * @return void
  */
-function dahu_composite_uninstall_site() {
+function ubac_kits_uninstall_site() {
 
 	// The welcome screen's own three flags.
 	//
 	// They are interface state, not the shop's data, which is why they sit
 	// BEFORE any “remove data on uninstall” guard: whatever a shop chose to
-	// keep, a reinstall has to greet it again. `includes/dahu-welcome.php`
+	// keep, a reinstall has to greet it again. `includes/ubac-welcome.php`
 	// writes them with update_option(), so they outlive the plugin unless
 	// they are deleted here — and the welcome screen and the guided tour
 	// would then stay silent for good, with nothing on screen to explain why.
-	delete_option( 'dahu_welcome_seen_dahu-composite' );
-	delete_option( 'dahu_welcome_pending_dahu-composite' );
-	delete_option( 'dahu_welcome_tour_dahu-composite' );
+	delete_option( 'ubac_welcome_seen_ubac-kits' );
+	delete_option( 'ubac_welcome_pending_ubac-kits' );
+	delete_option( 'ubac_welcome_tour_ubac-kits' );
 
 	global $wpdb;
 
-	$wipe = (bool) get_option( 'dahu_composite_remove_data_on_uninstall', false );
+	$wipe = (bool) get_option( 'ubac_kits_remove_data_on_uninstall', false );
 
-	foreach ( DAHU_COMPOSITE_UNINSTALL_OPTIONS as $option ) {
+	foreach ( UBAC_KITS_UNINSTALL_OPTIONS as $option ) {
 		delete_option( $option );
 	}
 
 	// Transients: caches only, always safe to drop. Three families are built
 	// with a dynamic suffix, so they are matched on their prefix.
-	foreach ( array( 'dahu_composite_notice_', 'dahu_kit_', 'dahu_supply_search_' ) as $prefix ) {
+	foreach ( array( 'ubac_kits_notice_', 'ubac_kit_', 'ubac_supply_search_' ) as $prefix ) {
 		$like = $wpdb->esc_like( '_transient_' . $prefix ) . '%';
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- uninstall routine, no caching layer available.
 		$wpdb->query( $wpdb->prepare( "DELETE FROM {$wpdb->options} WHERE option_name LIKE %s", $like ) );
@@ -113,11 +113,11 @@ function dahu_composite_uninstall_site() {
 		return;
 	}
 
-	foreach ( DAHU_COMPOSITE_UNINSTALL_POST_META as $meta_key ) {
+	foreach ( UBAC_KITS_UNINSTALL_POST_META as $meta_key ) {
 		delete_post_meta_by_key( $meta_key );
 	}
 
-	foreach ( DAHU_COMPOSITE_UNINSTALL_USER_META as $meta_key ) {
+	foreach ( UBAC_KITS_UNINSTALL_USER_META as $meta_key ) {
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- no core helper deletes a user meta key site-wide.
 		$wpdb->delete( $wpdb->usermeta, array( 'meta_key' => $meta_key ) );
 	}
@@ -133,9 +133,9 @@ if ( is_multisite() ) {
 
 	foreach ( $site_ids as $site_id ) {
 		switch_to_blog( $site_id );
-		dahu_composite_uninstall_site();
+		ubac_kits_uninstall_site();
 		restore_current_blog();
 	}
 } else {
-	dahu_composite_uninstall_site();
+	ubac_kits_uninstall_site();
 }

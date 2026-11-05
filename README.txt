@@ -1,5 +1,5 @@
 === Ubac Composite Products ===
-Contributors: dahuconcept
+Contributors: ubacconcept
 Tags: composite products, product kits, made to measure, accessories, add-ons
 Requires at least: 6.0
 Tested up to: 7.1
@@ -12,7 +12,7 @@ Server-driven configurable product kits for WooCommerce: scenarios, validation, 
 
 == Description ==
 
-Dahu Composite turns a WooCommerce product into a guided configurator. The
+Ubac Composite turns a WooCommerce product into a guided configurator. The
 customer walks through steps, picks an option at each one, and ends on a
 summary with a price and a weight that the server — not the browser — worked
 out.
@@ -52,7 +52,7 @@ price and weight in one response.
 
 The plugin works on its own. When they are present it also talks to:
 
-* **Dahu Pricing** — role-based price labels and tiers.
+* **Ubac Pricing** — role-based price labels and tiers.
 * **A product bundle plugin** — components that offer a bundle as an option.
 
 Neither is required, and neither is bundled.
@@ -60,9 +60,9 @@ Neither is required, and neither is bundled.
 = For developers =
 
 Themes style the configurator by returning true from
-`dahu_composite_theme_provides_styles`; the plugin then drops its own skin.
+`ubac_kits_theme_provides_styles`; the plugin then drops its own skin.
 Detail tabs can be rendered by the theme through
-`dahu_composite_product_tabs_callback`.
+`ubac_kits_product_tabs_callback`.
 
 = External services =
 
@@ -119,7 +119,7 @@ by the merchant first.
 
 Nothing, by default. Settings and caches are removed; kit definitions and saved
 customer configurations are kept, because an uninstall is often a step in
-reinstalling. Set the `dahu_composite_remove_data_on_uninstall` option to a
+reinstalling. Set the `ubac_kits_remove_data_on_uninstall` option to a
 truthy value before deleting if you really want everything gone.
 
 == Screenshots ==
@@ -153,8 +153,8 @@ truthy value before deleting if you really want everything gone.
   class slug. On any other shop that slug matched no term, so a kit was never
   given a shipping class and saving one raised "the shipping class does not
   exist" every time. No class is assumed any more: the setting starts on
-  "None", and the new `dahu_composite_container_shipping_class_slug` reading is
-  exposed as `Dahu_Composite_Product_Type::get_container_shipping_class_slug()`.
+  "None", and the new `ubac_kits_container_shipping_class_slug` reading is
+  exposed as `Ubac_Kits_Product_Type::get_container_shipping_class_slug()`.
 * Fixed: that same warning also fired when an administrator deliberately chose
   "None". An empty setting and a class that cannot be found are now told apart,
   and only the second is reported.
@@ -182,7 +182,7 @@ truthy value before deleting if you really want everything gone.
 * Fixed: the store setting “Redirect to the cart page after successful
   addition” was ignored by the configurator, which adds through its own REST
   route. It is now honoured, through the standard
-  `woocommerce_add_to_cart_redirect` filter and a `dahu_composite_add_to_cart_redirect`
+  `woocommerce_add_to_cart_redirect` filter and a `ubac_kits_add_to_cart_redirect`
   filter for the kit alone; an empty string keeps the customer on the kit page,
   as before.
 * Fixed: a flipped card only closed from its button. A click on an empty area of
