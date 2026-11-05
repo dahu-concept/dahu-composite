@@ -1,4 +1,4 @@
-=== Ubac Product Kits ===
+=== Ubac Composite Products ===
 Contributors: dahuconcept
 Tags: composite products, product kits, made to measure, accessories, add-ons
 Requires at least: 6.0
