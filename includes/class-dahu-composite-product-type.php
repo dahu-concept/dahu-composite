@@ -21,7 +21,7 @@ class Dahu_Composite_Product_Type {
 	 * @return array
 	 */
 	public static function add_type_to_selector( $types ) {
-		$types[ DAHU_COMPOSITE_PRODUCT_TYPE ] = __( 'Composite product', 'dahu-composite' );
+		$types[ DAHU_COMPOSITE_PRODUCT_TYPE ] = __( 'Composite product', 'ubac-kits' );
 		return $types;
 	}
 

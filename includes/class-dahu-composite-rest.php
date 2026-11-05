@@ -189,7 +189,7 @@ class Dahu_Composite_Rest {
 			return array(
 				new WP_Error(
 					'dahu_kit_forbidden',
-					__( 'Preview restricted to users who can manage products.', 'dahu-composite' ),
+					__( 'Preview restricted to users who can manage products.', 'ubac-kits' ),
 					array( 'status' => 403 )
 				),
 				array(),
@@ -279,7 +279,7 @@ class Dahu_Composite_Rest {
 
 		return new WP_Error(
 			'dahu_product_not_found',
-			__( 'Product not found.', 'dahu-composite' ),
+			__( 'Product not found.', 'ubac-kits' ),
 			array( 'status' => 404 )
 		);
 	}
@@ -287,11 +287,11 @@ class Dahu_Composite_Rest {
 	private static function load_kit( $product_id ) {
 		$kit = Dahu_Composite_Engine::get_kit( $product_id );
 		if ( ! $kit ) {
-			return new WP_Error( 'dahu_kit_not_found', __( 'Product not found.', 'dahu-composite' ), array( 'status' => 404 ) );
+			return new WP_Error( 'dahu_kit_not_found', __( 'Product not found.', 'ubac-kits' ), array( 'status' => 404 ) );
 		}
 		$visible = 'publish' === $kit->get_status() || current_user_can( 'edit_post', $kit->get_id() );
 		if ( ! $visible ) {
-			return new WP_Error( 'dahu_kit_not_found', __( 'Product not found.', 'dahu-composite' ), array( 'status' => 404 ) );
+			return new WP_Error( 'dahu_kit_not_found', __( 'Product not found.', 'ubac-kits' ), array( 'status' => 404 ) );
 		}
 
 		// Every route goes through here: taxation context initialised
@@ -337,7 +337,7 @@ class Dahu_Composite_Rest {
 		$product = wc_get_product( absint( $request['product_id'] ) );
 
 		if ( ! $product || 'publish' !== $product->get_status() ) {
-			return new WP_Error( 'dahu_product_not_found', __( 'Product not found.', 'dahu-composite' ), array( 'status' => 404 ) );
+			return new WP_Error( 'dahu_product_not_found', __( 'Product not found.', 'ubac-kits' ), array( 'status' => 404 ) );
 		}
 
 		return self::response( Dahu_Composite_Product_Tabs::get( $product ) );

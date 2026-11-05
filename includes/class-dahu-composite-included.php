@@ -574,7 +574,7 @@ class Dahu_Composite_Included {
 		 *
 		 * @param string $label Label.
 		 */
-		$label = apply_filters( 'dahu_composite_includes_label', __( 'Includes', 'dahu-composite' ) );
+		$label = apply_filters( 'dahu_composite_includes_label', __( 'Includes', 'ubac-kits' ) );
 
 		return (string) $label;
 	}
@@ -711,25 +711,25 @@ class Dahu_Composite_Included {
 	public static function store_api_cart_item_schema() {
 		return array(
 			'bundled_by'        => array(
-				'description' => __( 'Cart key of the variation supplying this accessory.', 'dahu-composite' ),
+				'description' => __( 'Cart key of the variation supplying this accessory.', 'ubac-kits' ),
 				'type'        => array( 'string', 'null' ),
 				'context'     => array( 'view', 'edit' ),
 				'readonly'    => true,
 			),
 			'bundled_items'     => array(
-				'description' => __( 'Cart keys of the accessories supplied with this variation.', 'dahu-composite' ),
+				'description' => __( 'Cart keys of the accessories supplied with this variation.', 'ubac-kits' ),
 				'type'        => array( 'array', 'null' ),
 				'context'     => array( 'view', 'edit' ),
 				'readonly'    => true,
 			),
 			'bundle_data'       => array(
-				'description' => __( 'Variation display (bundle plugin fields).', 'dahu-composite' ),
+				'description' => __( 'Variation display (bundle plugin fields).', 'ubac-kits' ),
 				'type'        => array( 'object', 'null' ),
 				'context'     => array( 'view', 'edit' ),
 				'readonly'    => true,
 			),
 			'bundled_item_data' => array(
-				'description' => __( 'Accessory display (bundle plugin fields).', 'dahu-composite' ),
+				'description' => __( 'Accessory display (bundle plugin fields).', 'ubac-kits' ),
 				'type'        => array( 'object', 'null' ),
 				'context'     => array( 'view', 'edit' ),
 				'readonly'    => true,

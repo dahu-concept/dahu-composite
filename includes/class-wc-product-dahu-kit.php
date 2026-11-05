@@ -197,14 +197,14 @@ class WC_Product_Dahu_Kit extends WC_Product {
 	 * @return string
 	 */
 	public function add_to_cart_text() {
-		return apply_filters( 'woocommerce_product_add_to_cart_text', __( 'Configure', 'dahu-composite' ), $this );
+		return apply_filters( 'woocommerce_product_add_to_cart_text', __( 'Configure', 'ubac-kits' ), $this );
 	}
 
 	/**
 	 * @return string
 	 */
 	public function single_add_to_cart_text() {
-		return apply_filters( 'woocommerce_product_single_add_to_cart_text', __( 'Add to cart', 'dahu-composite' ), $this );
+		return apply_filters( 'woocommerce_product_single_add_to_cart_text', __( 'Add to cart', 'ubac-kits' ), $this );
 	}
 
 	/**

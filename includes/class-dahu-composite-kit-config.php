@@ -195,7 +195,7 @@ class Dahu_Composite_Kit_Config {
 				}
 				$new_id = $id . '-' . $suffix;
 				/* translators: 1: duplicate identifier, 2: new identifier */
-				$errors[] = sprintf( __( 'Duplicate component identifier “%1$s”: renamed “%2$s”.', 'dahu-composite' ), $id, $new_id );
+				$errors[] = sprintf( __( 'Duplicate component identifier “%1$s”: renamed “%2$s”.', 'ubac-kits' ), $id, $new_id );
 				$id       = $new_id;
 			}
 			$seen_ids[ $id ] = true;
@@ -377,7 +377,7 @@ class Dahu_Composite_Kit_Config {
 				$default = isset( $item['default_product_id'] ) ? absint( $item['default_product_id'] ) : 0;
 				if ( $default && ! isset( $option_ids[ $default ] ) ) {
 					/* translators: 1: product, 2: component */
-					$errors[] = sprintf( __( 'Default product #%1$d is not among the options of component “%2$s”: ignored.', 'dahu-composite' ), $default, $title );
+					$errors[] = sprintf( __( 'Default product #%1$d is not among the options of component “%2$s”: ignored.', 'ubac-kits' ), $default, $title );
 					$default  = 0;
 				}
 			}
@@ -390,7 +390,7 @@ class Dahu_Composite_Kit_Config {
 			if ( '' === $anchor_component || 'path' === $component_type ) {
 				if ( 'path' !== $component_type && $anchor_product ) {
 					/* translators: %s: component */
-					$errors[] = sprintf( __( '“%s”: incomplete anchoring (a card with no anchor component). It is shown in its usual place.', 'dahu-composite' ), '' !== $title ? $title : $id );
+					$errors[] = sprintf( __( '“%s”: incomplete anchoring (a card with no anchor component). It is shown in its usual place.', 'ubac-kits' ), '' !== $title ? $title : $id );
 				}
 				$anchor_component = null;
 				$anchor_product   = null;
@@ -726,7 +726,7 @@ class Dahu_Composite_Kit_Config {
 						$targets[ $candidate ] = $positions[ $candidate ];
 					} elseif ( '' !== $candidate ) {
 						/* translators: 1: identifier of the scenario, 2: component */
-						$errors[] = sprintf( __( 'Scenario “%1$s”: unknown target “%2$s”, removed.', 'dahu-composite' ), $id, $candidate );
+						$errors[] = sprintf( __( 'Scenario “%1$s”: unknown target “%2$s”, removed.', 'ubac-kits' ), $id, $candidate );
 					}
 				}
 				asort( $targets );
@@ -734,7 +734,7 @@ class Dahu_Composite_Kit_Config {
 				if ( $targets ) {
 					if ( 'mask_component' !== $action && count( $targets ) > 1 ) {
 						/* translators: %s: identifier of the scenario */
-						$errors[] = sprintf( __( 'Scenario “%s”: several targets are only allowed for “Hide the step”; the first one was kept.', 'dahu-composite' ), $id );
+						$errors[] = sprintf( __( 'Scenario “%s”: several targets are only allowed for “Hide the step”; the first one was kept.', 'ubac-kits' ), $id );
 					}
 					$target = $targets[0];
 				}
@@ -750,7 +750,7 @@ class Dahu_Composite_Kit_Config {
 
 			if ( ! $is_block && ! isset( $positions[ $target ] ) ) {
 				/* translators: %s: identifier of the scenario */
-				$errors[] = sprintf( __( 'Scenario “%s”: unknown target component; scenario ignored.', 'dahu-composite' ), $id );
+				$errors[] = sprintf( __( 'Scenario “%s”: unknown target component; scenario ignored.', 'ubac-kits' ), $id );
 				continue;
 			}
 
@@ -763,7 +763,7 @@ class Dahu_Composite_Kit_Config {
 				}
 				if ( ! $is_block && $positions[ $source ] >= $positions[ $target ] ) {
 					/* translators: 1: scenario, 2: source component */
-					$errors[] = sprintf( __( 'Scenario “%1$s”: the condition on “%2$s” does not come before the target component; condition removed.', 'dahu-composite' ), $id, $source );
+					$errors[] = sprintf( __( 'Scenario “%1$s”: the condition on “%2$s” does not come before the target component; condition removed.', 'ubac-kits' ), $id, $source );
 					continue;
 				}
 				$values = self::sanitize_values( isset( $condition['values'] ) ? $condition['values'] : array(), true );
@@ -782,7 +782,7 @@ class Dahu_Composite_Kit_Config {
 			// customers: we discard it.
 			if ( ! empty( $raw_conditions ) && empty( $conditions ) ) {
 				/* translators: %s: identifier of the scenario */
-				$errors[] = sprintf( __( 'Scenario “%s”: no valid condition; scenario ignored.', 'dahu-composite' ), $id );
+				$errors[] = sprintf( __( 'Scenario “%s”: no valid condition; scenario ignored.', 'ubac-kits' ), $id );
 				continue;
 			}
 
@@ -802,7 +802,7 @@ class Dahu_Composite_Kit_Config {
 				// Without a condition, a block would make the kit impossible to configure.
 				if ( empty( $conditions ) && null === $customer ) {
 					/* translators: %s: identifier of the scenario */
-					$errors[] = sprintf( __( 'Scenario “%s”: a block with no condition would make the composite product impossible to configure; scenario ignored.', 'dahu-composite' ), $id );
+					$errors[] = sprintf( __( 'Scenario “%s”: a block with no condition would make the composite product impossible to configure; scenario ignored.', 'ubac-kits' ), $id );
 					continue;
 				}
 				$block = array(
@@ -827,7 +827,7 @@ class Dahu_Composite_Kit_Config {
 				$masked = self::sanitize_values( isset( $item['masked_options'] ) ? $item['masked_options'] : array(), false );
 				if ( empty( $masked ) ) {
 					/* translators: %s: identifier of the scenario */
-					$errors[] = sprintf( __( 'Scenario “%s”: no option to hide; scenario ignored.', 'dahu-composite' ), $id );
+					$errors[] = sprintf( __( 'Scenario “%s”: no option to hide; scenario ignored.', 'ubac-kits' ), $id );
 					continue;
 				}
 			} elseif ( 'show_options' === $action ) {
@@ -841,7 +841,7 @@ class Dahu_Composite_Kit_Config {
 				$shown = self::sanitize_values( isset( $item['shown_options'] ) ? $item['shown_options'] : array(), false );
 				if ( empty( $shown ) ) {
 					/* translators: %s: identifier of the scenario */
-					$errors[] = sprintf( __( 'Scenario “%s”: no option to show; scenario ignored.', 'dahu-composite' ), $id );
+					$errors[] = sprintf( __( 'Scenario “%s”: no option to show; scenario ignored.', 'ubac-kits' ), $id );
 					continue;
 				}
 				$masked = self::complement_values( $components[ $positions[ $target ] ], $shown );

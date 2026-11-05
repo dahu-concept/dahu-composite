@@ -51,8 +51,8 @@ class Dahu_Composite_Settings {
 	public static function menu() {
 		self::$hook = add_submenu_page(
 			'woocommerce',
-			__( 'Composite products', 'dahu-composite' ),
-			__( 'Composite products', 'dahu-composite' ),
+			__( 'Composite products', 'ubac-kits' ),
+			__( 'Composite products', 'ubac-kits' ),
 			'manage_woocommerce',
 			DAHU_COMPOSITE_SETTINGS_SLUG,
 			array( __CLASS__, 'render' )
@@ -319,8 +319,8 @@ class Dahu_Composite_Settings {
 		?>
 		<div class="wrap dahu-ui">
 			<div class="dahu-ui-head">
-				<h1 class="dahu-ui-head__title"><?php esc_html_e( 'Composite products', 'dahu-composite' ); ?></h1>
-				<p class="dahu-ui-head__sub"><?php esc_html_e( 'Products built from parts the customer chooses.', 'dahu-composite' ); ?></p>
+				<h1 class="dahu-ui-head__title"><?php esc_html_e( 'Composite products', 'ubac-kits' ); ?></h1>
+				<p class="dahu-ui-head__sub"><?php esc_html_e( 'Products built from parts the customer chooses.', 'ubac-kits' ); ?></p>
 			</div>
 
 			<hr class="wp-header-end">
@@ -330,10 +330,10 @@ class Dahu_Composite_Settings {
 				<div class="dahu-ui-card">
 				<table class="form-table" role="presentation">
 					<tr>
-						<th scope="row"><label for="dahu-composite-shipping-class"><?php esc_html_e( 'Shipping class for composite products', 'dahu-composite' ); ?></label></th>
+						<th scope="row"><label for="dahu-composite-shipping-class"><?php esc_html_e( 'Shipping class for composite products', 'ubac-kits' ); ?></label></th>
 						<td>
 							<select id="dahu-composite-shipping-class" name="<?php echo esc_attr( self::OPTION_SHIPPING_CLASS ); ?>">
-								<option value=""><?php esc_html_e( '— None —', 'dahu-composite' ); ?></option>
+								<option value=""><?php esc_html_e( '— None —', 'ubac-kits' ); ?></option>
 								<?php foreach ( is_array( $classes ) ? $classes : array() as $term ) : ?>
 									<option value="<?php echo esc_attr( $term->slug ); ?>" <?php selected( $current, $term->slug ); ?>><?php echo esc_html( $term->name . ' (' . $term->slug . ')' ); ?></option>
 								<?php endforeach; ?>
@@ -345,17 +345,17 @@ class Dahu_Composite_Settings {
 
 				<div class="dahu-ui-card">
 				<div class="dahu-ui-card__head">
-					<h2 class="dahu-ui-card__title"><?php esc_html_e( 'Trade price tiers', 'dahu-composite' ); ?></h2>
+					<h2 class="dahu-ui-card__title"><?php esc_html_e( 'Trade price tiers', 'ubac-kits' ); ?></h2>
 				</div>
 				<table class="widefat striped dahu-kit-settings__table">
 					<thead>
 						<tr>
-							<th><?php esc_html_e( 'Tier', 'dahu-composite' ); ?></th>
-							<th><?php esc_html_e( 'Roles (comma separated)', 'dahu-composite' ); ?></th>
-							<th><?php esc_html_e( 'Label for the tier price', 'dahu-composite' ); ?></th>
-							<th><?php esc_html_e( 'Label for the public price', 'dahu-composite' ); ?></th>
-							<th><?php esc_html_e( 'Short label (summary)', 'dahu-composite' ); ?></th>
-							<th><?php esc_html_e( 'Tier price excluding tax', 'dahu-composite' ); ?></th>
+							<th><?php esc_html_e( 'Tier', 'ubac-kits' ); ?></th>
+							<th><?php esc_html_e( 'Roles (comma separated)', 'ubac-kits' ); ?></th>
+							<th><?php esc_html_e( 'Label for the tier price', 'ubac-kits' ); ?></th>
+							<th><?php esc_html_e( 'Label for the public price', 'ubac-kits' ); ?></th>
+							<th><?php esc_html_e( 'Short label (summary)', 'ubac-kits' ); ?></th>
+							<th><?php esc_html_e( 'Tier price excluding tax', 'ubac-kits' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -397,9 +397,9 @@ class Dahu_Composite_Settings {
 				<?php if ( $shared_any ) : ?>
 					<p class="description">
 						<sup>*</sup>
-						<?php esc_html_e( 'Label taken from Dahu Pricing; change it there.', 'dahu-composite' ); ?>
+						<?php esc_html_e( 'Label taken from Dahu Pricing; change it there.', 'ubac-kits' ); ?>
 						<?php if ( is_callable( array( 'Dahu_Pricing_Settings', 'get_settings_url' ) ) ) : ?>
-							<a href="<?php echo esc_url( Dahu_Pricing_Settings::get_settings_url() ); ?>"><?php esc_html_e( 'Open the Dahu Pricing settings', 'dahu-composite' ); ?></a>
+							<a href="<?php echo esc_url( Dahu_Pricing_Settings::get_settings_url() ); ?>"><?php esc_html_e( 'Open the Dahu Pricing settings', 'ubac-kits' ); ?></a>
 						<?php endif; ?>
 					</p>
 				<?php endif; ?>
@@ -410,27 +410,27 @@ class Dahu_Composite_Settings {
 
 			<div class="dahu-ui-card">
 			<div class="dahu-ui-card__head">
-				<h2 class="dahu-ui-card__title"><?php esc_html_e( 'Composite products', 'dahu-composite' ); ?></h2>
+				<h2 class="dahu-ui-card__title"><?php esc_html_e( 'Composite products', 'ubac-kits' ); ?></h2>
 			</div>
 			<table class="dahu-ui-table">
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Composite product', 'dahu-composite' ); ?></th>
-						<th><?php esc_html_e( 'Status', 'dahu-composite' ); ?></th>
-						<th><?php esc_html_e( 'Components', 'dahu-composite' ); ?></th>
-						<th><?php esc_html_e( 'Scenarios', 'dahu-composite' ); ?></th>
-						<th><?php esc_html_e( 'Shipping class', 'dahu-composite' ); ?></th>
-						<th><?php esc_html_e( 'REST schema', 'dahu-composite' ); ?></th>
+						<th><?php esc_html_e( 'Composite product', 'ubac-kits' ); ?></th>
+						<th><?php esc_html_e( 'Status', 'ubac-kits' ); ?></th>
+						<th><?php esc_html_e( 'Components', 'ubac-kits' ); ?></th>
+						<th><?php esc_html_e( 'Scenarios', 'ubac-kits' ); ?></th>
+						<th><?php esc_html_e( 'Shipping class', 'ubac-kits' ); ?></th>
+						<th><?php esc_html_e( 'REST schema', 'ubac-kits' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
 				<?php if ( empty( $kits ) ) : ?>
 					<tr>
 						<td colspan="6">
-							<p class="dahu-ui-hint"><?php esc_html_e( 'No composite products yet. Create a product of type “Composite product”.', 'dahu-composite' ); ?></p>
+							<p class="dahu-ui-hint"><?php esc_html_e( 'No composite products yet. Create a product of type “Composite product”.', 'ubac-kits' ); ?></p>
 							<p>
 								<a class="dahu-ui-btn" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=product' ) ); ?>">
-									<?php esc_html_e( 'Add a product', 'dahu-composite' ); ?>
+									<?php esc_html_e( 'Add a product', 'ubac-kits' ); ?>
 								</a>
 							</p>
 						</td>
@@ -445,7 +445,7 @@ class Dahu_Composite_Settings {
 						<td><?php echo esc_html( $kit->get_status() ); ?></td>
 						<td><?php echo (int) count( $kit->get_kit_components() ); ?></td>
 						<td><?php echo (int) count( $kit->get_kit_scenarios() ); ?></td>
-						<td><?php echo $class_term && ! is_wp_error( $class_term ) ? esc_html( $class_term->slug ) : '<strong class="dahu-kit-settings__missing">' . esc_html__( 'none', 'dahu-composite' ) . '</strong>'; ?></td>
+						<td><?php echo $class_term && ! is_wp_error( $class_term ) ? esc_html( $class_term->slug ) : '<strong class="dahu-kit-settings__missing">' . esc_html__( 'none', 'ubac-kits' ) . '</strong>'; ?></td>
 						<td><code><?php echo esc_html( rest_url( Dahu_Composite_Rest::NAMESPACE_V1 . '/schema/' . $kit->get_id() ) ); ?></code></td>
 					</tr>
 				<?php endforeach; ?>

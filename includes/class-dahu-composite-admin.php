@@ -89,403 +89,403 @@ class Dahu_Composite_Admin {
 	private static function script_i18n() {
 		return array(
 			// Shared actions and labels, reused by several boxes.
-			'moveUp'                    => __( 'Move up', 'dahu-composite' ),
-			'moveDown'                  => __( 'Move down', 'dahu-composite' ),
-			'duplicate'                 => __( 'Duplicate', 'dahu-composite' ),
-			'delete'                    => __( 'Delete', 'dahu-composite' ),
-			'change'                    => __( 'Change', 'dahu-composite' ),
-			'remove'                    => __( 'Remove', 'dahu-composite' ),
-			'choose'                    => __( 'Choose', 'dahu-composite' ),
-			'image'                     => __( 'Image', 'dahu-composite' ),
-			'media'                     => __( 'Media', 'dahu-composite' ),
-			'labelField'                => __( 'Label', 'dahu-composite' ),
-			'titleField'                => __( 'Title', 'dahu-composite' ),
-			'badgeField'                => __( 'Badge', 'dahu-composite' ),
-			'identifier'                => __( 'Identifier', 'dahu-composite' ),
-			'identifierFromLabel'       => __( 'generated from the label', 'dahu-composite' ),
-			'colourField'               => __( 'Colour', 'dahu-composite' ),
-			'optionNone'                => __( '— None —', 'dahu-composite' ),
-			'noLabel'                   => __( '(no label)', 'dahu-composite' ),
-			'untitled'                  => __( '(untitled)', 'dahu-composite' ),
-			'none'                      => __( 'None', 'dahu-composite' ),
-			'yes'                       => __( 'yes', 'dahu-composite' ),
-			'no'                        => __( 'no', 'dahu-composite' ),
-			'copy'                      => __( 'Copy', 'dahu-composite' ),
-			'copied'                    => __( 'Copied', 'dahu-composite' ),
-			'copyFailed'                => __( 'Copy failed', 'dahu-composite' ),
-			'dragToReorder'             => __( 'Drag to reorder', 'dahu-composite' ),
-			'cannotBeUndone'            => __( 'This cannot be undone without reloading the page.', 'dahu-composite' ),
+			'moveUp'                    => __( 'Move up', 'ubac-kits' ),
+			'moveDown'                  => __( 'Move down', 'ubac-kits' ),
+			'duplicate'                 => __( 'Duplicate', 'ubac-kits' ),
+			'delete'                    => __( 'Delete', 'ubac-kits' ),
+			'change'                    => __( 'Change', 'ubac-kits' ),
+			'remove'                    => __( 'Remove', 'ubac-kits' ),
+			'choose'                    => __( 'Choose', 'ubac-kits' ),
+			'image'                     => __( 'Image', 'ubac-kits' ),
+			'media'                     => __( 'Media', 'ubac-kits' ),
+			'labelField'                => __( 'Label', 'ubac-kits' ),
+			'titleField'                => __( 'Title', 'ubac-kits' ),
+			'badgeField'                => __( 'Badge', 'ubac-kits' ),
+			'identifier'                => __( 'Identifier', 'ubac-kits' ),
+			'identifierFromLabel'       => __( 'generated from the label', 'ubac-kits' ),
+			'colourField'               => __( 'Colour', 'ubac-kits' ),
+			'optionNone'                => __( '— None —', 'ubac-kits' ),
+			'noLabel'                   => __( '(no label)', 'ubac-kits' ),
+			'untitled'                  => __( '(untitled)', 'ubac-kits' ),
+			'none'                      => __( 'None', 'ubac-kits' ),
+			'yes'                       => __( 'yes', 'ubac-kits' ),
+			'no'                        => __( 'no', 'ubac-kits' ),
+			'copy'                      => __( 'Copy', 'ubac-kits' ),
+			'copied'                    => __( 'Copied', 'ubac-kits' ),
+			'copyFailed'                => __( 'Copy failed', 'ubac-kits' ),
+			'dragToReorder'             => __( 'Drag to reorder', 'ubac-kits' ),
+			'cannotBeUndone'            => __( 'This cannot be undone without reloading the page.', 'ubac-kits' ),
 			/* translators: %s: HTTP status code returned by the request. */
-			'httpError'                 => __( 'Error %s', 'dahu-composite' ),
+			'httpError'                 => __( 'Error %s', 'ubac-kits' ),
 			/* translators: %s: name of the item that could not be found. */
-			'notFound'                  => __( '%s (not found)', 'dahu-composite' ),
+			'notFound'                  => __( '%s (not found)', 'ubac-kits' ),
 
 			// Component box: type, choice mode, screen and quantity.
-			'componentsBox'             => __( 'Components', 'dahu-composite' ),
-			'componentType'             => __( 'Component type', 'dahu-composite' ),
-			'typeProducts'              => __( 'Products', 'dahu-composite' ),
-			'typeBranch'                => __( 'Branch (no product)', 'dahu-composite' ),
-			'choiceField'               => __( 'Choice', 'dahu-composite' ),
-			'choiceSingle'              => __( 'Single (one option)', 'dahu-composite' ),
-			'choiceMultiple'            => __( 'Multiple (several options, one row each)', 'dahu-composite' ),
-			'layoutField'               => __( 'Layout', 'dahu-composite' ),
-			'styleDefault'              => __( 'Default (general appearance)', 'dahu-composite' ),
-			'styleImage'                => __( 'With image — cards in a grid', 'dahu-composite' ),
-			'styleRow'                  => __( 'Inline — one expandable row per option', 'dahu-composite' ),
-			'styleSmall'                => __( 'Small — compact grid', 'dahu-composite' ),
-			'styleIcon'                 => __( 'Category icon', 'dahu-composite' ),
-			'styleChips'                => __( 'Tickable chips', 'dahu-composite' ),
-			'displayGroup'              => __( 'Display group', 'dahu-composite' ),
-			'displayGroupPlaceholder'   => __( 'same value = same screen', 'dahu-composite' ),
-			'titleRoleField'            => __( 'Title on the screen', 'dahu-composite' ),
-			'titleRolePrimary'          => __( 'Main (in the screen title)', 'dahu-composite' ),
-			'titleRoleSecondary'        => __( 'Secondary (add-on, no title)', 'dahu-composite' ),
-			'presentationField'         => __( 'Add-on presentation', 'dahu-composite' ),
-			'presentationCard'          => __( '“Select” card', 'dahu-composite' ),
-			'presentationQuestion'      => __( 'Yes / no question', 'dahu-composite' ),
-			'questionField'             => __( 'Text of the question', 'dahu-composite' ),
-			'questionPlaceholder'       => __( 'Empty: the title of the component', 'dahu-composite' ),
-			'quantityEditable'          => __( 'Adjustable quantity', 'dahu-composite' ),
-			'quantityMin'               => __( 'Min quantity', 'dahu-composite' ),
-			'quantityMax'               => __( 'Max quantity', 'dahu-composite' ),
-			'optionalField'             => __( 'Optional', 'dahu-composite' ),
-			'shippedIndividually'       => __( 'Shipped on its own (otherwise its weight is added to the composite product parcel)', 'dahu-composite' ),
-			'weightModeField'           => __( 'Displayed weight', 'dahu-composite' ),
-			'weightModeProducts'        => __( 'Weight of the products', 'dahu-composite' ),
-			'weightModeFixed'           => __( 'Fixed value', 'dahu-composite' ),
-			'weightModeSubtract'        => __( 'Weight of the products minus…', 'dahu-composite' ),
-			'weightGrams'               => __( 'Grams', 'dahu-composite' ),
-			'descriptionField'          => __( 'Description (HTML allowed)', 'dahu-composite' ),
-			'infoBubbleText'            => __( 'Info bubble text (optional)', 'dahu-composite' ),
-			'optionsProductsField'      => __( 'Options (products)', 'dahu-composite' ),
-			'searchProduct'             => __( 'Search for a product…', 'dahu-composite' ),
-			'defaultSelectionField'     => __( 'Default selection', 'dahu-composite' ),
-			'defaultOptionField'        => __( 'Default option', 'dahu-composite' ),
+			'componentsBox'             => __( 'Components', 'ubac-kits' ),
+			'componentType'             => __( 'Component type', 'ubac-kits' ),
+			'typeProducts'              => __( 'Products', 'ubac-kits' ),
+			'typeBranch'                => __( 'Branch (no product)', 'ubac-kits' ),
+			'choiceField'               => __( 'Choice', 'ubac-kits' ),
+			'choiceSingle'              => __( 'Single (one option)', 'ubac-kits' ),
+			'choiceMultiple'            => __( 'Multiple (several options, one row each)', 'ubac-kits' ),
+			'layoutField'               => __( 'Layout', 'ubac-kits' ),
+			'styleDefault'              => __( 'Default (general appearance)', 'ubac-kits' ),
+			'styleImage'                => __( 'With image — cards in a grid', 'ubac-kits' ),
+			'styleRow'                  => __( 'Inline — one expandable row per option', 'ubac-kits' ),
+			'styleSmall'                => __( 'Small — compact grid', 'ubac-kits' ),
+			'styleIcon'                 => __( 'Category icon', 'ubac-kits' ),
+			'styleChips'                => __( 'Tickable chips', 'ubac-kits' ),
+			'displayGroup'              => __( 'Display group', 'ubac-kits' ),
+			'displayGroupPlaceholder'   => __( 'same value = same screen', 'ubac-kits' ),
+			'titleRoleField'            => __( 'Title on the screen', 'ubac-kits' ),
+			'titleRolePrimary'          => __( 'Main (in the screen title)', 'ubac-kits' ),
+			'titleRoleSecondary'        => __( 'Secondary (add-on, no title)', 'ubac-kits' ),
+			'presentationField'         => __( 'Add-on presentation', 'ubac-kits' ),
+			'presentationCard'          => __( '“Select” card', 'ubac-kits' ),
+			'presentationQuestion'      => __( 'Yes / no question', 'ubac-kits' ),
+			'questionField'             => __( 'Text of the question', 'ubac-kits' ),
+			'questionPlaceholder'       => __( 'Empty: the title of the component', 'ubac-kits' ),
+			'quantityEditable'          => __( 'Adjustable quantity', 'ubac-kits' ),
+			'quantityMin'               => __( 'Min quantity', 'ubac-kits' ),
+			'quantityMax'               => __( 'Max quantity', 'ubac-kits' ),
+			'optionalField'             => __( 'Optional', 'ubac-kits' ),
+			'shippedIndividually'       => __( 'Shipped on its own (otherwise its weight is added to the composite product parcel)', 'ubac-kits' ),
+			'weightModeField'           => __( 'Displayed weight', 'ubac-kits' ),
+			'weightModeProducts'        => __( 'Weight of the products', 'ubac-kits' ),
+			'weightModeFixed'           => __( 'Fixed value', 'ubac-kits' ),
+			'weightModeSubtract'        => __( 'Weight of the products minus…', 'ubac-kits' ),
+			'weightGrams'               => __( 'Grams', 'ubac-kits' ),
+			'descriptionField'          => __( 'Description (HTML allowed)', 'ubac-kits' ),
+			'infoBubbleText'            => __( 'Info bubble text (optional)', 'ubac-kits' ),
+			'optionsProductsField'      => __( 'Options (products)', 'ubac-kits' ),
+			'searchProduct'             => __( 'Search for a product…', 'ubac-kits' ),
+			'defaultSelectionField'     => __( 'Default selection', 'ubac-kits' ),
+			'defaultOptionField'        => __( 'Default option', 'ubac-kits' ),
 
 			// Component box: badges of the folded header.
-			'badgeBranch'               => __( 'Branch', 'dahu-composite' ),
-			'badgeProducts'             => __( 'Products', 'dahu-composite' ),
-			'badgeMultiple'             => __( 'multiple choice', 'dahu-composite' ),
-			'badgeOptional'             => __( 'optional', 'dahu-composite' ),
+			'badgeBranch'               => __( 'Branch', 'ubac-kits' ),
+			'badgeProducts'             => __( 'Products', 'ubac-kits' ),
+			'badgeMultiple'             => __( 'multiple choice', 'ubac-kits' ),
+			'badgeOptional'             => __( 'optional', 'ubac-kits' ),
 			/* translators: %s: name of the screen the component is shown on. */
-			'badgeScreen'               => __( 'screen: %s', 'dahu-composite' ),
+			'badgeScreen'               => __( 'screen: %s', 'ubac-kits' ),
 			/* translators: %s: number of options. */
-			'optionCount'               => __( 'Options: %s', 'dahu-composite' ),
+			'optionCount'               => __( 'Options: %s', 'ubac-kits' ),
 			/* translators: %s: number of ranges. */
-			'rangeCount'                => __( 'Ranges: %s', 'dahu-composite' ),
+			'rangeCount'                => __( 'Ranges: %s', 'ubac-kits' ),
 			/* translators: %s: number of restricted options. */
-			'restrictedCount'           => __( 'Restricted: %s', 'dahu-composite' ),
-			'everythingPublic'          => __( 'everything is public', 'dahu-composite' ),
+			'restrictedCount'           => __( 'Restricted: %s', 'ubac-kits' ),
+			'everythingPublic'          => __( 'everything is public', 'ubac-kits' ),
 
 			// Anchoring an add-on to the card of another component.
-			'anchorNextTo'              => __( 'Anchor next to', 'dahu-composite' ),
-			'anchorAutomatic'           => __( '— Automatic (the chosen card of the first component on the screen) —', 'dahu-composite' ),
+			'anchorNextTo'              => __( 'Anchor next to', 'ubac-kits' ),
+			'anchorAutomatic'           => __( '— Automatic (the chosen card of the first component on the screen) —', 'ubac-kits' ),
 			/* translators: %s: name of the component, which sits on another screen. */
-			'anchorOtherScreen'         => __( '%s (other screen)', 'dahu-composite' ),
-			'anchorCard'                => __( 'Card', 'dahu-composite' ),
-			'anchorChosenCard'          => __( '— Chosen card —', 'dahu-composite' ),
+			'anchorOtherScreen'         => __( '%s (other screen)', 'ubac-kits' ),
+			'anchorCard'                => __( 'Card', 'ubac-kits' ),
+			'anchorChosenCard'          => __( '— Chosen card —', 'ubac-kits' ),
 			/* translators: %s: name of the card that is no longer among the options. */
-			'anchorAbsent'              => __( '%s (absent from the options)', 'dahu-composite' ),
+			'anchorAbsent'              => __( '%s (absent from the options)', 'ubac-kits' ),
 
 			// Categories (ranges) of a component.
 			/* translators: %s: number of categories. */
-			'rangesPanel'               => __( 'Categories / ranges (%s)', 'dahu-composite' ),
-			'rangeAdd'                  => __( 'Add a category', 'dahu-composite' ),
-			'rangeCreate'               => __( 'Create a category', 'dahu-composite' ),
-			'rangeField'                => __( 'Range', 'dahu-composite' ),
-			'rangeNoCategory'           => __( 'Range: no category.', 'dahu-composite' ),
-			'rangeDisplay'              => __( 'Display of the ranges:', 'dahu-composite' ),
-			'rangeNewline'              => __( 'On its own line', 'dahu-composite' ),
-			'rangeBadge'                => __( 'Badge', 'dahu-composite' ),
-			'rangeTint'                 => __( 'Coloured background', 'dahu-composite' ),
+			'rangesPanel'               => __( 'Categories / ranges (%s)', 'ubac-kits' ),
+			'rangeAdd'                  => __( 'Add a category', 'ubac-kits' ),
+			'rangeCreate'               => __( 'Create a category', 'ubac-kits' ),
+			'rangeField'                => __( 'Range', 'ubac-kits' ),
+			'rangeNoCategory'           => __( 'Range: no category.', 'ubac-kits' ),
+			'rangeDisplay'              => __( 'Display of the ranges:', 'ubac-kits' ),
+			'rangeNewline'              => __( 'On its own line', 'ubac-kits' ),
+			'rangeBadge'                => __( 'Badge', 'ubac-kits' ),
+			'rangeTint'                 => __( 'Coloured background', 'ubac-kits' ),
 			/* translators: %s: the default colour, in hexadecimal. */
-			'colourDefault'             => __( 'Default (%s)', 'dahu-composite' ),
-			'tierMedia'                 => __( 'Tooltip image or video (optional)', 'dahu-composite' ),
-			'tierMediaUrl'              => __( 'or a video link (YouTube, Vimeo, .mp4 file)', 'dahu-composite' ),
-			'chooseFromLibrary'         => __( 'Choose from the media library', 'dahu-composite' ),
+			'colourDefault'             => __( 'Default (%s)', 'ubac-kits' ),
+			'tierMedia'                 => __( 'Tooltip image or video (optional)', 'ubac-kits' ),
+			'tierMediaUrl'              => __( 'or a video link (YouTube, Vimeo, .mp4 file)', 'ubac-kits' ),
+			'chooseFromLibrary'         => __( 'Choose from the media library', 'ubac-kits' ),
 
 			// Product option: display, variations, help image, visibility.
-			'displayedTitle'            => __( 'Displayed title', 'dahu-composite' ),
-			'badgePlaceholder'          => __( 'e.g. Best seller', 'dahu-composite' ),
-			'displayedDescription'      => __( 'Displayed description (simple HTML)', 'dahu-composite' ),
-			'showImage'                 => __( 'Show the image', 'dahu-composite' ),
-			'showDescription'           => __( 'Description', 'dahu-composite' ),
-			'showSpecs'                 => __( 'Specifications', 'dahu-composite' ),
-			'showBundled'               => __( 'Included products', 'dahu-composite' ),
-			'customiseDisplay'          => __( 'Customise the display', 'dahu-composite' ),
-			'changeImage'               => __( 'Change the image', 'dahu-composite' ),
-			'chooseImage'               => __( 'Choose an image', 'dahu-composite' ),
-			'everyVariant'              => __( 'Every variant', 'dahu-composite' ),
-			'helpImagePanel'            => __( 'Help image', 'dahu-composite' ),
-			'variantsPanel'             => __( 'Variations offered', 'dahu-composite' ),
-			'variantsAll'               => __( 'all', 'dahu-composite' ),
+			'displayedTitle'            => __( 'Displayed title', 'ubac-kits' ),
+			'badgePlaceholder'          => __( 'e.g. Best seller', 'ubac-kits' ),
+			'displayedDescription'      => __( 'Displayed description (simple HTML)', 'ubac-kits' ),
+			'showImage'                 => __( 'Show the image', 'ubac-kits' ),
+			'showDescription'           => __( 'Description', 'ubac-kits' ),
+			'showSpecs'                 => __( 'Specifications', 'ubac-kits' ),
+			'showBundled'               => __( 'Included products', 'ubac-kits' ),
+			'customiseDisplay'          => __( 'Customise the display', 'ubac-kits' ),
+			'changeImage'               => __( 'Change the image', 'ubac-kits' ),
+			'chooseImage'               => __( 'Choose an image', 'ubac-kits' ),
+			'everyVariant'              => __( 'Every variant', 'ubac-kits' ),
+			'helpImagePanel'            => __( 'Help image', 'ubac-kits' ),
+			'variantsPanel'             => __( 'Variations offered', 'ubac-kits' ),
+			'variantsAll'               => __( 'all', 'ubac-kits' ),
 			/* translators: %s: the variants the restriction applies to. */
-			'variantsRestrictedCount'   => __( 'restricted on %s', 'dahu-composite' ),
-			'visibilityPanel'           => __( 'Public visibility', 'dahu-composite' ),
-			'publicLabel'               => __( 'public', 'dahu-composite' ),
-			'restricted'                => __( 'restricted', 'dahu-composite' ),
-			'restrictedEveryVariant'    => __( 'restricted (every variant)', 'dahu-composite' ),
-			'noneCard'                  => __( '“None” card', 'dahu-composite' ),
-			'valueNoSelection'          => __( '— No selection —', 'dahu-composite' ),
+			'variantsRestrictedCount'   => __( 'restricted on %s', 'ubac-kits' ),
+			'visibilityPanel'           => __( 'Public visibility', 'ubac-kits' ),
+			'publicLabel'               => __( 'public', 'ubac-kits' ),
+			'restricted'                => __( 'restricted', 'ubac-kits' ),
+			'restrictedEveryVariant'    => __( 'restricted (every variant)', 'ubac-kits' ),
+			'noneCard'                  => __( '“None” card', 'ubac-kits' ),
+			'valueNoSelection'          => __( '— No selection —', 'ubac-kits' ),
 			/* translators: %s: name of the value. */
-			'valueEveryVariant'         => __( '%s — every variant', 'dahu-composite' ),
+			'valueEveryVariant'         => __( '%s — every variant', 'ubac-kits' ),
 			/* translators: %s: name of the value. */
-			'valueVariantPending'       => __( '%s — variant not chosen yet', 'dahu-composite' ),
+			'valueVariantPending'       => __( '%s — variant not chosen yet', 'ubac-kits' ),
 
 			// Options of a branch component.
-			'branchOptions'             => __( 'Options of the branch', 'dahu-composite' ),
-			'addOption'                 => __( 'Add an option', 'dahu-composite' ),
-			'deleteThisOption'          => __( 'Delete this option', 'dahu-composite' ),
-			'badgePathPlaceholder'      => __( 'e.g. New', 'dahu-composite' ),
-			'comingSoon'                => __( 'Coming soon', 'dahu-composite' ),
-			'linkField'                 => __( 'Link (optional)', 'dahu-composite' ),
-			'linkPlaceholder'           => __( 'page slug (contact) or https://…', 'dahu-composite' ),
-			'linkTitle'                 => __( 'Filled in: the card is no longer a choice, it opens this page.', 'dahu-composite' ),
+			'branchOptions'             => __( 'Options of the branch', 'ubac-kits' ),
+			'addOption'                 => __( 'Add an option', 'ubac-kits' ),
+			'deleteThisOption'          => __( 'Delete this option', 'ubac-kits' ),
+			'badgePathPlaceholder'      => __( 'e.g. New', 'ubac-kits' ),
+			'comingSoon'                => __( 'Coming soon', 'ubac-kits' ),
+			'linkField'                 => __( 'Link (optional)', 'ubac-kits' ),
+			'linkPlaceholder'           => __( 'page slug (contact) or https://…', 'ubac-kits' ),
+			'linkTitle'                 => __( 'Filled in: the card is no longer a choice, it opens this page.', 'ubac-kits' ),
 
 			// Media library frames (title and confirm button).
-			'mediaOptionImage'          => __( 'Image of the option', 'dahu-composite' ),
-			'mediaHelpImage'            => __( 'Help image (back of the card)', 'dahu-composite' ),
+			'mediaOptionImage'          => __( 'Image of the option', 'ubac-kits' ),
+			'mediaHelpImage'            => __( 'Help image (back of the card)', 'ubac-kits' ),
 			/* translators: %s is the title of the component. */
-			'mediaNoneImage'            => __( 'Image of the “None” card — %s', 'dahu-composite' ),
+			'mediaNoneImage'            => __( 'Image of the “None” card — %s', 'ubac-kits' ),
 			/* translators: %s: name of the category the media belongs to. */
-			'mediaTierTooltip'          => __( 'Tooltip image or video “%s”', 'dahu-composite' ),
-			'mediaUseThisVisual'        => __( 'Use this visual', 'dahu-composite' ),
-			'mediaUseThisImage'         => __( 'Use this image', 'dahu-composite' ),
-			'mediaUseThisMedia'         => __( 'Use this media', 'dahu-composite' ),
+			'mediaTierTooltip'          => __( 'Tooltip image or video “%s”', 'ubac-kits' ),
+			'mediaUseThisVisual'        => __( 'Use this visual', 'ubac-kits' ),
+			'mediaUseThisImage'         => __( 'Use this image', 'ubac-kits' ),
+			'mediaUseThisMedia'         => __( 'Use this media', 'ubac-kits' ),
 
 			// Duplicating and deleting.
 			/* translators: %s is the name of the item being duplicated. */
-			'copySuffix'                => __( '%s (copy)', 'dahu-composite' ),
+			'copySuffix'                => __( '%s (copy)', 'ubac-kits' ),
 			/* translators: %s: name of the category about to be deleted. */
-			'tierDeleteConfirm'         => __( 'Delete the category “%s”?', 'dahu-composite' ),
+			'tierDeleteConfirm'         => __( 'Delete the category “%s”?', 'ubac-kits' ),
 			'tierDeleteAttached'        => array(
 				/* translators: %s: number of options attached to the category. */
-				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 1, 'dahu-composite' ),
+				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 1, 'ubac-kits' ),
 				/* translators: %s: number of options attached to the category. */
-				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 2, 'dahu-composite' ),
+				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 2, 'ubac-kits' ),
 			),
-			'tierDeleteNoOption'        => __( 'No option is attached to it.', 'dahu-composite' ),
+			'tierDeleteNoOption'        => __( 'No option is attached to it.', 'ubac-kits' ),
 			/* translators: %s: name of the component about to be deleted. */
-			'componentDeleteConfirm'    => __( 'Delete the component “%s”?', 'dahu-composite' ),
+			'componentDeleteConfirm'    => __( 'Delete the component “%s”?', 'ubac-kits' ),
 			'componentDeleteLinked'     => array(
 				/* translators: %s: number of scenarios that refer to the component. */
-				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 1, 'dahu-composite' ),
+				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 1, 'ubac-kits' ),
 				/* translators: %s: number of scenarios that refer to the component. */
-				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 2, 'dahu-composite' ),
+				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 2, 'ubac-kits' ),
 			),
 			/* translators: %s: name of the scenario about to be deleted. */
-			'scenarioDeleteConfirm'     => __( 'Delete the scenario “%s”?', 'dahu-composite' ),
+			'scenarioDeleteConfirm'     => __( 'Delete the scenario “%s”?', 'ubac-kits' ),
 
 			// Import and export of the configuration JSON.
 			/* translators: %s: the error reported by the JSON parser. */
-			'importInvalidJson'         => __( 'Invalid JSON: %s', 'dahu-composite' ),
-			'importNoComponents'        => __( 'Invalid JSON: the “components” key is missing.', 'dahu-composite' ),
-			'importDone'                => __( 'Configuration imported: save the product to apply it.', 'dahu-composite' ),
+			'importInvalidJson'         => __( 'Invalid JSON: %s', 'ubac-kits' ),
+			'importNoComponents'        => __( 'Invalid JSON: the “components” key is missing.', 'ubac-kits' ),
+			'importDone'                => __( 'Configuration imported: save the product to apply it.', 'ubac-kits' ),
 			/* translators: %s: the list of things that were kept, built from the lines below. */
-			'importKept'                => __( 'Already set in the admin and absent from the imported JSON, so kept: %s.', 'dahu-composite' ),
+			'importKept'                => __( 'Already set in the admin and absent from the imported JSON, so kept: %s.', 'ubac-kits' ),
 			/* translators: %s: number of images. */
-			'keptImages'                => __( '%s image(s)', 'dahu-composite' ),
+			'keptImages'                => __( '%s image(s)', 'ubac-kits' ),
 			/* translators: %s: number of help images. */
-			'keptHelpImages'            => __( '%s help image(s)', 'dahu-composite' ),
+			'keptHelpImages'            => __( '%s help image(s)', 'ubac-kits' ),
 			/* translators: %s: number of option titles. */
-			'keptOptionTitles'          => __( '%s option title(s)', 'dahu-composite' ),
+			'keptOptionTitles'          => __( '%s option title(s)', 'ubac-kits' ),
 			/* translators: %s: number of option labels. */
-			'keptOptionLabels'          => __( '%s option label(s)', 'dahu-composite' ),
+			'keptOptionLabels'          => __( '%s option label(s)', 'ubac-kits' ),
 			/* translators: %s: number of option descriptions. */
-			'keptOptionDescriptions'    => __( '%s option description(s)', 'dahu-composite' ),
+			'keptOptionDescriptions'    => __( '%s option description(s)', 'ubac-kits' ),
 			/* translators: %s: number of badges. */
-			'keptBadges'                => __( '%s badge(s)', 'dahu-composite' ),
+			'keptBadges'                => __( '%s badge(s)', 'ubac-kits' ),
 			/* translators: %s: number of component titles. */
-			'keptComponentTitles'       => __( '%s component title(s)', 'dahu-composite' ),
+			'keptComponentTitles'       => __( '%s component title(s)', 'ubac-kits' ),
 			/* translators: %s: number of component layouts. */
-			'keptComponentLayouts'      => __( '%s component layout(s)', 'dahu-composite' ),
+			'keptComponentLayouts'      => __( '%s component layout(s)', 'ubac-kits' ),
 			/* translators: %s: number of component descriptions. */
-			'keptComponentDescriptions' => __( '%s component description(s)', 'dahu-composite' ),
+			'keptComponentDescriptions' => __( '%s component description(s)', 'ubac-kits' ),
 			/* translators: %s: number of component info bubble texts. */
-			'keptComponentInfo'         => __( '%s component info bubble text(s)', 'dahu-composite' ),
+			'keptComponentInfo'         => __( '%s component info bubble text(s)', 'ubac-kits' ),
 			/* translators: %s: number of “None” card images. */
-			'keptNoneImages'            => __( '%s “None” card image(s)', 'dahu-composite' ),
+			'keptNoneImages'            => __( '%s “None” card image(s)', 'ubac-kits' ),
 			/* translators: %s: number of range info bubble texts. */
-			'keptRangeInfo'             => __( '%s range info bubble text(s)', 'dahu-composite' ),
+			'keptRangeInfo'             => __( '%s range info bubble text(s)', 'ubac-kits' ),
 			/* translators: %s: number of range media. */
-			'keptRangeMedia'            => __( '%s range media', 'dahu-composite' ),
+			'keptRangeMedia'            => __( '%s range media', 'ubac-kits' ),
 			/* translators: %s: number of range video links. */
-			'keptRangeVideoLinks'       => __( '%s range video link(s)', 'dahu-composite' ),
+			'keptRangeVideoLinks'       => __( '%s range video link(s)', 'ubac-kits' ),
 			/* translators: %s: number of card links. */
-			'keptCardLinks'             => __( '%s card link(s)', 'dahu-composite' ),
+			'keptCardLinks'             => __( '%s card link(s)', 'ubac-kits' ),
 			/* translators: %s: number of offered variation choices. */
-			'keptOfferedVariations'     => __( '%s offered variation choices', 'dahu-composite' ),
+			'keptOfferedVariations'     => __( '%s offered variation choices', 'ubac-kits' ),
 			/* translators: %s: number of variant help images. */
-			'keptVariantHelpImages'     => __( '%s variant help images', 'dahu-composite' ),
+			'keptVariantHelpImages'     => __( '%s variant help images', 'ubac-kits' ),
 			/* translators: %s: number of range colours. */
-			'keptRangeColours'          => __( '%s range colour(s)', 'dahu-composite' ),
+			'keptRangeColours'          => __( '%s range colour(s)', 'ubac-kits' ),
 			/* translators: %s: number of “On its own line” settings. */
-			'keptRangeNewline'          => __( '%s “On its own line” setting(s)', 'dahu-composite' ),
+			'keptRangeNewline'          => __( '%s “On its own line” setting(s)', 'ubac-kits' ),
 			/* translators: %s: number of “Badge” settings. */
-			'keptRangeBadge'            => __( '%s “Badge” setting(s)', 'dahu-composite' ),
+			'keptRangeBadge'            => __( '%s “Badge” setting(s)', 'ubac-kits' ),
 			/* translators: %s: number of “Coloured background” settings. */
-			'keptRangeTint'             => __( '%s “Coloured background” setting(s)', 'dahu-composite' ),
+			'keptRangeTint'             => __( '%s “Coloured background” setting(s)', 'ubac-kits' ),
 
 			// Scenarios box: fields, actions and conditions.
-			'scenariosBox'              => __( 'Scenarios', 'dahu-composite' ),
-			'targetComponentField'      => __( 'Target component', 'dahu-composite' ),
-			'targetComponentsField'     => __( 'Target components', 'dahu-composite' ),
-			'actionField'               => __( 'Action', 'dahu-composite' ),
-			'actionHideOptions'         => __( 'Hide options', 'dahu-composite' ),
-			'actionShowOnly'            => __( 'Show only these options', 'dahu-composite' ),
-			'actionHideStep'            => __( 'Hide the whole step', 'dahu-composite' ),
-			'actionDeadEnd'             => __( 'Dead end (stop the configurator with a message)', 'dahu-composite' ),
-			'blockMessageField'         => __( 'Message shown (dead end)', 'dahu-composite' ),
-			'restartField'              => __( 'Resume at step', 'dahu-composite' ),
+			'scenariosBox'              => __( 'Scenarios', 'ubac-kits' ),
+			'targetComponentField'      => __( 'Target component', 'ubac-kits' ),
+			'targetComponentsField'     => __( 'Target components', 'ubac-kits' ),
+			'actionField'               => __( 'Action', 'ubac-kits' ),
+			'actionHideOptions'         => __( 'Hide options', 'ubac-kits' ),
+			'actionShowOnly'            => __( 'Show only these options', 'ubac-kits' ),
+			'actionHideStep'            => __( 'Hide the whole step', 'ubac-kits' ),
+			'actionDeadEnd'             => __( 'Dead end (stop the configurator with a message)', 'ubac-kits' ),
+			'blockMessageField'         => __( 'Message shown (dead end)', 'ubac-kits' ),
+			'restartField'              => __( 'Resume at step', 'ubac-kits' ),
 			/* translators: %s: name of the component whose options can be hidden. */
-			'scenMaskedField'           => __( 'Options to hide in “%s”', 'dahu-composite' ),
+			'scenMaskedField'           => __( 'Options to hide in “%s”', 'ubac-kits' ),
 			/* translators: %s: name of the component whose options can be kept visible. */
-			'scenShownField'            => __( 'Options to keep visible in “%s”', 'dahu-composite' ),
-			'condOn'                    => __( 'Condition on', 'dahu-composite' ),
-			'condIsOneOf'               => __( 'is one of', 'dahu-composite' ),
-			'condIsNoneOf'              => __( 'is none of', 'dahu-composite' ),
-			'condNone'                  => __( 'No condition possible: always active.', 'dahu-composite' ),
+			'scenShownField'            => __( 'Options to keep visible in “%s”', 'ubac-kits' ),
+			'condOn'                    => __( 'Condition on', 'ubac-kits' ),
+			'condIsOneOf'               => __( 'is one of', 'ubac-kits' ),
+			'condIsNoneOf'              => __( 'is none of', 'ubac-kits' ),
+			'condNone'                  => __( 'No condition possible: always active.', 'ubac-kits' ),
 			/* translators: %s is the customer condition, written out. */
-			'condCustomerLine'          => __( 'Customer condition: %s (import JSON).', 'dahu-composite' ),
-			'badgeDeadEnd'              => __( 'Dead end', 'dahu-composite' ),
-			'badgeHidesStep'            => __( 'Hides the step', 'dahu-composite' ),
-			'badgeShowsOnly'            => __( 'Shows only', 'dahu-composite' ),
-			'badgeHidesOptions'         => __( 'Hides options', 'dahu-composite' ),
-			'filterEveryTarget'         => __( 'Every target', 'dahu-composite' ),
-			'targetMissing'             => __( '(target missing)', 'dahu-composite' ),
+			'condCustomerLine'          => __( 'Customer condition: %s (import JSON).', 'ubac-kits' ),
+			'badgeDeadEnd'              => __( 'Dead end', 'ubac-kits' ),
+			'badgeHidesStep'            => __( 'Hides the step', 'ubac-kits' ),
+			'badgeShowsOnly'            => __( 'Shows only', 'ubac-kits' ),
+			'badgeHidesOptions'         => __( 'Hides options', 'ubac-kits' ),
+			'filterEveryTarget'         => __( 'Every target', 'ubac-kits' ),
+			'targetMissing'             => __( '(target missing)', 'ubac-kits' ),
 
 			// Scenarios box: readable sentence of a scenario.
-			'scenDeadEnd'               => __( 'Dead end', 'dahu-composite' ),
+			'scenDeadEnd'               => __( 'Dead end', 'ubac-kits' ),
 			/* translators: %s: name of the step that is hidden. */
-			'scenHidesStep'             => __( 'Hides the step %s', 'dahu-composite' ),
+			'scenHidesStep'             => __( 'Hides the step %s', 'ubac-kits' ),
 			/* translators: %s: names of the steps that are hidden. */
-			'scenHidesSteps'            => __( 'Hides the steps %s', 'dahu-composite' ),
+			'scenHidesSteps'            => __( 'Hides the steps %s', 'ubac-kits' ),
 			/* translators: %s: name of the component whose options are hidden. */
-			'scenHidesOptions'          => __( 'Hides options of %s', 'dahu-composite' ),
+			'scenHidesOptions'          => __( 'Hides options of %s', 'ubac-kits' ),
 			/* translators: 1: name of the target component, 2: the list of options kept visible. */
-			'scenShowsOnly'             => __( 'Shows in %1$s only %2$s', 'dahu-composite' ),
-			'scenNoOptionChosen'        => __( '(no option chosen)', 'dahu-composite' ),
+			'scenShowsOnly'             => __( 'Shows in %1$s only %2$s', 'ubac-kits' ),
+			'scenNoOptionChosen'        => __( '(no option chosen)', 'ubac-kits' ),
 			/* translators: %s: name of the component that carries no value. */
-			'scenNoValue'               => __( '%s (no value)', 'dahu-composite' ),
+			'scenNoValue'               => __( '%s (no value)', 'ubac-kits' ),
 			/* translators: 1: what the scenario does, 2: the list of its conditions. */
-			'scenIf'                    => __( '%1$s if %2$s', 'dahu-composite' ),
+			'scenIf'                    => __( '%1$s if %2$s', 'ubac-kits' ),
 			/* translators: joins two conditions of a scenario; keep the surrounding spaces. */
-			'scenAnd'                   => __( ' and ', 'dahu-composite' ),
+			'scenAnd'                   => __( ' and ', 'ubac-kits' ),
 			/* translators: %s: name of the scenario. */
-			'scenAlwaysActive'          => __( '%s (always active)', 'dahu-composite' ),
+			'scenAlwaysActive'          => __( '%s (always active)', 'ubac-kits' ),
 			/* translators: %s: the customer number. */
-			'customerNumber'            => __( 'customer #%s', 'dahu-composite' ),
+			'customerNumber'            => __( 'customer #%s', 'ubac-kits' ),
 			/* translators: %s: the list of customers the condition includes. */
-			'customerIn'                => __( 'customer ∈ {%s}', 'dahu-composite' ),
+			'customerIn'                => __( 'customer ∈ {%s}', 'ubac-kits' ),
 			/* translators: %s: the list of customers the condition excludes. */
-			'customerNotIn'             => __( 'customer ∉ {%s}', 'dahu-composite' ),
+			'customerNotIn'             => __( 'customer ∉ {%s}', 'ubac-kits' ),
 
 			// Customer exceptions and the rules the server generates from them.
-			'exceptionsBox'             => __( 'Customer exceptions', 'dahu-composite' ),
-			'excNone'                   => __( 'No exception.', 'dahu-composite' ),
-			'customerField'             => __( 'Customer', 'dahu-composite' ),
-			'searchCustomer'            => __( 'Search for a customer (name, e-mail)…', 'dahu-composite' ),
-			'componentField'            => __( 'Component', 'dahu-composite' ),
-			'noteField'                 => __( 'Note (internal)', 'dahu-composite' ),
-			'notePlaceholder'           => __( 'e.g. loyal customer, agreement of 12/09', 'dahu-composite' ),
-			'excAccessAll'              => __( 'Access to every restricted option and variation of this component', 'dahu-composite' ),
-			'excAccessList'             => __( 'Only these, on top of the public ones:', 'dahu-composite' ),
-			'excNothingRestricted'      => __( 'Nothing is restricted on this component.', 'dahu-composite' ),
+			'exceptionsBox'             => __( 'Customer exceptions', 'ubac-kits' ),
+			'excNone'                   => __( 'No exception.', 'ubac-kits' ),
+			'customerField'             => __( 'Customer', 'ubac-kits' ),
+			'searchCustomer'            => __( 'Search for a customer (name, e-mail)…', 'ubac-kits' ),
+			'componentField'            => __( 'Component', 'ubac-kits' ),
+			'noteField'                 => __( 'Note (internal)', 'ubac-kits' ),
+			'notePlaceholder'           => __( 'e.g. loyal customer, agreement of 12/09', 'ubac-kits' ),
+			'excAccessAll'              => __( 'Access to every restricted option and variation of this component', 'ubac-kits' ),
+			'excAccessList'             => __( 'Only these, on top of the public ones:', 'ubac-kits' ),
+			'excNothingRestricted'      => __( 'Nothing is restricted on this component.', 'ubac-kits' ),
 			/* translators: 1: name of the customer, 2: name of the component. */
-			'excSentenceAll'            => __( '%1$s — %2$s: every restricted option and variation', 'dahu-composite' ),
+			'excSentenceAll'            => __( '%1$s — %2$s: every restricted option and variation', 'ubac-kits' ),
 			/* translators: 1: name of the customer, 2: name of the component, 3: number of reserved values. */
 			'excSentenceList'           => array(
 				/* translators: 1: name of the component, 2: name of the value, 3: number of reserved values. */
-				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 1, 'dahu-composite' ),
+				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 1, 'ubac-kits' ),
 				/* translators: 1: name of the component, 2: name of the value, 3: number of reserved values. */
-				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 2, 'dahu-composite' ),
+				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 2, 'ubac-kits' ),
 			),
 			'reservedValues'            => array(
 				/* translators: %s: number of reserved values. */
-				_n( '%s reserved value', '%s reserved values', 1, 'dahu-composite' ),
+				_n( '%s reserved value', '%s reserved values', 1, 'ubac-kits' ),
 				/* translators: %s: number of reserved values. */
-				_n( '%s reserved value', '%s reserved values', 2, 'dahu-composite' ),
+				_n( '%s reserved value', '%s reserved values', 2, 'ubac-kits' ),
 			),
-			'nothingRestricted'         => __( 'nothing restricted', 'dahu-composite' ),
-			'everyVariantOfIt'          => __( 'every one of its variants', 'dahu-composite' ),
-			'unknownComponent'          => __( '(component?)', 'dahu-composite' ),
-			'customerToChoose'          => __( '(customer to be chosen)', 'dahu-composite' ),
-			'generatedTitle'            => __( 'Generated rules (read only)', 'dahu-composite' ),
-			'generatedNone'             => __( 'Generated rules: none (nothing is restricted).', 'dahu-composite' ),
+			'nothingRestricted'         => __( 'nothing restricted', 'ubac-kits' ),
+			'everyVariantOfIt'          => __( 'every one of its variants', 'ubac-kits' ),
+			'unknownComponent'          => __( '(component?)', 'ubac-kits' ),
+			'customerToChoose'          => __( '(customer to be chosen)', 'ubac-kits' ),
+			'generatedTitle'            => __( 'Generated rules (read only)', 'ubac-kits' ),
+			'generatedNone'             => __( 'Generated rules: none (nothing is restricted).', 'ubac-kits' ),
 			/* translators: 1: number of values hidden, 2: name of the component, 3: who the rule applies to, 4: the values. */
 			'generatedLine'             => array(
 				/* translators: 1: number of hidden values, 2: name of the component, 3: who the restriction applies to, 4: the hidden values themselves. */
-				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 1, 'dahu-composite' ),
+				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 1, 'ubac-kits' ),
 				/* translators: 1: number of hidden values, 2: name of the component, 3: who the restriction applies to, 4: the hidden values themselves. */
-				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 2, 'dahu-composite' ),
+				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 2, 'ubac-kits' ),
 			),
-			'generatedForEveryone'      => __( 'for everyone', 'dahu-composite' ),
+			'generatedForEveryone'      => __( 'for everyone', 'ubac-kits' ),
 			/* translators: %s: who the generated journey is reserved for. */
-			'generatedOnlyFor'          => __( 'for %s only', 'dahu-composite' ),
+			'generatedOnlyFor'          => __( 'for %s only', 'ubac-kits' ),
 			/* translators: %s: who the generated journey is not offered to. */
-			'generatedExceptFor'        => __( 'for everyone, except %s', 'dahu-composite' ),
+			'generatedExceptFor'        => __( 'for everyone, except %s', 'ubac-kits' ),
 
 			// Simulator: journey, totals and configuration serial.
-			'simComputing'              => __( 'Computing…', 'dahu-composite' ),
-			'simNoStepVisible'          => __( 'No step is visible with these choices.', 'dahu-composite' ),
+			'simComputing'              => __( 'Computing…', 'ubac-kits' ),
+			'simNoStepVisible'          => __( 'No step is visible with these choices.', 'ubac-kits' ),
 			/* translators: 1: screen number, 2: title of the screen. */
-			'simScreenTitle'            => __( 'Screen %1$s — %2$s', 'dahu-composite' ),
-			'simSummaryStep'            => __( 'Summary', 'dahu-composite' ),
+			'simScreenTitle'            => __( 'Screen %1$s — %2$s', 'ubac-kits' ),
+			'simSummaryStep'            => __( 'Summary', 'ubac-kits' ),
 			/* translators: 1: number of steps, 2: the steps, joined by an arrow. */
 			'simPath'                   => array(
 				/* translators: 1: number of steps, 2: the steps themselves. */
-				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 1, 'dahu-composite' ),
+				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 1, 'ubac-kits' ),
 				/* translators: 1: number of steps, 2: the steps themselves. */
-				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 2, 'dahu-composite' ),
+				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 2, 'ubac-kits' ),
 			),
-			'simDeadEnd'                => __( 'Dead end.', 'dahu-composite' ),
+			'simDeadEnd'                => __( 'Dead end.', 'ubac-kits' ),
 			/* translators: %s: name of the step the customer can resume at. */
-			'simRestartAt'              => __( 'Resume offered at step: %s', 'dahu-composite' ),
-			'simOptionsUnavailable'     => __( 'Options unavailable (component renamed?).', 'dahu-composite' ),
-			'simNoOptionAvailable'      => __( 'No option available with these choices.', 'dahu-composite' ),
+			'simRestartAt'              => __( 'Resume offered at step: %s', 'ubac-kits' ),
+			'simOptionsUnavailable'     => __( 'Options unavailable (component renamed?).', 'ubac-kits' ),
+			'simNoOptionAvailable'      => __( 'No option available with these choices.', 'ubac-kits' ),
 			/* translators: %s: name of the parent product. */
-			'simVariantOf'              => __( '— Variant of %s —', 'dahu-composite' ),
-			'simChooseVariant'          => __( '— Choose a variant —', 'dahu-composite' ),
-			'simStepToFill'             => __( 'Step to fill in.', 'dahu-composite' ),
-			'simTotal'                  => __( 'Total:', 'dahu-composite' ),
+			'simVariantOf'              => __( '— Variant of %s —', 'ubac-kits' ),
+			'simChooseVariant'          => __( '— Choose a variant —', 'ubac-kits' ),
+			'simStepToFill'             => __( 'Step to fill in.', 'ubac-kits' ),
+			'simTotal'                  => __( 'Total:', 'ubac-kits' ),
 			/* translators: 1: weight, 2: unit of weight. */
-			'simWeight'                 => __( 'Estimated weight: %1$s %2$s', 'dahu-composite' ),
-			'simValid'                  => __( 'Configuration complete and valid', 'dahu-composite' ),
-			'simIncomplete'             => __( 'Configuration incomplete', 'dahu-composite' ),
-			'simReset'                  => __( 'Reset', 'dahu-composite' ),
-			'simSerialLabel'            => __( 'Configuration serial:', 'dahu-composite' ),
-			'simSerialPartialLabel'     => __( 'Configuration serial (partial configuration):', 'dahu-composite' ),
-			'simSerialNone'             => __( 'no serial as long as no choice is made.', 'dahu-composite' ),
-			'simOpenLink'               => __( 'Open on the site', 'dahu-composite' ),
-			'simOpenTitle'              => __( 'Reopens the configurator on these choices', 'dahu-composite' ),
-			'simViewVisitor'            => __( 'Visitor / customer with no exception', 'dahu-composite' ),
-			'simViewAs'                 => __( 'View as:', 'dahu-composite' ),
-			'simViewAsHelp'             => __( '(this customer’s hidden options; prices of the logged-in account)', 'dahu-composite' ),
-			'warningsBox'               => __( 'Warnings', 'dahu-composite' ),
-			'warningsTitle'             => __( 'Worth checking', 'dahu-composite' ),
+			'simWeight'                 => __( 'Estimated weight: %1$s %2$s', 'ubac-kits' ),
+			'simValid'                  => __( 'Configuration complete and valid', 'ubac-kits' ),
+			'simIncomplete'             => __( 'Configuration incomplete', 'ubac-kits' ),
+			'simReset'                  => __( 'Reset', 'ubac-kits' ),
+			'simSerialLabel'            => __( 'Configuration serial:', 'ubac-kits' ),
+			'simSerialPartialLabel'     => __( 'Configuration serial (partial configuration):', 'ubac-kits' ),
+			'simSerialNone'             => __( 'no serial as long as no choice is made.', 'ubac-kits' ),
+			'simOpenLink'               => __( 'Open on the site', 'ubac-kits' ),
+			'simOpenTitle'              => __( 'Reopens the configurator on these choices', 'ubac-kits' ),
+			'simViewVisitor'            => __( 'Visitor / customer with no exception', 'ubac-kits' ),
+			'simViewAs'                 => __( 'View as:', 'ubac-kits' ),
+			'simViewAsHelp'             => __( '(this customer’s hidden options; prices of the logged-in account)', 'ubac-kits' ),
+			'warningsBox'               => __( 'Warnings', 'ubac-kits' ),
+			'warningsTitle'             => __( 'Worth checking', 'ubac-kits' ),
 
 			// Simulator: sentence describing the appearance in force.
 			/* translators: 1: card style, 2: corners, 3: icons, 4: info on desktop, 5: info on mobile, 6: click. */
-			'appearanceSentence'        => __( 'Appearance on the product page: %1$s, corners %2$s, icons %3$s, info %4$s (desktop) / %5$s (mobile), click %6$s.', 'dahu-composite' ),
-			'appearanceCard'            => __( 'Card', 'dahu-composite' ),
-			'appearanceThumbnail'       => __( 'Thumbnail', 'dahu-composite' ),
-			'appearanceRounded'         => __( 'rounded', 'dahu-composite' ),
-			'appearanceSquare'          => __( 'square', 'dahu-composite' ),
-			'appearanceInfoSide'        => __( 'side', 'dahu-composite' ),
-			'appearanceInfoCard'        => __( 'card', 'dahu-composite' ),
-			'appearanceInfoExtended'    => __( 'extended', 'dahu-composite' ),
+			'appearanceSentence'        => __( 'Appearance on the product page: %1$s, corners %2$s, icons %3$s, info %4$s (desktop) / %5$s (mobile), click %6$s.', 'ubac-kits' ),
+			'appearanceCard'            => __( 'Card', 'ubac-kits' ),
+			'appearanceThumbnail'       => __( 'Thumbnail', 'ubac-kits' ),
+			'appearanceRounded'         => __( 'rounded', 'ubac-kits' ),
+			'appearanceSquare'          => __( 'square', 'ubac-kits' ),
+			'appearanceInfoSide'        => __( 'side', 'ubac-kits' ),
+			'appearanceInfoCard'        => __( 'card', 'ubac-kits' ),
+			'appearanceInfoExtended'    => __( 'extended', 'ubac-kits' ),
 		);
 	}
 
 	private static function box_titles() {
 		return array(
-			'dahu-kit-appearance-box' => __( 'Appearance', 'dahu-composite' ),
-			'dahu-kit-components-box' => __( 'Components', 'dahu-composite' ),
-			'dahu-kit-scenarios-box'  => __( 'Scenarios', 'dahu-composite' ),
-			'dahu-kit-exceptions-box' => __( 'Customer exceptions', 'dahu-composite' ),
-			'dahu-kit-warnings-box'   => __( 'Warnings', 'dahu-composite' ),
-			'dahu-kit-simulator-box'  => __( 'Simulator', 'dahu-composite' ),
-			'dahu-kit-io-box'         => __( 'Import / export', 'dahu-composite' ),
+			'dahu-kit-appearance-box' => __( 'Appearance', 'ubac-kits' ),
+			'dahu-kit-components-box' => __( 'Components', 'ubac-kits' ),
+			'dahu-kit-scenarios-box'  => __( 'Scenarios', 'ubac-kits' ),
+			'dahu-kit-exceptions-box' => __( 'Customer exceptions', 'ubac-kits' ),
+			'dahu-kit-warnings-box'   => __( 'Warnings', 'ubac-kits' ),
+			'dahu-kit-simulator-box'  => __( 'Simulator', 'ubac-kits' ),
+			'dahu-kit-io-box'         => __( 'Import / export', 'ubac-kits' ),
 		);
 	}
 
@@ -747,55 +747,55 @@ class Dahu_Composite_Admin {
 		$appearance = Dahu_Composite_Appearance::get( (int) get_the_ID() );
 		$choices    = array(
 			'card_style'   => array(
-				'label'   => __( 'Card style', 'dahu-composite' ),
+				'label'   => __( 'Card style', 'ubac-kits' ),
 				'options' => array(
-					'vignette' => __( 'Thumbnail', 'dahu-composite' ),
-					'card'     => __( 'Card', 'dahu-composite' ),
-					'grid'     => __( 'Grid', 'dahu-composite' ),
+					'vignette' => __( 'Thumbnail', 'ubac-kits' ),
+					'card'     => __( 'Card', 'ubac-kits' ),
+					'grid'     => __( 'Grid', 'ubac-kits' ),
 				),
 			),
 			'card_corners' => array(
-				'label'   => __( 'Corner shape', 'dahu-composite' ),
+				'label'   => __( 'Corner shape', 'ubac-kits' ),
 				'options' => array(
-					'square'  => __( 'Square', 'dahu-composite' ),
-					'rounded' => __( 'Rounded', 'dahu-composite' ),
+					'square'  => __( 'Square', 'ubac-kits' ),
+					'rounded' => __( 'Rounded', 'ubac-kits' ),
 				),
 			),
 			'icons'        => array(
-				'label'   => __( 'Icons', 'dahu-composite' ),
+				'label'   => __( 'Icons', 'ubac-kits' ),
 				'options' => array(
-					'on'  => __( 'Yes', 'dahu-composite' ),
-					'off' => __( 'No', 'dahu-composite' ),
+					'on'  => __( 'Yes', 'ubac-kits' ),
+					'off' => __( 'No', 'ubac-kits' ),
 				),
 			),
 			'info_desktop' => array(
-				'label'   => __( 'Info display (desktop)', 'dahu-composite' ),
+				'label'   => __( 'Info display (desktop)', 'ubac-kits' ),
 				'options' => array(
-					'card'     => __( 'Card', 'dahu-composite' ),
-					'lateral'  => __( 'Side', 'dahu-composite' ),
-					'extended' => __( 'Expanded', 'dahu-composite' ),
+					'card'     => __( 'Card', 'ubac-kits' ),
+					'lateral'  => __( 'Side', 'ubac-kits' ),
+					'extended' => __( 'Expanded', 'ubac-kits' ),
 				),
 			),
 			'info_mobile'  => array(
-				'label'   => __( 'Info display (mobile)', 'dahu-composite' ),
+				'label'   => __( 'Info display (mobile)', 'ubac-kits' ),
 				'options' => array(
-					'lateral'  => __( 'Side', 'dahu-composite' ),
-					'card'     => __( 'Card', 'dahu-composite' ),
-					'extended' => __( 'Expanded', 'dahu-composite' ),
+					'lateral'  => __( 'Side', 'ubac-kits' ),
+					'card'     => __( 'Card', 'ubac-kits' ),
+					'extended' => __( 'Expanded', 'ubac-kits' ),
 				),
 			),
 			'click'        => array(
-				'label'   => __( '“Select” button', 'dahu-composite' ),
+				'label'   => __( '“Select” button', 'ubac-kits' ),
 				'options' => array(
-					'on'  => __( 'Yes', 'dahu-composite' ),
-					'off' => __( 'No', 'dahu-composite' ),
+					'on'  => __( 'Yes', 'ubac-kits' ),
+					'off' => __( 'No', 'ubac-kits' ),
 				),
 			),
 			'recap_bg'     => array(
-				'label'   => __( 'Summary background', 'dahu-composite' ),
+				'label'   => __( 'Summary background', 'ubac-kits' ),
 				'options' => array(
-					'light' => __( 'Light', 'dahu-composite' ),
-					'dark'  => __( 'Dark', 'dahu-composite' ),
+					'light' => __( 'Light', 'ubac-kits' ),
+					'dark'  => __( 'Dark', 'ubac-kits' ),
 				),
 			),
 		);
@@ -818,20 +818,20 @@ class Dahu_Composite_Admin {
 					</tr>
 				<?php endforeach; ?>
 			</table>
-			<h4 class="dahu-kit-admin__section-title"><?php esc_html_e( 'Settings shared by every composite product', 'dahu-composite' ); ?></h4>
+			<h4 class="dahu-kit-admin__section-title"><?php esc_html_e( 'Settings shared by every composite product', 'ubac-kits' ); ?></h4>
 			<table class="form-table" role="presentation">
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Show more info', 'dahu-composite' ); ?></th>
+					<th scope="row"><?php esc_html_e( 'Show more info', 'ubac-kits' ); ?></th>
 					<td>
 						<input type="hidden" name="<?php echo esc_attr( self::GLOBALS_MARKER ); ?>" value="1">
 						<label class="dahu-kit-admin__appearance-choice">
 							<input type="checkbox" name="<?php echo esc_attr( Dahu_Composite_Settings::OPTION_MORE_INFO ); ?>" value="yes" <?php checked( Dahu_Composite_Settings::more_info_enabled() ); ?>>
-							<?php esc_html_e( 'Yes', 'dahu-composite' ); ?>
+							<?php esc_html_e( 'Yes', 'ubac-kits' ); ?>
 						</label>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php esc_html_e( '“None” card image', 'dahu-composite' ); ?></th>
+					<th scope="row"><?php esc_html_e( '“None” card image', 'ubac-kits' ); ?></th>
 					<td>
 						<input type="hidden" id="dahu-composite-none-image" name="<?php echo esc_attr( Dahu_Composite_Settings::OPTION_NONE_IMAGE ); ?>" value="<?php echo esc_attr( $none_image_id ? (string) $none_image_id : '' ); ?>">
 						<?php
@@ -865,14 +865,14 @@ class Dahu_Composite_Admin {
 						 */
 						?>
 						<img id="dahu-composite-none-preview" class="dahu-kit-settings__preview" alt=""<?php echo $none_preview ? ' src="' . esc_url( $none_preview ) . '"' : ' hidden'; ?>>
-						<button type="button" class="dahu-ui-btn" id="dahu-composite-none-pick" data-frame-title="<?php esc_attr_e( 'Image for the “None” card', 'dahu-composite' ); ?>" data-frame-button="<?php esc_attr_e( 'Use this image', 'dahu-composite' ); ?>"><?php esc_html_e( 'Choose an image', 'dahu-composite' ); ?></button>
-						<button type="button" class="button-link delete" id="dahu-composite-none-clear" <?php echo $none_image_id ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove the image', 'dahu-composite' ); ?></button>
+						<button type="button" class="dahu-ui-btn" id="dahu-composite-none-pick" data-frame-title="<?php esc_attr_e( 'Image for the “None” card', 'ubac-kits' ); ?>" data-frame-button="<?php esc_attr_e( 'Use this image', 'ubac-kits' ); ?>"><?php esc_html_e( 'Choose an image', 'ubac-kits' ); ?></button>
+						<button type="button" class="button-link delete" id="dahu-composite-none-clear" <?php echo $none_image_id ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove the image', 'ubac-kits' ); ?></button>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="dahu-composite-none-text"><?php esc_html_e( '“None” card text', 'dahu-composite' ); ?></label></th>
+					<th scope="row"><label for="dahu-composite-none-text"><?php esc_html_e( '“None” card text', 'ubac-kits' ); ?></label></th>
 					<td>
-						<input type="text" class="regular-text" id="dahu-composite-none-text" name="<?php echo esc_attr( Dahu_Composite_Settings::OPTION_NONE_TEXT ); ?>" value="<?php echo esc_attr( (string) get_option( Dahu_Composite_Settings::OPTION_NONE_TEXT, '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. I do not need one', 'dahu-composite' ); ?>">
+						<input type="text" class="regular-text" id="dahu-composite-none-text" name="<?php echo esc_attr( Dahu_Composite_Settings::OPTION_NONE_TEXT ); ?>" value="<?php echo esc_attr( (string) get_option( Dahu_Composite_Settings::OPTION_NONE_TEXT, '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. I do not need one', 'ubac-kits' ); ?>">
 					</td>
 				</tr>
 			</table>
@@ -901,7 +901,7 @@ class Dahu_Composite_Admin {
 		<div class="dahu-ui dahu-kit-admin">
 			<?php self::render_fold_bar( 'components' ); ?>
 			<div id="dahu-kit-components"></div>
-			<p><button type="button" class="dahu-ui-btn" id="dahu-kit-add-component"><?php esc_html_e( 'Add a component', 'dahu-composite' ); ?></button></p>
+			<p><button type="button" class="dahu-ui-btn" id="dahu-kit-add-component"><?php esc_html_e( 'Add a component', 'ubac-kits' ); ?></button></p>
 		</div>
 		<?php
 	}
@@ -911,19 +911,19 @@ class Dahu_Composite_Admin {
 		<div class="dahu-ui dahu-kit-admin">
 			<div class="dahu-kit-admin__filters">
 				<label class="dahu-kit-admin__filter">
-					<span class="screen-reader-text"><?php esc_html_e( 'Search scenarios', 'dahu-composite' ); ?></span>
+					<span class="screen-reader-text"><?php esc_html_e( 'Search scenarios', 'ubac-kits' ); ?></span>
 					<input type="search" id="dahu-kit-scenario-search" class="regular-text"
-						placeholder="<?php esc_attr_e( 'Search…', 'dahu-composite' ); ?>">
+						placeholder="<?php esc_attr_e( 'Search…', 'ubac-kits' ); ?>">
 				</label>
 				<label class="dahu-kit-admin__filter">
-					<span class="screen-reader-text"><?php esc_html_e( 'Filter by target component', 'dahu-composite' ); ?></span>
-					<select id="dahu-kit-scenario-target"><option value=""><?php esc_html_e( 'All targets', 'dahu-composite' ); ?></option></select>
+					<span class="screen-reader-text"><?php esc_html_e( 'Filter by target component', 'ubac-kits' ); ?></span>
+					<select id="dahu-kit-scenario-target"><option value=""><?php esc_html_e( 'All targets', 'ubac-kits' ); ?></option></select>
 				</label>
 				<span class="dahu-kit-admin__filter-count" id="dahu-kit-scenario-count"></span>
 			</div>
 			<?php self::render_fold_bar( 'scenarios' ); ?>
 			<div id="dahu-kit-scenarios"></div>
-			<p><button type="button" class="dahu-ui-btn" id="dahu-kit-add-scenario"><?php esc_html_e( 'Add a scenario', 'dahu-composite' ); ?></button></p>
+			<p><button type="button" class="dahu-ui-btn" id="dahu-kit-add-scenario"><?php esc_html_e( 'Add a scenario', 'ubac-kits' ); ?></button></p>
 		</div>
 		<?php
 	}
@@ -935,7 +935,7 @@ class Dahu_Composite_Admin {
 		?>
 		<div class="dahu-kit-admin">
 			<div id="dahu-kit-exceptions"></div>
-			<p><button type="button" class="dahu-ui-btn" id="dahu-kit-add-exception"><?php esc_html_e( 'Add an exception', 'dahu-composite' ); ?></button></p>
+			<p><button type="button" class="dahu-ui-btn" id="dahu-kit-add-exception"><?php esc_html_e( 'Add an exception', 'ubac-kits' ); ?></button></p>
 			<div id="dahu-kit-generated" class="dahu-kit-admin__generated"></div>
 		</div>
 		<?php
@@ -962,10 +962,10 @@ class Dahu_Composite_Admin {
 		<div class="dahu-kit-admin">
 			<textarea id="dahu-kit-import" rows="8" class="large-text code"></textarea>
 			<p>
-				<button type="button" class="dahu-ui-btn" id="dahu-kit-import-button"><?php esc_html_e( 'Import', 'dahu-composite' ); ?></button>
-				<button type="button" class="dahu-ui-btn" id="dahu-kit-export-button"><?php esc_html_e( 'Show export', 'dahu-composite' ); ?></button>
+				<button type="button" class="dahu-ui-btn" id="dahu-kit-import-button"><?php esc_html_e( 'Import', 'ubac-kits' ); ?></button>
+				<button type="button" class="dahu-ui-btn" id="dahu-kit-export-button"><?php esc_html_e( 'Show export', 'ubac-kits' ); ?></button>
 				<?php // Downloaded export: same JSON as "Show export", as a file. ?>
-				<button type="button" class="dahu-ui-btn" id="dahu-kit-download-button"><?php esc_html_e( 'Export', 'dahu-composite' ); ?></button>
+				<button type="button" class="dahu-ui-btn" id="dahu-kit-download-button"><?php esc_html_e( 'Export', 'ubac-kits' ); ?></button>
 			</p>
 		</div>
 		<?php
@@ -979,8 +979,8 @@ class Dahu_Composite_Admin {
 	private static function render_fold_bar( $section ) {
 		?>
 		<p class="dahu-kit-admin__foldbar">
-			<button type="button" class="button-link" data-fold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Collapse all', 'dahu-composite' ); ?></button>
-			<button type="button" class="button-link" data-unfold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Expand all', 'dahu-composite' ); ?></button>
+			<button type="button" class="button-link" data-fold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Collapse all', 'ubac-kits' ); ?></button>
+			<button type="button" class="button-link" data-unfold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Expand all', 'ubac-kits' ); ?></button>
 		</p>
 		<?php
 	}
@@ -1015,7 +1015,7 @@ class Dahu_Composite_Admin {
 		// JSON decoded, then fully normalised by Dahu_Composite_Kit_Config.
 		$config = json_decode( wp_unslash( $_POST['dahu_kit_config_json'] ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if ( ! is_array( $config ) ) {
-			self::store_notice( array( __( 'The configuration could not be read: nothing was saved.', 'dahu-composite' ) ) );
+			self::store_notice( array( __( 'The configuration could not be read: nothing was saved.', 'ubac-kits' ) ) );
 			return;
 		}
 
@@ -1037,7 +1037,7 @@ class Dahu_Composite_Admin {
 		// Only a class that was named and cannot be found is worth a word. No
 		// class named at all is a deliberate setting, not a mistake.
 		if ( '' !== Dahu_Composite_Product_Type::get_container_shipping_class_slug() && ! Dahu_Composite_Product_Type::get_container_shipping_class_id() ) {
-			$errors[] = __( 'The shipping class set for composite products (Dahu Composite settings) does not exist: shipping plugins will not recognise this product.', 'dahu-composite' );
+			$errors[] = __( 'The shipping class set for composite products (Dahu Composite settings) does not exist: shipping plugins will not recognise this product.', 'ubac-kits' );
 		}
 
 		if ( $errors ) {
@@ -1059,7 +1059,7 @@ class Dahu_Composite_Admin {
 			return;
 		}
 		delete_transient( $key );
-		echo '<div class="notice notice-warning is-dismissible"><p><strong>' . esc_html__( 'Dahu Composite', 'dahu-composite' ) . '</strong></p><ul>';
+		echo '<div class="notice notice-warning is-dismissible"><p><strong>' . esc_html__( 'Dahu Composite', 'ubac-kits' ) . '</strong></p><ul>';
 		foreach ( (array) $messages as $message ) {
 			echo '<li>' . esc_html( $message ) . '</li>';
 		}

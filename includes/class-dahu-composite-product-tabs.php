@@ -224,7 +224,7 @@ class Dahu_Composite_Product_Tabs {
 
 		return array(
 			'slug'  => 'description',
-			'label' => __( 'Description', 'dahu-composite' ),
+			'label' => __( 'Description', 'ubac-kits' ),
 			'html'  => wp_kses_post( apply_filters( 'woocommerce_short_description', $short ) ),
 		);
 	}
@@ -244,7 +244,7 @@ class Dahu_Composite_Product_Tabs {
 		if ( '' !== $attributes ) {
 			$tabs[] = array(
 				'slug'  => 'caracteristiques',
-				'label' => __( 'Specifications', 'dahu-composite' ),
+				'label' => __( 'Specifications', 'ubac-kits' ),
 				'html'  => $attributes,
 			);
 		}

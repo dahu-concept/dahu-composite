@@ -133,141 +133,141 @@ class Dahu_Composite_Frontend {
 				// Keyword table of the “Category icon” layout (see category_icons()).
 				'categoryIcons'   => self::category_icons(),
 				'i18n'    => array(
-					'loading'        => __( 'Loading the configurator…', 'dahu-composite' ),
-					'loadError'      => __( 'The configurator could not be loaded. Reload the page.', 'dahu-composite' ),
-					'step'           => __( 'Step', 'dahu-composite' ),
-					'summary'        => __( 'Summary', 'dahu-composite' ),
-					'chooseVariant'  => __( 'Choose a variation', 'dahu-composite' ),
-					'quantity'       => __( 'Quantity', 'dahu-composite' ),
-					'outOfStock'     => __( 'Out of stock', 'dahu-composite' ),
-					'total'          => __( 'Total', 'dahu-composite' ),
+					'loading'        => __( 'Loading the configurator…', 'ubac-kits' ),
+					'loadError'      => __( 'The configurator could not be loaded. Reload the page.', 'ubac-kits' ),
+					'step'           => __( 'Step', 'ubac-kits' ),
+					'summary'        => __( 'Summary', 'ubac-kits' ),
+					'chooseVariant'  => __( 'Choose a variation', 'ubac-kits' ),
+					'quantity'       => __( 'Quantity', 'ubac-kits' ),
+					'outOfStock'     => __( 'Out of stock', 'ubac-kits' ),
+					'total'          => __( 'Total', 'ubac-kits' ),
 					// “Estimated weight”: total of the summary and of the Summary,
 					// computed with the weight setting of every step.
-					'weight'         => __( 'Estimated weight', 'dahu-composite' ),
+					'weight'         => __( 'Estimated weight', 'ubac-kits' ),
 					// Free-text mention to the right of the weight, under the total of
 					// the summary (plain text, empty by default = nothing):
 					// supplied by the theme (e.g. “Free delivery”).
 					'recapNote'      => wp_strip_all_tags( (string) apply_filters( 'dahu_composite_recap_note', '' ) ),
-					'component'      => __( 'Component', 'dahu-composite' ),
-					'product'        => __( 'Product', 'dahu-composite' ),
-					'price'          => __( 'Price', 'dahu-composite' ),
-					'none'           => __( 'None', 'dahu-composite' ),
-					'addToCart'      => __( 'Add to cart', 'dahu-composite' ),
-					'adding'         => __( 'Adding…', 'dahu-composite' ),
-					'added'          => __( 'The product was added to your cart.', 'dahu-composite' ),
-					'addedRedirect'  => __( 'The product was added to your cart. Taking you to the cart…', 'dahu-composite' ),
-					'viewCart'       => __( 'View cart', 'dahu-composite' ),
-					'incomplete'     => __( 'Complete the following steps:', 'dahu-composite' ),
-					'bundleOptional' => __( 'Optional items', 'dahu-composite' ),
-					'restart'        => __( 'Back to step', 'dahu-composite' ),
-					'comingSoon'     => __( 'This option cannot be ordered yet. Check back soon.', 'dahu-composite' ),
-					'comingSoonBadge' => __( 'Coming soon', 'dahu-composite' ),
+					'component'      => __( 'Component', 'ubac-kits' ),
+					'product'        => __( 'Product', 'ubac-kits' ),
+					'price'          => __( 'Price', 'ubac-kits' ),
+					'none'           => __( 'None', 'ubac-kits' ),
+					'addToCart'      => __( 'Add to cart', 'ubac-kits' ),
+					'adding'         => __( 'Adding…', 'ubac-kits' ),
+					'added'          => __( 'The product was added to your cart.', 'ubac-kits' ),
+					'addedRedirect'  => __( 'The product was added to your cart. Taking you to the cart…', 'ubac-kits' ),
+					'viewCart'       => __( 'View cart', 'ubac-kits' ),
+					'incomplete'     => __( 'Complete the following steps:', 'ubac-kits' ),
+					'bundleOptional' => __( 'Optional items', 'ubac-kits' ),
+					'restart'        => __( 'Back to step', 'ubac-kits' ),
+					'comingSoon'     => __( 'This option cannot be ordered yet. Check back soon.', 'ubac-kits' ),
+					'comingSoonBadge' => __( 'Coming soon', 'ubac-kits' ),
 					// Button of a branch “link” card, in
 					// button mode: the card points to a page.
-					'linkOpen'       => __( 'Go to', 'dahu-composite' ),
-					'recap'          => __( 'Your configuration', 'dahu-composite' ),
-					'toChoose'       => __( 'To choose', 'dahu-composite' ),
+					'linkOpen'       => __( 'Go to', 'ubac-kits' ),
+					'recap'          => __( 'Your configuration', 'ubac-kits' ),
+					'toChoose'       => __( 'To choose', 'ubac-kits' ),
 					// “Select” button of the cards in button mode (no longer in
 					// the “More info” drawer).
-					'select'         => __( 'Select', 'dahu-composite' ),
+					'select'         => __( 'Select', 'ubac-kits' ),
 					// “Add-on” component (optional, a single option): the label alone
 					// says “Select”, but the gesture stays a cumulative addition, which
 					// a second click removes. The cards of a multiple choice use the
 					// addItem labels below instead.
-					'addOn'          => __( 'Select', 'dahu-composite' ),
-					'addOnDone'      => __( 'Selected', 'dahu-composite' ),
+					'addOn'          => __( 'Select', 'ubac-kits' ),
+					'addOnDone'      => __( 'Selected', 'ubac-kits' ),
 					// Cards of a multiple choice (Accessories): “Add / Added”, the
 					// step's own advance button saying “Select”
 					// (the “next” key).
-					'addItem'        => __( 'Add', 'dahu-composite' ),
-					'addItemDone'    => __( 'Added', 'dahu-composite' ),
+					'addItem'        => __( 'Add', 'ubac-kits' ),
+					'addItemDone'    => __( 'Added', 'ubac-kits' ),
 					// Expandable row (“Inline” layout).
-					'rowExpand'      => __( 'Show details', 'dahu-composite' ),
-					'rowCollapse'    => __( 'Hide details', 'dahu-composite' ),
+					'rowExpand'      => __( 'Show details', 'ubac-kits' ),
+					'rowCollapse'    => __( 'Hide details', 'ubac-kits' ),
 					// Add-on presented as a yes / no question.
-					'yes'            => __( 'Yes', 'dahu-composite' ),
-					'no'             => __( 'No', 'dahu-composite' ),
+					'yes'            => __( 'Yes', 'ubac-kits' ),
+					'no'             => __( 'No', 'ubac-kits' ),
 					// Advance button of a multiple-choice step (Accessories,
 					// renderStepNav()): “Select”. The cards of that step say
 					// “Add”.
-					'next'           => __( 'Select', 'dahu-composite' ),
+					'next'           => __( 'Select', 'ubac-kits' ),
 					// Waiting text of the “?” popover of a category with neither
 					// text nor media. Empty by default: no “?” is
 					// shown when there is nothing to show. A site that wants
 					// a generic text supplies it through the filter.
 					'helpPlaceholder' => wp_strip_all_tags( (string) apply_filters( 'dahu_composite_help_placeholder', '' ) ),
 					// Vignette mode (data-dahu-kit-card-style="vignette"): drawer.
-					'moreInfo'       => __( 'More info', 'dahu-composite' ),
+					'moreInfo'       => __( 'More info', 'ubac-kits' ),
 					// Link to the product page (“Show more info”).
-					'moreInfoLink'   => __( 'more info…', 'dahu-composite' ),
-					'close'          => __( 'Close', 'dahu-composite' ),
-					'detailsLoading' => __( 'Loading…', 'dahu-composite' ),
-					'noDetails'      => __( 'No further information for this product.', 'dahu-composite' ),
-					'detailsError'   => __( 'This product’s information could not be loaded.', 'dahu-composite' ),
-					'infoDescription'       => __( 'Description', 'dahu-composite' ),
-					'infoCharacteristics'   => __( 'Specifications', 'dahu-composite' ),
-					'infoNoCharacteristics' => __( 'No specifications entered', 'dahu-composite' ),
-					'infoIncluded'          => __( 'Included products (soon)', 'dahu-composite' ),
-					'infoLoading'           => __( 'Loading…', 'dahu-composite' ),
+					'moreInfoLink'   => __( 'more info…', 'ubac-kits' ),
+					'close'          => __( 'Close', 'ubac-kits' ),
+					'detailsLoading' => __( 'Loading…', 'ubac-kits' ),
+					'noDetails'      => __( 'No further information for this product.', 'ubac-kits' ),
+					'detailsError'   => __( 'This product’s information could not be loaded.', 'ubac-kits' ),
+					'infoDescription'       => __( 'Description', 'ubac-kits' ),
+					'infoCharacteristics'   => __( 'Specifications', 'ubac-kits' ),
+					'infoNoCharacteristics' => __( 'No specifications entered', 'ubac-kits' ),
+					'infoIncluded'          => __( 'Included products (soon)', 'ubac-kits' ),
+					'infoLoading'           => __( 'Loading…', 'ubac-kits' ),
 					// “More info” as a flipped / extended card
 					// (data-dahu-kit-info="card|extended").
-					'infoBack'              => __( 'Back', 'dahu-composite' ),
+					'infoBack'              => __( 'Back', 'ubac-kits' ),
 					/* translators: %s: title of the step or of the range */
-					'hintAbout'             => __( 'Information about: %s', 'dahu-composite' ),
-					'infoChoose'            => __( 'Select', 'dahu-composite' ),
-					'infoChosen'            => __( 'Selected', 'dahu-composite' ),
-					'infoChooseVariantFirst' => __( 'choose a variation on the card first', 'dahu-composite' ),
+					'hintAbout'             => __( 'Information about: %s', 'ubac-kits' ),
+					'infoChoose'            => __( 'Select', 'ubac-kits' ),
+					'infoChosen'            => __( 'Selected', 'ubac-kits' ),
+					'infoChooseVariantFirst' => __( 'choose a variation on the card first', 'ubac-kits' ),
 					// Option retained with no variant: message under the
 					// list of variants, as long as the step cannot move on.
-					'variantRequired'       => __( 'Choose a variation before continuing.', 'dahu-composite' ),
+					'variantRequired'       => __( 'Choose a variation before continuing.', 'ubac-kits' ),
 					// “Included products”: the label alone, the data stays
 					// `bundled`.
-					'infoBundled'           => __( 'Included products', 'dahu-composite' ),
+					'infoBundled'           => __( 'Included products', 'ubac-kits' ),
 					// Key shown with no included product (data-dahu-kit-info="vignette").
-					'infoNoBundled'         => __( 'No included products', 'dahu-composite' ),
+					'infoNoBundled'         => __( 'No included products', 'ubac-kits' ),
 					// Variable option on which no variant is chosen yet: what it
 					// would list is the content of its preselected variation, which
 					// the choice may change. Greyed control, and this reason in
 					// place of the list.
-					'infoBundledPending'    => __( 'Choose an option to see what is included', 'dahu-composite' ),
-					'networkError'   => __( 'Could not reach the server.', 'dahu-composite' ),
+					'infoBundledPending'    => __( 'Choose an option to see what is included', 'ubac-kits' ),
+					'networkError'   => __( 'Could not reach the server.', 'ubac-kits' ),
 					// Saved configurations.
-					'saveTitle'           => __( 'Save my configuration', 'dahu-composite' ),
-					'saveButton'          => __( 'Save my configuration', 'dahu-composite' ),
-					'saving'              => __( 'Saving…', 'dahu-composite' ),
-					'saveName'            => __( 'Configuration name', 'dahu-composite' ),
-					'saveNamePlaceholder' => __( 'Name (optional)', 'dahu-composite' ),
-					'saveIncomplete'      => __( 'Finish the configuration before saving it.', 'dahu-composite' ),
-					'saveLoginPrompt'     => __( 'Log in to find it again in your account, under “My configurations”.', 'dahu-composite' ),
-					'saveLogin'           => __( 'Log in', 'dahu-composite' ),
+					'saveTitle'           => __( 'Save my configuration', 'ubac-kits' ),
+					'saveButton'          => __( 'Save my configuration', 'ubac-kits' ),
+					'saving'              => __( 'Saving…', 'ubac-kits' ),
+					'saveName'            => __( 'Configuration name', 'ubac-kits' ),
+					'saveNamePlaceholder' => __( 'Name (optional)', 'ubac-kits' ),
+					'saveIncomplete'      => __( 'Finish the configuration before saving it.', 'ubac-kits' ),
+					'saveLoginPrompt'     => __( 'Log in to find it again in your account, under “My configurations”.', 'ubac-kits' ),
+					'saveLogin'           => __( 'Log in', 'ubac-kits' ),
 					/* translators: %s: name of the configuration */
-					'saved'               => __( 'Configuration “%s” saved.', 'dahu-composite' ),
-					'savedSee'            => __( 'View my configurations', 'dahu-composite' ),
+					'saved'               => __( 'Configuration “%s” saved.', 'ubac-kits' ),
+					'savedSee'            => __( 'View my configurations', 'ubac-kits' ),
 					/* translators: %s: name of the configuration */
-					'savedOpened'         => __( 'Configuration “%s” reopened, at today’s prices.', 'dahu-composite' ),
-					'savedChanged'        => __( 'Some choices are no longer available and were removed:', 'dahu-composite' ),
-					'savedLoginToOpen'    => __( 'Log in to reopen this saved configuration.', 'dahu-composite' ),
+					'savedOpened'         => __( 'Configuration “%s” reopened, at today’s prices.', 'ubac-kits' ),
+					'savedChanged'        => __( 'Some choices are no longer available and were removed:', 'ubac-kits' ),
+					'savedLoginToOpen'    => __( 'Log in to reopen this saved configuration.', 'ubac-kits' ),
 					// ?dahu_kit_serial=… link that no longer matches the kit.
-					'serialInvalid'       => __( 'This configuration link no longer matches this product: build your configuration below.', 'dahu-composite' ),
+					'serialInvalid'       => __( 'This configuration link no longer matches this product: build your configuration below.', 'ubac-kits' ),
 					// Visitor: account creation from the Summary.
-					'guestIntro'           => __( 'Find it later in your account, under “My configurations”. No account yet? One is created at the same time, with no password to choose right now.', 'dahu-composite' ),
-					'guestRequired'        => __( 'required', 'dahu-composite' ),
-					'guestRequiredNote'    => __( '* Required fields', 'dahu-composite' ),
+					'guestIntro'           => __( 'Find it later in your account, under “My configurations”. No account yet? One is created at the same time, with no password to choose right now.', 'ubac-kits' ),
+					'guestRequired'        => __( 'required', 'ubac-kits' ),
+					'guestRequiredNote'    => __( '* Required fields', 'ubac-kits' ),
 					'guestConsent'         => Dahu_Composite_Saved_Configs::consent_text(),
-					'guestSubmit'          => __( 'Create my account and save', 'dahu-composite' ),
+					'guestSubmit'          => __( 'Create my account and save', 'ubac-kits' ),
 					// Button that unfolds the form: what the form
 					// does.
-					'guestOpen'            => __( 'Create my account and save', 'dahu-composite' ),
-					'guestCancel'          => __( 'Cancel', 'dahu-composite' ),
-					'guestFieldRequired'   => __( 'This field is required.', 'dahu-composite' ),
-					'guestEmailInvalid'    => __( 'This email address is not valid.', 'dahu-composite' ),
-					'guestConsentRequired' => __( 'Tick this box so that we may store your details.', 'dahu-composite' ),
-					'guestCheckFields'     => __( 'Check the fields flagged above.', 'dahu-composite' ),
+					'guestOpen'            => __( 'Create my account and save', 'ubac-kits' ),
+					'guestCancel'          => __( 'Cancel', 'ubac-kits' ),
+					'guestFieldRequired'   => __( 'This field is required.', 'ubac-kits' ),
+					'guestEmailInvalid'    => __( 'This email address is not valid.', 'ubac-kits' ),
+					'guestConsentRequired' => __( 'Tick this box so that we may store your details.', 'ubac-kits' ),
+					'guestCheckFields'     => __( 'Check the fields flagged above.', 'ubac-kits' ),
 					/* translators: 1: name of the configuration, 2: e-mail address */
-					'guestCreated'         => __( 'Configuration “%1$s” saved and account created. An email has just gone out to %2$s: the link in it lets you set your password. Your configuration is then waiting in your account, under “My configurations”.', 'dahu-composite' ),
+					'guestCreated'         => __( 'Configuration “%1$s” saved and account created. An email has just gone out to %2$s: the link in it lets you set your password. Your configuration is then waiting in your account, under “My configurations”.', 'ubac-kits' ),
 					/* translators: 1: name of the configuration, 2: e-mail address */
-					'guestCreatedNoMail'   => __( 'Configuration “%1$s” saved and account created for %2$s. To reach it, set your password from the login page.', 'dahu-composite' ),
-					'guestSetPassword'     => __( 'Set my password', 'dahu-composite' ),
+					'guestCreatedNoMail'   => __( 'Configuration “%1$s” saved and account created for %2$s. To reach it, set your password from the login page.', 'ubac-kits' ),
+					'guestSetPassword'     => __( 'Set my password', 'ubac-kits' ),
 				),
 		);
 
@@ -277,8 +277,8 @@ class Dahu_Composite_Frontend {
 		printf(
 			'<div class="dahu-kit is-loading" id="dahu-kit-%1$d" data-product-id="%1$d"%4$s><p class="dahu-kit__loading"><span class="dahu-kit__spinner" aria-hidden="true"></span>%2$s</p><noscript>%3$s</noscript></div>',
 			(int) $product->get_id(),
-			esc_html__( 'Loading the configurator…', 'dahu-composite' ),
-			esc_html__( 'The configurator requires JavaScript.', 'dahu-composite' ),
+			esc_html__( 'Loading the configurator…', 'ubac-kits' ),
+			esc_html__( 'The configurator requires JavaScript.', 'ubac-kits' ),
 			Dahu_Composite_Appearance::data_attributes( $product->get_id() ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by data_attributes().
 		);
 

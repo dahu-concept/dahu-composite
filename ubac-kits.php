@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Dahu Composite
+ * Plugin Name: Ubac Product Kits
  * Description: Server-driven configurable product kits for WooCommerce. Structure, scenarios, validation, pricing and weight are computed server side and exposed through a REST API, so the configurator stays fast and the cart always matches what was validated.
  * Version:     0.78.1
  * Author:      Hugo Vial-Jaime
  * Author URI:  https://dahu-concept.fr
  * License:     MIT
  * License URI: https://opensource.org/licenses/MIT
- * Text Domain: dahu-composite
+ * Text Domain: ubac-kits
  * Domain Path: /languages
  * Requires at least: 6.0
  * Requires PHP:      7.4
@@ -63,7 +63,7 @@ add_action(
 				'admin_notices',
 				static function () {
 					echo '<div class="notice notice-error"><p>'
-						. esc_html__( 'Dahu Composite requires WooCommerce.', 'dahu-composite' )
+						. esc_html__( 'Dahu Composite requires WooCommerce.', 'ubac-kits' )
 						. '</p></div>';
 				}
 			);
@@ -127,7 +127,7 @@ add_filter(
 	'plugin_action_links_' . DAHU_COMPOSITE_BASENAME,
 	static function ( $links ) {
 		$settings = '<a href="' . esc_url( admin_url( 'admin.php?page=' . DAHU_COMPOSITE_SETTINGS_SLUG ) ) . '">'
-			. esc_html__( 'Settings', 'dahu-composite' ) . '</a>';
+			. esc_html__( 'Settings', 'ubac-kits' ) . '</a>';
 
 		array_unshift( $links, $settings );
 
@@ -145,16 +145,16 @@ add_filter(
 		if ( DAHU_COMPOSITE_BASENAME === $file ) {
 			$header = get_file_data( DAHU_COMPOSITE_FILE, array( 'Version' => 'Version' ) );
 			$links  = array(
-				sprintf( /* translators: %s: plugin version number. */ esc_html__( 'Version %s', 'dahu-composite' ), esc_html( $header['Version'] ) ),
+				sprintf( /* translators: %s: plugin version number. */ esc_html__( 'Version %s', 'ubac-kits' ), esc_html( $header['Version'] ) ),
 				sprintf(
 					'<a href="%s" target="_blank" rel="noopener">%s</a>',
 					esc_url( 'https://dahu-concept.fr' ),
-					esc_html__( 'By Hugo Vial-Jaime — Dahu-Concept', 'dahu-composite' )
+					esc_html__( 'By Hugo Vial-Jaime — Dahu-Concept', 'ubac-kits' )
 				),
 				sprintf(
 					'<a href="%s" target="_blank" rel="noopener">%s</a>',
 					esc_url( 'https://dahu-concept.fr' ),
-					esc_html__( 'Plugin website', 'dahu-composite' )
+					esc_html__( 'Plugin website', 'ubac-kits' )
 				),
 			);
 		}
@@ -191,8 +191,8 @@ add_action(
 		Dahu_Welcome::register(
 			array(
 				'slug'       => 'dahu-composite',
-				'name'       => __( 'Composite products', 'dahu-composite' ),
-				'tagline'    => __( 'Products built from parts the customer chooses.', 'dahu-composite' ),
+				'name'       => __( 'Composite products', 'ubac-kits' ),
+				'tagline'    => __( 'Products built from parts the customer chooses.', 'ubac-kits' ),
 				'file'       => DAHU_COMPOSITE_FILE,
 				'version'    => DAHU_COMPOSITE_VERSION,
 				'textdomain' => 'dahu-composite',
@@ -211,11 +211,11 @@ add_action(
 				 * no text domain of its own.
 				 */
 				'strings'    => array(
-					'next'   => __( 'Next', 'dahu-composite' ),
-					'done'   => __( 'Done', 'dahu-composite' ),
-					'skip'   => __( 'Skip', 'dahu-composite' ),
-					'of'     => __( 'of', 'dahu-composite' ),
-					'denied' => __( 'You are not allowed to view this page.', 'dahu-composite' ),
+					'next'   => __( 'Next', 'ubac-kits' ),
+					'done'   => __( 'Done', 'ubac-kits' ),
+					'skip'   => __( 'Skip', 'ubac-kits' ),
+					'of'     => __( 'of', 'ubac-kits' ),
+					'denied' => __( 'You are not allowed to view this page.', 'ubac-kits' ),
 				),
 				/*
 				 * The screen's own capability, not the shared file's default of
@@ -241,32 +241,32 @@ add_action(
 				'tour'        => array(
 					array(
 						'selector' => '#dahu-composite-shipping-class',
-						'title'    => __( 'Where the parcel comes from', 'dahu-composite' ),
-						'text'     => __( 'A composite product ships as one parcel. This shipping class is what carries it, and every composite product uses it.', 'dahu-composite' ),
+						'title'    => __( 'Where the parcel comes from', 'ubac-kits' ),
+						'text'     => __( 'A composite product ships as one parcel. This shipping class is what carries it, and every composite product uses it.', 'ubac-kits' ),
 					),
 					array(
 						'selector' => '.dahu-kit-settings__table',
-						'title'    => __( 'Trade prices', 'dahu-composite' ),
-						'text'     => __( 'A tier gives one or more roles their own price on every option. Without a tier, everybody sees the public price.', 'dahu-composite' ),
+						'title'    => __( 'Trade prices', 'ubac-kits' ),
+						'text'     => __( 'A tier gives one or more roles their own price on every option. Without a tier, everybody sees the public price.', 'ubac-kits' ),
 					),
 					array(
 						'selector' => '.dahu-ui-table',
-						'title'    => __( 'Your composite products', 'dahu-composite' ),
-						'text'     => __( 'Each one shows how many components and scenarios it has, and the address a shop front can read its schema from.', 'dahu-composite' ),
+						'title'    => __( 'Your composite products', 'ubac-kits' ),
+						'text'     => __( 'Each one shows how many components and scenarios it has, and the address a shop front can read its schema from.', 'ubac-kits' ),
 					),
 				),
 				'points'     => array(
 				array(
-					'title' => __( 'Components', 'dahu-composite' ),
-					'text'  => __( 'Group the parts, set what each one costs.', 'dahu-composite' ),
+					'title' => __( 'Components', 'ubac-kits' ),
+					'text'  => __( 'Group the parts, set what each one costs.', 'ubac-kits' ),
 				),
 				array(
-					'title' => __( 'Scenarios', 'dahu-composite' ),
-					'text'  => __( 'Offer ready-made combinations alongside the free choice.', 'dahu-composite' ),
+					'title' => __( 'Scenarios', 'ubac-kits' ),
+					'text'  => __( 'Offer ready-made combinations alongside the free choice.', 'ubac-kits' ),
 				),
 				array(
-					'title' => __( 'One price', 'dahu-composite' ),
-					'text'  => __( 'The total follows the choices, in the cart and on the order.', 'dahu-composite' ),
+					'title' => __( 'One price', 'ubac-kits' ),
+					'text'  => __( 'The total follows the choices, in the cart and on the order.', 'ubac-kits' ),
 				),
 				),
 			)
