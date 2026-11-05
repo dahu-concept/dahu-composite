@@ -489,6 +489,7 @@ class Ubac_Kits_Cart {
 
 		return array(
 			'fragments'  => apply_filters(
+				// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter: the mini-cart fragments other plugins add must come back with ours.
 				'woocommerce_add_to_cart_fragments',
 				array(
 					'div.widget_shopping_cart_content' => '<div class="widget_shopping_cart_content">' . $mini_cart . '</div>',

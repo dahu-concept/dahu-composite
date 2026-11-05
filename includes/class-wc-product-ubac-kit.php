@@ -15,6 +15,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
+// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedClassFound -- the name is WooCommerce's convention, not a choice: wc_get_product() builds the class name as WC_Product_{type}, so this class cannot carry our prefix first without breaking the product type.
 class WC_Product_Ubac_Kit extends WC_Product {
 
 	/**
@@ -180,7 +181,7 @@ class WC_Product_Ubac_Kit extends WC_Product {
 			&& ( 'publish' === $this->get_status() || current_user_can( 'edit_post', $this->get_id() ) )
 			&& ! empty( $this->get_kit_components() );
 
-		return apply_filters( 'woocommerce_is_purchasable', $purchasable, $this );
+		return apply_filters( 'woocommerce_is_purchasable', $purchasable, $this ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WC_Product applies this filter itself; a subclass that stopped applying it would silently drop every third-party filter on purchasability.
 	}
 
 	/**
@@ -197,14 +198,14 @@ class WC_Product_Ubac_Kit extends WC_Product {
 	 * @return string
 	 */
 	public function add_to_cart_text() {
-		return apply_filters( 'woocommerce_product_add_to_cart_text', __( 'Configure', 'ubac-kits' ), $this );
+		return apply_filters( 'woocommerce_product_add_to_cart_text', __( 'Configure', 'ubac-kits' ), $this ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter, kept so a theme can reword the button as it does for any product type.
 	}
 
 	/**
 	 * @return string
 	 */
 	public function single_add_to_cart_text() {
-		return apply_filters( 'woocommerce_product_single_add_to_cart_text', __( 'Add to cart', 'ubac-kits' ), $this );
+		return apply_filters( 'woocommerce_product_single_add_to_cart_text', __( 'Add to cart', 'ubac-kits' ), $this ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter, kept for the same reason as the one above.
 	}
 
 	/**
@@ -214,7 +215,7 @@ class WC_Product_Ubac_Kit extends WC_Product {
 	 * @return string
 	 */
 	public function add_to_cart_url() {
-		return apply_filters( 'woocommerce_product_add_to_cart_url', $this->get_permalink(), $this );
+		return apply_filters( 'woocommerce_product_add_to_cart_url', $this->get_permalink(), $this ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter: a plugin that redirects add-to-cart must reach a kit too.
 	}
 
 	/**

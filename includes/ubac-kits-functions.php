@@ -126,7 +126,7 @@ function ubac_kits_get_bundled_cart_items( $container_cart_item, $cart_contents 
  * @param WC_Order|array|bool $order      Order, rows, or false.
  * @return array
  */
-function _ubac_kits_order_line_items( $order_item, $order ) {
+function ubac_kits_order_line_items_internal( $order_item, $order ) {
 	if ( false === $order && is_callable( array( $order_item, 'get_order' ) ) ) {
 		$order = $order_item->get_order();
 	}
@@ -184,7 +184,7 @@ function ubac_kits_get_bundled_order_item_container( $bundled_order_item, $order
 	if ( '' === $parent_key ) {
 		return false;
 	}
-	foreach ( _ubac_kits_order_line_items( $bundled_order_item, $order ) as $item ) {
+	foreach ( ubac_kits_order_line_items_internal( $bundled_order_item, $order ) as $item ) {
 		if ( 'parent' === Ubac_Kits_Order::supply_role( $item ) && $parent_key === (string) $item->get_meta( '_composite_cart_key', true ) ) {
 			return $return_id ? $item->get_id() : $item;
 		}
@@ -208,7 +208,7 @@ function ubac_kits_get_bundled_order_items( $container_order_item, $order = fals
 	$items = array();
 	if ( 'parent' === Ubac_Kits_Order::supply_role( $container_order_item ) ) {
 		$key = (string) $container_order_item->get_meta( '_composite_cart_key', true );
-		foreach ( _ubac_kits_order_line_items( $container_order_item, $order ) as $item_id => $item ) {
+		foreach ( ubac_kits_order_line_items_internal( $container_order_item, $order ) as $item_id => $item ) {
 			if ( '' !== $key && 'child' === Ubac_Kits_Order::supply_role( $item ) && $key === (string) $item->get_meta( '_composite_parent', true ) ) {
 				$items[ $item_id ] = $item;
 			}

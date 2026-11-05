@@ -517,7 +517,7 @@ class Ubac_Kits_Rest {
 		 * ordinary product and the cart URL for a kit: the same shop, with one
 		 * callback installed, then sent the two to different pages. Measured.
 		 */
-		$url = apply_filters( 'woocommerce_add_to_cart_redirect', '', $kit );
+		$url = apply_filters( 'woocommerce_add_to_cart_redirect', '', $kit ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter, so that whatever decides the redirect for a simple product decides it here as well.
 
 		/**
 		 * Filters where adding a kit to the cart leads.

@@ -170,8 +170,8 @@ class Ubac_Kits_Product_Tabs {
 		$previous_post    = isset( $GLOBALS['post'] ) ? $GLOBALS['post'] : null;
 		$previous_product = isset( $GLOBALS['product'] ) ? $GLOBALS['product'] : null;
 
-		$GLOBALS['post']    = $post_object; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		$GLOBALS['product'] = $product;     // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		$GLOBALS['post']    = $post_object; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- $post and $product are WooCommerce's own globals, so their names are not ours to prefix; they are restored a few lines below.
+		$GLOBALS['product'] = $product;     // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- $post and $product are WooCommerce's own globals, so their names are not ours to prefix; they are restored a few lines below.
 		setup_postdata( $post_object );
 
 		$raw = array();
@@ -185,8 +185,8 @@ class Ubac_Kits_Product_Tabs {
 		}
 
 		wp_reset_postdata();
-		$GLOBALS['post']    = $previous_post;    // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
-		$GLOBALS['product'] = $previous_product; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited
+		$GLOBALS['post']    = $previous_post;    // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- $post and $product are WooCommerce's own globals, so their names are not ours to prefix; they are restored a few lines below.
+		$GLOBALS['product'] = $previous_product; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited, WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- $post and $product are WooCommerce's own globals, so their names are not ours to prefix; they are restored a few lines below.
 
 		$tabs = array();
 		foreach ( $raw as $slug => $tab ) {
@@ -225,7 +225,7 @@ class Ubac_Kits_Product_Tabs {
 		return array(
 			'slug'  => 'description',
 			'label' => __( 'Description', 'ubac-kits' ),
-			'html'  => wp_kses_post( apply_filters( 'woocommerce_short_description', $short ) ),
+			'html'  => wp_kses_post( apply_filters( 'woocommerce_short_description', $short ) ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter, applied on purpose: a theme or plugin that filters short descriptions must reach this tab too.
 		);
 	}
 

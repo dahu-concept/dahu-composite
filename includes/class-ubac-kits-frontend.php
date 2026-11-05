@@ -494,7 +494,7 @@ class Ubac_Kits_Frontend {
 		}
 
 		if ( is_user_logged_in() && ! defined( 'DONOTCACHEPAGE' ) ) {
-			define( 'DONOTCACHEPAGE', true );
+			define( 'DONOTCACHEPAGE', true ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- the name is the contract the page caches read; prefixed, it would mean nothing to them.
 		}
 
 		Ubac_Kits_Pricing::ensure_tax_context();
@@ -522,7 +522,7 @@ class Ubac_Kits_Frontend {
 			// Never cached: a cache that ignored the parameter would serve
 			// this starting state to every visitor of the kit.
 			if ( ! defined( 'DONOTCACHEPAGE' ) ) {
-				define( 'DONOTCACHEPAGE', true );
+				define( 'DONOTCACHEPAGE', true ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedConstantFound -- the name is the contract the page caches read; prefixed, it would mean nothing to them.
 			}
 			$parsed  = Ubac_Kits_Composition::parse( $product, $serial );
 			$restore = Ubac_Kits_Composition::restore_info( $serial, $parsed );

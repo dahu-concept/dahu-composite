@@ -124,15 +124,15 @@ function ubac_kits_uninstall_site() {
 }
 
 if ( is_multisite() ) {
-	$site_ids = get_sites(
+	$ubac_kits_site_ids = get_sites(
 		array(
 			'fields' => 'ids',
 			'number' => 0,
 		)
 	);
 
-	foreach ( $site_ids as $site_id ) {
-		switch_to_blog( $site_id );
+	foreach ( $ubac_kits_site_ids as $ubac_kits_site_id ) {
+		switch_to_blog( $ubac_kits_site_id );
 		ubac_kits_uninstall_site();
 		restore_current_blog();
 	}
