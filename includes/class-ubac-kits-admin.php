@@ -888,12 +888,20 @@ class Ubac_Kits_Admin {
 	 * product saved from anywhere else leaves them alone.
 	 */
 	private static function save_global_appearance() {
+		/* THE NONCE IS CHECKED BY save(), WHICH CALLS THIS METHOD.
+		 * wp_verify_nonce() returns there before reaching here; the sniff does
+		 * not look beyond the function and so reports an option write "without
+		 * nonce verification", which reads as a CSRF hole when the guard
+		 * exists. */
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- checked in save().
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- checked in save().
 		if ( ! isset( $_POST[ self::GLOBALS_MARKER ] ) || ! current_user_can( 'manage_woocommerce' ) ) {
 			return;
 		}
 		update_option( Ubac_Kits_Settings::OPTION_MORE_INFO, isset( $_POST[ Ubac_Kits_Settings::OPTION_MORE_INFO ] ) && 'yes' === sanitize_text_field( wp_unslash( $_POST[ Ubac_Kits_Settings::OPTION_MORE_INFO ] ) ) ? 'yes' : '' );
 		update_option( Ubac_Kits_Settings::OPTION_NONE_IMAGE, isset( $_POST[ Ubac_Kits_Settings::OPTION_NONE_IMAGE ] ) ? absint( wp_unslash( $_POST[ Ubac_Kits_Settings::OPTION_NONE_IMAGE ] ) ) : 0 );
 		update_option( Ubac_Kits_Settings::OPTION_NONE_TEXT, isset( $_POST[ Ubac_Kits_Settings::OPTION_NONE_TEXT ] ) ? sanitize_text_field( wp_unslash( $_POST[ Ubac_Kits_Settings::OPTION_NONE_TEXT ] ) ) : '' );
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
 	}
 
 	public static function render_components_box() {

@@ -397,7 +397,10 @@ class Ubac_Kits_Admin_Order {
 	 * @return array
 	 */
 	private static function posted_selections() {
-		$raw = isset( $_POST['selections'] ) ? json_decode( wp_unslash( (string) $_POST['selections'] ), true ) : null; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- normalised by Ubac_Kits_Engine::normalize_selections().
+		// The nonce is checked by request_context(), which every AJAX entry
+		// point calls before reaching this.
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized, WordPress.Security.NonceVerification.Missing -- normalised by Ubac_Kits_Engine::normalize_selections(); nonce checked in request_context().
+		$raw = isset( $_POST['selections'] ) ? json_decode( wp_unslash( (string) $_POST['selections'] ), true ) : null;
 		return is_array( $raw ) ? $raw : array();
 	}
 
@@ -450,7 +453,12 @@ class Ubac_Kits_Admin_Order {
 	 * @param WC_Order $order Order.
 	 */
 	private static function calculate_totals( WC_Order $order ) {
-		if ( isset( $_POST['country'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- checked in request_context().
+		/* The annotation covered the `if` line alone, while the four reads sit
+		 * in the array below it: they stayed flagged. The guard is the same for
+		 * all five. */
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- checked in request_context().
+		// phpcs:disable WordPress.Security.NonceVerification.Missing -- checked in request_context().
+		if ( isset( $_POST['country'] ) ) {
 			$order->calculate_taxes(
 				array(
 					'country'  => isset( $_POST['country'] ) ? wc_strtoupper( wc_clean( wp_unslash( $_POST['country'] ) ) ) : '',
@@ -459,6 +467,7 @@ class Ubac_Kits_Admin_Order {
 					'city'     => isset( $_POST['city'] ) ? wc_strtoupper( wc_clean( wp_unslash( $_POST['city'] ) ) ) : '',
 				)
 			);
+			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			$order->calculate_totals( false );
 		} else {
 			$order->calculate_totals();
