@@ -1,4 +1,4 @@
-# Ubac Composite
+# Ubac Composite Products
 
 Des kits de produits configurables pour WooCommerce, calculés par le serveur.
 
