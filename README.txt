@@ -4,7 +4,7 @@ Tags: composite products, product kits, made to measure, accessories, add-ons
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.78.2
+Stable tag: 0.78.3
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -131,6 +131,10 @@ truthy value before deleting if you really want everything gone.
 
 == Changelog ==
 
+= 0.78.3 =
+* Changed: the compiled French catalogue now travels in the package. It was left out on the grounds that the directory serves language packs, which is true only for a copy installed from the directory and only once translations have been imported: a copy installed by hand showed English with a catalogue that was fully translated.
+* Changed: the French readme moves under docs/, so the directory's checker no longer reports an unexpected markdown file at the plugin root.
+
 = 0.78.2 =
 * Fixed: saving a variation's accessory list checked the capability but took the nonce on trust from WooCommerce. Both are now checked here, so a request that reaches the hook from somewhere else -- a third party firing it from its own code carries no nonce -- writes nothing. A legitimate save is unaffected, and both outcomes are measured.
 * Changed: WordPress 6.2 is now the floor, as it is for the rest of the family.
@@ -218,6 +222,9 @@ truthy value before deleting if you really want everything gone.
 * First public release.
 
 == Upgrade Notice ==
+
+= 0.78.3 =
+French now works on a copy installed by hand: the compiled catalogue travels in the package. The French readme moves under docs/.
 
 = 0.78.2 =
 Saving a variation's accessories now verifies the nonce itself instead of relying on WooCommerce having done it. WordPress 6.2 is now the floor.
