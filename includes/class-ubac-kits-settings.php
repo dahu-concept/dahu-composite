@@ -25,6 +25,15 @@ class Ubac_Kits_Settings {
 	const OPTION_MORE_INFO = 'ubac_kits_more_info_link';
 
 	/**
+	 * Whether uninstall.php removes the merchant's composition data.
+	 *
+	 * In the `ubac_kits` group, and its field is on the screen that posts that
+	 * group: options.php blanks every option of a group the form does not
+	 * post, so a registered option with no field would be wiped on every save.
+	 */
+	const OPTION_DELETE_DATA = 'ubac_kits_delete_data_on_uninstall';
+
+	/**
 	 * Screen suffix returned by add_submenu_page(): the stylesheet of the
 	 * screen is loaded there only.
 	 *
@@ -105,6 +114,18 @@ class Ubac_Kits_Settings {
 		register_setting(
 			'ubac_kits_appearance',
 			self::OPTION_MORE_INFO,
+			array(
+				'type'              => 'string',
+				'sanitize_callback' => static function ( $value ) {
+					return 'yes' === $value ? 'yes' : '';
+				},
+				'default'           => '',
+			)
+		);
+
+		register_setting(
+			'ubac_kits',
+			self::OPTION_DELETE_DATA,
 			array(
 				'type'              => 'string',
 				'sanitize_callback' => static function ( $value ) {
@@ -409,6 +430,17 @@ class Ubac_Kits_Settings {
 						<?php endif; ?>
 					</p>
 				<?php endif; ?>
+				</div>
+
+				<div class="ubac-ui-card">
+					<h2><?php esc_html_e( 'Uninstalling', 'ubac-composite-products' ); ?></h2>
+					<label>
+						<input type="checkbox" name="<?php echo esc_attr( self::OPTION_DELETE_DATA ); ?>" value="yes" <?php checked( 'yes', get_option( self::OPTION_DELETE_DATA, '' ) ); ?> />
+						<?php esc_html_e( "Delete this plugin's data when the plugin is deleted", 'ubac-composite-products' ); ?>
+					</label>
+					<p class="description">
+						<?php esc_html_e( 'Off, and worth leaving off. What goes is every composition held on your products — components, scenarios, icons, card styling, customer exceptions — which is the work of building each kit, and nothing rebuilds it. Deleting the plugin is usually a step in reinstalling it. On a multisite network, the configurations and contact consents your customers saved are held on accounts shared between the sites: one shop ticking this box clears them for the customers of every shop on the network.', 'ubac-composite-products' ); ?>
+					</p>
 				</div>
 
 				<?php submit_button( null, 'ubac-ui-btn ubac-ui-btn--go' ); ?>
