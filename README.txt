@@ -4,7 +4,7 @@ Tags: composite products, product kits, made to measure, accessories, add-ons
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.78.1
+Stable tag: 0.78.2
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -131,6 +131,10 @@ truthy value before deleting if you really want everything gone.
 
 == Changelog ==
 
+= 0.78.2 =
+* Fixed: saving a variation's accessory list checked the capability but took the nonce on trust from WooCommerce. Both are now checked here, so a request that reaches the hook from somewhere else -- a third party firing it from its own code carries no nonce -- writes nothing. A legitimate save is unaffected, and both outcomes are measured.
+* Changed: WordPress 6.2 is now the floor, as it is for the rest of the family.
+
 = 0.78.1 =
 * The screen a shop sees before it has any data now says what will appear there, and offers the link to the action that fills it.
 
@@ -214,6 +218,9 @@ truthy value before deleting if you really want everything gone.
 * First public release.
 
 == Upgrade Notice ==
+
+= 0.78.2 =
+Saving a variation's accessories now verifies the nonce itself instead of relying on WooCommerce having done it. WordPress 6.2 is now the floor.
 
 = 0.73.0 =
 First public release.

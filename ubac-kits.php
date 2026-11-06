@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Ubac Composite Products
  * Description: Server-driven configurable product kits for WooCommerce. Structure, scenarios, validation, pricing and weight are computed server side and exposed through a REST API, so the configurator stays fast and the cart always matches what was validated.
- * Version:     0.78.1
+ * Version:     0.78.2
  * Author:      Hugo Vial-Jaime
  * Author URI:  https://dahu-concept.fr
  * License:     MIT
@@ -20,7 +20,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'UBAC_KITS_VERSION', '0.78.1' );
+define( 'UBAC_KITS_VERSION', '0.78.2' );
 define( 'UBAC_KITS_FILE', __FILE__ );
 define( 'UBAC_KITS_DIR', plugin_dir_path( __FILE__ ) );
 define( 'UBAC_KITS_URL', plugin_dir_url( __FILE__ ) );
