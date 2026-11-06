@@ -4,7 +4,7 @@ Tags: composite products, product kits, made to measure, accessories, add-ons
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.78.3
+Stable tag: 0.78.4
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -131,6 +131,10 @@ truthy value before deleting if you really want everything gone.
 
 == Changelog ==
 
+= 0.78.4 =
+* Changed: the slug and the text domain become ubac-composite-products, which is what the display name implies and what the directory requires them to match. Class prefixes, option names and the REST namespace are unchanged, so an existing installation keeps its settings.
+* Fixed: uninstall now also removes the welcome flags written under the former slug, which were otherwise unreachable and would have been left behind for good.
+
 = 0.78.3 =
 * Changed: the compiled French catalogue now travels in the package. It was left out on the grounds that the directory serves language packs, which is true only for a copy installed from the directory and only once translations have been imported: a copy installed by hand showed English with a catalogue that was fully translated.
 * Changed: the French readme moves under docs/, so the directory's checker no longer reports an unexpected markdown file at the plugin root.
@@ -222,6 +226,9 @@ truthy value before deleting if you really want everything gone.
 * First public release.
 
 == Upgrade Notice ==
+
+= 0.78.4 =
+Internal rename: the slug and the text domain become ubac-composite-products. Settings are unaffected; uninstall now also clears what the former name left behind.
 
 = 0.78.3 =
 French now works on a copy installed by hand: the compiled catalogue travels in the package. The French readme moves under docs/.
