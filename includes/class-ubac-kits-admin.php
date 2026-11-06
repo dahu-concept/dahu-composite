@@ -894,7 +894,6 @@ class Ubac_Kits_Admin {
 		 * nonce verification", which reads as a CSRF hole when the guard
 		 * exists. */
 		// phpcs:disable WordPress.Security.NonceVerification.Missing -- checked in save().
-		// phpcs:disable WordPress.Security.NonceVerification.Missing -- checked in save().
 		if ( ! isset( $_POST[ self::GLOBALS_MARKER ] ) || ! current_user_can( 'manage_woocommerce' ) ) {
 			return;
 		}

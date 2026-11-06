@@ -818,6 +818,39 @@ class Ubac_Kits_Supply {
 	}
 
 	/**
+	 * May the current request write the accessory list on this variation?
+	 *
+	 * WooCommerce does check the request before firing this hook, but that is
+	 * somebody else's implementation detail: a third party firing
+	 * `woocommerce_save_product_variation` from its own code carries no
+	 * nonce, and nothing here would notice. So the guard is written out — the
+	 * capability, then whichever of the two nonces matches the way the
+	 * product was saved: the whole edit screen posting to post.php, or the
+	 * variations panel over AJAX.
+	 *
+	 * @param int $variation_id Variation.
+	 * @return bool
+	 */
+	private static function may_save( $variation_id ) {
+
+		if ( ! current_user_can( 'edit_product', $variation_id ) ) {
+			return false;
+		}
+
+		if ( isset( $_POST['woocommerce_meta_nonce'] )
+			&& wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['woocommerce_meta_nonce'] ) ), 'woocommerce_save_data' ) ) {
+			return true;
+		}
+
+		if ( isset( $_POST['security'] )
+			&& wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['security'] ) ), 'save-variations' ) ) {
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	 * Saving. Like ubac-serials: field absent from the request = value kept;
 	 * empty list = list deleted. An invalid row saves nothing and shows a
 	 * message (the previous list is kept).
@@ -830,15 +863,14 @@ class Ubac_Kits_Supply {
 	 * @param int $loop         Index of the variation.
 	 */
 	public static function save_variation_field( $variation_id, $loop ) {
-		// WooCommerce has already checked the nonce before this hook.
-		if ( ! current_user_can( 'edit_product', $variation_id ) ) {
+		if ( ! self::may_save( $variation_id ) ) {
 			return;
 		}
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- checked by WooCommerce.
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- may_save() verified the nonce just above.
 		if ( ! isset( $_POST['ubac_supply_present'] ) || ! is_array( $_POST['ubac_supply_present'] ) || ! isset( $_POST['ubac_supply_present'][ $loop ] ) ) {
 			return;
 		}
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- checked by WooCommerce; every row is parsed.
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- may_save() verified the nonce; every row is parsed.
 		$rows   = isset( $_POST['ubac_supply'] ) && is_array( $_POST['ubac_supply'] ) && isset( $_POST['ubac_supply'][ $loop ] ) && is_array( $_POST['ubac_supply'][ $loop ] ) ? wp_unslash( $_POST['ubac_supply'][ $loop ] ) : array();
 		$parsed = self::parse_rows( $rows, (int) $variation_id );
 

@@ -185,11 +185,17 @@ assertions, et `prove-composite.py`, 35 injections) n'ont pas tourné depuis le
 
       Une subtilité consignée pour qu'elle ne soit pas reperdue : l'en-tête
       n'est honoré qu'à partir de **WordPress 6.5**, et l'extension déclare
-      `Requires at least: 6.0`. De 6.0 à 6.4 la déclaration est donc ignorée,
+      `Requires at least: 6.2`. De 6.2 à 6.4 la déclaration est donc ignorée,
       et c'est le repli déjà présent qui parle — `plugins_loaded` vérifie
       `class_exists( 'WooCommerce' )`, pose un `admin_notices` « Dahu Composite
       requires WooCommerce. » et sort avant tout `require_once`. Vérifié dans le
       code, pas supposé : la FAQ du README l'annonce et dit vrai.
+
+      Le plancher est passé de 6.0 à **6.2** en novembre 2026, pour que
+      `$wpdb->prepare()` accepte le marqueur `%i` des identifiants de table —
+      ce qui supprime deux familles entières d'avertissements du Plugin Check.
+      Le raisonnement ci-dessus ne change pas : 6.2 reste sous 6.5, donc le
+      repli `plugins_loaded` est toujours ce qui parle.
 
       `Requires at least` n'a PAS été relevé à 6.5 : ça retirerait le support de
       6.0 à 6.4 pour rendre obligatoire une garantie que le repli assure déjà.

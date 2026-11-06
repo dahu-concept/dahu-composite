@@ -457,7 +457,6 @@ class Ubac_Kits_Admin_Order {
 		 * in the array below it: they stayed flagged. The guard is the same for
 		 * all five. */
 		// phpcs:disable WordPress.Security.NonceVerification.Missing -- checked in request_context().
-		// phpcs:disable WordPress.Security.NonceVerification.Missing -- checked in request_context().
 		if ( isset( $_POST['country'] ) ) {
 			$order->calculate_taxes(
 				array(
@@ -467,11 +466,12 @@ class Ubac_Kits_Admin_Order {
 					'city'     => isset( $_POST['city'] ) ? wc_strtoupper( wc_clean( wp_unslash( $_POST['city'] ) ) ) : '',
 				)
 			);
-			// phpcs:enable WordPress.Security.NonceVerification.Missing
 			$order->calculate_totals( false );
 		} else {
 			$order->calculate_totals();
 		}
+		// phpcs:enable WordPress.Security.NonceVerification.Missing
+
 		$order->save();
 	}
 
