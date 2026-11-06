@@ -133,141 +133,141 @@ class Ubac_Kits_Frontend {
 				// Keyword table of the “Category icon” layout (see category_icons()).
 				'categoryIcons'   => self::category_icons(),
 				'i18n'    => array(
-					'loading'        => __( 'Loading the configurator…', 'ubac-kits' ),
-					'loadError'      => __( 'The configurator could not be loaded. Reload the page.', 'ubac-kits' ),
-					'step'           => __( 'Step', 'ubac-kits' ),
-					'summary'        => __( 'Summary', 'ubac-kits' ),
-					'chooseVariant'  => __( 'Choose a variation', 'ubac-kits' ),
-					'quantity'       => __( 'Quantity', 'ubac-kits' ),
-					'outOfStock'     => __( 'Out of stock', 'ubac-kits' ),
-					'total'          => __( 'Total', 'ubac-kits' ),
+					'loading'        => __( 'Loading the configurator…', 'ubac-composite-products' ),
+					'loadError'      => __( 'The configurator could not be loaded. Reload the page.', 'ubac-composite-products' ),
+					'step'           => __( 'Step', 'ubac-composite-products' ),
+					'summary'        => __( 'Summary', 'ubac-composite-products' ),
+					'chooseVariant'  => __( 'Choose a variation', 'ubac-composite-products' ),
+					'quantity'       => __( 'Quantity', 'ubac-composite-products' ),
+					'outOfStock'     => __( 'Out of stock', 'ubac-composite-products' ),
+					'total'          => __( 'Total', 'ubac-composite-products' ),
 					// “Estimated weight”: total of the summary and of the Summary,
 					// computed with the weight setting of every step.
-					'weight'         => __( 'Estimated weight', 'ubac-kits' ),
+					'weight'         => __( 'Estimated weight', 'ubac-composite-products' ),
 					// Free-text mention to the right of the weight, under the total of
 					// the summary (plain text, empty by default = nothing):
 					// supplied by the theme (e.g. “Free delivery”).
 					'recapNote'      => wp_strip_all_tags( (string) apply_filters( 'ubac_kits_recap_note', '' ) ),
-					'component'      => __( 'Component', 'ubac-kits' ),
-					'product'        => __( 'Product', 'ubac-kits' ),
-					'price'          => __( 'Price', 'ubac-kits' ),
-					'none'           => __( 'None', 'ubac-kits' ),
-					'addToCart'      => __( 'Add to cart', 'ubac-kits' ),
-					'adding'         => __( 'Adding…', 'ubac-kits' ),
-					'added'          => __( 'The product was added to your cart.', 'ubac-kits' ),
-					'addedRedirect'  => __( 'The product was added to your cart. Taking you to the cart…', 'ubac-kits' ),
-					'viewCart'       => __( 'View cart', 'ubac-kits' ),
-					'incomplete'     => __( 'Complete the following steps:', 'ubac-kits' ),
-					'bundleOptional' => __( 'Optional items', 'ubac-kits' ),
-					'restart'        => __( 'Back to step', 'ubac-kits' ),
-					'comingSoon'     => __( 'This option cannot be ordered yet. Check back soon.', 'ubac-kits' ),
-					'comingSoonBadge' => __( 'Coming soon', 'ubac-kits' ),
+					'component'      => __( 'Component', 'ubac-composite-products' ),
+					'product'        => __( 'Product', 'ubac-composite-products' ),
+					'price'          => __( 'Price', 'ubac-composite-products' ),
+					'none'           => __( 'None', 'ubac-composite-products' ),
+					'addToCart'      => __( 'Add to cart', 'ubac-composite-products' ),
+					'adding'         => __( 'Adding…', 'ubac-composite-products' ),
+					'added'          => __( 'The product was added to your cart.', 'ubac-composite-products' ),
+					'addedRedirect'  => __( 'The product was added to your cart. Taking you to the cart…', 'ubac-composite-products' ),
+					'viewCart'       => __( 'View cart', 'ubac-composite-products' ),
+					'incomplete'     => __( 'Complete the following steps:', 'ubac-composite-products' ),
+					'bundleOptional' => __( 'Optional items', 'ubac-composite-products' ),
+					'restart'        => __( 'Back to step', 'ubac-composite-products' ),
+					'comingSoon'     => __( 'This option cannot be ordered yet. Check back soon.', 'ubac-composite-products' ),
+					'comingSoonBadge' => __( 'Coming soon', 'ubac-composite-products' ),
 					// Button of a branch “link” card, in
 					// button mode: the card points to a page.
-					'linkOpen'       => __( 'Go to', 'ubac-kits' ),
-					'recap'          => __( 'Your configuration', 'ubac-kits' ),
-					'toChoose'       => __( 'To choose', 'ubac-kits' ),
+					'linkOpen'       => __( 'Go to', 'ubac-composite-products' ),
+					'recap'          => __( 'Your configuration', 'ubac-composite-products' ),
+					'toChoose'       => __( 'To choose', 'ubac-composite-products' ),
 					// “Select” button of the cards in button mode (no longer in
 					// the “More info” drawer).
-					'select'         => __( 'Select', 'ubac-kits' ),
+					'select'         => __( 'Select', 'ubac-composite-products' ),
 					// “Add-on” component (optional, a single option): the label alone
 					// says “Select”, but the gesture stays a cumulative addition, which
 					// a second click removes. The cards of a multiple choice use the
 					// addItem labels below instead.
-					'addOn'          => __( 'Select', 'ubac-kits' ),
-					'addOnDone'      => __( 'Selected', 'ubac-kits' ),
+					'addOn'          => __( 'Select', 'ubac-composite-products' ),
+					'addOnDone'      => __( 'Selected', 'ubac-composite-products' ),
 					// Cards of a multiple choice (Accessories): “Add / Added”, the
 					// step's own advance button saying “Select”
 					// (the “next” key).
-					'addItem'        => __( 'Add', 'ubac-kits' ),
-					'addItemDone'    => __( 'Added', 'ubac-kits' ),
+					'addItem'        => __( 'Add', 'ubac-composite-products' ),
+					'addItemDone'    => __( 'Added', 'ubac-composite-products' ),
 					// Expandable row (“Inline” layout).
-					'rowExpand'      => __( 'Show details', 'ubac-kits' ),
-					'rowCollapse'    => __( 'Hide details', 'ubac-kits' ),
+					'rowExpand'      => __( 'Show details', 'ubac-composite-products' ),
+					'rowCollapse'    => __( 'Hide details', 'ubac-composite-products' ),
 					// Add-on presented as a yes / no question.
-					'yes'            => __( 'Yes', 'ubac-kits' ),
-					'no'             => __( 'No', 'ubac-kits' ),
+					'yes'            => __( 'Yes', 'ubac-composite-products' ),
+					'no'             => __( 'No', 'ubac-composite-products' ),
 					// Advance button of a multiple-choice step (Accessories,
 					// renderStepNav()): “Select”. The cards of that step say
 					// “Add”.
-					'next'           => __( 'Select', 'ubac-kits' ),
+					'next'           => __( 'Select', 'ubac-composite-products' ),
 					// Waiting text of the “?” popover of a category with neither
 					// text nor media. Empty by default: no “?” is
 					// shown when there is nothing to show. A site that wants
 					// a generic text supplies it through the filter.
 					'helpPlaceholder' => wp_strip_all_tags( (string) apply_filters( 'ubac_kits_help_placeholder', '' ) ),
 					// Vignette mode (data-ubac-kit-card-style="vignette"): drawer.
-					'moreInfo'       => __( 'More info', 'ubac-kits' ),
+					'moreInfo'       => __( 'More info', 'ubac-composite-products' ),
 					// Link to the product page (“Show more info”).
-					'moreInfoLink'   => __( 'more info…', 'ubac-kits' ),
-					'close'          => __( 'Close', 'ubac-kits' ),
-					'detailsLoading' => __( 'Loading…', 'ubac-kits' ),
-					'noDetails'      => __( 'No further information for this product.', 'ubac-kits' ),
-					'detailsError'   => __( 'This product’s information could not be loaded.', 'ubac-kits' ),
-					'infoDescription'       => __( 'Description', 'ubac-kits' ),
-					'infoCharacteristics'   => __( 'Specifications', 'ubac-kits' ),
-					'infoNoCharacteristics' => __( 'No specifications entered', 'ubac-kits' ),
-					'infoIncluded'          => __( 'Included products (soon)', 'ubac-kits' ),
-					'infoLoading'           => __( 'Loading…', 'ubac-kits' ),
+					'moreInfoLink'   => __( 'more info…', 'ubac-composite-products' ),
+					'close'          => __( 'Close', 'ubac-composite-products' ),
+					'detailsLoading' => __( 'Loading…', 'ubac-composite-products' ),
+					'noDetails'      => __( 'No further information for this product.', 'ubac-composite-products' ),
+					'detailsError'   => __( 'This product’s information could not be loaded.', 'ubac-composite-products' ),
+					'infoDescription'       => __( 'Description', 'ubac-composite-products' ),
+					'infoCharacteristics'   => __( 'Specifications', 'ubac-composite-products' ),
+					'infoNoCharacteristics' => __( 'No specifications entered', 'ubac-composite-products' ),
+					'infoIncluded'          => __( 'Included products (soon)', 'ubac-composite-products' ),
+					'infoLoading'           => __( 'Loading…', 'ubac-composite-products' ),
 					// “More info” as a flipped / extended card
 					// (data-ubac-kit-info="card|extended").
-					'infoBack'              => __( 'Back', 'ubac-kits' ),
+					'infoBack'              => __( 'Back', 'ubac-composite-products' ),
 					/* translators: %s: title of the step or of the range */
-					'hintAbout'             => __( 'Information about: %s', 'ubac-kits' ),
-					'infoChoose'            => __( 'Select', 'ubac-kits' ),
-					'infoChosen'            => __( 'Selected', 'ubac-kits' ),
-					'infoChooseVariantFirst' => __( 'choose a variation on the card first', 'ubac-kits' ),
+					'hintAbout'             => __( 'Information about: %s', 'ubac-composite-products' ),
+					'infoChoose'            => __( 'Select', 'ubac-composite-products' ),
+					'infoChosen'            => __( 'Selected', 'ubac-composite-products' ),
+					'infoChooseVariantFirst' => __( 'choose a variation on the card first', 'ubac-composite-products' ),
 					// Option retained with no variant: message under the
 					// list of variants, as long as the step cannot move on.
-					'variantRequired'       => __( 'Choose a variation before continuing.', 'ubac-kits' ),
+					'variantRequired'       => __( 'Choose a variation before continuing.', 'ubac-composite-products' ),
 					// “Included products”: the label alone, the data stays
 					// `bundled`.
-					'infoBundled'           => __( 'Included products', 'ubac-kits' ),
+					'infoBundled'           => __( 'Included products', 'ubac-composite-products' ),
 					// Key shown with no included product (data-ubac-kit-info="vignette").
-					'infoNoBundled'         => __( 'No included products', 'ubac-kits' ),
+					'infoNoBundled'         => __( 'No included products', 'ubac-composite-products' ),
 					// Variable option on which no variant is chosen yet: what it
 					// would list is the content of its preselected variation, which
 					// the choice may change. Greyed control, and this reason in
 					// place of the list.
-					'infoBundledPending'    => __( 'Choose an option to see what is included', 'ubac-kits' ),
-					'networkError'   => __( 'Could not reach the server.', 'ubac-kits' ),
+					'infoBundledPending'    => __( 'Choose an option to see what is included', 'ubac-composite-products' ),
+					'networkError'   => __( 'Could not reach the server.', 'ubac-composite-products' ),
 					// Saved configurations.
-					'saveTitle'           => __( 'Save my configuration', 'ubac-kits' ),
-					'saveButton'          => __( 'Save my configuration', 'ubac-kits' ),
-					'saving'              => __( 'Saving…', 'ubac-kits' ),
-					'saveName'            => __( 'Configuration name', 'ubac-kits' ),
-					'saveNamePlaceholder' => __( 'Name (optional)', 'ubac-kits' ),
-					'saveIncomplete'      => __( 'Finish the configuration before saving it.', 'ubac-kits' ),
-					'saveLoginPrompt'     => __( 'Log in to find it again in your account, under “My configurations”.', 'ubac-kits' ),
-					'saveLogin'           => __( 'Log in', 'ubac-kits' ),
+					'saveTitle'           => __( 'Save my configuration', 'ubac-composite-products' ),
+					'saveButton'          => __( 'Save my configuration', 'ubac-composite-products' ),
+					'saving'              => __( 'Saving…', 'ubac-composite-products' ),
+					'saveName'            => __( 'Configuration name', 'ubac-composite-products' ),
+					'saveNamePlaceholder' => __( 'Name (optional)', 'ubac-composite-products' ),
+					'saveIncomplete'      => __( 'Finish the configuration before saving it.', 'ubac-composite-products' ),
+					'saveLoginPrompt'     => __( 'Log in to find it again in your account, under “My configurations”.', 'ubac-composite-products' ),
+					'saveLogin'           => __( 'Log in', 'ubac-composite-products' ),
 					/* translators: %s: name of the configuration */
-					'saved'               => __( 'Configuration “%s” saved.', 'ubac-kits' ),
-					'savedSee'            => __( 'View my configurations', 'ubac-kits' ),
+					'saved'               => __( 'Configuration “%s” saved.', 'ubac-composite-products' ),
+					'savedSee'            => __( 'View my configurations', 'ubac-composite-products' ),
 					/* translators: %s: name of the configuration */
-					'savedOpened'         => __( 'Configuration “%s” reopened, at today’s prices.', 'ubac-kits' ),
-					'savedChanged'        => __( 'Some choices are no longer available and were removed:', 'ubac-kits' ),
-					'savedLoginToOpen'    => __( 'Log in to reopen this saved configuration.', 'ubac-kits' ),
+					'savedOpened'         => __( 'Configuration “%s” reopened, at today’s prices.', 'ubac-composite-products' ),
+					'savedChanged'        => __( 'Some choices are no longer available and were removed:', 'ubac-composite-products' ),
+					'savedLoginToOpen'    => __( 'Log in to reopen this saved configuration.', 'ubac-composite-products' ),
 					// ?ubac_kit_serial=… link that no longer matches the kit.
-					'serialInvalid'       => __( 'This configuration link no longer matches this product: build your configuration below.', 'ubac-kits' ),
+					'serialInvalid'       => __( 'This configuration link no longer matches this product: build your configuration below.', 'ubac-composite-products' ),
 					// Visitor: account creation from the Summary.
-					'guestIntro'           => __( 'Find it later in your account, under “My configurations”. No account yet? One is created at the same time, with no password to choose right now.', 'ubac-kits' ),
-					'guestRequired'        => __( 'required', 'ubac-kits' ),
-					'guestRequiredNote'    => __( '* Required fields', 'ubac-kits' ),
+					'guestIntro'           => __( 'Find it later in your account, under “My configurations”. No account yet? One is created at the same time, with no password to choose right now.', 'ubac-composite-products' ),
+					'guestRequired'        => __( 'required', 'ubac-composite-products' ),
+					'guestRequiredNote'    => __( '* Required fields', 'ubac-composite-products' ),
 					'guestConsent'         => Ubac_Kits_Saved_Configs::consent_text(),
-					'guestSubmit'          => __( 'Create my account and save', 'ubac-kits' ),
+					'guestSubmit'          => __( 'Create my account and save', 'ubac-composite-products' ),
 					// Button that unfolds the form: what the form
 					// does.
-					'guestOpen'            => __( 'Create my account and save', 'ubac-kits' ),
-					'guestCancel'          => __( 'Cancel', 'ubac-kits' ),
-					'guestFieldRequired'   => __( 'This field is required.', 'ubac-kits' ),
-					'guestEmailInvalid'    => __( 'This email address is not valid.', 'ubac-kits' ),
-					'guestConsentRequired' => __( 'Tick this box so that we may store your details.', 'ubac-kits' ),
-					'guestCheckFields'     => __( 'Check the fields flagged above.', 'ubac-kits' ),
+					'guestOpen'            => __( 'Create my account and save', 'ubac-composite-products' ),
+					'guestCancel'          => __( 'Cancel', 'ubac-composite-products' ),
+					'guestFieldRequired'   => __( 'This field is required.', 'ubac-composite-products' ),
+					'guestEmailInvalid'    => __( 'This email address is not valid.', 'ubac-composite-products' ),
+					'guestConsentRequired' => __( 'Tick this box so that we may store your details.', 'ubac-composite-products' ),
+					'guestCheckFields'     => __( 'Check the fields flagged above.', 'ubac-composite-products' ),
 					/* translators: 1: name of the configuration, 2: e-mail address */
-					'guestCreated'         => __( 'Configuration “%1$s” saved and account created. An email has just gone out to %2$s: the link in it lets you set your password. Your configuration is then waiting in your account, under “My configurations”.', 'ubac-kits' ),
+					'guestCreated'         => __( 'Configuration “%1$s” saved and account created. An email has just gone out to %2$s: the link in it lets you set your password. Your configuration is then waiting in your account, under “My configurations”.', 'ubac-composite-products' ),
 					/* translators: 1: name of the configuration, 2: e-mail address */
-					'guestCreatedNoMail'   => __( 'Configuration “%1$s” saved and account created for %2$s. To reach it, set your password from the login page.', 'ubac-kits' ),
-					'guestSetPassword'     => __( 'Set my password', 'ubac-kits' ),
+					'guestCreatedNoMail'   => __( 'Configuration “%1$s” saved and account created for %2$s. To reach it, set your password from the login page.', 'ubac-composite-products' ),
+					'guestSetPassword'     => __( 'Set my password', 'ubac-composite-products' ),
 				),
 		);
 
@@ -277,8 +277,8 @@ class Ubac_Kits_Frontend {
 		printf(
 			'<div class="ubac-kit is-loading" id="ubac-kit-%1$d" data-product-id="%1$d"%4$s><p class="ubac-kit__loading"><span class="ubac-kit__spinner" aria-hidden="true"></span>%2$s</p><noscript>%3$s</noscript></div>',
 			(int) $product->get_id(),
-			esc_html__( 'Loading the configurator…', 'ubac-kits' ),
-			esc_html__( 'The configurator requires JavaScript.', 'ubac-kits' ),
+			esc_html__( 'Loading the configurator…', 'ubac-composite-products' ),
+			esc_html__( 'The configurator requires JavaScript.', 'ubac-composite-products' ),
 			Ubac_Kits_Appearance::data_attributes( $product->get_id() ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped by data_attributes().
 		);
 

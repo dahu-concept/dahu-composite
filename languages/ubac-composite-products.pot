@@ -2,41 +2,42 @@
 # This file is distributed under the MIT licence.
 msgid ""
 msgstr ""
-"Project-Id-Version: Ubac Composite\n"
+"Project-Id-Version: Ubac Composite Products\n"
 "Report-Msgid-Bugs-To: https://dahu-concept.fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2026-10-31 15:01+0000\n"
-"X-Domain: ubac-kits\n"
+"PO-Revision-Date: 2026-11-06 12:00+0000\n"
+"X-Domain: ubac-composite-products\n"
 
-#: includes/class-ubac-kits-admin.php:323 includes/class-ubac-kits-validator.php:641
+#: includes/class-ubac-kits-admin.php:373 includes/class-ubac-kits-validator.php:641
 msgid " and "
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:359 includes/class-ubac-kits-admin.php:360
+#. translators: 1: number of hidden values, 2: name of the component, 3: who the restriction applies to, 4: the hidden values themselves. */
+#: includes/class-ubac-kits-admin.php:418 includes/class-ubac-kits-admin.php:420
 msgid " — hides %1$s value of “%2$s” %3$s: %4$s"
 msgid_plural " — hides %1$s values of “%2$s” %3$s: %4$s"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-ubac-kits-supply.php:930
+#: includes/class-ubac-kits-supply.php:965
 msgid "#%1$d: type “%2$s” is not supported (simple product or variation only)."
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:926
+#: includes/class-ubac-kits-supply.php:961
 msgid "#%d: a variable product; choose one of its variations."
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:912
+#: includes/class-ubac-kits-supply.php:947
 msgid "#%d: a variation with an “Any” attribute, which is not supported."
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:900
+#: includes/class-ubac-kits-supply.php:935
 msgid "#%d: product not found."
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:905
+#: includes/class-ubac-kits-supply.php:940
 msgid "#%d: the variation itself."
 msgstr ""
 
@@ -44,7 +45,7 @@ msgstr ""
 msgid "%1$s (stock adjusted: %2$s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:321
+#: includes/class-ubac-kits-admin.php:371
 msgid "%1$s if %2$s"
 msgstr ""
 
@@ -52,13 +53,14 @@ msgstr ""
 msgid "%1$s removed along with its variation (stock %2$s → %3$s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:344 includes/class-ubac-kits-admin.php:345
+#. translators: 1: name of the component, 2: name of the value, 3: number of reserved values. */
+#: includes/class-ubac-kits-admin.php:399 includes/class-ubac-kits-admin.php:401
 msgid "%1$s — %2$s: %3$s reserved value on top of the public ones"
 msgid_plural "%1$s — %2$s: %3$s reserved values on top of the public ones"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-ubac-kits-admin.php:341
+#: includes/class-ubac-kits-admin.php:395
 msgid "%1$s — %2$s: every restricted option and variation"
 msgstr ""
 
@@ -74,97 +76,98 @@ msgstr ""
 msgid "%d characters at most."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:180
+#: includes/class-ubac-kits-admin.php:188
 msgid "%s (absent from the options)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:324
+#: includes/class-ubac-kits-admin.php:375
 msgid "%s (always active)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:244
+#: includes/class-ubac-kits-admin.php:258
 msgid "%s (copy)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:319
+#: includes/class-ubac-kits-admin.php:369
 msgid "%s (no value)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:119
+#: includes/class-ubac-kits-admin.php:121
 msgid "%s (not found)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:177
+#: includes/class-ubac-kits-admin.php:184
 msgid "%s (other screen)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:268
+#: includes/class-ubac-kits-admin.php:297
 msgid "%s badge(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:277
+#: includes/class-ubac-kits-admin.php:315
 msgid "%s card link(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:271
+#: includes/class-ubac-kits-admin.php:303
 msgid "%s component description(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:272
+#: includes/class-ubac-kits-admin.php:305
 msgid "%s component info bubble text(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:270
+#: includes/class-ubac-kits-admin.php:301
 msgid "%s component layout(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:269
+#: includes/class-ubac-kits-admin.php:299
 msgid "%s component title(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:264
+#: includes/class-ubac-kits-admin.php:289
 msgid "%s help image(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:263
+#: includes/class-ubac-kits-admin.php:287
 msgid "%s image(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:278
+#: includes/class-ubac-kits-admin.php:317
 msgid "%s offered variation choices"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:267
+#: includes/class-ubac-kits-admin.php:295
 msgid "%s option description(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:247 includes/class-ubac-kits-admin.php:248
+#. translators: %s: number of options attached to the category. */
+#: includes/class-ubac-kits-admin.php:263 includes/class-ubac-kits-admin.php:265
 msgid "%s option is attached to it: it will go back to having no category."
 msgid_plural "%s options are attached to it: they will go back to having no category."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-ubac-kits-admin.php:266
+#: includes/class-ubac-kits-admin.php:293
 msgid "%s option label(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:265
+#: includes/class-ubac-kits-admin.php:291
 msgid "%s option title(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:280
+#: includes/class-ubac-kits-admin.php:321
 msgid "%s range colour(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:274
+#: includes/class-ubac-kits-admin.php:309
 msgid "%s range info bubble text(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:275
+#: includes/class-ubac-kits-admin.php:311
 msgid "%s range media"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:276
+#: includes/class-ubac-kits-admin.php:313
 msgid "%s range video link(s)"
 msgstr ""
 
@@ -172,51 +175,53 @@ msgstr ""
 msgid "%s removed along with its variation"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:348 includes/class-ubac-kits-admin.php:349
+#. translators: %s: number of reserved values. */
+#: includes/class-ubac-kits-admin.php:405 includes/class-ubac-kits-admin.php:407
 msgid "%s reserved value"
 msgid_plural "%s reserved values"
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-ubac-kits-admin.php:253 includes/class-ubac-kits-admin.php:254
+#. translators: %s: number of scenarios that refer to the component. */
+#: includes/class-ubac-kits-admin.php:272 includes/class-ubac-kits-admin.php:274
 msgid "%s scenario refers to it and will be deleted, or have this condition removed."
 msgid_plural "%s scenarios refer to it and will be deleted, or have this condition removed."
 msgstr[0] ""
 msgstr[1] ""
 
-#: includes/class-ubac-kits-admin.php:279
+#: includes/class-ubac-kits-admin.php:319
 msgid "%s variant help images"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:219
+#: includes/class-ubac-kits-admin.php:231
 msgid "%s — every variant"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:220
+#: includes/class-ubac-kits-admin.php:233
 msgid "%s — variant not chosen yet"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:282
+#: includes/class-ubac-kits-admin.php:325
 msgid "%s “Badge” setting(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:283
+#: includes/class-ubac-kits-admin.php:327
 msgid "%s “Coloured background” setting(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:273
+#: includes/class-ubac-kits-admin.php:307
 msgid "%s “None” card image(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:281
+#: includes/class-ubac-kits-admin.php:323
 msgid "%s “On its own line” setting(s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:353
+#: includes/class-ubac-kits-admin.php:411
 msgid "(component?)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:354
+#: includes/class-ubac-kits-admin.php:412
 msgid "(customer to be chosen)"
 msgstr ""
 
@@ -224,7 +229,7 @@ msgstr ""
 msgid "(no label)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:318
+#: includes/class-ubac-kits-admin.php:367
 msgid "(no option chosen)"
 msgstr ""
 
@@ -232,11 +237,11 @@ msgstr ""
 msgid "(optional)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:309
+#: includes/class-ubac-kits-admin.php:355
 msgid "(target missing)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:397
+#: includes/class-ubac-kits-admin.php:463
 msgid "(this customer’s hidden options; prices of the logged-in account)"
 msgstr ""
 
@@ -248,7 +253,7 @@ msgstr ""
 msgid "* Required fields"
 msgstr ""
 
-#: ubac-kits.php:244
+#: ubac-composite-products.php:260
 msgid "A composite product ships as one parcel. This shipping class is what carries it, and every composite product uses it."
 msgstr ""
 
@@ -256,19 +261,19 @@ msgstr ""
 msgid "A step of your configuration no longer exists in this product: its choice was removed."
 msgstr ""
 
-#: ubac-kits.php:249
+#: ubac-composite-products.php:265
 msgid "A tier gives one or more roles their own price on every option. Without a tier, everybody sees the public price."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:337
+#: includes/class-ubac-kits-admin.php:391
 msgid "Access to every restricted option and variation of this component"
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:614
+#: includes/class-ubac-kits-supply.php:617
 msgid "Accessories added with “%1$s”: %2$s."
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:618
+#: includes/class-ubac-kits-supply.php:621
 msgid "Accessories not added with “%1$s” (missing or not purchasable): %2$s."
 msgstr ""
 
@@ -276,7 +281,7 @@ msgstr ""
 msgid "Accessory display (bundle plugin fields)."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:289
+#: includes/class-ubac-kits-admin.php:333
 msgid "Action"
 msgstr ""
 
@@ -292,39 +297,39 @@ msgstr ""
 msgid "Add"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:184
+#: includes/class-ubac-kits-admin.php:193
 msgid "Add a category"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:838
+#: includes/class-ubac-kits-admin.php:911
 msgid "Add a component"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:433
+#: includes/class-ubac-kits-settings.php:439
 msgid "Add a product"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:860
+#: includes/class-ubac-kits-admin.php:933
 msgid "Add a scenario"
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:781
+#: includes/class-ubac-kits-supply.php:784
 msgid "Add an accessory…"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:872
+#: includes/class-ubac-kits-admin.php:945
 msgid "Add an exception"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:224
+#: includes/class-ubac-kits-admin.php:237
 msgid "Add an option"
 msgstr ""
 
-#: includes/class-ubac-kits-frontend.php:155 includes/class-wc-product-ubac-kit.php:207
+#: includes/class-ubac-kits-frontend.php:155 includes/class-wc-product-ubac-kit.php:208
 msgid "Add to cart"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:141
+#: includes/class-ubac-kits-admin.php:143
 msgid "Add-on presentation"
 msgstr ""
 
@@ -336,15 +341,15 @@ msgstr ""
 msgid "Adding…"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:146
+#: includes/class-ubac-kits-admin.php:148
 msgid "Adjustable quantity"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:854
+#: includes/class-ubac-kits-admin.php:927
 msgid "All targets"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:262
+#: includes/class-ubac-kits-admin.php:285
 msgid "Already set in the admin and absent from the imported JSON, so kept: %s."
 msgstr ""
 
@@ -352,19 +357,19 @@ msgstr ""
 msgid "An account already exists with this email address. Log in and your configuration will be saved to your account when you come back."
 msgstr ""
 
-#: includes/class-ubac-kits-cart.php:596
+#: includes/class-ubac-kits-cart.php:597
 msgid "An incomplete product was removed from your cart."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:175
+#: includes/class-ubac-kits-admin.php:181
 msgid "Anchor next to"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:416
+#: includes/class-ubac-kits-admin.php:482
 msgid "Appearance"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:403
+#: includes/class-ubac-kits-admin.php:469
 msgid "Appearance on the product page: %1$s, corners %2$s, icons %3$s, info %4$s (desktop) / %5$s (mobile), click %6$s."
 msgstr ""
 
@@ -376,19 +381,19 @@ msgstr ""
 msgid "Back to step"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:103 includes/class-ubac-kits-admin.php:190
+#: includes/class-ubac-kits-admin.php:103 includes/class-ubac-kits-admin.php:199
 msgid "Badge"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:164
+#: includes/class-ubac-kits-admin.php:166
 msgid "Branch"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:125
+#: includes/class-ubac-kits-admin.php:127
 msgid "Branch (no product)"
 msgstr ""
 
-#: ubac-kits.php:151
+#: ubac-composite-products.php:161
 msgid "By Hugo Vial-Jaime — Dahu-Concept"
 msgstr ""
 
@@ -396,11 +401,11 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:178 includes/class-ubac-kits-admin.php:404 includes/class-ubac-kits-admin.php:687 includes/class-ubac-kits-admin.php:708 includes/class-ubac-kits-admin.php:717
+#: includes/class-ubac-kits-admin.php:185 includes/class-ubac-kits-admin.php:470 includes/class-ubac-kits-admin.php:753 includes/class-ubac-kits-admin.php:774 includes/class-ubac-kits-admin.php:783
 msgid "Card"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:684
+#: includes/class-ubac-kits-admin.php:750
 msgid "Card style"
 msgstr ""
 
@@ -416,11 +421,11 @@ msgstr ""
 msgid "Cart unavailable."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:183
+#: includes/class-ubac-kits-admin.php:192
 msgid "Categories / ranges (%s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:134
+#: includes/class-ubac-kits-admin.php:136
 msgid "Category icon"
 msgstr ""
 
@@ -428,7 +433,7 @@ msgstr ""
 msgid "Change"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:206
+#: includes/class-ubac-kits-admin.php:216
 msgid "Change the image"
 msgstr ""
 
@@ -436,7 +441,7 @@ msgstr ""
 msgid "Check the fields flagged above."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:126
+#: includes/class-ubac-kits-admin.php:128
 msgid "Choice"
 msgstr ""
 
@@ -456,7 +461,7 @@ msgstr ""
 msgid "Choose a variation for “%s”."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:207 includes/class-ubac-kits-admin.php:802
+#: includes/class-ubac-kits-admin.php:217 includes/class-ubac-kits-admin.php:868
 msgid "Choose an image"
 msgstr ""
 
@@ -464,7 +469,7 @@ msgstr ""
 msgid "Choose an option to see what is included"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:195
+#: includes/class-ubac-kits-admin.php:205
 msgid "Choose from the media library"
 msgstr ""
 
@@ -476,7 +481,7 @@ msgstr ""
 msgid "Close"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:916
+#: includes/class-ubac-kits-admin.php:989
 msgid "Collapse all"
 msgstr ""
 
@@ -484,11 +489,11 @@ msgstr ""
 msgid "Colour"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:191
+#: includes/class-ubac-kits-admin.php:200
 msgid "Coloured background"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:227 includes/class-ubac-kits-frontend.php:164
+#: includes/class-ubac-kits-admin.php:240 includes/class-ubac-kits-frontend.php:164
 msgid "Coming soon"
 msgstr ""
 
@@ -496,19 +501,19 @@ msgstr ""
 msgid "Complete the following steps:"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:334 includes/class-ubac-kits-frontend.php:151 includes/class-ubac-kits-order.php:246
+#: includes/class-ubac-kits-admin.php:388 includes/class-ubac-kits-frontend.php:151 includes/class-ubac-kits-order.php:246
 msgid "Component"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:123
+#: includes/class-ubac-kits-admin.php:125
 msgid "Component type"
 msgstr ""
 
-#: ubac-kits.php:259 includes/class-ubac-kits-admin.php:122 includes/class-ubac-kits-admin.php:417 includes/class-ubac-kits-settings.php:420
+#: includes/class-ubac-kits-admin.php:124 includes/class-ubac-kits-admin.php:483 includes/class-ubac-kits-settings.php:426 ubac-composite-products.php:275
 msgid "Components"
 msgstr ""
 
-#: includes/class-ubac-kits-product-type.php:24 includes/class-ubac-kits-settings.php:418
+#: includes/class-ubac-kits-product-type.php:70 includes/class-ubac-kits-settings.php:424
 msgid "Composite product"
 msgstr ""
 
@@ -517,15 +522,15 @@ msgstr ""
 msgid "Composite product “%1$s” configured from the order screen: %2$s."
 msgstr ""
 
-#: ubac-kits.php:193 includes/class-ubac-kits-settings.php:54 includes/class-ubac-kits-settings.php:55 includes/class-ubac-kits-settings.php:322 includes/class-ubac-kits-settings.php:413
+#: includes/class-ubac-kits-settings.php:60 includes/class-ubac-kits-settings.php:61 includes/class-ubac-kits-settings.php:328 includes/class-ubac-kits-settings.php:419 ubac-composite-products.php:209
 msgid "Composite products"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:367
+#: includes/class-ubac-kits-admin.php:429
 msgid "Computing…"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:298
+#: includes/class-ubac-kits-admin.php:344
 msgid "Condition on"
 msgstr ""
 
@@ -533,7 +538,7 @@ msgstr ""
 msgid "Configuration"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:387
+#: includes/class-ubac-kits-admin.php:453
 msgid "Configuration complete and valid"
 msgstr ""
 
@@ -541,11 +546,11 @@ msgstr ""
 msgid "Configuration deleted."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:261
+#: includes/class-ubac-kits-admin.php:283
 msgid "Configuration imported: save the product to apply it."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:388
+#: includes/class-ubac-kits-admin.php:454
 msgid "Configuration incomplete"
 msgstr ""
 
@@ -557,11 +562,11 @@ msgstr ""
 msgid "Configuration not found in your account."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:391
+#: includes/class-ubac-kits-admin.php:457
 msgid "Configuration serial (partial configuration):"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:390
+#: includes/class-ubac-kits-admin.php:456
 msgid "Configuration serial:"
 msgstr ""
 
@@ -581,7 +586,7 @@ msgstr ""
 msgid "Configuration “%s” saved."
 msgstr ""
 
-#: includes/class-ubac-kits-admin-order.php:170 includes/class-wc-product-ubac-kit.php:200
+#: includes/class-ubac-kits-admin-order.php:170 includes/class-wc-product-ubac-kit.php:201
 msgid "Configure"
 msgstr ""
 
@@ -597,7 +602,7 @@ msgstr ""
 msgid "Copy failed"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:692
+#: includes/class-ubac-kits-admin.php:758
 msgid "Corner shape"
 msgstr ""
 
@@ -605,7 +610,7 @@ msgstr ""
 msgid "Could not reach the server."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:185
+#: includes/class-ubac-kits-admin.php:194
 msgid "Create a category"
 msgstr ""
 
@@ -613,7 +618,7 @@ msgstr ""
 msgid "Create my account and save"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:332
+#: includes/class-ubac-kits-admin.php:386
 msgid "Customer"
 msgstr ""
 
@@ -621,7 +626,7 @@ msgstr ""
 msgid "Customer #%d (not found)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:303
+#: includes/class-ubac-kits-admin.php:349
 msgid "Customer condition: %s (import JSON)."
 msgstr ""
 
@@ -629,47 +634,39 @@ msgstr ""
 msgid "Customer exception with no customer: ignored."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:330 includes/class-ubac-kits-admin.php:419
+#: includes/class-ubac-kits-admin.php:384 includes/class-ubac-kits-admin.php:485
 msgid "Customer exceptions"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:205
+#: includes/class-ubac-kits-admin.php:215
 msgid "Customise the display"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:996
-msgid "Ubac Composite"
-msgstr ""
-
-#: ubac-kits.php:65
-msgid "Ubac Composite requires WooCommerce."
-msgstr ""
-
-#: includes/class-ubac-kits-admin.php:732
+#: includes/class-ubac-kits-admin.php:798
 msgid "Dark"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:304 includes/class-ubac-kits-admin.php:312
+#: includes/class-ubac-kits-admin.php:350 includes/class-ubac-kits-admin.php:358
 msgid "Dead end"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:293
+#: includes/class-ubac-kits-admin.php:337
 msgid "Dead end (stop the configurator with a message)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:377
+#: includes/class-ubac-kits-admin.php:441
 msgid "Dead end."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:192
+#: includes/class-ubac-kits-admin.php:202
 msgid "Default (%s)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:130
+#: includes/class-ubac-kits-admin.php:132
 msgid "Default (general appearance)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:161
+#: includes/class-ubac-kits-admin.php:163
 msgid "Default option"
 msgstr ""
 
@@ -677,7 +674,7 @@ msgstr ""
 msgid "Default product #%1$d is not among the options of component “%2$s”: ignored."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:160
+#: includes/class-ubac-kits-admin.php:162
 msgid "Default selection"
 msgstr ""
 
@@ -685,15 +682,15 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:245
+#: includes/class-ubac-kits-admin.php:260
 msgid "Delete the category “%s”?"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:251
+#: includes/class-ubac-kits-admin.php:269
 msgid "Delete the component “%s”?"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:256
+#: includes/class-ubac-kits-admin.php:277
 msgid "Delete the scenario “%s”?"
 msgstr ""
 
@@ -701,15 +698,15 @@ msgstr ""
 msgid "Delete this configuration?"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:225
+#: includes/class-ubac-kits-admin.php:238
 msgid "Delete this option"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:202 includes/class-ubac-kits-frontend.php:207 includes/class-ubac-kits-product-tabs.php:227
+#: includes/class-ubac-kits-admin.php:212 includes/class-ubac-kits-frontend.php:207 includes/class-ubac-kits-product-tabs.php:227
 msgid "Description"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:156
+#: includes/class-ubac-kits-admin.php:158
 msgid "Description (HTML allowed)"
 msgstr ""
 
@@ -717,27 +714,27 @@ msgstr ""
 msgid "Details"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:136
+#: includes/class-ubac-kits-admin.php:138
 msgid "Display group"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:188
+#: includes/class-ubac-kits-admin.php:197
 msgid "Display of the ranges:"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:200
+#: includes/class-ubac-kits-admin.php:210
 msgid "Displayed description (simple HTML)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:198
+#: includes/class-ubac-kits-admin.php:208
 msgid "Displayed title"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:151
+#: includes/class-ubac-kits-admin.php:153
 msgid "Displayed weight"
 msgstr ""
 
-#: ubac-kits.php:214 includes/class-ubac-kits-admin-order.php:201
+#: includes/class-ubac-kits-admin-order.php:201 ubac-composite-products.php:230
 msgid "Done"
 msgstr ""
 
@@ -753,7 +750,7 @@ msgstr ""
 msgid "Duplicate component identifier “%1$s”: renamed “%2$s”."
 msgstr ""
 
-#: ubac-kits.php:254
+#: ubac-composite-products.php:270
 msgid "Each one shows how many components and scenarios it has, and the address a shop front can read its schema from."
 msgstr ""
 
@@ -765,11 +762,11 @@ msgstr ""
 msgid "Email address"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:145
+#: includes/class-ubac-kits-admin.php:147
 msgid "Empty: the title of the component"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:118
+#: includes/class-ubac-kits-admin.php:119
 msgid "Error %s"
 msgstr ""
 
@@ -777,15 +774,15 @@ msgstr ""
 msgid "Estimated weight"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:386
+#: includes/class-ubac-kits-admin.php:452
 msgid "Estimated weight: %1$s %2$s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:308
+#: includes/class-ubac-kits-admin.php:354
 msgid "Every target"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:208
+#: includes/class-ubac-kits-admin.php:218
 msgid "Every variant"
 msgstr ""
 
@@ -809,23 +806,23 @@ msgstr ""
 msgid "Exception “%1$s”: “%2$s” is not restricted on “%3$s” (already public, or absent) — no effect."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:917
+#: includes/class-ubac-kits-admin.php:990
 msgid "Expand all"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:710 includes/class-ubac-kits-admin.php:718
+#: includes/class-ubac-kits-admin.php:776 includes/class-ubac-kits-admin.php:784
 msgid "Expanded"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:902
+#: includes/class-ubac-kits-admin.php:975
 msgid "Export"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:230
+#: includes/class-ubac-kits-admin.php:243
 msgid "Filled in: the card is no longer a choice, it opens this page."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:853
+#: includes/class-ubac-kits-admin.php:926
 msgid "Filter by target component"
 msgstr ""
 
@@ -841,15 +838,15 @@ msgstr ""
 msgid "First name"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:153
+#: includes/class-ubac-kits-admin.php:155
 msgid "Fixed value"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:355
+#: includes/class-ubac-kits-admin.php:413
 msgid "Generated rules (read only)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:356
+#: includes/class-ubac-kits-admin.php:414
 msgid "Generated rules: none (nothing is restricted)."
 msgstr ""
 
@@ -857,23 +854,23 @@ msgstr ""
 msgid "Go to"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:155
+#: includes/class-ubac-kits-admin.php:157
 msgid "Grams"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:688
+#: includes/class-ubac-kits-admin.php:754
 msgid "Grid"
 msgstr ""
 
-#: ubac-kits.php:260
+#: ubac-composite-products.php:276
 msgid "Group the parts, set what each one costs."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:209
+#: includes/class-ubac-kits-admin.php:219
 msgid "Help image"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:234
+#: includes/class-ubac-kits-admin.php:247
 msgid "Help image (back of the card)"
 msgstr ""
 
@@ -881,31 +878,31 @@ msgstr ""
 msgid "Hide details"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:290
+#: includes/class-ubac-kits-admin.php:334
 msgid "Hide options"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:292
+#: includes/class-ubac-kits-admin.php:336
 msgid "Hide the whole step"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:307
+#: includes/class-ubac-kits-admin.php:353
 msgid "Hides options"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:315
+#: includes/class-ubac-kits-admin.php:364
 msgid "Hides options of %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:305
+#: includes/class-ubac-kits-admin.php:351
 msgid "Hides the step"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:313
+#: includes/class-ubac-kits-admin.php:360
 msgid "Hides the step %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:314
+#: includes/class-ubac-kits-admin.php:362
 msgid "Hides the steps %s"
 msgstr ""
 
@@ -913,7 +910,7 @@ msgstr ""
 msgid "I agree to my details being stored so that I can be contacted about my configuration."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:699
+#: includes/class-ubac-kits-admin.php:765
 msgid "Icons"
 msgstr ""
 
@@ -925,27 +922,27 @@ msgstr ""
 msgid "Image"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:802
+#: includes/class-ubac-kits-admin.php:868
 msgid "Image for the “None” card"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:233
+#: includes/class-ubac-kits-admin.php:246
 msgid "Image of the option"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:236
+#: includes/class-ubac-kits-admin.php:249
 msgid "Image of the “None” card — %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:899
+#: includes/class-ubac-kits-admin.php:972
 msgid "Import"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:422
+#: includes/class-ubac-kits-admin.php:488
 msgid "Import / export"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:204 includes/class-ubac-kits-frontend.php:225
+#: includes/class-ubac-kits-admin.php:214 includes/class-ubac-kits-frontend.php:225
 msgid "Included products"
 msgstr ""
 
@@ -961,15 +958,15 @@ msgstr ""
 msgid "Incomplete configuration: finish it before saving."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:157
+#: includes/class-ubac-kits-admin.php:159
 msgid "Info bubble text (optional)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:706
+#: includes/class-ubac-kits-admin.php:772
 msgid "Info display (desktop)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:714
+#: includes/class-ubac-kits-admin.php:780
 msgid "Info display (mobile)"
 msgstr ""
 
@@ -977,15 +974,15 @@ msgstr ""
 msgid "Information about: %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:132
+#: includes/class-ubac-kits-admin.php:134
 msgid "Inline — one expandable row per option"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:259
+#: includes/class-ubac-kits-admin.php:281
 msgid "Invalid JSON: %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:260
+#: includes/class-ubac-kits-admin.php:282
 msgid "Invalid JSON: the “components” key is missing."
 msgstr ""
 
@@ -1008,7 +1005,8 @@ msgstr ""
 msgid "Invalid variation for “%s”."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:374 includes/class-ubac-kits-admin.php:375
+#. translators: 1: number of steps, 2: the steps themselves. */
+#: includes/class-ubac-kits-admin.php:437 includes/class-ubac-kits-admin.php:439
 msgid "Journey shown to the customer (%1$s step): %2$s"
 msgid_plural "Journey shown to the customer (%1$s steps): %2$s"
 msgstr[0] ""
@@ -1018,15 +1016,15 @@ msgstr[1] ""
 msgid "Label"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:356
+#: includes/class-ubac-kits-settings.php:362
 msgid "Label for the public price"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:355
+#: includes/class-ubac-kits-settings.php:361
 msgid "Label for the tier price"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:400
+#: includes/class-ubac-kits-settings.php:406
 msgid "Label taken from Ubac Pricing; change it there."
 msgstr ""
 
@@ -1034,11 +1032,11 @@ msgstr ""
 msgid "Last name"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:129
+#: includes/class-ubac-kits-admin.php:131
 msgid "Layout"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:731
+#: includes/class-ubac-kits-admin.php:797
 msgid "Light"
 msgstr ""
 
@@ -1047,7 +1045,7 @@ msgstr ""
 msgid "Lines removed: %s."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:228
+#: includes/class-ubac-kits-admin.php:241
 msgid "Link (optional)"
 msgstr ""
 
@@ -1075,11 +1073,11 @@ msgstr ""
 msgid "Log in to save your configuration."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:139
+#: includes/class-ubac-kits-admin.php:141
 msgid "Main (in the screen title)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:148
+#: includes/class-ubac-kits-admin.php:150
 msgid "Max quantity"
 msgstr ""
 
@@ -1087,11 +1085,11 @@ msgstr ""
 msgid "Media"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:294
+#: includes/class-ubac-kits-admin.php:338
 msgid "Message shown (dead end)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:147
+#: includes/class-ubac-kits-admin.php:149
 msgid "Min quantity"
 msgstr ""
 
@@ -1107,7 +1105,7 @@ msgstr ""
 msgid "Move up"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:128
+#: includes/class-ubac-kits-admin.php:130
 msgid "Multiple (several options, one row each)"
 msgstr ""
 
@@ -1123,23 +1121,23 @@ msgstr ""
 msgid "Name (optional)"
 msgstr ""
 
-#: ubac-kits.php:213
+#: ubac-composite-products.php:229
 msgid "Next"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:702 includes/class-ubac-kits-admin.php:725 includes/class-ubac-kits-frontend.php:189
+#: includes/class-ubac-kits-admin.php:768 includes/class-ubac-kits-admin.php:791 includes/class-ubac-kits-frontend.php:189
 msgid "No"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:430
+#: includes/class-ubac-kits-settings.php:436
 msgid "No composite products yet. Create a product of type “Composite product”."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:301
+#: includes/class-ubac-kits-admin.php:347
 msgid "No condition possible: always active."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:331
+#: includes/class-ubac-kits-admin.php:385
 msgid "No exception."
 msgstr ""
 
@@ -1151,11 +1149,11 @@ msgstr ""
 msgid "No included products"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:380
+#: includes/class-ubac-kits-admin.php:445
 msgid "No option available with these choices."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:250
+#: includes/class-ubac-kits-admin.php:267
 msgid "No option is attached to it."
 msgstr ""
 
@@ -1167,7 +1165,7 @@ msgstr ""
 msgid "No specifications entered"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:368
+#: includes/class-ubac-kits-admin.php:430
 msgid "No step is visible with these choices."
 msgstr ""
 
@@ -1180,27 +1178,27 @@ msgstr ""
 msgid "Not enough stock for “%s”."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:335
+#: includes/class-ubac-kits-admin.php:389
 msgid "Note (internal)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:339
+#: includes/class-ubac-kits-admin.php:393
 msgid "Nothing is restricted on this component."
 msgstr ""
 
-#: ubac-kits.php:264
+#: ubac-composite-products.php:280
 msgid "Offer ready-made combinations alongside the free choice."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:189
+#: includes/class-ubac-kits-admin.php:198
 msgid "On its own line"
 msgstr ""
 
-#: ubac-kits.php:267
+#: ubac-composite-products.php:283
 msgid "One price"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:338
+#: includes/class-ubac-kits-admin.php:392
 msgid "Only these, on top of the public ones:"
 msgstr ""
 
@@ -1208,15 +1206,15 @@ msgstr ""
 msgid "Open"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:393
+#: includes/class-ubac-kits-admin.php:459
 msgid "Open on the site"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:402
+#: includes/class-ubac-kits-settings.php:408
 msgid "Open the Ubac Pricing settings"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:149
+#: includes/class-ubac-kits-admin.php:151
 msgid "Optional"
 msgstr ""
 
@@ -1224,27 +1222,27 @@ msgstr ""
 msgid "Optional items"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:158
+#: includes/class-ubac-kits-admin.php:160
 msgid "Options (products)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:223
+#: includes/class-ubac-kits-admin.php:236
 msgid "Options of the branch"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:296
+#: includes/class-ubac-kits-admin.php:341
 msgid "Options to hide in “%s”"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:297
+#: includes/class-ubac-kits-admin.php:343
 msgid "Options to keep visible in “%s”"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:379
+#: includes/class-ubac-kits-admin.php:444
 msgid "Options unavailable (component renamed?)."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:169
+#: includes/class-ubac-kits-admin.php:173
 msgid "Options: %s"
 msgstr ""
 
@@ -1260,7 +1258,7 @@ msgstr ""
 msgid "Phone"
 msgstr ""
 
-#: ubac-kits.php:156
+#: ubac-composite-products.php:166
 msgid "Plugin website"
 msgstr ""
 
@@ -1280,15 +1278,15 @@ msgstr ""
 msgid "Product not found."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:124 includes/class-ubac-kits-admin.php:165
+#: includes/class-ubac-kits-admin.php:126 includes/class-ubac-kits-admin.php:167
 msgid "Products"
 msgstr ""
 
-#: ubac-kits.php:194 includes/class-ubac-kits-settings.php:323
+#: includes/class-ubac-kits-settings.php:329 ubac-composite-products.php:210
 msgid "Products built from parts the customer chooses."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:213
+#: includes/class-ubac-kits-admin.php:224
 msgid "Public visibility"
 msgstr ""
 
@@ -1296,55 +1294,55 @@ msgstr ""
 msgid "Quantity"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:423
+#: includes/class-ubac-kits-settings.php:429
 msgid "REST schema"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:186
+#: includes/class-ubac-kits-admin.php:195
 msgid "Range"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:187
+#: includes/class-ubac-kits-admin.php:196
 msgid "Range: no category."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:170
+#: includes/class-ubac-kits-admin.php:175
 msgid "Ranges: %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:97 includes/class-ubac-kits-supply.php:740 includes/class-ubac-kits-supply.php:813
+#: includes/class-ubac-kits-admin.php:97 includes/class-ubac-kits-supply.php:743 includes/class-ubac-kits-supply.php:816
 msgid "Remove"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:803
+#: includes/class-ubac-kits-admin.php:869
 msgid "Remove the image"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:394
+#: includes/class-ubac-kits-admin.php:460
 msgid "Reopens the configurator on these choices"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:389
+#: includes/class-ubac-kits-admin.php:455
 msgid "Reset"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:171
+#: includes/class-ubac-kits-admin.php:177
 msgid "Restricted: %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:295
+#: includes/class-ubac-kits-admin.php:339
 msgid "Resume at step"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:378
+#: includes/class-ubac-kits-admin.php:443
 msgid "Resume offered at step: %s"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:354
+#: includes/class-ubac-kits-settings.php:360
 msgid "Roles (comma separated)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:695
+#: includes/class-ubac-kits-admin.php:761
 msgid "Rounded"
 msgstr ""
 
@@ -1411,31 +1409,31 @@ msgstr ""
 msgid "Scenario “%s”: unknown target component; scenario ignored."
 msgstr ""
 
-#: ubac-kits.php:263 includes/class-ubac-kits-admin.php:286 includes/class-ubac-kits-admin.php:418 includes/class-ubac-kits-settings.php:421
+#: includes/class-ubac-kits-admin.php:330 includes/class-ubac-kits-admin.php:484 includes/class-ubac-kits-settings.php:427 ubac-composite-products.php:279
 msgid "Scenarios"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:370
+#: includes/class-ubac-kits-admin.php:432
 msgid "Screen %1$s — %2$s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:333
+#: includes/class-ubac-kits-admin.php:387
 msgid "Search for a customer (name, e-mail)…"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:159
+#: includes/class-ubac-kits-admin.php:161
 msgid "Search for a product…"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:848
+#: includes/class-ubac-kits-admin.php:921
 msgid "Search scenarios"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:850
+#: includes/class-ubac-kits-admin.php:923
 msgid "Search…"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:140
+#: includes/class-ubac-kits-admin.php:142
 msgid "Secondary (add-on, no title)"
 msgstr ""
 
@@ -1459,27 +1457,27 @@ msgstr ""
 msgid "Set my password"
 msgstr ""
 
-#: ubac-kits.php:129
+#: ubac-composite-products.php:139
 msgid "Settings"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:755
+#: includes/class-ubac-kits-admin.php:821
 msgid "Settings shared by every composite product"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:150
+#: includes/class-ubac-kits-admin.php:152
 msgid "Shipped on its own (otherwise its weight is added to the composite product parcel)"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:422
+#: includes/class-ubac-kits-settings.php:428
 msgid "Shipping class"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:333
+#: includes/class-ubac-kits-settings.php:339
 msgid "Shipping class for composite products"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:357
+#: includes/class-ubac-kits-settings.php:363
 msgid "Short label (summary)"
 msgstr ""
 
@@ -1487,47 +1485,47 @@ msgstr ""
 msgid "Show details"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:900
+#: includes/class-ubac-kits-admin.php:973
 msgid "Show export"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:758
+#: includes/class-ubac-kits-admin.php:824
 msgid "Show more info"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:291
+#: includes/class-ubac-kits-admin.php:335
 msgid "Show only these options"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:201
+#: includes/class-ubac-kits-admin.php:211
 msgid "Show the image"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:317
+#: includes/class-ubac-kits-admin.php:366
 msgid "Shows in %1$s only %2$s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:306
+#: includes/class-ubac-kits-admin.php:352
 msgid "Shows only"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:709 includes/class-ubac-kits-admin.php:716
+#: includes/class-ubac-kits-admin.php:775 includes/class-ubac-kits-admin.php:782
 msgid "Side"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:421
+#: includes/class-ubac-kits-admin.php:487
 msgid "Simulator"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:127
+#: includes/class-ubac-kits-admin.php:129
 msgid "Single (one option)"
 msgstr ""
 
-#: ubac-kits.php:215
+#: ubac-composite-products.php:231
 msgid "Skip"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:133
+#: includes/class-ubac-kits-admin.php:135
 msgid "Small — compact grid"
 msgstr ""
 
@@ -1535,7 +1533,7 @@ msgstr ""
 msgid "Some choices are no longer available and were removed:"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:203 includes/class-ubac-kits-frontend.php:208 includes/class-ubac-kits-product-tabs.php:247
+#: includes/class-ubac-kits-admin.php:213 includes/class-ubac-kits-frontend.php:208 includes/class-ubac-kits-product-tabs.php:247
 msgid "Specifications"
 msgstr ""
 
@@ -1544,11 +1542,11 @@ msgstr ""
 msgid "Specify the variation chosen for “%s”."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:694
+#: includes/class-ubac-kits-admin.php:760
 msgid "Square"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:419
+#: includes/class-ubac-kits-settings.php:425
 msgid "Status"
 msgstr ""
 
@@ -1556,19 +1554,19 @@ msgstr ""
 msgid "Step"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:383
+#: includes/class-ubac-kits-admin.php:449
 msgid "Step to fill in."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:371 includes/class-ubac-kits-frontend.php:139
+#: includes/class-ubac-kits-admin.php:433 includes/class-ubac-kits-frontend.php:139
 msgid "Summary"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:729
+#: includes/class-ubac-kits-admin.php:795
 msgid "Summary background"
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:768
+#: includes/class-ubac-kits-supply.php:771
 msgid "Supplied accessories"
 msgstr ""
 
@@ -1580,15 +1578,15 @@ msgstr ""
 msgid "Supplied with"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:287
+#: includes/class-ubac-kits-admin.php:331
 msgid "Target component"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:288
+#: includes/class-ubac-kits-admin.php:332
 msgid "Target components"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:144
+#: includes/class-ubac-kits-admin.php:146
 msgid "Text of the question"
 msgstr ""
 
@@ -1596,7 +1594,7 @@ msgstr ""
 msgid "The composite product could not be added to the order."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:952
+#: includes/class-ubac-kits-admin.php:1025
 msgid "The configuration could not be read: nothing was saved."
 msgstr ""
 
@@ -1638,11 +1636,11 @@ msgstr ""
 msgid "The product was added to your cart. Taking you to the cart…"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:974
+#: includes/class-ubac-kits-admin.php:1047
 msgid "The shipping class set for composite products (Ubac Composite settings) does not exist: shipping plugins will not recognise this product."
 msgstr ""
 
-#: ubac-kits.php:268
+#: ubac-composite-products.php:284
 msgid "The total follows the choices, in the cart and on the order."
 msgstr ""
 
@@ -1710,7 +1708,7 @@ msgstr ""
 msgid "This product’s information could not be loaded."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:405 includes/class-ubac-kits-admin.php:686
+#: includes/class-ubac-kits-admin.php:471 includes/class-ubac-kits-admin.php:752
 msgid "Thumbnail"
 msgstr ""
 
@@ -1718,15 +1716,15 @@ msgstr ""
 msgid "Tick this box so that we may store your details."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:135
+#: includes/class-ubac-kits-admin.php:137
 msgid "Tickable chips"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:353
+#: includes/class-ubac-kits-settings.php:359
 msgid "Tier"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:358
+#: includes/class-ubac-kits-settings.php:364
 msgid "Tier price excluding tax"
 msgstr ""
 
@@ -1734,7 +1732,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:138
+#: includes/class-ubac-kits-admin.php:140
 msgid "Title on the screen"
 msgstr ""
 
@@ -1746,11 +1744,11 @@ msgstr ""
 msgid "Too many requests from your connection. Try again in an hour."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:193
+#: includes/class-ubac-kits-admin.php:203
 msgid "Tooltip image or video (optional)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:237
+#: includes/class-ubac-kits-admin.php:251
 msgid "Tooltip image or video “%s”"
 msgstr ""
 
@@ -1758,15 +1756,15 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:384
+#: includes/class-ubac-kits-admin.php:450
 msgid "Total:"
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:348
+#: includes/class-ubac-kits-settings.php:354
 msgid "Trade price tiers"
 msgstr ""
 
-#: ubac-kits.php:248
+#: ubac-composite-products.php:264
 msgid "Trade prices"
 msgstr ""
 
@@ -1774,15 +1772,23 @@ msgstr ""
 msgid "Two exceptions for customer #%1$d on “%2$s”: merged."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:239 includes/class-ubac-kits-admin.php:802
+#: includes/class-ubac-kits-admin.php:1069
+msgid "Ubac Composite"
+msgstr ""
+
+#: ubac-composite-products.php:75
+msgid "Ubac Composite requires WooCommerce."
+msgstr ""
+
+#: includes/class-ubac-kits-admin.php:253 includes/class-ubac-kits-admin.php:868
 msgid "Use this image"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:240
+#: includes/class-ubac-kits-admin.php:254
 msgid "Use this media"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:238
+#: includes/class-ubac-kits-admin.php:252
 msgid "Use this visual"
 msgstr ""
 
@@ -1791,7 +1797,7 @@ msgid "Variation"
 msgstr ""
 
 #. translators: 1: variation, 2: errors */
-#: includes/class-ubac-kits-supply.php:845
+#: includes/class-ubac-kits-supply.php:880
 msgid "Variation #%1$d: accessories not saved. %2$s"
 msgstr ""
 
@@ -1799,16 +1805,16 @@ msgstr ""
 msgid "Variation display (bundle plugin fields)."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:210
+#: includes/class-ubac-kits-admin.php:220
 msgid "Variations offered"
 msgstr ""
 
 #. translators: %s: plugin version number. */
-#: ubac-kits.php:147
+#: ubac-composite-products.php:157
 msgid "Version %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:396
+#: includes/class-ubac-kits-admin.php:462
 msgid "View as:"
 msgstr ""
 
@@ -1820,39 +1826,39 @@ msgstr ""
 msgid "View my configurations"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:395
+#: includes/class-ubac-kits-admin.php:461
 msgid "Visitor / customer with no exception"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:398 includes/class-ubac-kits-admin.php:420
+#: includes/class-ubac-kits-admin.php:464 includes/class-ubac-kits-admin.php:486
 msgid "Warnings"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:152
+#: includes/class-ubac-kits-admin.php:154
 msgid "Weight of the products"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:154
+#: includes/class-ubac-kits-admin.php:156
 msgid "Weight of the products minus…"
 msgstr ""
 
-#: ubac-kits.php:243
+#: ubac-composite-products.php:259
 msgid "Where the parcel comes from"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:131
+#: includes/class-ubac-kits-admin.php:133
 msgid "With image — cards in a grid"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:399
+#: includes/class-ubac-kits-admin.php:465
 msgid "Worth checking"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:701 includes/class-ubac-kits-admin.php:724 includes/class-ubac-kits-admin.php:763 includes/class-ubac-kits-frontend.php:188
+#: includes/class-ubac-kits-admin.php:767 includes/class-ubac-kits-admin.php:790 includes/class-ubac-kits-admin.php:829 includes/class-ubac-kits-frontend.php:188
 msgid "Yes"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:143
+#: includes/class-ubac-kits-admin.php:145
 msgid "Yes / no question"
 msgstr ""
 
@@ -1860,7 +1866,7 @@ msgstr ""
 msgid "You already have %d saved configurations: delete one from My account › My configurations."
 msgstr ""
 
-#: ubac-kits.php:217
+#: ubac-composite-products.php:233
 msgid "You are not allowed to view this page."
 msgstr ""
 
@@ -1872,7 +1878,7 @@ msgstr ""
 msgid "Your choice is no longer offered: please choose again."
 msgstr ""
 
-#: ubac-kits.php:253
+#: ubac-composite-products.php:269
 msgid "Your composite products"
 msgstr ""
 
@@ -1888,11 +1894,11 @@ msgstr ""
 msgid "Your session has expired: reload the page and try again."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:211
+#: includes/class-ubac-kits-admin.php:221
 msgid "all"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:409
+#: includes/class-ubac-kits-admin.php:475
 msgid "card"
 msgstr ""
 
@@ -1904,55 +1910,55 @@ msgstr ""
 msgid "coming soon"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:325
+#: includes/class-ubac-kits-admin.php:377
 msgid "customer #%s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:326
+#: includes/class-ubac-kits-admin.php:379
 msgid "customer ∈ {%s}"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:327
+#: includes/class-ubac-kits-admin.php:381
 msgid "customer ∉ {%s}"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:199
+#: includes/class-ubac-kits-admin.php:209
 msgid "e.g. Best seller"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:809
+#: includes/class-ubac-kits-admin.php:875
 msgid "e.g. I do not need one"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:226
+#: includes/class-ubac-kits-admin.php:239
 msgid "e.g. New"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:336
+#: includes/class-ubac-kits-admin.php:390
 msgid "e.g. loyal customer, agreement of 12/09"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:352
+#: includes/class-ubac-kits-admin.php:410
 msgid "every one of its variants"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:172
+#: includes/class-ubac-kits-admin.php:178
 msgid "everything is public"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:410
+#: includes/class-ubac-kits-admin.php:476
 msgid "extended"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:363
+#: includes/class-ubac-kits-admin.php:424
 msgid "for %s only"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:362
+#: includes/class-ubac-kits-admin.php:422
 msgid "for everyone"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:364
+#: includes/class-ubac-kits-admin.php:426
 msgid "for everyone, except %s"
 msgstr ""
 
@@ -1960,11 +1966,11 @@ msgstr ""
 msgid "generated from the label"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:300
+#: includes/class-ubac-kits-admin.php:346
 msgid "is none of"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:299
+#: includes/class-ubac-kits-admin.php:345
 msgid "is one of"
 msgstr ""
 
@@ -1972,7 +1978,7 @@ msgstr ""
 msgid "more info…"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:166
+#: includes/class-ubac-kits-admin.php:168
 msgid "multiple choice"
 msgstr ""
 
@@ -1988,43 +1994,43 @@ msgstr ""
 msgid "no selection"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:392
+#: includes/class-ubac-kits-admin.php:458
 msgid "no serial as long as no choice is made."
 msgstr ""
 
-#: includes/class-ubac-kits-settings.php:448
+#: includes/class-ubac-kits-settings.php:454
 msgid "none"
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:800
+#: includes/class-ubac-kits-supply.php:803
 msgid "not found"
 msgstr ""
 
-#: includes/class-ubac-kits-supply.php:802
+#: includes/class-ubac-kits-supply.php:805
 msgid "not purchasable, ignored in the cart"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:351
+#: includes/class-ubac-kits-admin.php:409
 msgid "nothing restricted"
 msgstr ""
 
-#: ubac-kits.php:216
+#: ubac-composite-products.php:232
 msgid "of"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:167
+#: includes/class-ubac-kits-admin.php:169
 msgid "optional"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:194
+#: includes/class-ubac-kits-admin.php:204
 msgid "or a video link (YouTube, Vimeo, .mp4 file)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:229
+#: includes/class-ubac-kits-admin.php:242
 msgid "page slug (contact) or https://…"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:214
+#: includes/class-ubac-kits-admin.php:225
 msgid "public"
 msgstr ""
 
@@ -2032,35 +2038,35 @@ msgstr ""
 msgid "required"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:215
+#: includes/class-ubac-kits-admin.php:226
 msgid "restricted"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:216
+#: includes/class-ubac-kits-admin.php:227
 msgid "restricted (every variant)"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:212
+#: includes/class-ubac-kits-admin.php:223
 msgid "restricted on %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:406
+#: includes/class-ubac-kits-admin.php:472
 msgid "rounded"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:137
+#: includes/class-ubac-kits-admin.php:139
 msgid "same value = same screen"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:168
+#: includes/class-ubac-kits-admin.php:171
 msgid "screen: %s"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:408
+#: includes/class-ubac-kits-admin.php:474
 msgid "side"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:407
+#: includes/class-ubac-kits-admin.php:473
 msgid "square"
 msgstr ""
 
@@ -2068,27 +2074,27 @@ msgstr ""
 msgid "yes"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:176
+#: includes/class-ubac-kits-admin.php:182
 msgid "— Automatic (the chosen card of the first component on the screen) —"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:382
+#: includes/class-ubac-kits-admin.php:448
 msgid "— Choose a variant —"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:179
+#: includes/class-ubac-kits-admin.php:186
 msgid "— Chosen card —"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:218
+#: includes/class-ubac-kits-admin.php:229
 msgid "— No selection —"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:107 includes/class-ubac-kits-settings.php:336
+#: includes/class-ubac-kits-admin.php:107 includes/class-ubac-kits-settings.php:342
 msgid "— None —"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:381
+#: includes/class-ubac-kits-admin.php:447
 msgid "— Variant of %s —"
 msgstr ""
 
@@ -2209,23 +2215,23 @@ msgstr ""
 msgid "“%s”: too many combinations to explore, so the dead-end check could not run. Check it by hand."
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:217
+#: includes/class-ubac-kits-admin.php:228
 msgid "“None” card"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:768
+#: includes/class-ubac-kits-admin.php:834
 msgid "“None” card image"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:807
+#: includes/class-ubac-kits-admin.php:873
 msgid "“None” card text"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:722
+#: includes/class-ubac-kits-admin.php:788
 msgid "“Select” button"
 msgstr ""
 
-#: includes/class-ubac-kits-admin.php:142
+#: includes/class-ubac-kits-admin.php:144
 msgid "“Select” card"
 msgstr ""
 

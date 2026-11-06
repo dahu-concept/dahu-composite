@@ -180,7 +180,7 @@ class Ubac_Kits_Cart {
 	public static function block_direct_add( $passed, $product_id ) {
 		$product = wc_get_product( $product_id );
 		if ( $product instanceof WC_Product_Ubac_Kit ) {
-			wc_add_notice( __( 'This product must be configured before it can be added to the cart.', 'ubac-kits' ), 'error' );
+			wc_add_notice( __( 'This product must be configured before it can be added to the cart.', 'ubac-composite-products' ), 'error' );
 			return false;
 		}
 		return $passed;
@@ -221,7 +221,7 @@ class Ubac_Kits_Cart {
 		if ( ! $validation['valid'] ) {
 			return new WP_Error(
 				'ubac_kit_invalid',
-				__( 'The configuration is incomplete or invalid.', 'ubac-kits' ),
+				__( 'The configuration is incomplete or invalid.', 'ubac-composite-products' ),
 				array(
 					'status'     => 400,
 					'validation' => $validation,
@@ -249,7 +249,7 @@ class Ubac_Kits_Cart {
 	public static function add_kit_to_cart( WC_Product_Ubac_Kit $kit, $raw_selections, $quantity = 1 ) {
 		self::ensure_cart();
 		if ( ! WC()->cart ) {
-			return new WP_Error( 'ubac_kit_no_cart', __( 'Cart unavailable.', 'ubac-kits' ), array( 'status' => 500 ) );
+			return new WP_Error( 'ubac_kit_no_cart', __( 'Cart unavailable.', 'ubac-composite-products' ), array( 'status' => 500 ) );
 		}
 
 		$quantity = max( 1, (int) $quantity );
@@ -283,7 +283,7 @@ class Ubac_Kits_Cart {
 		);
 
 		if ( ! $container_key ) {
-			$failure_message = __( 'The product could not be added to the cart.', 'ubac-kits' );
+			$failure_message = __( 'The product could not be added to the cart.', 'ubac-composite-products' );
 		} else {
 			foreach ( $lines as $line ) {
 				$child_qty = (int) $line['quantity'] * $quantity;
@@ -314,7 +314,7 @@ class Ubac_Kits_Cart {
 
 				if ( ! $result || is_wp_error( $result ) ) {
 					/* translators: %s: product */
-					$failure_message = sprintf( __( '“%s” could not be added to the cart.', 'ubac-kits' ), $line['name'] );
+					$failure_message = sprintf( __( '“%s” could not be added to the cart.', 'ubac-composite-products' ), $line['name'] );
 					if ( is_wp_error( $result ) ) {
 						$failure_message .= ' ' . $result->get_error_message();
 					}
@@ -324,7 +324,7 @@ class Ubac_Kits_Cart {
 			}
 
 			if ( ! $failure_message && empty( $child_keys ) ) {
-				$failure_message = __( 'Select at least one component.', 'ubac-kits' );
+				$failure_message = __( 'Select at least one component.', 'ubac-composite-products' );
 			}
 		}
 
@@ -369,7 +369,7 @@ class Ubac_Kits_Cart {
 	 */
 	private static function add_bundle_child( array $line, array $selection, $qty, array $child_data ) {
 		if ( ! function_exists( 'WC_PB' ) || ! WC_PB()->cart ) {
-			return new WP_Error( 'ubac_kit_pb_missing', __( 'This component requires a product bundle plugin.', 'ubac-kits' ) );
+			return new WP_Error( 'ubac_kit_pb_missing', __( 'This component requires a product bundle plugin.', 'ubac-composite-products' ) );
 		}
 		$bundle = wc_get_product( $line['product_id'] );
 		if ( ! $bundle ) {
@@ -594,7 +594,7 @@ class Ubac_Kits_Cart {
 		$cart->set_cart_contents( $contents );
 
 		if ( $kit_removed && function_exists( 'wc_add_notice' ) && ! wp_doing_ajax() ) {
-			wc_add_notice( __( 'An incomplete product was removed from your cart.', 'ubac-kits' ), 'notice' );
+			wc_add_notice( __( 'An incomplete product was removed from your cart.', 'ubac-composite-products' ), 'notice' );
 		}
 	}
 

@@ -574,7 +574,7 @@ class Ubac_Kits_Included {
 		 *
 		 * @param string $label Label.
 		 */
-		$label = apply_filters( 'ubac_kits_includes_label', __( 'Includes', 'ubac-kits' ) );
+		$label = apply_filters( 'ubac_kits_includes_label', __( 'Includes', 'ubac-composite-products' ) );
 
 		return (string) $label;
 	}
@@ -711,25 +711,25 @@ class Ubac_Kits_Included {
 	public static function store_api_cart_item_schema() {
 		return array(
 			'bundled_by'        => array(
-				'description' => __( 'Cart key of the variation supplying this accessory.', 'ubac-kits' ),
+				'description' => __( 'Cart key of the variation supplying this accessory.', 'ubac-composite-products' ),
 				'type'        => array( 'string', 'null' ),
 				'context'     => array( 'view', 'edit' ),
 				'readonly'    => true,
 			),
 			'bundled_items'     => array(
-				'description' => __( 'Cart keys of the accessories supplied with this variation.', 'ubac-kits' ),
+				'description' => __( 'Cart keys of the accessories supplied with this variation.', 'ubac-composite-products' ),
 				'type'        => array( 'array', 'null' ),
 				'context'     => array( 'view', 'edit' ),
 				'readonly'    => true,
 			),
 			'bundle_data'       => array(
-				'description' => __( 'Variation display (bundle plugin fields).', 'ubac-kits' ),
+				'description' => __( 'Variation display (bundle plugin fields).', 'ubac-composite-products' ),
 				'type'        => array( 'object', 'null' ),
 				'context'     => array( 'view', 'edit' ),
 				'readonly'    => true,
 			),
 			'bundled_item_data' => array(
-				'description' => __( 'Accessory display (bundle plugin fields).', 'ubac-kits' ),
+				'description' => __( 'Accessory display (bundle plugin fields).', 'ubac-composite-products' ),
 				'type'        => array( 'object', 'null' ),
 				'context'     => array( 'view', 'edit' ),
 				'readonly'    => true,

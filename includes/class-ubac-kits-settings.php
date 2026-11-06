@@ -57,8 +57,8 @@ class Ubac_Kits_Settings {
 	public static function menu() {
 		self::$hook = add_submenu_page(
 			'woocommerce',
-			__( 'Composite products', 'ubac-kits' ),
-			__( 'Composite products', 'ubac-kits' ),
+			__( 'Composite products', 'ubac-composite-products' ),
+			__( 'Composite products', 'ubac-composite-products' ),
 			'manage_woocommerce',
 			UBAC_KITS_SETTINGS_SLUG,
 			array( __CLASS__, 'render' )
@@ -325,8 +325,8 @@ class Ubac_Kits_Settings {
 		?>
 		<div class="wrap ubac-ui">
 			<div class="ubac-ui-head">
-				<h1 class="ubac-ui-head__title"><?php esc_html_e( 'Composite products', 'ubac-kits' ); ?></h1>
-				<p class="ubac-ui-head__sub"><?php esc_html_e( 'Products built from parts the customer chooses.', 'ubac-kits' ); ?></p>
+				<h1 class="ubac-ui-head__title"><?php esc_html_e( 'Composite products', 'ubac-composite-products' ); ?></h1>
+				<p class="ubac-ui-head__sub"><?php esc_html_e( 'Products built from parts the customer chooses.', 'ubac-composite-products' ); ?></p>
 			</div>
 
 			<hr class="wp-header-end">
@@ -336,10 +336,10 @@ class Ubac_Kits_Settings {
 				<div class="ubac-ui-card">
 				<table class="form-table" role="presentation">
 					<tr>
-						<th scope="row"><label for="ubac-kits-shipping-class"><?php esc_html_e( 'Shipping class for composite products', 'ubac-kits' ); ?></label></th>
+						<th scope="row"><label for="ubac-kits-shipping-class"><?php esc_html_e( 'Shipping class for composite products', 'ubac-composite-products' ); ?></label></th>
 						<td>
 							<select id="ubac-kits-shipping-class" name="<?php echo esc_attr( self::OPTION_SHIPPING_CLASS ); ?>">
-								<option value=""><?php esc_html_e( '— None —', 'ubac-kits' ); ?></option>
+								<option value=""><?php esc_html_e( '— None —', 'ubac-composite-products' ); ?></option>
 								<?php foreach ( is_array( $classes ) ? $classes : array() as $term ) : ?>
 									<option value="<?php echo esc_attr( $term->slug ); ?>" <?php selected( $current, $term->slug ); ?>><?php echo esc_html( $term->name . ' (' . $term->slug . ')' ); ?></option>
 								<?php endforeach; ?>
@@ -351,17 +351,17 @@ class Ubac_Kits_Settings {
 
 				<div class="ubac-ui-card">
 				<div class="ubac-ui-card__head">
-					<h2 class="ubac-ui-card__title"><?php esc_html_e( 'Trade price tiers', 'ubac-kits' ); ?></h2>
+					<h2 class="ubac-ui-card__title"><?php esc_html_e( 'Trade price tiers', 'ubac-composite-products' ); ?></h2>
 				</div>
 				<table class="widefat striped ubac-kit-settings__table">
 					<thead>
 						<tr>
-							<th><?php esc_html_e( 'Tier', 'ubac-kits' ); ?></th>
-							<th><?php esc_html_e( 'Roles (comma separated)', 'ubac-kits' ); ?></th>
-							<th><?php esc_html_e( 'Label for the tier price', 'ubac-kits' ); ?></th>
-							<th><?php esc_html_e( 'Label for the public price', 'ubac-kits' ); ?></th>
-							<th><?php esc_html_e( 'Short label (summary)', 'ubac-kits' ); ?></th>
-							<th><?php esc_html_e( 'Tier price excluding tax', 'ubac-kits' ); ?></th>
+							<th><?php esc_html_e( 'Tier', 'ubac-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Roles (comma separated)', 'ubac-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Label for the tier price', 'ubac-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Label for the public price', 'ubac-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Short label (summary)', 'ubac-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Tier price excluding tax', 'ubac-composite-products' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -403,9 +403,9 @@ class Ubac_Kits_Settings {
 				<?php if ( $shared_any ) : ?>
 					<p class="description">
 						<sup>*</sup>
-						<?php esc_html_e( 'Label taken from Ubac Pricing; change it there.', 'ubac-kits' ); ?>
+						<?php esc_html_e( 'Label taken from Ubac Pricing; change it there.', 'ubac-composite-products' ); ?>
 						<?php if ( is_callable( array( 'Ubac_Pricing_Settings', 'get_settings_url' ) ) ) : ?>
-							<a href="<?php echo esc_url( Ubac_Pricing_Settings::get_settings_url() ); ?>"><?php esc_html_e( 'Open the Ubac Pricing settings', 'ubac-kits' ); ?></a>
+							<a href="<?php echo esc_url( Ubac_Pricing_Settings::get_settings_url() ); ?>"><?php esc_html_e( 'Open the Ubac Pricing settings', 'ubac-composite-products' ); ?></a>
 						<?php endif; ?>
 					</p>
 				<?php endif; ?>
@@ -416,27 +416,27 @@ class Ubac_Kits_Settings {
 
 			<div class="ubac-ui-card">
 			<div class="ubac-ui-card__head">
-				<h2 class="ubac-ui-card__title"><?php esc_html_e( 'Composite products', 'ubac-kits' ); ?></h2>
+				<h2 class="ubac-ui-card__title"><?php esc_html_e( 'Composite products', 'ubac-composite-products' ); ?></h2>
 			</div>
 			<table class="ubac-ui-table">
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Composite product', 'ubac-kits' ); ?></th>
-						<th><?php esc_html_e( 'Status', 'ubac-kits' ); ?></th>
-						<th><?php esc_html_e( 'Components', 'ubac-kits' ); ?></th>
-						<th><?php esc_html_e( 'Scenarios', 'ubac-kits' ); ?></th>
-						<th><?php esc_html_e( 'Shipping class', 'ubac-kits' ); ?></th>
-						<th><?php esc_html_e( 'REST schema', 'ubac-kits' ); ?></th>
+						<th><?php esc_html_e( 'Composite product', 'ubac-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'Status', 'ubac-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'Components', 'ubac-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'Scenarios', 'ubac-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'Shipping class', 'ubac-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'REST schema', 'ubac-composite-products' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
 				<?php if ( empty( $kits ) ) : ?>
 					<tr>
 						<td colspan="6">
-							<p class="ubac-ui-hint"><?php esc_html_e( 'No composite products yet. Create a product of type “Composite product”.', 'ubac-kits' ); ?></p>
+							<p class="ubac-ui-hint"><?php esc_html_e( 'No composite products yet. Create a product of type “Composite product”.', 'ubac-composite-products' ); ?></p>
 							<p>
 								<a class="ubac-ui-btn" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=product' ) ); ?>">
-									<?php esc_html_e( 'Add a product', 'ubac-kits' ); ?>
+									<?php esc_html_e( 'Add a product', 'ubac-composite-products' ); ?>
 								</a>
 							</p>
 						</td>
@@ -451,7 +451,7 @@ class Ubac_Kits_Settings {
 						<td><?php echo esc_html( $kit->get_status() ); ?></td>
 						<td><?php echo (int) count( $kit->get_kit_components() ); ?></td>
 						<td><?php echo (int) count( $kit->get_kit_scenarios() ); ?></td>
-						<td><?php echo $class_term && ! is_wp_error( $class_term ) ? esc_html( $class_term->slug ) : '<strong class="ubac-kit-settings__missing">' . esc_html__( 'none', 'ubac-kits' ) . '</strong>'; ?></td>
+						<td><?php echo $class_term && ! is_wp_error( $class_term ) ? esc_html( $class_term->slug ) : '<strong class="ubac-kit-settings__missing">' . esc_html__( 'none', 'ubac-composite-products' ) . '</strong>'; ?></td>
 						<td><code><?php echo esc_html( rest_url( Ubac_Kits_Rest::NAMESPACE_V1 . '/schema/' . $kit->get_id() ) ); ?></code></td>
 					</tr>
 				<?php endforeach; ?>

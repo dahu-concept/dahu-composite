@@ -89,403 +89,403 @@ class Ubac_Kits_Admin {
 	private static function script_i18n() {
 		return array(
 			// Shared actions and labels, reused by several boxes.
-			'moveUp'                    => __( 'Move up', 'ubac-kits' ),
-			'moveDown'                  => __( 'Move down', 'ubac-kits' ),
-			'duplicate'                 => __( 'Duplicate', 'ubac-kits' ),
-			'delete'                    => __( 'Delete', 'ubac-kits' ),
-			'change'                    => __( 'Change', 'ubac-kits' ),
-			'remove'                    => __( 'Remove', 'ubac-kits' ),
-			'choose'                    => __( 'Choose', 'ubac-kits' ),
-			'image'                     => __( 'Image', 'ubac-kits' ),
-			'media'                     => __( 'Media', 'ubac-kits' ),
-			'labelField'                => __( 'Label', 'ubac-kits' ),
-			'titleField'                => __( 'Title', 'ubac-kits' ),
-			'badgeField'                => __( 'Badge', 'ubac-kits' ),
-			'identifier'                => __( 'Identifier', 'ubac-kits' ),
-			'identifierFromLabel'       => __( 'generated from the label', 'ubac-kits' ),
-			'colourField'               => __( 'Colour', 'ubac-kits' ),
-			'optionNone'                => __( '— None —', 'ubac-kits' ),
-			'noLabel'                   => __( '(no label)', 'ubac-kits' ),
-			'untitled'                  => __( '(untitled)', 'ubac-kits' ),
-			'none'                      => __( 'None', 'ubac-kits' ),
-			'yes'                       => __( 'yes', 'ubac-kits' ),
-			'no'                        => __( 'no', 'ubac-kits' ),
-			'copy'                      => __( 'Copy', 'ubac-kits' ),
-			'copied'                    => __( 'Copied', 'ubac-kits' ),
-			'copyFailed'                => __( 'Copy failed', 'ubac-kits' ),
-			'dragToReorder'             => __( 'Drag to reorder', 'ubac-kits' ),
-			'cannotBeUndone'            => __( 'This cannot be undone without reloading the page.', 'ubac-kits' ),
+			'moveUp'                    => __( 'Move up', 'ubac-composite-products' ),
+			'moveDown'                  => __( 'Move down', 'ubac-composite-products' ),
+			'duplicate'                 => __( 'Duplicate', 'ubac-composite-products' ),
+			'delete'                    => __( 'Delete', 'ubac-composite-products' ),
+			'change'                    => __( 'Change', 'ubac-composite-products' ),
+			'remove'                    => __( 'Remove', 'ubac-composite-products' ),
+			'choose'                    => __( 'Choose', 'ubac-composite-products' ),
+			'image'                     => __( 'Image', 'ubac-composite-products' ),
+			'media'                     => __( 'Media', 'ubac-composite-products' ),
+			'labelField'                => __( 'Label', 'ubac-composite-products' ),
+			'titleField'                => __( 'Title', 'ubac-composite-products' ),
+			'badgeField'                => __( 'Badge', 'ubac-composite-products' ),
+			'identifier'                => __( 'Identifier', 'ubac-composite-products' ),
+			'identifierFromLabel'       => __( 'generated from the label', 'ubac-composite-products' ),
+			'colourField'               => __( 'Colour', 'ubac-composite-products' ),
+			'optionNone'                => __( '— None —', 'ubac-composite-products' ),
+			'noLabel'                   => __( '(no label)', 'ubac-composite-products' ),
+			'untitled'                  => __( '(untitled)', 'ubac-composite-products' ),
+			'none'                      => __( 'None', 'ubac-composite-products' ),
+			'yes'                       => __( 'yes', 'ubac-composite-products' ),
+			'no'                        => __( 'no', 'ubac-composite-products' ),
+			'copy'                      => __( 'Copy', 'ubac-composite-products' ),
+			'copied'                    => __( 'Copied', 'ubac-composite-products' ),
+			'copyFailed'                => __( 'Copy failed', 'ubac-composite-products' ),
+			'dragToReorder'             => __( 'Drag to reorder', 'ubac-composite-products' ),
+			'cannotBeUndone'            => __( 'This cannot be undone without reloading the page.', 'ubac-composite-products' ),
 			/* translators: %s: HTTP status code returned by the request. */
-			'httpError'                 => __( 'Error %s', 'ubac-kits' ),
+			'httpError'                 => __( 'Error %s', 'ubac-composite-products' ),
 			/* translators: %s: name of the item that could not be found. */
-			'notFound'                  => __( '%s (not found)', 'ubac-kits' ),
+			'notFound'                  => __( '%s (not found)', 'ubac-composite-products' ),
 
 			// Component box: type, choice mode, screen and quantity.
-			'componentsBox'             => __( 'Components', 'ubac-kits' ),
-			'componentType'             => __( 'Component type', 'ubac-kits' ),
-			'typeProducts'              => __( 'Products', 'ubac-kits' ),
-			'typeBranch'                => __( 'Branch (no product)', 'ubac-kits' ),
-			'choiceField'               => __( 'Choice', 'ubac-kits' ),
-			'choiceSingle'              => __( 'Single (one option)', 'ubac-kits' ),
-			'choiceMultiple'            => __( 'Multiple (several options, one row each)', 'ubac-kits' ),
-			'layoutField'               => __( 'Layout', 'ubac-kits' ),
-			'styleDefault'              => __( 'Default (general appearance)', 'ubac-kits' ),
-			'styleImage'                => __( 'With image — cards in a grid', 'ubac-kits' ),
-			'styleRow'                  => __( 'Inline — one expandable row per option', 'ubac-kits' ),
-			'styleSmall'                => __( 'Small — compact grid', 'ubac-kits' ),
-			'styleIcon'                 => __( 'Category icon', 'ubac-kits' ),
-			'styleChips'                => __( 'Tickable chips', 'ubac-kits' ),
-			'displayGroup'              => __( 'Display group', 'ubac-kits' ),
-			'displayGroupPlaceholder'   => __( 'same value = same screen', 'ubac-kits' ),
-			'titleRoleField'            => __( 'Title on the screen', 'ubac-kits' ),
-			'titleRolePrimary'          => __( 'Main (in the screen title)', 'ubac-kits' ),
-			'titleRoleSecondary'        => __( 'Secondary (add-on, no title)', 'ubac-kits' ),
-			'presentationField'         => __( 'Add-on presentation', 'ubac-kits' ),
-			'presentationCard'          => __( '“Select” card', 'ubac-kits' ),
-			'presentationQuestion'      => __( 'Yes / no question', 'ubac-kits' ),
-			'questionField'             => __( 'Text of the question', 'ubac-kits' ),
-			'questionPlaceholder'       => __( 'Empty: the title of the component', 'ubac-kits' ),
-			'quantityEditable'          => __( 'Adjustable quantity', 'ubac-kits' ),
-			'quantityMin'               => __( 'Min quantity', 'ubac-kits' ),
-			'quantityMax'               => __( 'Max quantity', 'ubac-kits' ),
-			'optionalField'             => __( 'Optional', 'ubac-kits' ),
-			'shippedIndividually'       => __( 'Shipped on its own (otherwise its weight is added to the composite product parcel)', 'ubac-kits' ),
-			'weightModeField'           => __( 'Displayed weight', 'ubac-kits' ),
-			'weightModeProducts'        => __( 'Weight of the products', 'ubac-kits' ),
-			'weightModeFixed'           => __( 'Fixed value', 'ubac-kits' ),
-			'weightModeSubtract'        => __( 'Weight of the products minus…', 'ubac-kits' ),
-			'weightGrams'               => __( 'Grams', 'ubac-kits' ),
-			'descriptionField'          => __( 'Description (HTML allowed)', 'ubac-kits' ),
-			'infoBubbleText'            => __( 'Info bubble text (optional)', 'ubac-kits' ),
-			'optionsProductsField'      => __( 'Options (products)', 'ubac-kits' ),
-			'searchProduct'             => __( 'Search for a product…', 'ubac-kits' ),
-			'defaultSelectionField'     => __( 'Default selection', 'ubac-kits' ),
-			'defaultOptionField'        => __( 'Default option', 'ubac-kits' ),
+			'componentsBox'             => __( 'Components', 'ubac-composite-products' ),
+			'componentType'             => __( 'Component type', 'ubac-composite-products' ),
+			'typeProducts'              => __( 'Products', 'ubac-composite-products' ),
+			'typeBranch'                => __( 'Branch (no product)', 'ubac-composite-products' ),
+			'choiceField'               => __( 'Choice', 'ubac-composite-products' ),
+			'choiceSingle'              => __( 'Single (one option)', 'ubac-composite-products' ),
+			'choiceMultiple'            => __( 'Multiple (several options, one row each)', 'ubac-composite-products' ),
+			'layoutField'               => __( 'Layout', 'ubac-composite-products' ),
+			'styleDefault'              => __( 'Default (general appearance)', 'ubac-composite-products' ),
+			'styleImage'                => __( 'With image — cards in a grid', 'ubac-composite-products' ),
+			'styleRow'                  => __( 'Inline — one expandable row per option', 'ubac-composite-products' ),
+			'styleSmall'                => __( 'Small — compact grid', 'ubac-composite-products' ),
+			'styleIcon'                 => __( 'Category icon', 'ubac-composite-products' ),
+			'styleChips'                => __( 'Tickable chips', 'ubac-composite-products' ),
+			'displayGroup'              => __( 'Display group', 'ubac-composite-products' ),
+			'displayGroupPlaceholder'   => __( 'same value = same screen', 'ubac-composite-products' ),
+			'titleRoleField'            => __( 'Title on the screen', 'ubac-composite-products' ),
+			'titleRolePrimary'          => __( 'Main (in the screen title)', 'ubac-composite-products' ),
+			'titleRoleSecondary'        => __( 'Secondary (add-on, no title)', 'ubac-composite-products' ),
+			'presentationField'         => __( 'Add-on presentation', 'ubac-composite-products' ),
+			'presentationCard'          => __( '“Select” card', 'ubac-composite-products' ),
+			'presentationQuestion'      => __( 'Yes / no question', 'ubac-composite-products' ),
+			'questionField'             => __( 'Text of the question', 'ubac-composite-products' ),
+			'questionPlaceholder'       => __( 'Empty: the title of the component', 'ubac-composite-products' ),
+			'quantityEditable'          => __( 'Adjustable quantity', 'ubac-composite-products' ),
+			'quantityMin'               => __( 'Min quantity', 'ubac-composite-products' ),
+			'quantityMax'               => __( 'Max quantity', 'ubac-composite-products' ),
+			'optionalField'             => __( 'Optional', 'ubac-composite-products' ),
+			'shippedIndividually'       => __( 'Shipped on its own (otherwise its weight is added to the composite product parcel)', 'ubac-composite-products' ),
+			'weightModeField'           => __( 'Displayed weight', 'ubac-composite-products' ),
+			'weightModeProducts'        => __( 'Weight of the products', 'ubac-composite-products' ),
+			'weightModeFixed'           => __( 'Fixed value', 'ubac-composite-products' ),
+			'weightModeSubtract'        => __( 'Weight of the products minus…', 'ubac-composite-products' ),
+			'weightGrams'               => __( 'Grams', 'ubac-composite-products' ),
+			'descriptionField'          => __( 'Description (HTML allowed)', 'ubac-composite-products' ),
+			'infoBubbleText'            => __( 'Info bubble text (optional)', 'ubac-composite-products' ),
+			'optionsProductsField'      => __( 'Options (products)', 'ubac-composite-products' ),
+			'searchProduct'             => __( 'Search for a product…', 'ubac-composite-products' ),
+			'defaultSelectionField'     => __( 'Default selection', 'ubac-composite-products' ),
+			'defaultOptionField'        => __( 'Default option', 'ubac-composite-products' ),
 
 			// Component box: badges of the folded header.
-			'badgeBranch'               => __( 'Branch', 'ubac-kits' ),
-			'badgeProducts'             => __( 'Products', 'ubac-kits' ),
-			'badgeMultiple'             => __( 'multiple choice', 'ubac-kits' ),
-			'badgeOptional'             => __( 'optional', 'ubac-kits' ),
+			'badgeBranch'               => __( 'Branch', 'ubac-composite-products' ),
+			'badgeProducts'             => __( 'Products', 'ubac-composite-products' ),
+			'badgeMultiple'             => __( 'multiple choice', 'ubac-composite-products' ),
+			'badgeOptional'             => __( 'optional', 'ubac-composite-products' ),
 			/* translators: %s: name of the screen the component is shown on. */
-			'badgeScreen'               => __( 'screen: %s', 'ubac-kits' ),
+			'badgeScreen'               => __( 'screen: %s', 'ubac-composite-products' ),
 			/* translators: %s: number of options. */
-			'optionCount'               => __( 'Options: %s', 'ubac-kits' ),
+			'optionCount'               => __( 'Options: %s', 'ubac-composite-products' ),
 			/* translators: %s: number of ranges. */
-			'rangeCount'                => __( 'Ranges: %s', 'ubac-kits' ),
+			'rangeCount'                => __( 'Ranges: %s', 'ubac-composite-products' ),
 			/* translators: %s: number of restricted options. */
-			'restrictedCount'           => __( 'Restricted: %s', 'ubac-kits' ),
-			'everythingPublic'          => __( 'everything is public', 'ubac-kits' ),
+			'restrictedCount'           => __( 'Restricted: %s', 'ubac-composite-products' ),
+			'everythingPublic'          => __( 'everything is public', 'ubac-composite-products' ),
 
 			// Anchoring an add-on to the card of another component.
-			'anchorNextTo'              => __( 'Anchor next to', 'ubac-kits' ),
-			'anchorAutomatic'           => __( '— Automatic (the chosen card of the first component on the screen) —', 'ubac-kits' ),
+			'anchorNextTo'              => __( 'Anchor next to', 'ubac-composite-products' ),
+			'anchorAutomatic'           => __( '— Automatic (the chosen card of the first component on the screen) —', 'ubac-composite-products' ),
 			/* translators: %s: name of the component, which sits on another screen. */
-			'anchorOtherScreen'         => __( '%s (other screen)', 'ubac-kits' ),
-			'anchorCard'                => __( 'Card', 'ubac-kits' ),
-			'anchorChosenCard'          => __( '— Chosen card —', 'ubac-kits' ),
+			'anchorOtherScreen'         => __( '%s (other screen)', 'ubac-composite-products' ),
+			'anchorCard'                => __( 'Card', 'ubac-composite-products' ),
+			'anchorChosenCard'          => __( '— Chosen card —', 'ubac-composite-products' ),
 			/* translators: %s: name of the card that is no longer among the options. */
-			'anchorAbsent'              => __( '%s (absent from the options)', 'ubac-kits' ),
+			'anchorAbsent'              => __( '%s (absent from the options)', 'ubac-composite-products' ),
 
 			// Categories (ranges) of a component.
 			/* translators: %s: number of categories. */
-			'rangesPanel'               => __( 'Categories / ranges (%s)', 'ubac-kits' ),
-			'rangeAdd'                  => __( 'Add a category', 'ubac-kits' ),
-			'rangeCreate'               => __( 'Create a category', 'ubac-kits' ),
-			'rangeField'                => __( 'Range', 'ubac-kits' ),
-			'rangeNoCategory'           => __( 'Range: no category.', 'ubac-kits' ),
-			'rangeDisplay'              => __( 'Display of the ranges:', 'ubac-kits' ),
-			'rangeNewline'              => __( 'On its own line', 'ubac-kits' ),
-			'rangeBadge'                => __( 'Badge', 'ubac-kits' ),
-			'rangeTint'                 => __( 'Coloured background', 'ubac-kits' ),
+			'rangesPanel'               => __( 'Categories / ranges (%s)', 'ubac-composite-products' ),
+			'rangeAdd'                  => __( 'Add a category', 'ubac-composite-products' ),
+			'rangeCreate'               => __( 'Create a category', 'ubac-composite-products' ),
+			'rangeField'                => __( 'Range', 'ubac-composite-products' ),
+			'rangeNoCategory'           => __( 'Range: no category.', 'ubac-composite-products' ),
+			'rangeDisplay'              => __( 'Display of the ranges:', 'ubac-composite-products' ),
+			'rangeNewline'              => __( 'On its own line', 'ubac-composite-products' ),
+			'rangeBadge'                => __( 'Badge', 'ubac-composite-products' ),
+			'rangeTint'                 => __( 'Coloured background', 'ubac-composite-products' ),
 			/* translators: %s: the default colour, in hexadecimal. */
-			'colourDefault'             => __( 'Default (%s)', 'ubac-kits' ),
-			'tierMedia'                 => __( 'Tooltip image or video (optional)', 'ubac-kits' ),
-			'tierMediaUrl'              => __( 'or a video link (YouTube, Vimeo, .mp4 file)', 'ubac-kits' ),
-			'chooseFromLibrary'         => __( 'Choose from the media library', 'ubac-kits' ),
+			'colourDefault'             => __( 'Default (%s)', 'ubac-composite-products' ),
+			'tierMedia'                 => __( 'Tooltip image or video (optional)', 'ubac-composite-products' ),
+			'tierMediaUrl'              => __( 'or a video link (YouTube, Vimeo, .mp4 file)', 'ubac-composite-products' ),
+			'chooseFromLibrary'         => __( 'Choose from the media library', 'ubac-composite-products' ),
 
 			// Product option: display, variations, help image, visibility.
-			'displayedTitle'            => __( 'Displayed title', 'ubac-kits' ),
-			'badgePlaceholder'          => __( 'e.g. Best seller', 'ubac-kits' ),
-			'displayedDescription'      => __( 'Displayed description (simple HTML)', 'ubac-kits' ),
-			'showImage'                 => __( 'Show the image', 'ubac-kits' ),
-			'showDescription'           => __( 'Description', 'ubac-kits' ),
-			'showSpecs'                 => __( 'Specifications', 'ubac-kits' ),
-			'showBundled'               => __( 'Included products', 'ubac-kits' ),
-			'customiseDisplay'          => __( 'Customise the display', 'ubac-kits' ),
-			'changeImage'               => __( 'Change the image', 'ubac-kits' ),
-			'chooseImage'               => __( 'Choose an image', 'ubac-kits' ),
-			'everyVariant'              => __( 'Every variant', 'ubac-kits' ),
-			'helpImagePanel'            => __( 'Help image', 'ubac-kits' ),
-			'variantsPanel'             => __( 'Variations offered', 'ubac-kits' ),
-			'variantsAll'               => __( 'all', 'ubac-kits' ),
+			'displayedTitle'            => __( 'Displayed title', 'ubac-composite-products' ),
+			'badgePlaceholder'          => __( 'e.g. Best seller', 'ubac-composite-products' ),
+			'displayedDescription'      => __( 'Displayed description (simple HTML)', 'ubac-composite-products' ),
+			'showImage'                 => __( 'Show the image', 'ubac-composite-products' ),
+			'showDescription'           => __( 'Description', 'ubac-composite-products' ),
+			'showSpecs'                 => __( 'Specifications', 'ubac-composite-products' ),
+			'showBundled'               => __( 'Included products', 'ubac-composite-products' ),
+			'customiseDisplay'          => __( 'Customise the display', 'ubac-composite-products' ),
+			'changeImage'               => __( 'Change the image', 'ubac-composite-products' ),
+			'chooseImage'               => __( 'Choose an image', 'ubac-composite-products' ),
+			'everyVariant'              => __( 'Every variant', 'ubac-composite-products' ),
+			'helpImagePanel'            => __( 'Help image', 'ubac-composite-products' ),
+			'variantsPanel'             => __( 'Variations offered', 'ubac-composite-products' ),
+			'variantsAll'               => __( 'all', 'ubac-composite-products' ),
 			/* translators: %s: the variants the restriction applies to. */
-			'variantsRestrictedCount'   => __( 'restricted on %s', 'ubac-kits' ),
-			'visibilityPanel'           => __( 'Public visibility', 'ubac-kits' ),
-			'publicLabel'               => __( 'public', 'ubac-kits' ),
-			'restricted'                => __( 'restricted', 'ubac-kits' ),
-			'restrictedEveryVariant'    => __( 'restricted (every variant)', 'ubac-kits' ),
-			'noneCard'                  => __( '“None” card', 'ubac-kits' ),
-			'valueNoSelection'          => __( '— No selection —', 'ubac-kits' ),
+			'variantsRestrictedCount'   => __( 'restricted on %s', 'ubac-composite-products' ),
+			'visibilityPanel'           => __( 'Public visibility', 'ubac-composite-products' ),
+			'publicLabel'               => __( 'public', 'ubac-composite-products' ),
+			'restricted'                => __( 'restricted', 'ubac-composite-products' ),
+			'restrictedEveryVariant'    => __( 'restricted (every variant)', 'ubac-composite-products' ),
+			'noneCard'                  => __( '“None” card', 'ubac-composite-products' ),
+			'valueNoSelection'          => __( '— No selection —', 'ubac-composite-products' ),
 			/* translators: %s: name of the value. */
-			'valueEveryVariant'         => __( '%s — every variant', 'ubac-kits' ),
+			'valueEveryVariant'         => __( '%s — every variant', 'ubac-composite-products' ),
 			/* translators: %s: name of the value. */
-			'valueVariantPending'       => __( '%s — variant not chosen yet', 'ubac-kits' ),
+			'valueVariantPending'       => __( '%s — variant not chosen yet', 'ubac-composite-products' ),
 
 			// Options of a branch component.
-			'branchOptions'             => __( 'Options of the branch', 'ubac-kits' ),
-			'addOption'                 => __( 'Add an option', 'ubac-kits' ),
-			'deleteThisOption'          => __( 'Delete this option', 'ubac-kits' ),
-			'badgePathPlaceholder'      => __( 'e.g. New', 'ubac-kits' ),
-			'comingSoon'                => __( 'Coming soon', 'ubac-kits' ),
-			'linkField'                 => __( 'Link (optional)', 'ubac-kits' ),
-			'linkPlaceholder'           => __( 'page slug (contact) or https://…', 'ubac-kits' ),
-			'linkTitle'                 => __( 'Filled in: the card is no longer a choice, it opens this page.', 'ubac-kits' ),
+			'branchOptions'             => __( 'Options of the branch', 'ubac-composite-products' ),
+			'addOption'                 => __( 'Add an option', 'ubac-composite-products' ),
+			'deleteThisOption'          => __( 'Delete this option', 'ubac-composite-products' ),
+			'badgePathPlaceholder'      => __( 'e.g. New', 'ubac-composite-products' ),
+			'comingSoon'                => __( 'Coming soon', 'ubac-composite-products' ),
+			'linkField'                 => __( 'Link (optional)', 'ubac-composite-products' ),
+			'linkPlaceholder'           => __( 'page slug (contact) or https://…', 'ubac-composite-products' ),
+			'linkTitle'                 => __( 'Filled in: the card is no longer a choice, it opens this page.', 'ubac-composite-products' ),
 
 			// Media library frames (title and confirm button).
-			'mediaOptionImage'          => __( 'Image of the option', 'ubac-kits' ),
-			'mediaHelpImage'            => __( 'Help image (back of the card)', 'ubac-kits' ),
+			'mediaOptionImage'          => __( 'Image of the option', 'ubac-composite-products' ),
+			'mediaHelpImage'            => __( 'Help image (back of the card)', 'ubac-composite-products' ),
 			/* translators: %s is the title of the component. */
-			'mediaNoneImage'            => __( 'Image of the “None” card — %s', 'ubac-kits' ),
+			'mediaNoneImage'            => __( 'Image of the “None” card — %s', 'ubac-composite-products' ),
 			/* translators: %s: name of the category the media belongs to. */
-			'mediaTierTooltip'          => __( 'Tooltip image or video “%s”', 'ubac-kits' ),
-			'mediaUseThisVisual'        => __( 'Use this visual', 'ubac-kits' ),
-			'mediaUseThisImage'         => __( 'Use this image', 'ubac-kits' ),
-			'mediaUseThisMedia'         => __( 'Use this media', 'ubac-kits' ),
+			'mediaTierTooltip'          => __( 'Tooltip image or video “%s”', 'ubac-composite-products' ),
+			'mediaUseThisVisual'        => __( 'Use this visual', 'ubac-composite-products' ),
+			'mediaUseThisImage'         => __( 'Use this image', 'ubac-composite-products' ),
+			'mediaUseThisMedia'         => __( 'Use this media', 'ubac-composite-products' ),
 
 			// Duplicating and deleting.
 			/* translators: %s is the name of the item being duplicated. */
-			'copySuffix'                => __( '%s (copy)', 'ubac-kits' ),
+			'copySuffix'                => __( '%s (copy)', 'ubac-composite-products' ),
 			/* translators: %s: name of the category about to be deleted. */
-			'tierDeleteConfirm'         => __( 'Delete the category “%s”?', 'ubac-kits' ),
+			'tierDeleteConfirm'         => __( 'Delete the category “%s”?', 'ubac-composite-products' ),
 			'tierDeleteAttached'        => array(
 				/* translators: %s: number of options attached to the category. */
-				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 1, 'ubac-kits' ),
+				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 1, 'ubac-composite-products' ),
 				/* translators: %s: number of options attached to the category. */
-				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 2, 'ubac-kits' ),
+				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 2, 'ubac-composite-products' ),
 			),
-			'tierDeleteNoOption'        => __( 'No option is attached to it.', 'ubac-kits' ),
+			'tierDeleteNoOption'        => __( 'No option is attached to it.', 'ubac-composite-products' ),
 			/* translators: %s: name of the component about to be deleted. */
-			'componentDeleteConfirm'    => __( 'Delete the component “%s”?', 'ubac-kits' ),
+			'componentDeleteConfirm'    => __( 'Delete the component “%s”?', 'ubac-composite-products' ),
 			'componentDeleteLinked'     => array(
 				/* translators: %s: number of scenarios that refer to the component. */
-				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 1, 'ubac-kits' ),
+				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 1, 'ubac-composite-products' ),
 				/* translators: %s: number of scenarios that refer to the component. */
-				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 2, 'ubac-kits' ),
+				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 2, 'ubac-composite-products' ),
 			),
 			/* translators: %s: name of the scenario about to be deleted. */
-			'scenarioDeleteConfirm'     => __( 'Delete the scenario “%s”?', 'ubac-kits' ),
+			'scenarioDeleteConfirm'     => __( 'Delete the scenario “%s”?', 'ubac-composite-products' ),
 
 			// Import and export of the configuration JSON.
 			/* translators: %s: the error reported by the JSON parser. */
-			'importInvalidJson'         => __( 'Invalid JSON: %s', 'ubac-kits' ),
-			'importNoComponents'        => __( 'Invalid JSON: the “components” key is missing.', 'ubac-kits' ),
-			'importDone'                => __( 'Configuration imported: save the product to apply it.', 'ubac-kits' ),
+			'importInvalidJson'         => __( 'Invalid JSON: %s', 'ubac-composite-products' ),
+			'importNoComponents'        => __( 'Invalid JSON: the “components” key is missing.', 'ubac-composite-products' ),
+			'importDone'                => __( 'Configuration imported: save the product to apply it.', 'ubac-composite-products' ),
 			/* translators: %s: the list of things that were kept, built from the lines below. */
-			'importKept'                => __( 'Already set in the admin and absent from the imported JSON, so kept: %s.', 'ubac-kits' ),
+			'importKept'                => __( 'Already set in the admin and absent from the imported JSON, so kept: %s.', 'ubac-composite-products' ),
 			/* translators: %s: number of images. */
-			'keptImages'                => __( '%s image(s)', 'ubac-kits' ),
+			'keptImages'                => __( '%s image(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of help images. */
-			'keptHelpImages'            => __( '%s help image(s)', 'ubac-kits' ),
+			'keptHelpImages'            => __( '%s help image(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of option titles. */
-			'keptOptionTitles'          => __( '%s option title(s)', 'ubac-kits' ),
+			'keptOptionTitles'          => __( '%s option title(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of option labels. */
-			'keptOptionLabels'          => __( '%s option label(s)', 'ubac-kits' ),
+			'keptOptionLabels'          => __( '%s option label(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of option descriptions. */
-			'keptOptionDescriptions'    => __( '%s option description(s)', 'ubac-kits' ),
+			'keptOptionDescriptions'    => __( '%s option description(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of badges. */
-			'keptBadges'                => __( '%s badge(s)', 'ubac-kits' ),
+			'keptBadges'                => __( '%s badge(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of component titles. */
-			'keptComponentTitles'       => __( '%s component title(s)', 'ubac-kits' ),
+			'keptComponentTitles'       => __( '%s component title(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of component layouts. */
-			'keptComponentLayouts'      => __( '%s component layout(s)', 'ubac-kits' ),
+			'keptComponentLayouts'      => __( '%s component layout(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of component descriptions. */
-			'keptComponentDescriptions' => __( '%s component description(s)', 'ubac-kits' ),
+			'keptComponentDescriptions' => __( '%s component description(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of component info bubble texts. */
-			'keptComponentInfo'         => __( '%s component info bubble text(s)', 'ubac-kits' ),
+			'keptComponentInfo'         => __( '%s component info bubble text(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of “None” card images. */
-			'keptNoneImages'            => __( '%s “None” card image(s)', 'ubac-kits' ),
+			'keptNoneImages'            => __( '%s “None” card image(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of range info bubble texts. */
-			'keptRangeInfo'             => __( '%s range info bubble text(s)', 'ubac-kits' ),
+			'keptRangeInfo'             => __( '%s range info bubble text(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of range media. */
-			'keptRangeMedia'            => __( '%s range media', 'ubac-kits' ),
+			'keptRangeMedia'            => __( '%s range media', 'ubac-composite-products' ),
 			/* translators: %s: number of range video links. */
-			'keptRangeVideoLinks'       => __( '%s range video link(s)', 'ubac-kits' ),
+			'keptRangeVideoLinks'       => __( '%s range video link(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of card links. */
-			'keptCardLinks'             => __( '%s card link(s)', 'ubac-kits' ),
+			'keptCardLinks'             => __( '%s card link(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of offered variation choices. */
-			'keptOfferedVariations'     => __( '%s offered variation choices', 'ubac-kits' ),
+			'keptOfferedVariations'     => __( '%s offered variation choices', 'ubac-composite-products' ),
 			/* translators: %s: number of variant help images. */
-			'keptVariantHelpImages'     => __( '%s variant help images', 'ubac-kits' ),
+			'keptVariantHelpImages'     => __( '%s variant help images', 'ubac-composite-products' ),
 			/* translators: %s: number of range colours. */
-			'keptRangeColours'          => __( '%s range colour(s)', 'ubac-kits' ),
+			'keptRangeColours'          => __( '%s range colour(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of “On its own line” settings. */
-			'keptRangeNewline'          => __( '%s “On its own line” setting(s)', 'ubac-kits' ),
+			'keptRangeNewline'          => __( '%s “On its own line” setting(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of “Badge” settings. */
-			'keptRangeBadge'            => __( '%s “Badge” setting(s)', 'ubac-kits' ),
+			'keptRangeBadge'            => __( '%s “Badge” setting(s)', 'ubac-composite-products' ),
 			/* translators: %s: number of “Coloured background” settings. */
-			'keptRangeTint'             => __( '%s “Coloured background” setting(s)', 'ubac-kits' ),
+			'keptRangeTint'             => __( '%s “Coloured background” setting(s)', 'ubac-composite-products' ),
 
 			// Scenarios box: fields, actions and conditions.
-			'scenariosBox'              => __( 'Scenarios', 'ubac-kits' ),
-			'targetComponentField'      => __( 'Target component', 'ubac-kits' ),
-			'targetComponentsField'     => __( 'Target components', 'ubac-kits' ),
-			'actionField'               => __( 'Action', 'ubac-kits' ),
-			'actionHideOptions'         => __( 'Hide options', 'ubac-kits' ),
-			'actionShowOnly'            => __( 'Show only these options', 'ubac-kits' ),
-			'actionHideStep'            => __( 'Hide the whole step', 'ubac-kits' ),
-			'actionDeadEnd'             => __( 'Dead end (stop the configurator with a message)', 'ubac-kits' ),
-			'blockMessageField'         => __( 'Message shown (dead end)', 'ubac-kits' ),
-			'restartField'              => __( 'Resume at step', 'ubac-kits' ),
+			'scenariosBox'              => __( 'Scenarios', 'ubac-composite-products' ),
+			'targetComponentField'      => __( 'Target component', 'ubac-composite-products' ),
+			'targetComponentsField'     => __( 'Target components', 'ubac-composite-products' ),
+			'actionField'               => __( 'Action', 'ubac-composite-products' ),
+			'actionHideOptions'         => __( 'Hide options', 'ubac-composite-products' ),
+			'actionShowOnly'            => __( 'Show only these options', 'ubac-composite-products' ),
+			'actionHideStep'            => __( 'Hide the whole step', 'ubac-composite-products' ),
+			'actionDeadEnd'             => __( 'Dead end (stop the configurator with a message)', 'ubac-composite-products' ),
+			'blockMessageField'         => __( 'Message shown (dead end)', 'ubac-composite-products' ),
+			'restartField'              => __( 'Resume at step', 'ubac-composite-products' ),
 			/* translators: %s: name of the component whose options can be hidden. */
-			'scenMaskedField'           => __( 'Options to hide in “%s”', 'ubac-kits' ),
+			'scenMaskedField'           => __( 'Options to hide in “%s”', 'ubac-composite-products' ),
 			/* translators: %s: name of the component whose options can be kept visible. */
-			'scenShownField'            => __( 'Options to keep visible in “%s”', 'ubac-kits' ),
-			'condOn'                    => __( 'Condition on', 'ubac-kits' ),
-			'condIsOneOf'               => __( 'is one of', 'ubac-kits' ),
-			'condIsNoneOf'              => __( 'is none of', 'ubac-kits' ),
-			'condNone'                  => __( 'No condition possible: always active.', 'ubac-kits' ),
+			'scenShownField'            => __( 'Options to keep visible in “%s”', 'ubac-composite-products' ),
+			'condOn'                    => __( 'Condition on', 'ubac-composite-products' ),
+			'condIsOneOf'               => __( 'is one of', 'ubac-composite-products' ),
+			'condIsNoneOf'              => __( 'is none of', 'ubac-composite-products' ),
+			'condNone'                  => __( 'No condition possible: always active.', 'ubac-composite-products' ),
 			/* translators: %s is the customer condition, written out. */
-			'condCustomerLine'          => __( 'Customer condition: %s (import JSON).', 'ubac-kits' ),
-			'badgeDeadEnd'              => __( 'Dead end', 'ubac-kits' ),
-			'badgeHidesStep'            => __( 'Hides the step', 'ubac-kits' ),
-			'badgeShowsOnly'            => __( 'Shows only', 'ubac-kits' ),
-			'badgeHidesOptions'         => __( 'Hides options', 'ubac-kits' ),
-			'filterEveryTarget'         => __( 'Every target', 'ubac-kits' ),
-			'targetMissing'             => __( '(target missing)', 'ubac-kits' ),
+			'condCustomerLine'          => __( 'Customer condition: %s (import JSON).', 'ubac-composite-products' ),
+			'badgeDeadEnd'              => __( 'Dead end', 'ubac-composite-products' ),
+			'badgeHidesStep'            => __( 'Hides the step', 'ubac-composite-products' ),
+			'badgeShowsOnly'            => __( 'Shows only', 'ubac-composite-products' ),
+			'badgeHidesOptions'         => __( 'Hides options', 'ubac-composite-products' ),
+			'filterEveryTarget'         => __( 'Every target', 'ubac-composite-products' ),
+			'targetMissing'             => __( '(target missing)', 'ubac-composite-products' ),
 
 			// Scenarios box: readable sentence of a scenario.
-			'scenDeadEnd'               => __( 'Dead end', 'ubac-kits' ),
+			'scenDeadEnd'               => __( 'Dead end', 'ubac-composite-products' ),
 			/* translators: %s: name of the step that is hidden. */
-			'scenHidesStep'             => __( 'Hides the step %s', 'ubac-kits' ),
+			'scenHidesStep'             => __( 'Hides the step %s', 'ubac-composite-products' ),
 			/* translators: %s: names of the steps that are hidden. */
-			'scenHidesSteps'            => __( 'Hides the steps %s', 'ubac-kits' ),
+			'scenHidesSteps'            => __( 'Hides the steps %s', 'ubac-composite-products' ),
 			/* translators: %s: name of the component whose options are hidden. */
-			'scenHidesOptions'          => __( 'Hides options of %s', 'ubac-kits' ),
+			'scenHidesOptions'          => __( 'Hides options of %s', 'ubac-composite-products' ),
 			/* translators: 1: name of the target component, 2: the list of options kept visible. */
-			'scenShowsOnly'             => __( 'Shows in %1$s only %2$s', 'ubac-kits' ),
-			'scenNoOptionChosen'        => __( '(no option chosen)', 'ubac-kits' ),
+			'scenShowsOnly'             => __( 'Shows in %1$s only %2$s', 'ubac-composite-products' ),
+			'scenNoOptionChosen'        => __( '(no option chosen)', 'ubac-composite-products' ),
 			/* translators: %s: name of the component that carries no value. */
-			'scenNoValue'               => __( '%s (no value)', 'ubac-kits' ),
+			'scenNoValue'               => __( '%s (no value)', 'ubac-composite-products' ),
 			/* translators: 1: what the scenario does, 2: the list of its conditions. */
-			'scenIf'                    => __( '%1$s if %2$s', 'ubac-kits' ),
+			'scenIf'                    => __( '%1$s if %2$s', 'ubac-composite-products' ),
 			/* translators: joins two conditions of a scenario; keep the surrounding spaces. */
-			'scenAnd'                   => __( ' and ', 'ubac-kits' ),
+			'scenAnd'                   => __( ' and ', 'ubac-composite-products' ),
 			/* translators: %s: name of the scenario. */
-			'scenAlwaysActive'          => __( '%s (always active)', 'ubac-kits' ),
+			'scenAlwaysActive'          => __( '%s (always active)', 'ubac-composite-products' ),
 			/* translators: %s: the customer number. */
-			'customerNumber'            => __( 'customer #%s', 'ubac-kits' ),
+			'customerNumber'            => __( 'customer #%s', 'ubac-composite-products' ),
 			/* translators: %s: the list of customers the condition includes. */
-			'customerIn'                => __( 'customer ∈ {%s}', 'ubac-kits' ),
+			'customerIn'                => __( 'customer ∈ {%s}', 'ubac-composite-products' ),
 			/* translators: %s: the list of customers the condition excludes. */
-			'customerNotIn'             => __( 'customer ∉ {%s}', 'ubac-kits' ),
+			'customerNotIn'             => __( 'customer ∉ {%s}', 'ubac-composite-products' ),
 
 			// Customer exceptions and the rules the server generates from them.
-			'exceptionsBox'             => __( 'Customer exceptions', 'ubac-kits' ),
-			'excNone'                   => __( 'No exception.', 'ubac-kits' ),
-			'customerField'             => __( 'Customer', 'ubac-kits' ),
-			'searchCustomer'            => __( 'Search for a customer (name, e-mail)…', 'ubac-kits' ),
-			'componentField'            => __( 'Component', 'ubac-kits' ),
-			'noteField'                 => __( 'Note (internal)', 'ubac-kits' ),
-			'notePlaceholder'           => __( 'e.g. loyal customer, agreement of 12/09', 'ubac-kits' ),
-			'excAccessAll'              => __( 'Access to every restricted option and variation of this component', 'ubac-kits' ),
-			'excAccessList'             => __( 'Only these, on top of the public ones:', 'ubac-kits' ),
-			'excNothingRestricted'      => __( 'Nothing is restricted on this component.', 'ubac-kits' ),
+			'exceptionsBox'             => __( 'Customer exceptions', 'ubac-composite-products' ),
+			'excNone'                   => __( 'No exception.', 'ubac-composite-products' ),
+			'customerField'             => __( 'Customer', 'ubac-composite-products' ),
+			'searchCustomer'            => __( 'Search for a customer (name, e-mail)…', 'ubac-composite-products' ),
+			'componentField'            => __( 'Component', 'ubac-composite-products' ),
+			'noteField'                 => __( 'Note (internal)', 'ubac-composite-products' ),
+			'notePlaceholder'           => __( 'e.g. loyal customer, agreement of 12/09', 'ubac-composite-products' ),
+			'excAccessAll'              => __( 'Access to every restricted option and variation of this component', 'ubac-composite-products' ),
+			'excAccessList'             => __( 'Only these, on top of the public ones:', 'ubac-composite-products' ),
+			'excNothingRestricted'      => __( 'Nothing is restricted on this component.', 'ubac-composite-products' ),
 			/* translators: 1: name of the customer, 2: name of the component. */
-			'excSentenceAll'            => __( '%1$s — %2$s: every restricted option and variation', 'ubac-kits' ),
+			'excSentenceAll'            => __( '%1$s — %2$s: every restricted option and variation', 'ubac-composite-products' ),
 			/* translators: 1: name of the customer, 2: name of the component, 3: number of reserved values. */
 			'excSentenceList'           => array(
 				/* translators: 1: name of the component, 2: name of the value, 3: number of reserved values. */
-				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 1, 'ubac-kits' ),
+				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 1, 'ubac-composite-products' ),
 				/* translators: 1: name of the component, 2: name of the value, 3: number of reserved values. */
-				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 2, 'ubac-kits' ),
+				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 2, 'ubac-composite-products' ),
 			),
 			'reservedValues'            => array(
 				/* translators: %s: number of reserved values. */
-				_n( '%s reserved value', '%s reserved values', 1, 'ubac-kits' ),
+				_n( '%s reserved value', '%s reserved values', 1, 'ubac-composite-products' ),
 				/* translators: %s: number of reserved values. */
-				_n( '%s reserved value', '%s reserved values', 2, 'ubac-kits' ),
+				_n( '%s reserved value', '%s reserved values', 2, 'ubac-composite-products' ),
 			),
-			'nothingRestricted'         => __( 'nothing restricted', 'ubac-kits' ),
-			'everyVariantOfIt'          => __( 'every one of its variants', 'ubac-kits' ),
-			'unknownComponent'          => __( '(component?)', 'ubac-kits' ),
-			'customerToChoose'          => __( '(customer to be chosen)', 'ubac-kits' ),
-			'generatedTitle'            => __( 'Generated rules (read only)', 'ubac-kits' ),
-			'generatedNone'             => __( 'Generated rules: none (nothing is restricted).', 'ubac-kits' ),
+			'nothingRestricted'         => __( 'nothing restricted', 'ubac-composite-products' ),
+			'everyVariantOfIt'          => __( 'every one of its variants', 'ubac-composite-products' ),
+			'unknownComponent'          => __( '(component?)', 'ubac-composite-products' ),
+			'customerToChoose'          => __( '(customer to be chosen)', 'ubac-composite-products' ),
+			'generatedTitle'            => __( 'Generated rules (read only)', 'ubac-composite-products' ),
+			'generatedNone'             => __( 'Generated rules: none (nothing is restricted).', 'ubac-composite-products' ),
 			/* translators: 1: number of values hidden, 2: name of the component, 3: who the rule applies to, 4: the values. */
 			'generatedLine'             => array(
 				/* translators: 1: number of hidden values, 2: name of the component, 3: who the restriction applies to, 4: the hidden values themselves. */
-				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 1, 'ubac-kits' ),
+				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 1, 'ubac-composite-products' ),
 				/* translators: 1: number of hidden values, 2: name of the component, 3: who the restriction applies to, 4: the hidden values themselves. */
-				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 2, 'ubac-kits' ),
+				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 2, 'ubac-composite-products' ),
 			),
-			'generatedForEveryone'      => __( 'for everyone', 'ubac-kits' ),
+			'generatedForEveryone'      => __( 'for everyone', 'ubac-composite-products' ),
 			/* translators: %s: who the generated journey is reserved for. */
-			'generatedOnlyFor'          => __( 'for %s only', 'ubac-kits' ),
+			'generatedOnlyFor'          => __( 'for %s only', 'ubac-composite-products' ),
 			/* translators: %s: who the generated journey is not offered to. */
-			'generatedExceptFor'        => __( 'for everyone, except %s', 'ubac-kits' ),
+			'generatedExceptFor'        => __( 'for everyone, except %s', 'ubac-composite-products' ),
 
 			// Simulator: journey, totals and configuration serial.
-			'simComputing'              => __( 'Computing…', 'ubac-kits' ),
-			'simNoStepVisible'          => __( 'No step is visible with these choices.', 'ubac-kits' ),
+			'simComputing'              => __( 'Computing…', 'ubac-composite-products' ),
+			'simNoStepVisible'          => __( 'No step is visible with these choices.', 'ubac-composite-products' ),
 			/* translators: 1: screen number, 2: title of the screen. */
-			'simScreenTitle'            => __( 'Screen %1$s — %2$s', 'ubac-kits' ),
-			'simSummaryStep'            => __( 'Summary', 'ubac-kits' ),
+			'simScreenTitle'            => __( 'Screen %1$s — %2$s', 'ubac-composite-products' ),
+			'simSummaryStep'            => __( 'Summary', 'ubac-composite-products' ),
 			/* translators: 1: number of steps, 2: the steps, joined by an arrow. */
 			'simPath'                   => array(
 				/* translators: 1: number of steps, 2: the steps themselves. */
-				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 1, 'ubac-kits' ),
+				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 1, 'ubac-composite-products' ),
 				/* translators: 1: number of steps, 2: the steps themselves. */
-				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 2, 'ubac-kits' ),
+				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 2, 'ubac-composite-products' ),
 			),
-			'simDeadEnd'                => __( 'Dead end.', 'ubac-kits' ),
+			'simDeadEnd'                => __( 'Dead end.', 'ubac-composite-products' ),
 			/* translators: %s: name of the step the customer can resume at. */
-			'simRestartAt'              => __( 'Resume offered at step: %s', 'ubac-kits' ),
-			'simOptionsUnavailable'     => __( 'Options unavailable (component renamed?).', 'ubac-kits' ),
-			'simNoOptionAvailable'      => __( 'No option available with these choices.', 'ubac-kits' ),
+			'simRestartAt'              => __( 'Resume offered at step: %s', 'ubac-composite-products' ),
+			'simOptionsUnavailable'     => __( 'Options unavailable (component renamed?).', 'ubac-composite-products' ),
+			'simNoOptionAvailable'      => __( 'No option available with these choices.', 'ubac-composite-products' ),
 			/* translators: %s: name of the parent product. */
-			'simVariantOf'              => __( '— Variant of %s —', 'ubac-kits' ),
-			'simChooseVariant'          => __( '— Choose a variant —', 'ubac-kits' ),
-			'simStepToFill'             => __( 'Step to fill in.', 'ubac-kits' ),
-			'simTotal'                  => __( 'Total:', 'ubac-kits' ),
+			'simVariantOf'              => __( '— Variant of %s —', 'ubac-composite-products' ),
+			'simChooseVariant'          => __( '— Choose a variant —', 'ubac-composite-products' ),
+			'simStepToFill'             => __( 'Step to fill in.', 'ubac-composite-products' ),
+			'simTotal'                  => __( 'Total:', 'ubac-composite-products' ),
 			/* translators: 1: weight, 2: unit of weight. */
-			'simWeight'                 => __( 'Estimated weight: %1$s %2$s', 'ubac-kits' ),
-			'simValid'                  => __( 'Configuration complete and valid', 'ubac-kits' ),
-			'simIncomplete'             => __( 'Configuration incomplete', 'ubac-kits' ),
-			'simReset'                  => __( 'Reset', 'ubac-kits' ),
-			'simSerialLabel'            => __( 'Configuration serial:', 'ubac-kits' ),
-			'simSerialPartialLabel'     => __( 'Configuration serial (partial configuration):', 'ubac-kits' ),
-			'simSerialNone'             => __( 'no serial as long as no choice is made.', 'ubac-kits' ),
-			'simOpenLink'               => __( 'Open on the site', 'ubac-kits' ),
-			'simOpenTitle'              => __( 'Reopens the configurator on these choices', 'ubac-kits' ),
-			'simViewVisitor'            => __( 'Visitor / customer with no exception', 'ubac-kits' ),
-			'simViewAs'                 => __( 'View as:', 'ubac-kits' ),
-			'simViewAsHelp'             => __( '(this customer’s hidden options; prices of the logged-in account)', 'ubac-kits' ),
-			'warningsBox'               => __( 'Warnings', 'ubac-kits' ),
-			'warningsTitle'             => __( 'Worth checking', 'ubac-kits' ),
+			'simWeight'                 => __( 'Estimated weight: %1$s %2$s', 'ubac-composite-products' ),
+			'simValid'                  => __( 'Configuration complete and valid', 'ubac-composite-products' ),
+			'simIncomplete'             => __( 'Configuration incomplete', 'ubac-composite-products' ),
+			'simReset'                  => __( 'Reset', 'ubac-composite-products' ),
+			'simSerialLabel'            => __( 'Configuration serial:', 'ubac-composite-products' ),
+			'simSerialPartialLabel'     => __( 'Configuration serial (partial configuration):', 'ubac-composite-products' ),
+			'simSerialNone'             => __( 'no serial as long as no choice is made.', 'ubac-composite-products' ),
+			'simOpenLink'               => __( 'Open on the site', 'ubac-composite-products' ),
+			'simOpenTitle'              => __( 'Reopens the configurator on these choices', 'ubac-composite-products' ),
+			'simViewVisitor'            => __( 'Visitor / customer with no exception', 'ubac-composite-products' ),
+			'simViewAs'                 => __( 'View as:', 'ubac-composite-products' ),
+			'simViewAsHelp'             => __( '(this customer’s hidden options; prices of the logged-in account)', 'ubac-composite-products' ),
+			'warningsBox'               => __( 'Warnings', 'ubac-composite-products' ),
+			'warningsTitle'             => __( 'Worth checking', 'ubac-composite-products' ),
 
 			// Simulator: sentence describing the appearance in force.
 			/* translators: 1: card style, 2: corners, 3: icons, 4: info on desktop, 5: info on mobile, 6: click. */
-			'appearanceSentence'        => __( 'Appearance on the product page: %1$s, corners %2$s, icons %3$s, info %4$s (desktop) / %5$s (mobile), click %6$s.', 'ubac-kits' ),
-			'appearanceCard'            => __( 'Card', 'ubac-kits' ),
-			'appearanceThumbnail'       => __( 'Thumbnail', 'ubac-kits' ),
-			'appearanceRounded'         => __( 'rounded', 'ubac-kits' ),
-			'appearanceSquare'          => __( 'square', 'ubac-kits' ),
-			'appearanceInfoSide'        => __( 'side', 'ubac-kits' ),
-			'appearanceInfoCard'        => __( 'card', 'ubac-kits' ),
-			'appearanceInfoExtended'    => __( 'extended', 'ubac-kits' ),
+			'appearanceSentence'        => __( 'Appearance on the product page: %1$s, corners %2$s, icons %3$s, info %4$s (desktop) / %5$s (mobile), click %6$s.', 'ubac-composite-products' ),
+			'appearanceCard'            => __( 'Card', 'ubac-composite-products' ),
+			'appearanceThumbnail'       => __( 'Thumbnail', 'ubac-composite-products' ),
+			'appearanceRounded'         => __( 'rounded', 'ubac-composite-products' ),
+			'appearanceSquare'          => __( 'square', 'ubac-composite-products' ),
+			'appearanceInfoSide'        => __( 'side', 'ubac-composite-products' ),
+			'appearanceInfoCard'        => __( 'card', 'ubac-composite-products' ),
+			'appearanceInfoExtended'    => __( 'extended', 'ubac-composite-products' ),
 		);
 	}
 
 	private static function box_titles() {
 		return array(
-			'ubac-kit-appearance-box' => __( 'Appearance', 'ubac-kits' ),
-			'ubac-kit-components-box' => __( 'Components', 'ubac-kits' ),
-			'ubac-kit-scenarios-box'  => __( 'Scenarios', 'ubac-kits' ),
-			'ubac-kit-exceptions-box' => __( 'Customer exceptions', 'ubac-kits' ),
-			'ubac-kit-warnings-box'   => __( 'Warnings', 'ubac-kits' ),
-			'ubac-kit-simulator-box'  => __( 'Simulator', 'ubac-kits' ),
-			'ubac-kit-io-box'         => __( 'Import / export', 'ubac-kits' ),
+			'ubac-kit-appearance-box' => __( 'Appearance', 'ubac-composite-products' ),
+			'ubac-kit-components-box' => __( 'Components', 'ubac-composite-products' ),
+			'ubac-kit-scenarios-box'  => __( 'Scenarios', 'ubac-composite-products' ),
+			'ubac-kit-exceptions-box' => __( 'Customer exceptions', 'ubac-composite-products' ),
+			'ubac-kit-warnings-box'   => __( 'Warnings', 'ubac-composite-products' ),
+			'ubac-kit-simulator-box'  => __( 'Simulator', 'ubac-composite-products' ),
+			'ubac-kit-io-box'         => __( 'Import / export', 'ubac-composite-products' ),
 		);
 	}
 
@@ -747,55 +747,55 @@ class Ubac_Kits_Admin {
 		$appearance = Ubac_Kits_Appearance::get( (int) get_the_ID() );
 		$choices    = array(
 			'card_style'   => array(
-				'label'   => __( 'Card style', 'ubac-kits' ),
+				'label'   => __( 'Card style', 'ubac-composite-products' ),
 				'options' => array(
-					'vignette' => __( 'Thumbnail', 'ubac-kits' ),
-					'card'     => __( 'Card', 'ubac-kits' ),
-					'grid'     => __( 'Grid', 'ubac-kits' ),
+					'vignette' => __( 'Thumbnail', 'ubac-composite-products' ),
+					'card'     => __( 'Card', 'ubac-composite-products' ),
+					'grid'     => __( 'Grid', 'ubac-composite-products' ),
 				),
 			),
 			'card_corners' => array(
-				'label'   => __( 'Corner shape', 'ubac-kits' ),
+				'label'   => __( 'Corner shape', 'ubac-composite-products' ),
 				'options' => array(
-					'square'  => __( 'Square', 'ubac-kits' ),
-					'rounded' => __( 'Rounded', 'ubac-kits' ),
+					'square'  => __( 'Square', 'ubac-composite-products' ),
+					'rounded' => __( 'Rounded', 'ubac-composite-products' ),
 				),
 			),
 			'icons'        => array(
-				'label'   => __( 'Icons', 'ubac-kits' ),
+				'label'   => __( 'Icons', 'ubac-composite-products' ),
 				'options' => array(
-					'on'  => __( 'Yes', 'ubac-kits' ),
-					'off' => __( 'No', 'ubac-kits' ),
+					'on'  => __( 'Yes', 'ubac-composite-products' ),
+					'off' => __( 'No', 'ubac-composite-products' ),
 				),
 			),
 			'info_desktop' => array(
-				'label'   => __( 'Info display (desktop)', 'ubac-kits' ),
+				'label'   => __( 'Info display (desktop)', 'ubac-composite-products' ),
 				'options' => array(
-					'card'     => __( 'Card', 'ubac-kits' ),
-					'lateral'  => __( 'Side', 'ubac-kits' ),
-					'extended' => __( 'Expanded', 'ubac-kits' ),
+					'card'     => __( 'Card', 'ubac-composite-products' ),
+					'lateral'  => __( 'Side', 'ubac-composite-products' ),
+					'extended' => __( 'Expanded', 'ubac-composite-products' ),
 				),
 			),
 			'info_mobile'  => array(
-				'label'   => __( 'Info display (mobile)', 'ubac-kits' ),
+				'label'   => __( 'Info display (mobile)', 'ubac-composite-products' ),
 				'options' => array(
-					'lateral'  => __( 'Side', 'ubac-kits' ),
-					'card'     => __( 'Card', 'ubac-kits' ),
-					'extended' => __( 'Expanded', 'ubac-kits' ),
+					'lateral'  => __( 'Side', 'ubac-composite-products' ),
+					'card'     => __( 'Card', 'ubac-composite-products' ),
+					'extended' => __( 'Expanded', 'ubac-composite-products' ),
 				),
 			),
 			'click'        => array(
-				'label'   => __( '“Select” button', 'ubac-kits' ),
+				'label'   => __( '“Select” button', 'ubac-composite-products' ),
 				'options' => array(
-					'on'  => __( 'Yes', 'ubac-kits' ),
-					'off' => __( 'No', 'ubac-kits' ),
+					'on'  => __( 'Yes', 'ubac-composite-products' ),
+					'off' => __( 'No', 'ubac-composite-products' ),
 				),
 			),
 			'recap_bg'     => array(
-				'label'   => __( 'Summary background', 'ubac-kits' ),
+				'label'   => __( 'Summary background', 'ubac-composite-products' ),
 				'options' => array(
-					'light' => __( 'Light', 'ubac-kits' ),
-					'dark'  => __( 'Dark', 'ubac-kits' ),
+					'light' => __( 'Light', 'ubac-composite-products' ),
+					'dark'  => __( 'Dark', 'ubac-composite-products' ),
 				),
 			),
 		);
@@ -818,20 +818,20 @@ class Ubac_Kits_Admin {
 					</tr>
 				<?php endforeach; ?>
 			</table>
-			<h4 class="ubac-kit-admin__section-title"><?php esc_html_e( 'Settings shared by every composite product', 'ubac-kits' ); ?></h4>
+			<h4 class="ubac-kit-admin__section-title"><?php esc_html_e( 'Settings shared by every composite product', 'ubac-composite-products' ); ?></h4>
 			<table class="form-table" role="presentation">
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Show more info', 'ubac-kits' ); ?></th>
+					<th scope="row"><?php esc_html_e( 'Show more info', 'ubac-composite-products' ); ?></th>
 					<td>
 						<input type="hidden" name="<?php echo esc_attr( self::GLOBALS_MARKER ); ?>" value="1">
 						<label class="ubac-kit-admin__appearance-choice">
 							<input type="checkbox" name="<?php echo esc_attr( Ubac_Kits_Settings::OPTION_MORE_INFO ); ?>" value="yes" <?php checked( Ubac_Kits_Settings::more_info_enabled() ); ?>>
-							<?php esc_html_e( 'Yes', 'ubac-kits' ); ?>
+							<?php esc_html_e( 'Yes', 'ubac-composite-products' ); ?>
 						</label>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php esc_html_e( '“None” card image', 'ubac-kits' ); ?></th>
+					<th scope="row"><?php esc_html_e( '“None” card image', 'ubac-composite-products' ); ?></th>
 					<td>
 						<input type="hidden" id="ubac-kits-none-image" name="<?php echo esc_attr( Ubac_Kits_Settings::OPTION_NONE_IMAGE ); ?>" value="<?php echo esc_attr( $none_image_id ? (string) $none_image_id : '' ); ?>">
 						<?php
@@ -865,14 +865,14 @@ class Ubac_Kits_Admin {
 						 */
 						?>
 						<img id="ubac-kits-none-preview" class="ubac-kit-settings__preview" alt=""<?php echo $none_preview ? ' src="' . esc_url( $none_preview ) . '"' : ' hidden'; ?>>
-						<button type="button" class="ubac-ui-btn" id="ubac-kits-none-pick" data-frame-title="<?php esc_attr_e( 'Image for the “None” card', 'ubac-kits' ); ?>" data-frame-button="<?php esc_attr_e( 'Use this image', 'ubac-kits' ); ?>"><?php esc_html_e( 'Choose an image', 'ubac-kits' ); ?></button>
-						<button type="button" class="button-link delete" id="ubac-kits-none-clear" <?php echo $none_image_id ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove the image', 'ubac-kits' ); ?></button>
+						<button type="button" class="ubac-ui-btn" id="ubac-kits-none-pick" data-frame-title="<?php esc_attr_e( 'Image for the “None” card', 'ubac-composite-products' ); ?>" data-frame-button="<?php esc_attr_e( 'Use this image', 'ubac-composite-products' ); ?>"><?php esc_html_e( 'Choose an image', 'ubac-composite-products' ); ?></button>
+						<button type="button" class="button-link delete" id="ubac-kits-none-clear" <?php echo $none_image_id ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove the image', 'ubac-composite-products' ); ?></button>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="ubac-kits-none-text"><?php esc_html_e( '“None” card text', 'ubac-kits' ); ?></label></th>
+					<th scope="row"><label for="ubac-kits-none-text"><?php esc_html_e( '“None” card text', 'ubac-composite-products' ); ?></label></th>
 					<td>
-						<input type="text" class="regular-text" id="ubac-kits-none-text" name="<?php echo esc_attr( Ubac_Kits_Settings::OPTION_NONE_TEXT ); ?>" value="<?php echo esc_attr( (string) get_option( Ubac_Kits_Settings::OPTION_NONE_TEXT, '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. I do not need one', 'ubac-kits' ); ?>">
+						<input type="text" class="regular-text" id="ubac-kits-none-text" name="<?php echo esc_attr( Ubac_Kits_Settings::OPTION_NONE_TEXT ); ?>" value="<?php echo esc_attr( (string) get_option( Ubac_Kits_Settings::OPTION_NONE_TEXT, '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. I do not need one', 'ubac-composite-products' ); ?>">
 					</td>
 				</tr>
 			</table>
@@ -908,7 +908,7 @@ class Ubac_Kits_Admin {
 		<div class="ubac-ui ubac-kit-admin">
 			<?php self::render_fold_bar( 'components' ); ?>
 			<div id="ubac-kit-components"></div>
-			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-component"><?php esc_html_e( 'Add a component', 'ubac-kits' ); ?></button></p>
+			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-component"><?php esc_html_e( 'Add a component', 'ubac-composite-products' ); ?></button></p>
 		</div>
 		<?php
 	}
@@ -918,19 +918,19 @@ class Ubac_Kits_Admin {
 		<div class="ubac-ui ubac-kit-admin">
 			<div class="ubac-kit-admin__filters">
 				<label class="ubac-kit-admin__filter">
-					<span class="screen-reader-text"><?php esc_html_e( 'Search scenarios', 'ubac-kits' ); ?></span>
+					<span class="screen-reader-text"><?php esc_html_e( 'Search scenarios', 'ubac-composite-products' ); ?></span>
 					<input type="search" id="ubac-kit-scenario-search" class="regular-text"
-						placeholder="<?php esc_attr_e( 'Search…', 'ubac-kits' ); ?>">
+						placeholder="<?php esc_attr_e( 'Search…', 'ubac-composite-products' ); ?>">
 				</label>
 				<label class="ubac-kit-admin__filter">
-					<span class="screen-reader-text"><?php esc_html_e( 'Filter by target component', 'ubac-kits' ); ?></span>
-					<select id="ubac-kit-scenario-target"><option value=""><?php esc_html_e( 'All targets', 'ubac-kits' ); ?></option></select>
+					<span class="screen-reader-text"><?php esc_html_e( 'Filter by target component', 'ubac-composite-products' ); ?></span>
+					<select id="ubac-kit-scenario-target"><option value=""><?php esc_html_e( 'All targets', 'ubac-composite-products' ); ?></option></select>
 				</label>
 				<span class="ubac-kit-admin__filter-count" id="ubac-kit-scenario-count"></span>
 			</div>
 			<?php self::render_fold_bar( 'scenarios' ); ?>
 			<div id="ubac-kit-scenarios"></div>
-			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-scenario"><?php esc_html_e( 'Add a scenario', 'ubac-kits' ); ?></button></p>
+			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-scenario"><?php esc_html_e( 'Add a scenario', 'ubac-composite-products' ); ?></button></p>
 		</div>
 		<?php
 	}
@@ -942,7 +942,7 @@ class Ubac_Kits_Admin {
 		?>
 		<div class="ubac-kit-admin">
 			<div id="ubac-kit-exceptions"></div>
-			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-exception"><?php esc_html_e( 'Add an exception', 'ubac-kits' ); ?></button></p>
+			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-exception"><?php esc_html_e( 'Add an exception', 'ubac-composite-products' ); ?></button></p>
 			<div id="ubac-kit-generated" class="ubac-kit-admin__generated"></div>
 		</div>
 		<?php
@@ -969,10 +969,10 @@ class Ubac_Kits_Admin {
 		<div class="ubac-kit-admin">
 			<textarea id="ubac-kit-import" rows="8" class="large-text code"></textarea>
 			<p>
-				<button type="button" class="ubac-ui-btn" id="ubac-kit-import-button"><?php esc_html_e( 'Import', 'ubac-kits' ); ?></button>
-				<button type="button" class="ubac-ui-btn" id="ubac-kit-export-button"><?php esc_html_e( 'Show export', 'ubac-kits' ); ?></button>
+				<button type="button" class="ubac-ui-btn" id="ubac-kit-import-button"><?php esc_html_e( 'Import', 'ubac-composite-products' ); ?></button>
+				<button type="button" class="ubac-ui-btn" id="ubac-kit-export-button"><?php esc_html_e( 'Show export', 'ubac-composite-products' ); ?></button>
 				<?php // Downloaded export: same JSON as "Show export", as a file. ?>
-				<button type="button" class="ubac-ui-btn" id="ubac-kit-download-button"><?php esc_html_e( 'Export', 'ubac-kits' ); ?></button>
+				<button type="button" class="ubac-ui-btn" id="ubac-kit-download-button"><?php esc_html_e( 'Export', 'ubac-composite-products' ); ?></button>
 			</p>
 		</div>
 		<?php
@@ -986,8 +986,8 @@ class Ubac_Kits_Admin {
 	private static function render_fold_bar( $section ) {
 		?>
 		<p class="ubac-kit-admin__foldbar">
-			<button type="button" class="button-link" data-fold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Collapse all', 'ubac-kits' ); ?></button>
-			<button type="button" class="button-link" data-unfold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Expand all', 'ubac-kits' ); ?></button>
+			<button type="button" class="button-link" data-fold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Collapse all', 'ubac-composite-products' ); ?></button>
+			<button type="button" class="button-link" data-unfold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Expand all', 'ubac-composite-products' ); ?></button>
 		</p>
 		<?php
 	}
@@ -1022,7 +1022,7 @@ class Ubac_Kits_Admin {
 		// JSON decoded, then fully normalised by Ubac_Kits_Kit_Config.
 		$config = json_decode( wp_unslash( $_POST['ubac_kit_config_json'] ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if ( ! is_array( $config ) ) {
-			self::store_notice( array( __( 'The configuration could not be read: nothing was saved.', 'ubac-kits' ) ) );
+			self::store_notice( array( __( 'The configuration could not be read: nothing was saved.', 'ubac-composite-products' ) ) );
 			return;
 		}
 
@@ -1044,7 +1044,7 @@ class Ubac_Kits_Admin {
 		// Only a class that was named and cannot be found is worth a word. No
 		// class named at all is a deliberate setting, not a mistake.
 		if ( '' !== Ubac_Kits_Product_Type::get_container_shipping_class_slug() && ! Ubac_Kits_Product_Type::get_container_shipping_class_id() ) {
-			$errors[] = __( 'The shipping class set for composite products (Ubac Composite settings) does not exist: shipping plugins will not recognise this product.', 'ubac-kits' );
+			$errors[] = __( 'The shipping class set for composite products (Ubac Composite settings) does not exist: shipping plugins will not recognise this product.', 'ubac-composite-products' );
 		}
 
 		if ( $errors ) {
@@ -1066,7 +1066,7 @@ class Ubac_Kits_Admin {
 			return;
 		}
 		delete_transient( $key );
-		echo '<div class="notice notice-warning is-dismissible"><p><strong>' . esc_html__( 'Ubac Composite', 'ubac-kits' ) . '</strong></p><ul>';
+		echo '<div class="notice notice-warning is-dismissible"><p><strong>' . esc_html__( 'Ubac Composite', 'ubac-composite-products' ) . '</strong></p><ul>';
 		foreach ( (array) $messages as $message ) {
 			echo '<li>' . esc_html( $message ) . '</li>';
 		}

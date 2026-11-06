@@ -75,7 +75,7 @@ const UBAC_KITS_UNINSTALL_USER_META = array(
  *
  * @return void
  */
-function ubac_kits_uninstall_site() {
+function ubac_composite_products_uninstall_site() {
 
 	// The welcome screen's own three flags.
 	//
@@ -85,6 +85,15 @@ function ubac_kits_uninstall_site() {
 	// writes them with update_option(), so they outlive the plugin unless
 	// they are deleted here — and the welcome screen and the guided tour
 	// would then stay silent for good, with nothing on screen to explain why.
+	delete_option( 'ubac_welcome_seen_ubac-composite-products' );
+	delete_option( 'ubac_welcome_pending_ubac-composite-products' );
+	delete_option( 'ubac_welcome_tour_ubac-composite-products' );
+
+	// AND THE SAME THREE UNDER THE FORMER SLUG. This plugin was called
+	// `ubac-kits` until 6 November 2026, and an installation from before the
+	// rename wrote its welcome flags under that name. They are not reachable
+	// by the current slug, so without these three lines an uninstall would
+	// leave them behind for good.
 	delete_option( 'ubac_welcome_seen_ubac-kits' );
 	delete_option( 'ubac_welcome_pending_ubac-kits' );
 	delete_option( 'ubac_welcome_tour_ubac-kits' );
@@ -124,18 +133,18 @@ function ubac_kits_uninstall_site() {
 }
 
 if ( is_multisite() ) {
-	$ubac_kits_site_ids = get_sites(
+	$ubac_composite_products_site_ids = get_sites(
 		array(
 			'fields' => 'ids',
 			'number' => 0,
 		)
 	);
 
-	foreach ( $ubac_kits_site_ids as $ubac_kits_site_id ) {
-		switch_to_blog( $ubac_kits_site_id );
-		ubac_kits_uninstall_site();
+	foreach ( $ubac_composite_products_site_ids as $ubac_composite_products_site_id ) {
+		switch_to_blog( $ubac_composite_products_site_id );
+		ubac_composite_products_uninstall_site();
 		restore_current_blog();
 	}
 } else {
-	ubac_kits_uninstall_site();
+	ubac_composite_products_uninstall_site();
 }

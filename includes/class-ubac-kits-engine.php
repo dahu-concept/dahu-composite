@@ -551,7 +551,7 @@ class Ubac_Kits_Engine {
 
 			if ( isset( $hidden_comps[ $cid ] ) ) {
 				if ( $selection ) {
-					$errors[] = self::error( 'component_hidden', $cid, sprintf( /* translators: %s: component */ __( '“%s” is not available with the configuration you chose.', 'ubac-kits' ), $component['title'] ) );
+					$errors[] = self::error( 'component_hidden', $cid, sprintf( /* translators: %s: component */ __( '“%s” is not available with the configuration you chose.', 'ubac-composite-products' ), $component['title'] ) );
 				}
 				continue;
 			}
@@ -571,14 +571,14 @@ class Ubac_Kits_Engine {
 			if ( self::is_path( $component ) ) {
 				$option = self::path_option( $component, $selection['option_id'] );
 				if ( ! $option ) {
-					$errors[] = self::error( 'invalid_option', $cid, sprintf( /* translators: %s: component */ __( 'Invalid option for “%s”.', 'ubac-kits' ), $component['title'] ) );
+					$errors[] = self::error( 'invalid_option', $cid, sprintf( /* translators: %s: component */ __( 'Invalid option for “%s”.', 'ubac-composite-products' ), $component['title'] ) );
 				} elseif ( in_array( (string) $selection['option_id'], $hidden_options, true ) ) {
-					$errors[] = self::error( 'option_hidden', $cid, sprintf( /* translators: %s: component */ __( 'The option chosen for “%s” is not compatible with your earlier choices.', 'ubac-kits' ), $component['title'] ) );
+					$errors[] = self::error( 'option_hidden', $cid, sprintf( /* translators: %s: component */ __( 'The option chosen for “%s” is not compatible with your earlier choices.', 'ubac-composite-products' ), $component['title'] ) );
 				} elseif ( ! empty( $option['coming_soon'] ) ) {
-					$errors[] = self::error( 'coming_soon', $cid, sprintf( /* translators: %s: option */ __( '“%s” cannot be ordered yet.', 'ubac-kits' ), $option['label'] ) );
+					$errors[] = self::error( 'coming_soon', $cid, sprintf( /* translators: %s: option */ __( '“%s” cannot be ordered yet.', 'ubac-composite-products' ), $option['label'] ) );
 				} elseif ( ! empty( $option['link'] ) ) {
 					// “link” card: a pointer elsewhere, never a choice.
-					$errors[] = self::error( 'link_only', $cid, sprintf( /* translators: %s: option */ __( '“%s” links to another page: it is not a choice of this product.', 'ubac-kits' ), $option['label'] ) );
+					$errors[] = self::error( 'link_only', $cid, sprintf( /* translators: %s: option */ __( '“%s” links to another page: it is not a choice of this product.', 'ubac-composite-products' ), $option['label'] ) );
 				}
 				continue;
 			}
@@ -663,12 +663,12 @@ class Ubac_Kits_Engine {
 
 		$allowed = wp_list_pluck( $component['options'], 'product_id' );
 		if ( ! in_array( $pid, array_map( 'absint', $allowed ), true ) ) {
-			return array( self::error( 'invalid_option', $cid, sprintf( /* translators: %s: component */ __( 'Invalid option for “%s”.', 'ubac-kits' ), $title ) ) );
+			return array( self::error( 'invalid_option', $cid, sprintf( /* translators: %s: component */ __( 'Invalid option for “%s”.', 'ubac-composite-products' ), $title ) ) );
 		}
 
 		$product = wc_get_product( $pid );
 		if ( ! $product || ! self::is_product_available( $product ) ) {
-			return array( self::error( 'unavailable_option', $cid, sprintf( /* translators: %s: component */ __( 'The option chosen for “%s” is no longer available.', 'ubac-kits' ), $title ) ) );
+			return array( self::error( 'unavailable_option', $cid, sprintf( /* translators: %s: component */ __( 'The option chosen for “%s” is no longer available.', 'ubac-composite-products' ), $title ) ) );
 		}
 
 		if ( $product->is_type( 'variable' ) ) {
@@ -677,22 +677,22 @@ class Ubac_Kits_Engine {
 			}
 			$variation = wc_get_product( $vid );
 			if ( ! $variation || ! $variation->is_type( 'variation' ) || (int) $variation->get_parent_id() !== (int) $pid || ! $variation->variation_is_visible() ) {
-				return array( self::error( 'invalid_variation', $cid, sprintf( /* translators: %s: component */ __( 'Invalid variation for “%s”.', 'ubac-kits' ), $title ) ) );
+				return array( self::error( 'invalid_variation', $cid, sprintf( /* translators: %s: component */ __( 'Invalid variation for “%s”.', 'ubac-composite-products' ), $title ) ) );
 			}
 			$missing_attributes = self::missing_variation_attributes( $variation, $selection['attributes'] );
 			if ( $missing_attributes ) {
-				return array( self::error( 'variation_attributes_required', $cid, sprintf( /* translators: %s: component */ __( 'Specify the variation chosen for “%s”.', 'ubac-kits' ), $title ) ) );
+				return array( self::error( 'variation_attributes_required', $cid, sprintf( /* translators: %s: component */ __( 'Specify the variation chosen for “%s”.', 'ubac-composite-products' ), $title ) ) );
 			}
 			$line_product = $variation;
 		} else {
 			if ( $vid ) {
-				return array( self::error( 'invalid_variation', $cid, sprintf( /* translators: %s: component */ __( 'Invalid variation for “%s”.', 'ubac-kits' ), $title ) ) );
+				return array( self::error( 'invalid_variation', $cid, sprintf( /* translators: %s: component */ __( 'Invalid variation for “%s”.', 'ubac-composite-products' ), $title ) ) );
 			}
 			$line_product = $product;
 		}
 
 		if ( Ubac_Kits_Scenarios::is_option_hidden( $pid, (int) $vid, $hidden_options ) ) {
-			$errors[] = self::error( 'option_hidden', $cid, sprintf( /* translators: %s: component */ __( 'The option chosen for “%s” is not compatible with your earlier choices.', 'ubac-kits' ), $title ) );
+			$errors[] = self::error( 'option_hidden', $cid, sprintf( /* translators: %s: component */ __( 'The option chosen for “%s” is not compatible with your earlier choices.', 'ubac-composite-products' ), $title ) );
 		}
 
 		$qty = (int) $selection['quantity'];
@@ -700,18 +700,18 @@ class Ubac_Kits_Engine {
 			$errors[] = self::error(
 				'invalid_quantity',
 				$cid,
-				sprintf( /* translators: 1: component, 2: min, 3: max */ __( 'Invalid quantity for “%1$s” (between %2$d and %3$d).', 'ubac-kits' ), $title, $component['quantity_min'], $component['quantity_max'] )
+				sprintf( /* translators: 1: component, 2: min, 3: max */ __( 'Invalid quantity for “%1$s” (between %2$d and %3$d).', 'ubac-composite-products' ), $title, $component['quantity_min'], $component['quantity_max'] )
 			);
 		}
 
 		if ( $line_product->is_sold_individually() && max( 1, $qty ) * $kit_quantity > 1 ) {
-			$errors[] = self::error( 'sold_individually', $cid, sprintf( /* translators: 1: product */ __( '“%s” can only be ordered one at a time.', 'ubac-kits' ), $line_product->get_name() ) );
+			$errors[] = self::error( 'sold_individually', $cid, sprintf( /* translators: 1: product */ __( '“%s” can only be ordered one at a time.', 'ubac-composite-products' ), $line_product->get_name() ) );
 		}
 
 		if ( ! $line_product->is_purchasable() || ! $line_product->is_in_stock() ) {
-			$errors[] = self::error( 'out_of_stock', $cid, sprintf( /* translators: 1: product */ __( '“%s” is out of stock.', 'ubac-kits' ), $line_product->get_name() ) );
+			$errors[] = self::error( 'out_of_stock', $cid, sprintf( /* translators: 1: product */ __( '“%s” is out of stock.', 'ubac-composite-products' ), $line_product->get_name() ) );
 		} elseif ( $line_product->managing_stock() && ! $line_product->has_enough_stock( max( 1, $qty ) * $kit_quantity ) ) {
-			$errors[] = self::error( 'insufficient_stock', $cid, sprintf( /* translators: 1: product */ __( 'Not enough stock for “%s”.', 'ubac-kits' ), $line_product->get_name() ) );
+			$errors[] = self::error( 'insufficient_stock', $cid, sprintf( /* translators: 1: product */ __( 'Not enough stock for “%s”.', 'ubac-composite-products' ), $line_product->get_name() ) );
 		}
 
 		if ( $product->is_type( 'bundle' ) ) {
@@ -739,7 +739,7 @@ class Ubac_Kits_Engine {
 
 		foreach ( $selection['bundle'] as $bundled_item_id => $conf ) {
 			if ( ! isset( $items[ $bundled_item_id ] ) ) {
-				$errors[] = self::error( 'invalid_bundle_item', $component['id'], __( 'Invalid bundle item.', 'ubac-kits' ) );
+				$errors[] = self::error( 'invalid_bundle_item', $component['id'], __( 'Invalid bundle item.', 'ubac-composite-products' ) );
 			}
 		}
 
@@ -752,7 +752,7 @@ class Ubac_Kits_Engine {
 			$item_product = $bundled_item->get_product();
 			if ( $item_product && $item_product->is_type( 'variable' ) && ! self::resolve_bundled_variation( $bundled_item, $conf ) ) {
 				/* translators: %s: item of the bundle */
-				$errors[] = self::error( 'bundle_variation_required', $component['id'], sprintf( __( 'Choose a variation for “%s”.', 'ubac-kits' ), $bundled_item->get_raw_title( true ) ) );
+				$errors[] = self::error( 'bundle_variation_required', $component['id'], sprintf( __( 'Choose a variation for “%s”.', 'ubac-composite-products' ), $bundled_item->get_raw_title( true ) ) );
 			}
 		}
 

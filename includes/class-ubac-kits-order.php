@@ -243,7 +243,7 @@ class Ubac_Kits_Order {
 		}
 		$component = $kit ? $kit->get_kit_component( $component_id ) : null;
 		if ( $component ) {
-			$item->add_meta_data( __( 'Component', 'ubac-kits' ), $component['title'], true );
+			$item->add_meta_data( __( 'Component', 'ubac-composite-products' ), $component['title'], true );
 		}
 	}
 
@@ -326,7 +326,7 @@ class Ubac_Kits_Order {
 			array(
 				'priced_individually' => false,
 				'marker'              => array( self::META_SUPPLY => 'child' ),
-				'label'               => '' !== $parent_name ? array( __( 'Supplied with', 'ubac-kits' ), $parent_name ) : null,
+				'label'               => '' !== $parent_name ? array( __( 'Supplied with', 'ubac-composite-products' ), $parent_name ) : null,
 			)
 		);
 	}
@@ -403,7 +403,7 @@ class Ubac_Kits_Order {
 				array(
 					'priced_individually' => false,
 					'marker'              => array( self::META_SUPPLY => 'child' ),
-					'label'               => '' !== $parent_name ? array( __( 'Supplied with', 'ubac-kits' ), $parent_name ) : null,
+					'label'               => '' !== $parent_name ? array( __( 'Supplied with', 'ubac-composite-products' ), $parent_name ) : null,
 				)
 			);
 			$item->save();
@@ -505,9 +505,9 @@ class Ubac_Kits_Order {
 			$changed = wc_maybe_adjust_line_item_product_stock( $item, 0 );
 			$notes[] = ( $changed && ! is_wp_error( $changed ) )
 				/* translators: 1: accessory, 2: stock before, 3: stock after */
-				? sprintf( __( '%1$s removed along with its variation (stock %2$s → %3$s)', 'ubac-kits' ), $item->get_name(), $changed['from'], $changed['to'] )
+				? sprintf( __( '%1$s removed along with its variation (stock %2$s → %3$s)', 'ubac-composite-products' ), $item->get_name(), $changed['from'], $changed['to'] )
 				/* translators: %s: accessory */
-				: sprintf( __( '%s removed along with its variation', 'ubac-kits' ), $item->get_name() );
+				: sprintf( __( '%s removed along with its variation', 'ubac-composite-products' ), $item->get_name() );
 			$order->remove_item( $item_id );
 			$orphans = true;
 		}
@@ -548,9 +548,9 @@ class Ubac_Kits_Order {
 				$changed = $adjust_stock ? wc_maybe_adjust_line_item_product_stock( $child ) : false;
 				$notes[] = ( $changed && ! is_wp_error( $changed ) )
 					/* translators: 1: accessory, 2: quantity before, 3: quantity after, 4: stock before, 5: stock after */
-					? sprintf( __( '%1$s: quantity %2$d → %3$d (stock %4$s → %5$s)', 'ubac-kits' ), $child->get_name(), $current, $expected, $changed['from'], $changed['to'] )
+					? sprintf( __( '%1$s: quantity %2$d → %3$d (stock %4$s → %5$s)', 'ubac-composite-products' ), $child->get_name(), $current, $expected, $changed['from'], $changed['to'] )
 					/* translators: 1: accessory, 2: quantity before, 3: quantity after */
-					: sprintf( __( '%1$s: quantity %2$d → %3$d', 'ubac-kits' ), $child->get_name(), $current, $expected );
+					: sprintf( __( '%1$s: quantity %2$d → %3$d', 'ubac-composite-products' ), $child->get_name(), $current, $expected );
 			}
 		}
 
@@ -559,7 +559,7 @@ class Ubac_Kits_Order {
 		}
 		if ( $notes ) {
 			/* translators: %s: list of the changes */
-			$order->add_order_note( sprintf( __( 'Supplied accessories updated: %s.', 'ubac-kits' ), implode( ', ', $notes ) ), 0, true );
+			$order->add_order_note( sprintf( __( 'Supplied accessories updated: %s.', 'ubac-composite-products' ), implode( ', ', $notes ) ), 0, true );
 		}
 		return $orphans || (bool) $notes;
 	}
@@ -609,7 +609,7 @@ class Ubac_Kits_Order {
 		);
 		$container    = $container_id ? $order->get_item( $container_id, false ) : null;
 		if ( ! $container ) {
-			return new WP_Error( 'ubac_kit_add_failed', __( 'The composite product could not be added to the order.', 'ubac-kits' ) );
+			return new WP_Error( 'ubac_kit_add_failed', __( 'The composite product could not be added to the order.', 'ubac-composite-products' ) );
 		}
 		$container_key = md5( $container_id );
 
@@ -634,7 +634,7 @@ class Ubac_Kits_Order {
 
 				if ( 'bundle' === $line['type'] ) {
 					if ( ! function_exists( 'WC_PB' ) || ! WC_PB()->order ) {
-						$error = new WP_Error( 'ubac_kit_pb_missing', __( 'This component requires a product bundle plugin.', 'ubac-kits' ) );
+						$error = new WP_Error( 'ubac_kit_pb_missing', __( 'This component requires a product bundle plugin.', 'ubac-composite-products' ) );
 						break;
 					}
 					// Items of the bundle: added and priced by Product Bundles
@@ -665,7 +665,7 @@ class Ubac_Kits_Order {
 			$item = ( $item_id && ! is_wp_error( $item_id ) ) ? $order->get_item( $item_id, false ) : null;
 			if ( ! $item ) {
 				/* translators: %s: product */
-				$message = sprintf( __( '“%s” could not be added to the order.', 'ubac-kits' ), $line['name'] );
+				$message = sprintf( __( '“%s” could not be added to the order.', 'ubac-composite-products' ), $line['name'] );
 				$error   = new WP_Error( 'ubac_kit_add_failed', is_wp_error( $item_id ) ? $message . ' ' . $item_id->get_error_message() : $message );
 				break;
 			}
@@ -685,7 +685,7 @@ class Ubac_Kits_Order {
 		}
 
 		if ( ! $error && empty( $children ) ) {
-			$error = new WP_Error( 'ubac_kit_add_failed', __( 'Select at least one component.', 'ubac-kits' ) );
+			$error = new WP_Error( 'ubac_kit_add_failed', __( 'Select at least one component.', 'ubac-composite-products' ) );
 		}
 
 		if ( $error ) {

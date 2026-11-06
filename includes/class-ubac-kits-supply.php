@@ -265,7 +265,7 @@ class Ubac_Kits_Supply {
 			wc_add_notice(
 				sprintf(
 					/* translators: 1: variation, 2: accessory */
-					__( '“%1$s” cannot be added: not enough stock of its accessory “%2$s”.', 'ubac-kits' ),
+					__( '“%1$s” cannot be added: not enough stock of its accessory “%2$s”.', 'ubac-composite-products' ),
 					$variation ? wp_strip_all_tags( $variation->get_name() ) : '#' . (int) $variation_id,
 					wp_strip_all_tags( $product->get_name() )
 				),
@@ -336,7 +336,7 @@ class Ubac_Kits_Supply {
 		$name    = isset( $item['data'] ) && $item['data'] instanceof WC_Product ? wp_strip_all_tags( $item['data']->get_name() ) : '#' . (int) $item['variation_id'];
 		$message = sprintf(
 			/* translators: 1: variation, 2: accessory */
-			__( '“%1$s” could not be added: its accessory “%2$s” is unavailable.', 'ubac-kits' ),
+			__( '“%1$s” could not be added: its accessory “%2$s” is unavailable.', 'ubac-composite-products' ),
 			$name,
 			$result->get_error_message()
 		);
@@ -614,11 +614,11 @@ class Ubac_Kits_Supply {
 			$name   = wp_strip_all_tags( $line->get_name() );
 			if ( $result['added'] ) {
 				/* translators: 1: variation, 2: accessories */
-				$order->add_order_note( sprintf( __( 'Accessories added with “%1$s”: %2$s.', 'ubac-kits' ), $name, implode( ', ', $result['added'] ) ), 0, true );
+				$order->add_order_note( sprintf( __( 'Accessories added with “%1$s”: %2$s.', 'ubac-composite-products' ), $name, implode( ', ', $result['added'] ) ), 0, true );
 			}
 			if ( $result['skipped'] ) {
 				/* translators: 1: variation, 2: accessories */
-				$message = sprintf( __( 'Accessories not added with “%1$s” (missing or not purchasable): %2$s.', 'ubac-kits' ), $name, implode( ', ', $result['skipped'] ) );
+				$message = sprintf( __( 'Accessories not added with “%1$s” (missing or not purchasable): %2$s.', 'ubac-composite-products' ), $name, implode( ', ', $result['skipped'] ) );
 				$order->add_order_note( $message, 0, true );
 				self::log( 'warning', sprintf( 'Order #%1$d: %2$s', $order->get_id(), $message ) );
 			}
@@ -740,7 +740,7 @@ class Ubac_Kits_Supply {
 			'ubac-kits-supply-admin',
 			'ubacSupplyAdmin',
 			array(
-				'remove' => __( 'Remove', 'ubac-kits' ),
+				'remove' => __( 'Remove', 'ubac-composite-products' ),
 			)
 		);
 	}
@@ -768,7 +768,7 @@ class Ubac_Kits_Supply {
 
 		echo '<div class="form-row form-row-full ubac-supply" data-loop="' . esc_attr( $loop ) . '">';
 		echo '<input type="hidden" class="ubac-supply__present" name="ubac_supply_present[' . esc_attr( $loop ) . ']" value="1" />';
-		echo '<label for="' . esc_attr( $search_id ) . '">' . esc_html__( 'Supplied accessories', 'ubac-kits' ) . '</label>';
+		echo '<label for="' . esc_attr( $search_id ) . '">' . esc_html__( 'Supplied accessories', 'ubac-composite-products' ) . '</label>';
 		echo '<ul class="ubac-supply__list">';
 		$row = 0;
 		foreach ( self::get_supply( $variation_id ) as $entry ) {
@@ -781,7 +781,7 @@ class Ubac_Kits_Supply {
 		printf(
 			'<select id="%1$s" class="wc-product-search ubac-supply__search" style="width:100%%;" data-placeholder="%2$s" data-action="woocommerce_json_search_products_and_variations" data-exclude="%3$s" data-exclude_type="%4$s" data-allow_clear="true"></select>',
 			esc_attr( $search_id ),
-			esc_attr__( 'Add an accessory…', 'ubac-kits' ),
+			esc_attr__( 'Add an accessory…', 'ubac-composite-products' ),
 			esc_attr( (string) $variation_id ),
 			esc_attr( implode( ',', $exclude_types ) )
 		);
@@ -800,9 +800,9 @@ class Ubac_Kits_Supply {
 		$product = wc_get_product( $id );
 		$state   = '';
 		if ( ! $product ) {
-			$state = __( 'not found', 'ubac-kits' );
+			$state = __( 'not found', 'ubac-composite-products' );
 		} elseif ( ! self::accessory_product( $entry ) ) {
-			$state = __( 'not purchasable, ignored in the cart', 'ubac-kits' );
+			$state = __( 'not purchasable, ignored in the cart', 'ubac-composite-products' );
 		}
 		$name = $product ? wp_strip_all_tags( $product->get_formatted_name() ) : '#' . $id;
 		$base = 'ubac_supply[' . $loop . '][' . $row . ']';
@@ -813,7 +813,7 @@ class Ubac_Kits_Supply {
 		if ( '' !== $state ) {
 			echo ' <strong class="ubac-supply__state">' . esc_html( $state ) . '</strong>';
 		}
-		echo '<button type="button" class="button-link js-ubac-supply-remove">' . esc_html__( 'Remove', 'ubac-kits' ) . '</button>';
+		echo '<button type="button" class="button-link js-ubac-supply-remove">' . esc_html__( 'Remove', 'ubac-composite-products' ) . '</button>';
 		echo '</li>';
 	}
 
@@ -877,7 +877,7 @@ class Ubac_Kits_Supply {
 		if ( $parsed['errors'] ) {
 			$message = sprintf(
 				/* translators: 1: variation, 2: errors */
-				__( 'Variation #%1$d: accessories not saved. %2$s', 'ubac-kits' ),
+				__( 'Variation #%1$d: accessories not saved. %2$s', 'ubac-composite-products' ),
 				(int) $variation_id,
 				implode( ' ', $parsed['errors'] )
 			);
@@ -932,19 +932,19 @@ class Ubac_Kits_Supply {
 			$product = wc_get_product( $id );
 			if ( ! $product ) {
 				/* translators: %d: ID */
-				$errors[] = sprintf( __( '#%d: product not found.', 'ubac-kits' ), $id );
+				$errors[] = sprintf( __( '#%d: product not found.', 'ubac-composite-products' ), $id );
 				continue;
 			}
 			if ( $id === $variation_id ) {
 				/* translators: %d: ID */
-				$errors[] = sprintf( __( '#%d: the variation itself.', 'ubac-kits' ), $id );
+				$errors[] = sprintf( __( '#%d: the variation itself.', 'ubac-composite-products' ), $id );
 				continue;
 			}
 
 			if ( $product->is_type( 'variation' ) ) {
 				if ( in_array( '', wc_get_product_variation_attributes( $id ), true ) ) {
 					/* translators: %d: ID */
-					$errors[] = sprintf( __( '#%d: a variation with an “Any” attribute, which is not supported.', 'ubac-kits' ), $id );
+					$errors[] = sprintf( __( '#%d: a variation with an “Any” attribute, which is not supported.', 'ubac-composite-products' ), $id );
 					continue;
 				}
 				$entry = array(
@@ -958,11 +958,11 @@ class Ubac_Kits_Supply {
 				);
 			} elseif ( $product->is_type( 'variable' ) ) {
 				/* translators: %d: ID */
-				$errors[] = sprintf( __( '#%d: a variable product; choose one of its variations.', 'ubac-kits' ), $id );
+				$errors[] = sprintf( __( '#%d: a variable product; choose one of its variations.', 'ubac-composite-products' ), $id );
 				continue;
 			} else {
 				/* translators: 1: ID, 2: type */
-				$errors[] = sprintf( __( '#%1$d: type “%2$s” is not supported (simple product or variation only).', 'ubac-kits' ), $id, $product->get_type() );
+				$errors[] = sprintf( __( '#%1$d: type “%2$s” is not supported (simple product or variation only).', 'ubac-composite-products' ), $id, $product->get_type() );
 				continue;
 			}
 

@@ -99,11 +99,11 @@ class Ubac_Kits_Validator {
 			$label = Ubac_Kits_Customer_Access::customer_label( $exception['customer_id'] );
 			if ( function_exists( 'get_userdata' ) && ! get_userdata( $exception['customer_id'] ) ) {
 				/* translators: 1: customer, 2: component */
-				$warnings[] = sprintf( __( 'Exception “%1$s” on “%2$s”: this customer does not exist on this site.', 'ubac-kits' ), $label, $titles[ $cid ] );
+				$warnings[] = sprintf( __( 'Exception “%1$s” on “%2$s”: this customer does not exist on this site.', 'ubac-composite-products' ), $label, $titles[ $cid ] );
 			}
 			if ( empty( $reserved[ $cid ] ) ) {
 				/* translators: 1: customer, 2: component */
-				$warnings[] = sprintf( __( 'Exception “%1$s” on “%2$s”: nothing is restricted on this component, so it has no effect.', 'ubac-kits' ), $label, $titles[ $cid ] );
+				$warnings[] = sprintf( __( 'Exception “%1$s” on “%2$s”: nothing is restricted on this component, so it has no effect.', 'ubac-composite-products' ), $label, $titles[ $cid ] );
 				continue;
 			}
 			foreach ( $exception['values'] as $value ) {
@@ -115,7 +115,7 @@ class Ubac_Kits_Validator {
 				}
 				if ( ! $expanded ) {
 					/* translators: 1: customer, 2: value, 3: component */
-					$warnings[] = sprintf( __( 'Exception “%1$s”: “%2$s” is not restricted on “%3$s” (already public, or absent) — no effect.', 'ubac-kits' ), $label, $value, $titles[ $cid ] );
+					$warnings[] = sprintf( __( 'Exception “%1$s”: “%2$s” is not restricted on “%3$s” (already public, or absent) — no effect.', 'ubac-composite-products' ), $label, $value, $titles[ $cid ] );
 				}
 			}
 		}
@@ -151,7 +151,7 @@ class Ubac_Kits_Validator {
 				$name       = isset( $option['label'] ) ? $option['label'] : '#' . $option['product_id'];
 				$warnings[] = sprintf(
 					/* translators: 1: component, 2: option, 3: category identifier */
-					__( '“%1$s”: option “%2$s” is attached to category “%3$s”, which does not exist. It is shown without a category.', 'ubac-kits' ),
+					__( '“%1$s”: option “%2$s” is attached to category “%3$s”, which does not exist. It is shown without a category.', 'ubac-composite-products' ),
 					$title,
 					$name,
 					$option['tier']
@@ -161,7 +161,7 @@ class Ubac_Kits_Validator {
 				if ( ! isset( $used[ $tier['id'] ] ) ) {
 					$warnings[] = sprintf(
 						/* translators: 1: component, 2: category */
-						__( '“%1$s”: category “%2$s” has no options.', 'ubac-kits' ),
+						__( '“%1$s”: category “%2$s” has no options.', 'ubac-composite-products' ),
 						$title,
 						$tier['label']
 					);
@@ -170,7 +170,7 @@ class Ubac_Kits_Validator {
 				if ( isset( $labels[ $key ] ) ) {
 					$warnings[] = sprintf(
 						/* translators: 1: component, 2: label */
-						__( '“%1$s”: two categories are called “%2$s”.', 'ubac-kits' ),
+						__( '“%1$s”: two categories are called “%2$s”.', 'ubac-composite-products' ),
 						$title,
 						$tier['label']
 					);
@@ -216,7 +216,7 @@ class Ubac_Kits_Validator {
 			if ( isset( $component['presentation'] ) && 'question' === $component['presentation'] && ! self::is_addon( $component ) ) {
 				$warnings[] = sprintf(
 					/* translators: %s: component */
-					__( '“%s”: the “Yes / no question” presentation only applies to an “add-on” component (secondary, optional, a single option). It is shown as cards.', 'ubac-kits' ),
+					__( '“%s”: the “Yes / no question” presentation only applies to an “add-on” component (secondary, optional, a single option). It is shown as cards.', 'ubac-composite-products' ),
 					'' !== $component['title'] ? $component['title'] : $component['id']
 				);
 			}
@@ -232,7 +232,7 @@ class Ubac_Kits_Validator {
 			if ( ! self::is_addon( $component ) ) {
 				$warnings[] = sprintf(
 					/* translators: %s: component */
-					__( '“%s”: the “Anchor next to” setting only applies to an “add-on” component (secondary, optional, a single option). Ignored.', 'ubac-kits' ),
+					__( '“%s”: the “Anchor next to” setting only applies to an “add-on” component (secondary, optional, a single option). Ignored.', 'ubac-composite-products' ),
 					$title
 				);
 				continue;
@@ -240,7 +240,7 @@ class Ubac_Kits_Validator {
 			if ( $host_id === $component['id'] || ! isset( $by_id[ $host_id ] ) ) {
 				$warnings[] = sprintf(
 					/* translators: 1: component, 2: identifier of the anchor component */
-					__( '“%1$s”: anchored next to component “%2$s”, which does not exist. It is shown in its usual place.', 'ubac-kits' ),
+					__( '“%1$s”: anchored next to component “%2$s”, which does not exist. It is shown in its usual place.', 'ubac-composite-products' ),
 					$title,
 					$host_id
 				);
@@ -251,7 +251,7 @@ class Ubac_Kits_Validator {
 			if ( 'path' === $host['component_type'] || self::is_addon( $host ) ) {
 				$warnings[] = sprintf(
 					/* translators: 1: component, 2: anchor component */
-					__( '“%1$s”: anchored to “%2$s”, which shows no product cards (a branching or add-on component). It is shown in its usual place.', 'ubac-kits' ),
+					__( '“%1$s”: anchored to “%2$s”, which shows no product cards (a branching or add-on component). It is shown in its usual place.', 'ubac-composite-products' ),
 					$title,
 					$host_title
 				);
@@ -268,7 +268,7 @@ class Ubac_Kits_Validator {
 			if ( ! $found ) {
 				$warnings[] = sprintf(
 					/* translators: 1: component, 2: product, 3: anchor component */
-					__( '“%1$s”: anchored next to product #%2$d, which is not among the options of “%3$s”. It is shown in its usual place.', 'ubac-kits' ),
+					__( '“%1$s”: anchored next to product #%2$d, which is not among the options of “%3$s”. It is shown in its usual place.', 'ubac-composite-products' ),
 					$title,
 					$product,
 					$host_title
@@ -278,7 +278,7 @@ class Ubac_Kits_Validator {
 			if ( '' === $component['display_group'] || $component['display_group'] !== $host['display_group'] ) {
 				$warnings[] = sprintf(
 					/* translators: 1: component, 2: anchor component */
-					__( '“%1$s”: anchored to “%2$s”, which is not on the same screen (a different display group). It is shown in its usual place.', 'ubac-kits' ),
+					__( '“%1$s”: anchored to “%2$s”, which is not on the same screen (a different display group). It is shown in its usual place.', 'ubac-composite-products' ),
 					$title,
 					$host_title
 				);
@@ -314,7 +314,7 @@ class Ubac_Kits_Validator {
 					}
 					$warnings[] = sprintf(
 						/* translators: 1: scenario, 2: value, 3: component */
-						__( 'Scenario “%1$s”: the condition refers to “%2$s”, which is no longer among the options of “%3$s”.', 'ubac-kits' ),
+						__( 'Scenario “%1$s”: the condition refers to “%2$s”, which is no longer among the options of “%3$s”.', 'ubac-composite-products' ),
 						$scenario['id'],
 						$value,
 						isset( $titles[ $source ] ) ? $titles[ $source ] : $source
@@ -332,7 +332,7 @@ class Ubac_Kits_Validator {
 				}
 				$warnings[] = sprintf(
 					/* translators: 1: scenario, 2: value, 3: component */
-					__( 'Scenario “%1$s”: shows only “%2$s”, which is no longer among the options of “%3$s”.', 'ubac-kits' ),
+					__( 'Scenario “%1$s”: shows only “%2$s”, which is no longer among the options of “%3$s”.', 'ubac-composite-products' ),
 					$scenario['id'],
 					$value,
 					isset( $titles[ $target ] ) ? $titles[ $target ] : $target
@@ -344,7 +344,7 @@ class Ubac_Kits_Validator {
 				}
 				$warnings[] = sprintf(
 					/* translators: 1: scenario, 2: value, 3: component */
-					__( 'Scenario “%1$s”: hides “%2$s”, which is no longer among the options of “%3$s”.', 'ubac-kits' ),
+					__( 'Scenario “%1$s”: hides “%2$s”, which is no longer among the options of “%3$s”.', 'ubac-composite-products' ),
 					$scenario['id'],
 					$value,
 					isset( $titles[ $target ] ) ? $titles[ $target ] : $target
@@ -438,7 +438,7 @@ class Ubac_Kits_Validator {
 				$total = $total * count( $axis );
 				if ( $total > self::MAX_COMBINATIONS ) {
 					/* translators: %s: component */
-					$warnings[] = sprintf( __( '“%s”: too many combinations to explore, so the dead-end check could not run. Check it by hand.', 'ubac-kits' ), $component['title'] );
+					$warnings[] = sprintf( __( '“%s”: too many combinations to explore, so the dead-end check could not run. Check it by hand.', 'ubac-composite-products' ), $component['title'] );
 					continue 2;
 				}
 				$axes[ $source_id ] = $axis;
@@ -448,7 +448,7 @@ class Ubac_Kits_Validator {
 			if ( null !== $dead ) {
 				$warnings[] = sprintf(
 					/* translators: 1: component, 2: description of the combination */
-					__( '“%1$s” has no option left available when %2$s. Check the scenarios targeting it.', 'ubac-kits' ),
+					__( '“%1$s” has no option left available when %2$s. Check the scenarios targeting it.', 'ubac-composite-products' ),
 					$component['title'],
 					$dead
 				);
@@ -526,7 +526,7 @@ class Ubac_Kits_Validator {
 	 * @return array[] [ ['selection' => array|null, 'label' => string] ]
 	 */
 	private static function axis_values( array $component ) {
-		$values = array( array( 'selection' => null, 'label' => __( 'no selection', 'ubac-kits' ) ) );
+		$values = array( array( 'selection' => null, 'label' => __( 'no selection', 'ubac-composite-products' ) ) );
 
 		if ( Ubac_Kits_Engine::is_path( $component ) ) {
 			foreach ( $component['options'] as $option ) {
@@ -638,7 +638,7 @@ class Ubac_Kits_Validator {
 					$title   = '' !== $by_id[ $id ]['title'] ? $by_id[ $id ]['title'] : $id;
 					$parts[] = sprintf( '%s = %s', $title, $labels[ $id ] );
 				}
-				return implode( __( ' and ', 'ubac-kits' ), $parts );
+				return implode( __( ' and ', 'ubac-composite-products' ), $parts );
 			}
 		}
 

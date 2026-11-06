@@ -67,7 +67,7 @@ class Ubac_Kits_Product_Type {
 	 * @return array
 	 */
 	public static function add_type_to_selector( $types ) {
-		$types[ UBAC_KITS_PRODUCT_TYPE ] = __( 'Composite product', 'ubac-kits' );
+		$types[ UBAC_KITS_PRODUCT_TYPE ] = __( 'Composite product', 'ubac-composite-products' );
 		return $types;
 	}
 
