@@ -190,7 +190,7 @@ require_once UBAC_KITS_DIR . 'includes/ubac-welcome.php';
 register_activation_hook(
 	__FILE__,
 	static function () {
-		Ubac_Welcome::mark_activated( 'ubac-composite-products' );
+		Ubac_Welcome::mark_activated( 'dahuconcept-composite-products' );
 
 		// The product type's taxonomy term: see
 		// Ubac_Kits_Product_Type::ensure_term() for the reason.
@@ -205,12 +205,12 @@ add_action(
 	static function () {
 		Ubac_Welcome::register(
 			array(
-				'slug'       => 'ubac-composite-products',
+				'slug'       => 'dahuconcept-composite-products',
 				'name'       => __( 'Composite products', 'dahuconcept-composite-products' ),
 				'tagline'    => __( 'Products built from parts the customer chooses.', 'dahuconcept-composite-products' ),
 				'file'       => UBAC_KITS_FILE,
 				'version'    => UBAC_KITS_VERSION,
-				'textdomain' => 'ubac-composite-products',
+				'textdomain' => 'dahuconcept-composite-products',
 				'mark'       => array(
 					'view'  => '0 0 112 112',
 					'paths' => array(
