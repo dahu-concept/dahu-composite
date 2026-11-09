@@ -1,5 +1,5 @@
 /**
- * Ubac Composite — WooCommerce > Ubac Kits screen: image of the
+ * DahuConcept Composite Products — WooCommerce > DahuConcept Composite Products screen: image of the
  * configurator's “None” card.
  *
  * This code used to be a <script> block written in the middle of the page: it

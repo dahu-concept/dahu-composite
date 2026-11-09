@@ -1,4 +1,4 @@
-=== Ubac Composite Products ===
+=== DahuConcept Composite Products ===
 Contributors: dahuconcept
 Tags: composite products, product kits, made to measure, accessories, add-ons
 Requires at least: 6.2
@@ -12,7 +12,7 @@ Server-driven configurable product kits for WooCommerce: scenarios, validation, 
 
 == Description ==
 
-Ubac Composite turns a WooCommerce product into a guided configurator. The
+DahuConcept Composite Products turns a WooCommerce product into a guided configurator. The
 customer walks through steps, picks an option at each one, and ends on a
 summary with a price and a weight that the server — not the browser — worked
 out.
@@ -52,7 +52,7 @@ price and weight in one response.
 
 The plugin works on its own. When they are present it also talks to:
 
-* **Ubac Pricing** — role-based price labels and tiers.
+* **DahuConcept Customer Pricing** — role-based price labels and tiers.
 * **A product bundle plugin** — components that offer a bundle as an option.
 
 Neither is required, and neither is bundled.

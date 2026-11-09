@@ -224,7 +224,7 @@ class Ubac_Kits_Product_Tabs {
 
 		return array(
 			'slug'  => 'description',
-			'label' => __( 'Description', 'ubac-composite-products' ),
+			'label' => __( 'Description', 'dahuconcept-composite-products' ),
 			'html'  => wp_kses_post( apply_filters( 'woocommerce_short_description', $short ) ), // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter, applied on purpose: a theme or plugin that filters short descriptions must reach this tab too.
 		);
 	}
@@ -244,7 +244,7 @@ class Ubac_Kits_Product_Tabs {
 		if ( '' !== $attributes ) {
 			$tabs[] = array(
 				'slug'  => 'caracteristiques',
-				'label' => __( 'Specifications', 'ubac-composite-products' ),
+				'label' => __( 'Specifications', 'dahuconcept-composite-products' ),
 				'html'  => $attributes,
 			);
 		}

@@ -1,13 +1,13 @@
 <?php
 /**
- * Plugin Name: Ubac Composite Products
+ * Plugin Name: DahuConcept Composite Products
  * Description: Server-driven configurable product kits for WooCommerce. Structure, scenarios, validation, pricing and weight are computed server side and exposed through a REST API, so the configurator stays fast and the cart always matches what was validated.
  * Version:     0.78.4
  * Author:      Hugo Vial-Jaime
  * Author URI:  https://dahu-concept.fr
  * License:     MIT
  * License URI: https://opensource.org/licenses/MIT
- * Text Domain: ubac-composite-products
+ * Text Domain: dahuconcept-composite-products
  * Domain Path: /languages
  * Requires at least: 6.2
  * Requires PHP:      7.4
@@ -32,7 +32,7 @@ define( 'UBAC_KITS_PRODUCT_TYPE', 'ubac_kit' );
 /** Slug of the settings screen (WooCommerce submenu). */
 /* THE SCREEN'S SLUG DOES NOT SAY "kit", AND THAT IS NOT AN OVERSIGHT.
  * It shows in the admin URL, so a human reads it, and this plugin is called
- * "Ubac Composite Products" everywhere it addresses anyone: no English
+ * "DahuConcept Composite Products" everywhere it addresses anyone: no English
  * string and no translation contains the word. Only code identifiers --
  * the ubac-kits folder, the handles and the file names -- carry it, and
  * nobody reads those. _bench/t-composite.php holds this rule with an
@@ -72,7 +72,7 @@ add_action(
 				'admin_notices',
 				static function () {
 					echo '<div class="notice notice-error"><p>'
-						. esc_html__( 'Ubac Composite requires WooCommerce.', 'ubac-composite-products' )
+						. esc_html__( 'DahuConcept Composite Products requires WooCommerce.', 'dahuconcept-composite-products' )
 						. '</p></div>';
 				}
 			);
@@ -136,7 +136,7 @@ add_filter(
 	'plugin_action_links_' . UBAC_KITS_BASENAME,
 	static function ( $links ) {
 		$settings = '<a href="' . esc_url( admin_url( 'admin.php?page=' . UBAC_KITS_SETTINGS_SLUG ) ) . '">'
-			. esc_html__( 'Settings', 'ubac-composite-products' ) . '</a>';
+			. esc_html__( 'Settings', 'dahuconcept-composite-products' ) . '</a>';
 
 		array_unshift( $links, $settings );
 
@@ -154,16 +154,16 @@ add_filter(
 		if ( UBAC_KITS_BASENAME === $file ) {
 			$header = get_file_data( UBAC_KITS_FILE, array( 'Version' => 'Version' ) );
 			$links  = array(
-				sprintf( /* translators: %s: plugin version number. */ esc_html__( 'Version %s', 'ubac-composite-products' ), esc_html( $header['Version'] ) ),
+				sprintf( /* translators: %s: plugin version number. */ esc_html__( 'Version %s', 'dahuconcept-composite-products' ), esc_html( $header['Version'] ) ),
 				sprintf(
 					'<a href="%s" target="_blank" rel="noopener">%s</a>',
 					esc_url( 'https://dahu-concept.fr' ),
-					esc_html__( 'By Hugo Vial-Jaime — Dahu-Concept', 'ubac-composite-products' )
+					esc_html__( 'By Hugo Vial-Jaime — Dahu-Concept', 'dahuconcept-composite-products' )
 				),
 				sprintf(
 					'<a href="%s" target="_blank" rel="noopener">%s</a>',
 					esc_url( 'https://dahu-concept.fr' ),
-					esc_html__( 'Plugin website', 'ubac-composite-products' )
+					esc_html__( 'Plugin website', 'dahuconcept-composite-products' )
 				),
 			);
 		}
@@ -206,8 +206,8 @@ add_action(
 		Ubac_Welcome::register(
 			array(
 				'slug'       => 'ubac-composite-products',
-				'name'       => __( 'Composite products', 'ubac-composite-products' ),
-				'tagline'    => __( 'Products built from parts the customer chooses.', 'ubac-composite-products' ),
+				'name'       => __( 'Composite products', 'dahuconcept-composite-products' ),
+				'tagline'    => __( 'Products built from parts the customer chooses.', 'dahuconcept-composite-products' ),
 				'file'       => UBAC_KITS_FILE,
 				'version'    => UBAC_KITS_VERSION,
 				'textdomain' => 'ubac-composite-products',
@@ -226,11 +226,11 @@ add_action(
 				 * no text domain of its own.
 				 */
 				'strings'    => array(
-					'next'   => __( 'Next', 'ubac-composite-products' ),
-					'done'   => __( 'Done', 'ubac-composite-products' ),
-					'skip'   => __( 'Skip', 'ubac-composite-products' ),
-					'of'     => __( 'of', 'ubac-composite-products' ),
-					'denied' => __( 'You are not allowed to view this page.', 'ubac-composite-products' ),
+					'next'   => __( 'Next', 'dahuconcept-composite-products' ),
+					'done'   => __( 'Done', 'dahuconcept-composite-products' ),
+					'skip'   => __( 'Skip', 'dahuconcept-composite-products' ),
+					'of'     => __( 'of', 'dahuconcept-composite-products' ),
+					'denied' => __( 'You are not allowed to view this page.', 'dahuconcept-composite-products' ),
 				),
 				/*
 				 * The screen's own capability, not the shared file's default of
@@ -256,32 +256,32 @@ add_action(
 				'tour'        => array(
 					array(
 						'selector' => '#ubac-kits-shipping-class',
-						'title'    => __( 'Where the parcel comes from', 'ubac-composite-products' ),
-						'text'     => __( 'A composite product ships as one parcel. This shipping class is what carries it, and every composite product uses it.', 'ubac-composite-products' ),
+						'title'    => __( 'Where the parcel comes from', 'dahuconcept-composite-products' ),
+						'text'     => __( 'A composite product ships as one parcel. This shipping class is what carries it, and every composite product uses it.', 'dahuconcept-composite-products' ),
 					),
 					array(
 						'selector' => '.ubac-kit-settings__table',
-						'title'    => __( 'Trade prices', 'ubac-composite-products' ),
-						'text'     => __( 'A tier gives one or more roles their own price on every option. Without a tier, everybody sees the public price.', 'ubac-composite-products' ),
+						'title'    => __( 'Trade prices', 'dahuconcept-composite-products' ),
+						'text'     => __( 'A tier gives one or more roles their own price on every option. Without a tier, everybody sees the public price.', 'dahuconcept-composite-products' ),
 					),
 					array(
 						'selector' => '.ubac-ui-table',
-						'title'    => __( 'Your composite products', 'ubac-composite-products' ),
-						'text'     => __( 'Each one shows how many components and scenarios it has, and the address a shop front can read its schema from.', 'ubac-composite-products' ),
+						'title'    => __( 'Your composite products', 'dahuconcept-composite-products' ),
+						'text'     => __( 'Each one shows how many components and scenarios it has, and the address a shop front can read its schema from.', 'dahuconcept-composite-products' ),
 					),
 				),
 				'points'     => array(
 				array(
-					'title' => __( 'Components', 'ubac-composite-products' ),
-					'text'  => __( 'Group the parts, set what each one costs.', 'ubac-composite-products' ),
+					'title' => __( 'Components', 'dahuconcept-composite-products' ),
+					'text'  => __( 'Group the parts, set what each one costs.', 'dahuconcept-composite-products' ),
 				),
 				array(
-					'title' => __( 'Scenarios', 'ubac-composite-products' ),
-					'text'  => __( 'Offer ready-made combinations alongside the free choice.', 'ubac-composite-products' ),
+					'title' => __( 'Scenarios', 'dahuconcept-composite-products' ),
+					'text'  => __( 'Offer ready-made combinations alongside the free choice.', 'dahuconcept-composite-products' ),
 				),
 				array(
-					'title' => __( 'One price', 'ubac-composite-products' ),
-					'text'  => __( 'The total follows the choices, in the cart and on the order.', 'ubac-composite-products' ),
+					'title' => __( 'One price', 'dahuconcept-composite-products' ),
+					'text'  => __( 'The total follows the choices, in the cart and on the order.', 'dahuconcept-composite-products' ),
 				),
 				),
 			)

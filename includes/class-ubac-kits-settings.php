@@ -66,8 +66,8 @@ class Ubac_Kits_Settings {
 	public static function menu() {
 		self::$hook = add_submenu_page(
 			'woocommerce',
-			__( 'Composite products', 'ubac-composite-products' ),
-			__( 'Composite products', 'ubac-composite-products' ),
+			__( 'Composite products', 'dahuconcept-composite-products' ),
+			__( 'Composite products', 'dahuconcept-composite-products' ),
 			'manage_woocommerce',
 			UBAC_KITS_SETTINGS_SLUG,
 			array( __CLASS__, 'render' )
@@ -346,8 +346,8 @@ class Ubac_Kits_Settings {
 		?>
 		<div class="wrap ubac-ui">
 			<div class="ubac-ui-head">
-				<h1 class="ubac-ui-head__title"><?php esc_html_e( 'Composite products', 'ubac-composite-products' ); ?></h1>
-				<p class="ubac-ui-head__sub"><?php esc_html_e( 'Products built from parts the customer chooses.', 'ubac-composite-products' ); ?></p>
+				<h1 class="ubac-ui-head__title"><?php esc_html_e( 'Composite products', 'dahuconcept-composite-products' ); ?></h1>
+				<p class="ubac-ui-head__sub"><?php esc_html_e( 'Products built from parts the customer chooses.', 'dahuconcept-composite-products' ); ?></p>
 			</div>
 
 			<hr class="wp-header-end">
@@ -357,10 +357,10 @@ class Ubac_Kits_Settings {
 				<div class="ubac-ui-card">
 				<table class="form-table" role="presentation">
 					<tr>
-						<th scope="row"><label for="ubac-kits-shipping-class"><?php esc_html_e( 'Shipping class for composite products', 'ubac-composite-products' ); ?></label></th>
+						<th scope="row"><label for="ubac-kits-shipping-class"><?php esc_html_e( 'Shipping class for composite products', 'dahuconcept-composite-products' ); ?></label></th>
 						<td>
 							<select id="ubac-kits-shipping-class" name="<?php echo esc_attr( self::OPTION_SHIPPING_CLASS ); ?>">
-								<option value=""><?php esc_html_e( '— None —', 'ubac-composite-products' ); ?></option>
+								<option value=""><?php esc_html_e( '— None —', 'dahuconcept-composite-products' ); ?></option>
 								<?php foreach ( is_array( $classes ) ? $classes : array() as $term ) : ?>
 									<option value="<?php echo esc_attr( $term->slug ); ?>" <?php selected( $current, $term->slug ); ?>><?php echo esc_html( $term->name . ' (' . $term->slug . ')' ); ?></option>
 								<?php endforeach; ?>
@@ -372,17 +372,17 @@ class Ubac_Kits_Settings {
 
 				<div class="ubac-ui-card">
 				<div class="ubac-ui-card__head">
-					<h2 class="ubac-ui-card__title"><?php esc_html_e( 'Trade price tiers', 'ubac-composite-products' ); ?></h2>
+					<h2 class="ubac-ui-card__title"><?php esc_html_e( 'Trade price tiers', 'dahuconcept-composite-products' ); ?></h2>
 				</div>
 				<table class="widefat striped ubac-kit-settings__table">
 					<thead>
 						<tr>
-							<th><?php esc_html_e( 'Tier', 'ubac-composite-products' ); ?></th>
-							<th><?php esc_html_e( 'Roles (comma separated)', 'ubac-composite-products' ); ?></th>
-							<th><?php esc_html_e( 'Label for the tier price', 'ubac-composite-products' ); ?></th>
-							<th><?php esc_html_e( 'Label for the public price', 'ubac-composite-products' ); ?></th>
-							<th><?php esc_html_e( 'Short label (summary)', 'ubac-composite-products' ); ?></th>
-							<th><?php esc_html_e( 'Tier price excluding tax', 'ubac-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Tier', 'dahuconcept-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Roles (comma separated)', 'dahuconcept-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Label for the tier price', 'dahuconcept-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Label for the public price', 'dahuconcept-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Short label (summary)', 'dahuconcept-composite-products' ); ?></th>
+							<th><?php esc_html_e( 'Tier price excluding tax', 'dahuconcept-composite-products' ); ?></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -424,22 +424,22 @@ class Ubac_Kits_Settings {
 				<?php if ( $shared_any ) : ?>
 					<p class="description">
 						<sup>*</sup>
-						<?php esc_html_e( 'Label taken from Ubac Pricing; change it there.', 'ubac-composite-products' ); ?>
+						<?php esc_html_e( 'Label taken from DahuConcept Customer Pricing; change it there.', 'dahuconcept-composite-products' ); ?>
 						<?php if ( is_callable( array( 'Ubac_Pricing_Settings', 'get_settings_url' ) ) ) : ?>
-							<a href="<?php echo esc_url( Ubac_Pricing_Settings::get_settings_url() ); ?>"><?php esc_html_e( 'Open the Ubac Pricing settings', 'ubac-composite-products' ); ?></a>
+							<a href="<?php echo esc_url( Ubac_Pricing_Settings::get_settings_url() ); ?>"><?php esc_html_e( 'Open the DahuConcept Customer Pricing settings', 'dahuconcept-composite-products' ); ?></a>
 						<?php endif; ?>
 					</p>
 				<?php endif; ?>
 				</div>
 
 				<div class="ubac-ui-card">
-					<h2><?php esc_html_e( 'Uninstalling', 'ubac-composite-products' ); ?></h2>
+					<h2><?php esc_html_e( 'Uninstalling', 'dahuconcept-composite-products' ); ?></h2>
 					<label>
 						<input type="checkbox" name="<?php echo esc_attr( self::OPTION_DELETE_DATA ); ?>" value="yes" <?php checked( 'yes', get_option( self::OPTION_DELETE_DATA, '' ) ); ?> />
-						<?php esc_html_e( "Delete this plugin's data when the plugin is deleted", 'ubac-composite-products' ); ?>
+						<?php esc_html_e( "Delete this plugin's data when the plugin is deleted", 'dahuconcept-composite-products' ); ?>
 					</label>
 					<p class="description">
-						<?php esc_html_e( 'Off, and worth leaving off. What goes is every composition held on your products — components, scenarios, icons, card styling, customer exceptions — which is the work of building each composite product, and nothing rebuilds it. Deleting the plugin is usually a step in reinstalling it. On a multisite network, the configurations and contact consents your customers saved are held on accounts shared between the sites: one shop ticking this box clears them for the customers of every shop on the network.', 'ubac-composite-products' ); ?>
+						<?php esc_html_e( 'Off, and worth leaving off. What goes is every composition held on your products — components, scenarios, icons, card styling, customer exceptions — which is the work of building each composite product, and nothing rebuilds it. Deleting the plugin is usually a step in reinstalling it. On a multisite network, the configurations and contact consents your customers saved are held on accounts shared between the sites: one shop ticking this box clears them for the customers of every shop on the network.', 'dahuconcept-composite-products' ); ?>
 					</p>
 				</div>
 
@@ -448,27 +448,27 @@ class Ubac_Kits_Settings {
 
 			<div class="ubac-ui-card">
 			<div class="ubac-ui-card__head">
-				<h2 class="ubac-ui-card__title"><?php esc_html_e( 'Composite products', 'ubac-composite-products' ); ?></h2>
+				<h2 class="ubac-ui-card__title"><?php esc_html_e( 'Composite products', 'dahuconcept-composite-products' ); ?></h2>
 			</div>
 			<table class="ubac-ui-table">
 				<thead>
 					<tr>
-						<th><?php esc_html_e( 'Composite product', 'ubac-composite-products' ); ?></th>
-						<th><?php esc_html_e( 'Status', 'ubac-composite-products' ); ?></th>
-						<th><?php esc_html_e( 'Components', 'ubac-composite-products' ); ?></th>
-						<th><?php esc_html_e( 'Scenarios', 'ubac-composite-products' ); ?></th>
-						<th><?php esc_html_e( 'Shipping class', 'ubac-composite-products' ); ?></th>
-						<th><?php esc_html_e( 'REST schema', 'ubac-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'Composite product', 'dahuconcept-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'Status', 'dahuconcept-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'Components', 'dahuconcept-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'Scenarios', 'dahuconcept-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'Shipping class', 'dahuconcept-composite-products' ); ?></th>
+						<th><?php esc_html_e( 'REST schema', 'dahuconcept-composite-products' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
 				<?php if ( empty( $kits ) ) : ?>
 					<tr>
 						<td colspan="6">
-							<p class="ubac-ui-hint"><?php esc_html_e( 'No composite products yet. Create a product of type “Composite product”.', 'ubac-composite-products' ); ?></p>
+							<p class="ubac-ui-hint"><?php esc_html_e( 'No composite products yet. Create a product of type “Composite product”.', 'dahuconcept-composite-products' ); ?></p>
 							<p>
 								<a class="ubac-ui-btn" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=product' ) ); ?>">
-									<?php esc_html_e( 'Add a product', 'ubac-composite-products' ); ?>
+									<?php esc_html_e( 'Add a product', 'dahuconcept-composite-products' ); ?>
 								</a>
 							</p>
 						</td>
@@ -483,7 +483,7 @@ class Ubac_Kits_Settings {
 						<td><?php echo esc_html( $kit->get_status() ); ?></td>
 						<td><?php echo (int) count( $kit->get_kit_components() ); ?></td>
 						<td><?php echo (int) count( $kit->get_kit_scenarios() ); ?></td>
-						<td><?php echo $class_term && ! is_wp_error( $class_term ) ? esc_html( $class_term->slug ) : '<strong class="ubac-kit-settings__missing">' . esc_html__( 'none', 'ubac-composite-products' ) . '</strong>'; ?></td>
+						<td><?php echo $class_term && ! is_wp_error( $class_term ) ? esc_html( $class_term->slug ) : '<strong class="ubac-kit-settings__missing">' . esc_html__( 'none', 'dahuconcept-composite-products' ) . '</strong>'; ?></td>
 						<td><code><?php echo esc_html( rest_url( Ubac_Kits_Rest::NAMESPACE_V1 . '/schema/' . $kit->get_id() ) ); ?></code></td>
 					</tr>
 				<?php endforeach; ?>

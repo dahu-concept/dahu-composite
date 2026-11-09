@@ -189,7 +189,7 @@ class Ubac_Kits_Rest {
 			return array(
 				new WP_Error(
 					'ubac_kit_forbidden',
-					__( 'Preview restricted to users who can manage products.', 'ubac-composite-products' ),
+					__( 'Preview restricted to users who can manage products.', 'dahuconcept-composite-products' ),
 					array( 'status' => 403 )
 				),
 				array(),
@@ -279,7 +279,7 @@ class Ubac_Kits_Rest {
 
 		return new WP_Error(
 			'ubac_product_not_found',
-			__( 'Product not found.', 'ubac-composite-products' ),
+			__( 'Product not found.', 'dahuconcept-composite-products' ),
 			array( 'status' => 404 )
 		);
 	}
@@ -287,11 +287,11 @@ class Ubac_Kits_Rest {
 	private static function load_kit( $product_id ) {
 		$kit = Ubac_Kits_Engine::get_kit( $product_id );
 		if ( ! $kit ) {
-			return new WP_Error( 'ubac_kit_not_found', __( 'Product not found.', 'ubac-composite-products' ), array( 'status' => 404 ) );
+			return new WP_Error( 'ubac_kit_not_found', __( 'Product not found.', 'dahuconcept-composite-products' ), array( 'status' => 404 ) );
 		}
 		$visible = 'publish' === $kit->get_status() || current_user_can( 'edit_post', $kit->get_id() );
 		if ( ! $visible ) {
-			return new WP_Error( 'ubac_kit_not_found', __( 'Product not found.', 'ubac-composite-products' ), array( 'status' => 404 ) );
+			return new WP_Error( 'ubac_kit_not_found', __( 'Product not found.', 'dahuconcept-composite-products' ), array( 'status' => 404 ) );
 		}
 
 		// Every route goes through here: taxation context initialised
@@ -337,7 +337,7 @@ class Ubac_Kits_Rest {
 		$product = wc_get_product( absint( $request['product_id'] ) );
 
 		if ( ! $product || 'publish' !== $product->get_status() ) {
-			return new WP_Error( 'ubac_product_not_found', __( 'Product not found.', 'ubac-composite-products' ), array( 'status' => 404 ) );
+			return new WP_Error( 'ubac_product_not_found', __( 'Product not found.', 'dahuconcept-composite-products' ), array( 'status' => 404 ) );
 		}
 
 		return self::response( Ubac_Kits_Product_Tabs::get( $product ) );

@@ -1,5 +1,5 @@
 /**
- * Ubac Composite — “Supplied accessories” field of a variation.
+ * DahuConcept Composite Products — “Supplied accessories” field of a variation.
  *
  * The selector is WooCommerce's own (.wc-product-search, products and
  * variations), initialised by WooCommerce, including on a variation loaded

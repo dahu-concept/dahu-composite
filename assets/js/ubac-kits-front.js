@@ -2811,7 +2811,7 @@
 		var preview = this.preview;
 		// “None” card: the image specific to the component (kit editor),
 		// else the image and text shared by the whole configurator
-		// (WooCommerce > Ubac Kits), when they are set.
+		// (WooCommerce > DahuConcept Composite Products), when they are set.
 		var noneChoice = component.none_choice || this.schema.none_choice || null;
 		var listModifier = multiple ? ' ubac-kit__options--multiple' : '';
 
@@ -4142,7 +4142,7 @@
 	/**
 	 * “more info…” link, following the description of a product: its page, in a
 	 * new window. Only when the server has supplied more_info_url — the “Show
-	 * more info” box ticked (WooCommerce > Ubac Kits) and the page public; never
+	 * more info” box ticked (WooCommerce > DahuConcept Composite Products) and the page public; never
 	 * on the “None” card nor on a branch (no product). A click, Enter or Space on
 	 * the link does not choose the card.
 	 *

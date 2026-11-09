@@ -1,4 +1,4 @@
-# Ubac Composite Products
+# DahuConcept Composite Products
 
 Server-driven configurable product kits for WooCommerce.
 
@@ -6,7 +6,7 @@ Developed and maintained by [Hugo Vial-Jaime — Dahu-Concept](https://dahu-conc
 
 ## What it does
 
-Ubac Composite turns a WooCommerce product into a guided configurator. The
+DahuConcept Composite Products turns a WooCommerce product into a guided configurator. The
 customer walks through steps, picks an option at each one, and ends on a summary
 with a price and a weight that the **server** worked out.
 

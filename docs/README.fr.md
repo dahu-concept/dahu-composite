@@ -1,4 +1,4 @@
-# Ubac Composite Products
+# DahuConcept Composite Products
 
 Des kits de produits configurables pour WooCommerce, calculés par le serveur.
 
@@ -9,7 +9,7 @@ elle qui fait foi : c'est elle qui part sur wordpress.org.*
 
 ## À quoi ça sert
 
-Ubac Composite transforme un produit WooCommerce en configurateur guidé. Le
+DahuConcept Composite Products transforme un produit WooCommerce en configurateur guidé. Le
 client parcourt des étapes, choisit une option à chacune, et arrive sur un
 récapitulatif dont le prix et le poids ont été calculés par le **serveur**.
 
@@ -80,7 +80,7 @@ parce qu'un prix dépend du rôle du client.
 ## Les intégrations facultatives
 
 L'extension fonctionne seule. Quand elles sont présentes, elle dialogue aussi
-avec **Ubac Pricing** (libellés de prix et paliers par rôle) et avec une
+avec **DahuConcept Customer Pricing** (libellés de prix et paliers par rôle) et avec une
 **extension de lots de produits** (un composant qui propose un lot comme
 option). Aucune des deux n'est nécessaire, aucune n'est embarquée.
 

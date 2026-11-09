@@ -107,12 +107,12 @@ class Ubac_Kits_Customer_Access {
 			$customer  = isset( $item['customer_id'] ) ? absint( $item['customer_id'] ) : 0;
 			$component = isset( $item['component_id'] ) ? sanitize_title( (string) $item['component_id'] ) : '';
 			if ( ! $customer ) {
-				$errors[] = __( 'Customer exception with no customer: ignored.', 'ubac-composite-products' );
+				$errors[] = __( 'Customer exception with no customer: ignored.', 'dahuconcept-composite-products' );
 				continue;
 			}
 			if ( ! isset( $product_components[ $component ] ) ) {
 				/* translators: 1: customer, 2: component */
-				$errors[] = sprintf( __( 'Exception for customer #%1$d: unknown component “%2$s” (or a branching one); exception ignored.', 'ubac-composite-products' ), $customer, $component );
+				$errors[] = sprintf( __( 'Exception for customer #%1$d: unknown component “%2$s” (or a branching one); exception ignored.', 'dahuconcept-composite-products' ), $customer, $component );
 				continue;
 			}
 			$access = ( isset( $item['access'] ) && 'list' === $item['access'] ) ? 'list' : 'all';
@@ -121,7 +121,7 @@ class Ubac_Kits_Customer_Access {
 				$values = Ubac_Kits_Kit_Config::sanitize_value_list( isset( $item['values'] ) ? $item['values'] : array() );
 				if ( ! $values ) {
 					/* translators: 1: customer, 2: component */
-					$errors[] = sprintf( __( 'Exception for customer #%1$d on “%2$s”: no variation to unlock; exception ignored.', 'ubac-composite-products' ), $customer, $component );
+					$errors[] = sprintf( __( 'Exception for customer #%1$d on “%2$s”: no variation to unlock; exception ignored.', 'dahuconcept-composite-products' ), $customer, $component );
 					continue;
 				}
 			}
@@ -130,7 +130,7 @@ class Ubac_Kits_Customer_Access {
 
 			if ( isset( $out[ $key ] ) ) {
 				/* translators: 1: customer, 2: component */
-				$errors[] = sprintf( __( 'Two exceptions for customer #%1$d on “%2$s”: merged.', 'ubac-composite-products' ), $customer, $component );
+				$errors[] = sprintf( __( 'Two exceptions for customer #%1$d on “%2$s”: merged.', 'dahuconcept-composite-products' ), $customer, $component );
 				if ( 'all' === $access || 'all' === $out[ $key ]['access'] ) {
 					$out[ $key ]['access'] = 'all';
 					$out[ $key ]['values'] = array();
@@ -334,7 +334,7 @@ class Ubac_Kits_Customer_Access {
 		$user = get_userdata( (int) $customer_id );
 		if ( ! $user ) {
 			/* translators: %d: user identifier */
-			return sprintf( __( 'Customer #%d (not found)', 'ubac-composite-products' ), (int) $customer_id );
+			return sprintf( __( 'Customer #%d (not found)', 'dahuconcept-composite-products' ), (int) $customer_id );
 		}
 		$name = trim( $user->first_name . ' ' . $user->last_name );
 		if ( '' === $name ) {
