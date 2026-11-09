@@ -439,7 +439,7 @@ class Ubac_Kits_Settings {
 						<?php esc_html_e( "Delete this plugin's data when the plugin is deleted", 'ubac-composite-products' ); ?>
 					</label>
 					<p class="description">
-						<?php esc_html_e( 'Off, and worth leaving off. What goes is every composition held on your products — components, scenarios, icons, card styling, customer exceptions — which is the work of building each kit, and nothing rebuilds it. Deleting the plugin is usually a step in reinstalling it. On a multisite network, the configurations and contact consents your customers saved are held on accounts shared between the sites: one shop ticking this box clears them for the customers of every shop on the network.', 'ubac-composite-products' ); ?>
+						<?php esc_html_e( 'Off, and worth leaving off. What goes is every composition held on your products — components, scenarios, icons, card styling, customer exceptions — which is the work of building each composite product, and nothing rebuilds it. Deleting the plugin is usually a step in reinstalling it. On a multisite network, the configurations and contact consents your customers saved are held on accounts shared between the sites: one shop ticking this box clears them for the customers of every shop on the network.', 'ubac-composite-products' ); ?>
 					</p>
 				</div>
 
