@@ -4,7 +4,7 @@ Tags: composite products, product kits, made to measure, accessories, add-ons
 Requires at least: 6.2
 Tested up to: 7.1
 Requires PHP: 7.4
-Stable tag: 0.78.4
+Stable tag: 1.0.0
 License: MIT
 License URI: https://opensource.org/licenses/MIT
 
@@ -131,8 +131,11 @@ truthy value before deleting if you really want everything gone.
 
 == Changelog ==
 
+= 1.0.0 =
+* First stable release. Nothing in the code changes with this number: the features, the schema and the behaviour are those of 0.78.4, which had been through the same proofs and the same review as the rest of the range. The version said otherwise, and a number below one tells a shop not to put this near its catalogue.
+
 = 0.78.4 =
-* Changed: the slug and the text domain become ubac-composite-products, which is what the display name implies and what the directory requires them to match. Class prefixes, option names and the REST namespace are unchanged, so an existing installation keeps its settings.
+* Changed: the slug and the text domain become dahuconcept-composite-products, which is what the display name implies and what the directory requires them to match. Class prefixes, option names and the REST namespace are unchanged, so an existing installation keeps its settings.
 * Fixed: uninstall now also removes the welcome flags written under the former slug, which were otherwise unreachable and would have been left behind for good.
 
 = 0.78.3 =
