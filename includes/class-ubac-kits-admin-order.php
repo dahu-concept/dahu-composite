@@ -460,10 +460,25 @@ class Ubac_Kits_Admin_Order {
 		if ( isset( $_POST['country'] ) ) {
 			$order->calculate_taxes(
 				array(
-					'country'  => isset( $_POST['country'] ) ? wc_strtoupper( wc_clean( wp_unslash( $_POST['country'] ) ) ) : '',
-					'state'    => isset( $_POST['state'] ) ? wc_strtoupper( wc_clean( wp_unslash( $_POST['state'] ) ) ) : '',
-					'postcode' => isset( $_POST['postcode'] ) ? wc_strtoupper( wc_clean( wp_unslash( $_POST['postcode'] ) ) ) : '',
-					'city'     => isset( $_POST['city'] ) ? wc_strtoupper( wc_clean( wp_unslash( $_POST['city'] ) ) ) : '',
+					/*
+					 * `sanitize_text_field()`, not `wc_clean()`. The two do the
+					 * same work here, but WPCS does not recognise `wc_clean()`
+					 * as a sanitiser, so every one of these four reads came
+					 * back flagged as unsanitized input on a screen that writes
+					 * order totals. Silencing the sniff with an annotation
+					 * would switch off a security check on a money path to
+					 * keep a helper we have no attachment to; using the
+					 * function the tooling recognises costs nothing.
+					 *
+					 * Useful side effect: `wc_clean()` maps over an array,
+					 * `sanitize_text_field()` does not. A forged
+					 * `country[]=..` now yields '' instead of an array reaching
+					 * `calculate_taxes()`.
+					 */
+					'country'  => isset( $_POST['country'] ) ? wc_strtoupper( sanitize_text_field( wp_unslash( $_POST['country'] ) ) ) : '',
+					'state'    => isset( $_POST['state'] ) ? wc_strtoupper( sanitize_text_field( wp_unslash( $_POST['state'] ) ) ) : '',
+					'postcode' => isset( $_POST['postcode'] ) ? wc_strtoupper( sanitize_text_field( wp_unslash( $_POST['postcode'] ) ) ) : '',
+					'city'     => isset( $_POST['city'] ) ? wc_strtoupper( sanitize_text_field( wp_unslash( $_POST['city'] ) ) ) : '',
 				)
 			);
 			$order->calculate_totals( false );

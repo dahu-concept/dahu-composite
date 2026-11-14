@@ -176,6 +176,7 @@ function ubac_composite_products_uninstall_users( $wipe ) {
 
 	foreach ( UBAC_KITS_UNINSTALL_USER_META as $meta_key ) {
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- no core helper deletes a user meta key site-wide.
+		// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- deleting by meta key alone IS the intent, once, at uninstall; indexing for it would cost every write for the life of the shop.
 		$wpdb->delete( $wpdb->usermeta, array( 'meta_key' => $meta_key ) );
 	}
 }
