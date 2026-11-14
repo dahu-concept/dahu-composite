@@ -1,4 +1,4 @@
-=== DahuConcept Composite Products ===
+=== DahuConcept Composite Products for WooCommerce ===
 Contributors: dahuconcept
 Tags: composite products, product kits, made to measure, accessories, add-ons
 Requires at least: 6.2

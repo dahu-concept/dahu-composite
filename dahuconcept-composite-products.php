@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: DahuConcept Composite Products
+ * Plugin Name: DahuConcept Composite Products for WooCommerce
  * Description: Server-driven configurable product kits for WooCommerce. Structure, scenarios, validation, pricing and weight are computed server side and exposed through a REST API, so the configurator stays fast and the cart always matches what was validated.
  * Version:     1.0.0
  * Author:      Hugo Vial-Jaime
