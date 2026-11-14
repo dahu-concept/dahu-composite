@@ -175,8 +175,19 @@ function ubac_composite_products_uninstall_users( $wipe ) {
 	}
 
 	foreach ( UBAC_KITS_UNINSTALL_USER_META as $meta_key ) {
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery -- no core helper deletes a user meta key site-wide.
-		// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key -- deleting by meta key alone IS the intent, once, at uninstall; indexing for it would cost every write for the life of the shop.
+		/*
+		 * ONE line, both sniffs. `phpcs:ignore` applies to the NEXT line and
+		 * nothing else: adding a second one underneath made the first apply
+		 * to the comment instead of to the query, and DirectQuery plus
+		 * NoCaching came straight back on the very upload meant to silence
+		 * them. Sniffs are comma-separated on a single annotation.
+		 *
+		 * Why each is warranted: no core helper deletes a user meta key
+		 * site-wide, and deleting by meta key alone IS the intent here --
+		 * once, at uninstall. Indexing for it would cost every write for the
+		 * life of the shop.
+		 */
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery, WordPress.DB.SlowDBQuery.slow_db_query_meta_key
 		$wpdb->delete( $wpdb->usermeta, array( 'meta_key' => $meta_key ) );
 	}
 }
