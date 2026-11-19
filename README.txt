@@ -135,7 +135,7 @@ truthy value before deleting if you really want everything gone.
 * First stable release. Nothing in the code changes with this number: the features, the schema and the behaviour are those of 0.78.4, which had been through the same proofs and the same review as the rest of the range. The version said otherwise, and a number below one tells a shop not to put this near its catalogue.
 
 = 0.78.4 =
-* Changed: the slug and the text domain become dahuconcept-composite-products, which is what the display name implies and what the directory requires them to match. Class prefixes, option names and the REST namespace are unchanged, so an existing installation keeps its settings.
+* Changed: the slug and the text domain become dahuconcept-composite-configurator, and the directory requires the two to match. The display name keeps "Composite Products" because that is the term shops search for, while the slug carries "configurator" so that it stands on its own next to the other plugins that describe themselves the same way. Class prefixes, option names and the REST namespace are unchanged, so an existing installation keeps its settings.
 * Fixed: uninstall now also removes the welcome flags written under the former slug, which were otherwise unreachable and would have been left behind for good.
 
 = 0.78.3 =

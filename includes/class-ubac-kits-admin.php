@@ -89,403 +89,403 @@ class Ubac_Kits_Admin {
 	private static function script_i18n() {
 		return array(
 			// Shared actions and labels, reused by several boxes.
-			'moveUp'                    => __( 'Move up', 'dahuconcept-composite-products' ),
-			'moveDown'                  => __( 'Move down', 'dahuconcept-composite-products' ),
-			'duplicate'                 => __( 'Duplicate', 'dahuconcept-composite-products' ),
-			'delete'                    => __( 'Delete', 'dahuconcept-composite-products' ),
-			'change'                    => __( 'Change', 'dahuconcept-composite-products' ),
-			'remove'                    => __( 'Remove', 'dahuconcept-composite-products' ),
-			'choose'                    => __( 'Choose', 'dahuconcept-composite-products' ),
-			'image'                     => __( 'Image', 'dahuconcept-composite-products' ),
-			'media'                     => __( 'Media', 'dahuconcept-composite-products' ),
-			'labelField'                => __( 'Label', 'dahuconcept-composite-products' ),
-			'titleField'                => __( 'Title', 'dahuconcept-composite-products' ),
-			'badgeField'                => __( 'Badge', 'dahuconcept-composite-products' ),
-			'identifier'                => __( 'Identifier', 'dahuconcept-composite-products' ),
-			'identifierFromLabel'       => __( 'generated from the label', 'dahuconcept-composite-products' ),
-			'colourField'               => __( 'Colour', 'dahuconcept-composite-products' ),
-			'optionNone'                => __( '— None —', 'dahuconcept-composite-products' ),
-			'noLabel'                   => __( '(no label)', 'dahuconcept-composite-products' ),
-			'untitled'                  => __( '(untitled)', 'dahuconcept-composite-products' ),
-			'none'                      => __( 'None', 'dahuconcept-composite-products' ),
-			'yes'                       => __( 'yes', 'dahuconcept-composite-products' ),
-			'no'                        => __( 'no', 'dahuconcept-composite-products' ),
-			'copy'                      => __( 'Copy', 'dahuconcept-composite-products' ),
-			'copied'                    => __( 'Copied', 'dahuconcept-composite-products' ),
-			'copyFailed'                => __( 'Copy failed', 'dahuconcept-composite-products' ),
-			'dragToReorder'             => __( 'Drag to reorder', 'dahuconcept-composite-products' ),
-			'cannotBeUndone'            => __( 'This cannot be undone without reloading the page.', 'dahuconcept-composite-products' ),
+			'moveUp'                    => __( 'Move up', 'dahuconcept-composite-configurator' ),
+			'moveDown'                  => __( 'Move down', 'dahuconcept-composite-configurator' ),
+			'duplicate'                 => __( 'Duplicate', 'dahuconcept-composite-configurator' ),
+			'delete'                    => __( 'Delete', 'dahuconcept-composite-configurator' ),
+			'change'                    => __( 'Change', 'dahuconcept-composite-configurator' ),
+			'remove'                    => __( 'Remove', 'dahuconcept-composite-configurator' ),
+			'choose'                    => __( 'Choose', 'dahuconcept-composite-configurator' ),
+			'image'                     => __( 'Image', 'dahuconcept-composite-configurator' ),
+			'media'                     => __( 'Media', 'dahuconcept-composite-configurator' ),
+			'labelField'                => __( 'Label', 'dahuconcept-composite-configurator' ),
+			'titleField'                => __( 'Title', 'dahuconcept-composite-configurator' ),
+			'badgeField'                => __( 'Badge', 'dahuconcept-composite-configurator' ),
+			'identifier'                => __( 'Identifier', 'dahuconcept-composite-configurator' ),
+			'identifierFromLabel'       => __( 'generated from the label', 'dahuconcept-composite-configurator' ),
+			'colourField'               => __( 'Colour', 'dahuconcept-composite-configurator' ),
+			'optionNone'                => __( '— None —', 'dahuconcept-composite-configurator' ),
+			'noLabel'                   => __( '(no label)', 'dahuconcept-composite-configurator' ),
+			'untitled'                  => __( '(untitled)', 'dahuconcept-composite-configurator' ),
+			'none'                      => __( 'None', 'dahuconcept-composite-configurator' ),
+			'yes'                       => __( 'yes', 'dahuconcept-composite-configurator' ),
+			'no'                        => __( 'no', 'dahuconcept-composite-configurator' ),
+			'copy'                      => __( 'Copy', 'dahuconcept-composite-configurator' ),
+			'copied'                    => __( 'Copied', 'dahuconcept-composite-configurator' ),
+			'copyFailed'                => __( 'Copy failed', 'dahuconcept-composite-configurator' ),
+			'dragToReorder'             => __( 'Drag to reorder', 'dahuconcept-composite-configurator' ),
+			'cannotBeUndone'            => __( 'This cannot be undone without reloading the page.', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: HTTP status code returned by the request. */
-			'httpError'                 => __( 'Error %s', 'dahuconcept-composite-products' ),
+			'httpError'                 => __( 'Error %s', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the item that could not be found. */
-			'notFound'                  => __( '%s (not found)', 'dahuconcept-composite-products' ),
+			'notFound'                  => __( '%s (not found)', 'dahuconcept-composite-configurator' ),
 
 			// Component box: type, choice mode, screen and quantity.
-			'componentsBox'             => __( 'Components', 'dahuconcept-composite-products' ),
-			'componentType'             => __( 'Component type', 'dahuconcept-composite-products' ),
-			'typeProducts'              => __( 'Products', 'dahuconcept-composite-products' ),
-			'typeBranch'                => __( 'Branch (no product)', 'dahuconcept-composite-products' ),
-			'choiceField'               => __( 'Choice', 'dahuconcept-composite-products' ),
-			'choiceSingle'              => __( 'Single (one option)', 'dahuconcept-composite-products' ),
-			'choiceMultiple'            => __( 'Multiple (several options, one row each)', 'dahuconcept-composite-products' ),
-			'layoutField'               => __( 'Layout', 'dahuconcept-composite-products' ),
-			'styleDefault'              => __( 'Default (general appearance)', 'dahuconcept-composite-products' ),
-			'styleImage'                => __( 'With image — cards in a grid', 'dahuconcept-composite-products' ),
-			'styleRow'                  => __( 'Inline — one expandable row per option', 'dahuconcept-composite-products' ),
-			'styleSmall'                => __( 'Small — compact grid', 'dahuconcept-composite-products' ),
-			'styleIcon'                 => __( 'Category icon', 'dahuconcept-composite-products' ),
-			'styleChips'                => __( 'Tickable chips', 'dahuconcept-composite-products' ),
-			'displayGroup'              => __( 'Display group', 'dahuconcept-composite-products' ),
-			'displayGroupPlaceholder'   => __( 'same value = same screen', 'dahuconcept-composite-products' ),
-			'titleRoleField'            => __( 'Title on the screen', 'dahuconcept-composite-products' ),
-			'titleRolePrimary'          => __( 'Main (in the screen title)', 'dahuconcept-composite-products' ),
-			'titleRoleSecondary'        => __( 'Secondary (add-on, no title)', 'dahuconcept-composite-products' ),
-			'presentationField'         => __( 'Add-on presentation', 'dahuconcept-composite-products' ),
-			'presentationCard'          => __( '“Select” card', 'dahuconcept-composite-products' ),
-			'presentationQuestion'      => __( 'Yes / no question', 'dahuconcept-composite-products' ),
-			'questionField'             => __( 'Text of the question', 'dahuconcept-composite-products' ),
-			'questionPlaceholder'       => __( 'Empty: the title of the component', 'dahuconcept-composite-products' ),
-			'quantityEditable'          => __( 'Adjustable quantity', 'dahuconcept-composite-products' ),
-			'quantityMin'               => __( 'Min quantity', 'dahuconcept-composite-products' ),
-			'quantityMax'               => __( 'Max quantity', 'dahuconcept-composite-products' ),
-			'optionalField'             => __( 'Optional', 'dahuconcept-composite-products' ),
-			'shippedIndividually'       => __( 'Shipped on its own (otherwise its weight is added to the composite product parcel)', 'dahuconcept-composite-products' ),
-			'weightModeField'           => __( 'Displayed weight', 'dahuconcept-composite-products' ),
-			'weightModeProducts'        => __( 'Weight of the products', 'dahuconcept-composite-products' ),
-			'weightModeFixed'           => __( 'Fixed value', 'dahuconcept-composite-products' ),
-			'weightModeSubtract'        => __( 'Weight of the products minus…', 'dahuconcept-composite-products' ),
-			'weightGrams'               => __( 'Grams', 'dahuconcept-composite-products' ),
-			'descriptionField'          => __( 'Description (HTML allowed)', 'dahuconcept-composite-products' ),
-			'infoBubbleText'            => __( 'Info bubble text (optional)', 'dahuconcept-composite-products' ),
-			'optionsProductsField'      => __( 'Options (products)', 'dahuconcept-composite-products' ),
-			'searchProduct'             => __( 'Search for a product…', 'dahuconcept-composite-products' ),
-			'defaultSelectionField'     => __( 'Default selection', 'dahuconcept-composite-products' ),
-			'defaultOptionField'        => __( 'Default option', 'dahuconcept-composite-products' ),
+			'componentsBox'             => __( 'Components', 'dahuconcept-composite-configurator' ),
+			'componentType'             => __( 'Component type', 'dahuconcept-composite-configurator' ),
+			'typeProducts'              => __( 'Products', 'dahuconcept-composite-configurator' ),
+			'typeBranch'                => __( 'Branch (no product)', 'dahuconcept-composite-configurator' ),
+			'choiceField'               => __( 'Choice', 'dahuconcept-composite-configurator' ),
+			'choiceSingle'              => __( 'Single (one option)', 'dahuconcept-composite-configurator' ),
+			'choiceMultiple'            => __( 'Multiple (several options, one row each)', 'dahuconcept-composite-configurator' ),
+			'layoutField'               => __( 'Layout', 'dahuconcept-composite-configurator' ),
+			'styleDefault'              => __( 'Default (general appearance)', 'dahuconcept-composite-configurator' ),
+			'styleImage'                => __( 'With image — cards in a grid', 'dahuconcept-composite-configurator' ),
+			'styleRow'                  => __( 'Inline — one expandable row per option', 'dahuconcept-composite-configurator' ),
+			'styleSmall'                => __( 'Small — compact grid', 'dahuconcept-composite-configurator' ),
+			'styleIcon'                 => __( 'Category icon', 'dahuconcept-composite-configurator' ),
+			'styleChips'                => __( 'Tickable chips', 'dahuconcept-composite-configurator' ),
+			'displayGroup'              => __( 'Display group', 'dahuconcept-composite-configurator' ),
+			'displayGroupPlaceholder'   => __( 'same value = same screen', 'dahuconcept-composite-configurator' ),
+			'titleRoleField'            => __( 'Title on the screen', 'dahuconcept-composite-configurator' ),
+			'titleRolePrimary'          => __( 'Main (in the screen title)', 'dahuconcept-composite-configurator' ),
+			'titleRoleSecondary'        => __( 'Secondary (add-on, no title)', 'dahuconcept-composite-configurator' ),
+			'presentationField'         => __( 'Add-on presentation', 'dahuconcept-composite-configurator' ),
+			'presentationCard'          => __( '“Select” card', 'dahuconcept-composite-configurator' ),
+			'presentationQuestion'      => __( 'Yes / no question', 'dahuconcept-composite-configurator' ),
+			'questionField'             => __( 'Text of the question', 'dahuconcept-composite-configurator' ),
+			'questionPlaceholder'       => __( 'Empty: the title of the component', 'dahuconcept-composite-configurator' ),
+			'quantityEditable'          => __( 'Adjustable quantity', 'dahuconcept-composite-configurator' ),
+			'quantityMin'               => __( 'Min quantity', 'dahuconcept-composite-configurator' ),
+			'quantityMax'               => __( 'Max quantity', 'dahuconcept-composite-configurator' ),
+			'optionalField'             => __( 'Optional', 'dahuconcept-composite-configurator' ),
+			'shippedIndividually'       => __( 'Shipped on its own (otherwise its weight is added to the composite product parcel)', 'dahuconcept-composite-configurator' ),
+			'weightModeField'           => __( 'Displayed weight', 'dahuconcept-composite-configurator' ),
+			'weightModeProducts'        => __( 'Weight of the products', 'dahuconcept-composite-configurator' ),
+			'weightModeFixed'           => __( 'Fixed value', 'dahuconcept-composite-configurator' ),
+			'weightModeSubtract'        => __( 'Weight of the products minus…', 'dahuconcept-composite-configurator' ),
+			'weightGrams'               => __( 'Grams', 'dahuconcept-composite-configurator' ),
+			'descriptionField'          => __( 'Description (HTML allowed)', 'dahuconcept-composite-configurator' ),
+			'infoBubbleText'            => __( 'Info bubble text (optional)', 'dahuconcept-composite-configurator' ),
+			'optionsProductsField'      => __( 'Options (products)', 'dahuconcept-composite-configurator' ),
+			'searchProduct'             => __( 'Search for a product…', 'dahuconcept-composite-configurator' ),
+			'defaultSelectionField'     => __( 'Default selection', 'dahuconcept-composite-configurator' ),
+			'defaultOptionField'        => __( 'Default option', 'dahuconcept-composite-configurator' ),
 
 			// Component box: badges of the folded header.
-			'badgeBranch'               => __( 'Branch', 'dahuconcept-composite-products' ),
-			'badgeProducts'             => __( 'Products', 'dahuconcept-composite-products' ),
-			'badgeMultiple'             => __( 'multiple choice', 'dahuconcept-composite-products' ),
-			'badgeOptional'             => __( 'optional', 'dahuconcept-composite-products' ),
+			'badgeBranch'               => __( 'Branch', 'dahuconcept-composite-configurator' ),
+			'badgeProducts'             => __( 'Products', 'dahuconcept-composite-configurator' ),
+			'badgeMultiple'             => __( 'multiple choice', 'dahuconcept-composite-configurator' ),
+			'badgeOptional'             => __( 'optional', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the screen the component is shown on. */
-			'badgeScreen'               => __( 'screen: %s', 'dahuconcept-composite-products' ),
+			'badgeScreen'               => __( 'screen: %s', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of options. */
-			'optionCount'               => __( 'Options: %s', 'dahuconcept-composite-products' ),
+			'optionCount'               => __( 'Options: %s', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of ranges. */
-			'rangeCount'                => __( 'Ranges: %s', 'dahuconcept-composite-products' ),
+			'rangeCount'                => __( 'Ranges: %s', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of restricted options. */
-			'restrictedCount'           => __( 'Restricted: %s', 'dahuconcept-composite-products' ),
-			'everythingPublic'          => __( 'everything is public', 'dahuconcept-composite-products' ),
+			'restrictedCount'           => __( 'Restricted: %s', 'dahuconcept-composite-configurator' ),
+			'everythingPublic'          => __( 'everything is public', 'dahuconcept-composite-configurator' ),
 
 			// Anchoring an add-on to the card of another component.
-			'anchorNextTo'              => __( 'Anchor next to', 'dahuconcept-composite-products' ),
-			'anchorAutomatic'           => __( '— Automatic (the chosen card of the first component on the screen) —', 'dahuconcept-composite-products' ),
+			'anchorNextTo'              => __( 'Anchor next to', 'dahuconcept-composite-configurator' ),
+			'anchorAutomatic'           => __( '— Automatic (the chosen card of the first component on the screen) —', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the component, which sits on another screen. */
-			'anchorOtherScreen'         => __( '%s (other screen)', 'dahuconcept-composite-products' ),
-			'anchorCard'                => __( 'Card', 'dahuconcept-composite-products' ),
-			'anchorChosenCard'          => __( '— Chosen card —', 'dahuconcept-composite-products' ),
+			'anchorOtherScreen'         => __( '%s (other screen)', 'dahuconcept-composite-configurator' ),
+			'anchorCard'                => __( 'Card', 'dahuconcept-composite-configurator' ),
+			'anchorChosenCard'          => __( '— Chosen card —', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the card that is no longer among the options. */
-			'anchorAbsent'              => __( '%s (absent from the options)', 'dahuconcept-composite-products' ),
+			'anchorAbsent'              => __( '%s (absent from the options)', 'dahuconcept-composite-configurator' ),
 
 			// Categories (ranges) of a component.
 			/* translators: %s: number of categories. */
-			'rangesPanel'               => __( 'Categories / ranges (%s)', 'dahuconcept-composite-products' ),
-			'rangeAdd'                  => __( 'Add a category', 'dahuconcept-composite-products' ),
-			'rangeCreate'               => __( 'Create a category', 'dahuconcept-composite-products' ),
-			'rangeField'                => __( 'Range', 'dahuconcept-composite-products' ),
-			'rangeNoCategory'           => __( 'Range: no category.', 'dahuconcept-composite-products' ),
-			'rangeDisplay'              => __( 'Display of the ranges:', 'dahuconcept-composite-products' ),
-			'rangeNewline'              => __( 'On its own line', 'dahuconcept-composite-products' ),
-			'rangeBadge'                => __( 'Badge', 'dahuconcept-composite-products' ),
-			'rangeTint'                 => __( 'Coloured background', 'dahuconcept-composite-products' ),
+			'rangesPanel'               => __( 'Categories / ranges (%s)', 'dahuconcept-composite-configurator' ),
+			'rangeAdd'                  => __( 'Add a category', 'dahuconcept-composite-configurator' ),
+			'rangeCreate'               => __( 'Create a category', 'dahuconcept-composite-configurator' ),
+			'rangeField'                => __( 'Range', 'dahuconcept-composite-configurator' ),
+			'rangeNoCategory'           => __( 'Range: no category.', 'dahuconcept-composite-configurator' ),
+			'rangeDisplay'              => __( 'Display of the ranges:', 'dahuconcept-composite-configurator' ),
+			'rangeNewline'              => __( 'On its own line', 'dahuconcept-composite-configurator' ),
+			'rangeBadge'                => __( 'Badge', 'dahuconcept-composite-configurator' ),
+			'rangeTint'                 => __( 'Coloured background', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: the default colour, in hexadecimal. */
-			'colourDefault'             => __( 'Default (%s)', 'dahuconcept-composite-products' ),
-			'tierMedia'                 => __( 'Tooltip image or video (optional)', 'dahuconcept-composite-products' ),
-			'tierMediaUrl'              => __( 'or a video link (YouTube, Vimeo, .mp4 file)', 'dahuconcept-composite-products' ),
-			'chooseFromLibrary'         => __( 'Choose from the media library', 'dahuconcept-composite-products' ),
+			'colourDefault'             => __( 'Default (%s)', 'dahuconcept-composite-configurator' ),
+			'tierMedia'                 => __( 'Tooltip image or video (optional)', 'dahuconcept-composite-configurator' ),
+			'tierMediaUrl'              => __( 'or a video link (YouTube, Vimeo, .mp4 file)', 'dahuconcept-composite-configurator' ),
+			'chooseFromLibrary'         => __( 'Choose from the media library', 'dahuconcept-composite-configurator' ),
 
 			// Product option: display, variations, help image, visibility.
-			'displayedTitle'            => __( 'Displayed title', 'dahuconcept-composite-products' ),
-			'badgePlaceholder'          => __( 'e.g. Best seller', 'dahuconcept-composite-products' ),
-			'displayedDescription'      => __( 'Displayed description (simple HTML)', 'dahuconcept-composite-products' ),
-			'showImage'                 => __( 'Show the image', 'dahuconcept-composite-products' ),
-			'showDescription'           => __( 'Description', 'dahuconcept-composite-products' ),
-			'showSpecs'                 => __( 'Specifications', 'dahuconcept-composite-products' ),
-			'showBundled'               => __( 'Included products', 'dahuconcept-composite-products' ),
-			'customiseDisplay'          => __( 'Customise the display', 'dahuconcept-composite-products' ),
-			'changeImage'               => __( 'Change the image', 'dahuconcept-composite-products' ),
-			'chooseImage'               => __( 'Choose an image', 'dahuconcept-composite-products' ),
-			'everyVariant'              => __( 'Every variant', 'dahuconcept-composite-products' ),
-			'helpImagePanel'            => __( 'Help image', 'dahuconcept-composite-products' ),
-			'variantsPanel'             => __( 'Variations offered', 'dahuconcept-composite-products' ),
-			'variantsAll'               => __( 'all', 'dahuconcept-composite-products' ),
+			'displayedTitle'            => __( 'Displayed title', 'dahuconcept-composite-configurator' ),
+			'badgePlaceholder'          => __( 'e.g. Best seller', 'dahuconcept-composite-configurator' ),
+			'displayedDescription'      => __( 'Displayed description (simple HTML)', 'dahuconcept-composite-configurator' ),
+			'showImage'                 => __( 'Show the image', 'dahuconcept-composite-configurator' ),
+			'showDescription'           => __( 'Description', 'dahuconcept-composite-configurator' ),
+			'showSpecs'                 => __( 'Specifications', 'dahuconcept-composite-configurator' ),
+			'showBundled'               => __( 'Included products', 'dahuconcept-composite-configurator' ),
+			'customiseDisplay'          => __( 'Customise the display', 'dahuconcept-composite-configurator' ),
+			'changeImage'               => __( 'Change the image', 'dahuconcept-composite-configurator' ),
+			'chooseImage'               => __( 'Choose an image', 'dahuconcept-composite-configurator' ),
+			'everyVariant'              => __( 'Every variant', 'dahuconcept-composite-configurator' ),
+			'helpImagePanel'            => __( 'Help image', 'dahuconcept-composite-configurator' ),
+			'variantsPanel'             => __( 'Variations offered', 'dahuconcept-composite-configurator' ),
+			'variantsAll'               => __( 'all', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: the variants the restriction applies to. */
-			'variantsRestrictedCount'   => __( 'restricted on %s', 'dahuconcept-composite-products' ),
-			'visibilityPanel'           => __( 'Public visibility', 'dahuconcept-composite-products' ),
-			'publicLabel'               => __( 'public', 'dahuconcept-composite-products' ),
-			'restricted'                => __( 'restricted', 'dahuconcept-composite-products' ),
-			'restrictedEveryVariant'    => __( 'restricted (every variant)', 'dahuconcept-composite-products' ),
-			'noneCard'                  => __( '“None” card', 'dahuconcept-composite-products' ),
-			'valueNoSelection'          => __( '— No selection —', 'dahuconcept-composite-products' ),
+			'variantsRestrictedCount'   => __( 'restricted on %s', 'dahuconcept-composite-configurator' ),
+			'visibilityPanel'           => __( 'Public visibility', 'dahuconcept-composite-configurator' ),
+			'publicLabel'               => __( 'public', 'dahuconcept-composite-configurator' ),
+			'restricted'                => __( 'restricted', 'dahuconcept-composite-configurator' ),
+			'restrictedEveryVariant'    => __( 'restricted (every variant)', 'dahuconcept-composite-configurator' ),
+			'noneCard'                  => __( '“None” card', 'dahuconcept-composite-configurator' ),
+			'valueNoSelection'          => __( '— No selection —', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the value. */
-			'valueEveryVariant'         => __( '%s — every variant', 'dahuconcept-composite-products' ),
+			'valueEveryVariant'         => __( '%s — every variant', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the value. */
-			'valueVariantPending'       => __( '%s — variant not chosen yet', 'dahuconcept-composite-products' ),
+			'valueVariantPending'       => __( '%s — variant not chosen yet', 'dahuconcept-composite-configurator' ),
 
 			// Options of a branch component.
-			'branchOptions'             => __( 'Options of the branch', 'dahuconcept-composite-products' ),
-			'addOption'                 => __( 'Add an option', 'dahuconcept-composite-products' ),
-			'deleteThisOption'          => __( 'Delete this option', 'dahuconcept-composite-products' ),
-			'badgePathPlaceholder'      => __( 'e.g. New', 'dahuconcept-composite-products' ),
-			'comingSoon'                => __( 'Coming soon', 'dahuconcept-composite-products' ),
-			'linkField'                 => __( 'Link (optional)', 'dahuconcept-composite-products' ),
-			'linkPlaceholder'           => __( 'page slug (contact) or https://…', 'dahuconcept-composite-products' ),
-			'linkTitle'                 => __( 'Filled in: the card is no longer a choice, it opens this page.', 'dahuconcept-composite-products' ),
+			'branchOptions'             => __( 'Options of the branch', 'dahuconcept-composite-configurator' ),
+			'addOption'                 => __( 'Add an option', 'dahuconcept-composite-configurator' ),
+			'deleteThisOption'          => __( 'Delete this option', 'dahuconcept-composite-configurator' ),
+			'badgePathPlaceholder'      => __( 'e.g. New', 'dahuconcept-composite-configurator' ),
+			'comingSoon'                => __( 'Coming soon', 'dahuconcept-composite-configurator' ),
+			'linkField'                 => __( 'Link (optional)', 'dahuconcept-composite-configurator' ),
+			'linkPlaceholder'           => __( 'page slug (contact) or https://…', 'dahuconcept-composite-configurator' ),
+			'linkTitle'                 => __( 'Filled in: the card is no longer a choice, it opens this page.', 'dahuconcept-composite-configurator' ),
 
 			// Media library frames (title and confirm button).
-			'mediaOptionImage'          => __( 'Image of the option', 'dahuconcept-composite-products' ),
-			'mediaHelpImage'            => __( 'Help image (back of the card)', 'dahuconcept-composite-products' ),
+			'mediaOptionImage'          => __( 'Image of the option', 'dahuconcept-composite-configurator' ),
+			'mediaHelpImage'            => __( 'Help image (back of the card)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s is the title of the component. */
-			'mediaNoneImage'            => __( 'Image of the “None” card — %s', 'dahuconcept-composite-products' ),
+			'mediaNoneImage'            => __( 'Image of the “None” card — %s', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the category the media belongs to. */
-			'mediaTierTooltip'          => __( 'Tooltip image or video “%s”', 'dahuconcept-composite-products' ),
-			'mediaUseThisVisual'        => __( 'Use this visual', 'dahuconcept-composite-products' ),
-			'mediaUseThisImage'         => __( 'Use this image', 'dahuconcept-composite-products' ),
-			'mediaUseThisMedia'         => __( 'Use this media', 'dahuconcept-composite-products' ),
+			'mediaTierTooltip'          => __( 'Tooltip image or video “%s”', 'dahuconcept-composite-configurator' ),
+			'mediaUseThisVisual'        => __( 'Use this visual', 'dahuconcept-composite-configurator' ),
+			'mediaUseThisImage'         => __( 'Use this image', 'dahuconcept-composite-configurator' ),
+			'mediaUseThisMedia'         => __( 'Use this media', 'dahuconcept-composite-configurator' ),
 
 			// Duplicating and deleting.
 			/* translators: %s is the name of the item being duplicated. */
-			'copySuffix'                => __( '%s (copy)', 'dahuconcept-composite-products' ),
+			'copySuffix'                => __( '%s (copy)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the category about to be deleted. */
-			'tierDeleteConfirm'         => __( 'Delete the category “%s”?', 'dahuconcept-composite-products' ),
+			'tierDeleteConfirm'         => __( 'Delete the category “%s”?', 'dahuconcept-composite-configurator' ),
 			'tierDeleteAttached'        => array(
 				/* translators: %s: number of options attached to the category. */
-				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 1, 'dahuconcept-composite-products' ),
+				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 1, 'dahuconcept-composite-configurator' ),
 				/* translators: %s: number of options attached to the category. */
-				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 2, 'dahuconcept-composite-products' ),
+				_n( '%s option is attached to it: it will go back to having no category.', '%s options are attached to it: they will go back to having no category.', 2, 'dahuconcept-composite-configurator' ),
 			),
-			'tierDeleteNoOption'        => __( 'No option is attached to it.', 'dahuconcept-composite-products' ),
+			'tierDeleteNoOption'        => __( 'No option is attached to it.', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the component about to be deleted. */
-			'componentDeleteConfirm'    => __( 'Delete the component “%s”?', 'dahuconcept-composite-products' ),
+			'componentDeleteConfirm'    => __( 'Delete the component “%s”?', 'dahuconcept-composite-configurator' ),
 			'componentDeleteLinked'     => array(
 				/* translators: %s: number of scenarios that refer to the component. */
-				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 1, 'dahuconcept-composite-products' ),
+				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 1, 'dahuconcept-composite-configurator' ),
 				/* translators: %s: number of scenarios that refer to the component. */
-				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 2, 'dahuconcept-composite-products' ),
+				_n( '%s scenario refers to it and will be deleted, or have this condition removed.', '%s scenarios refer to it and will be deleted, or have this condition removed.', 2, 'dahuconcept-composite-configurator' ),
 			),
 			/* translators: %s: name of the scenario about to be deleted. */
-			'scenarioDeleteConfirm'     => __( 'Delete the scenario “%s”?', 'dahuconcept-composite-products' ),
+			'scenarioDeleteConfirm'     => __( 'Delete the scenario “%s”?', 'dahuconcept-composite-configurator' ),
 
 			// Import and export of the configuration JSON.
 			/* translators: %s: the error reported by the JSON parser. */
-			'importInvalidJson'         => __( 'Invalid JSON: %s', 'dahuconcept-composite-products' ),
-			'importNoComponents'        => __( 'Invalid JSON: the “components” key is missing.', 'dahuconcept-composite-products' ),
-			'importDone'                => __( 'Configuration imported: save the product to apply it.', 'dahuconcept-composite-products' ),
+			'importInvalidJson'         => __( 'Invalid JSON: %s', 'dahuconcept-composite-configurator' ),
+			'importNoComponents'        => __( 'Invalid JSON: the “components” key is missing.', 'dahuconcept-composite-configurator' ),
+			'importDone'                => __( 'Configuration imported: save the product to apply it.', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: the list of things that were kept, built from the lines below. */
-			'importKept'                => __( 'Already set in the admin and absent from the imported JSON, so kept: %s.', 'dahuconcept-composite-products' ),
+			'importKept'                => __( 'Already set in the admin and absent from the imported JSON, so kept: %s.', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of images. */
-			'keptImages'                => __( '%s image(s)', 'dahuconcept-composite-products' ),
+			'keptImages'                => __( '%s image(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of help images. */
-			'keptHelpImages'            => __( '%s help image(s)', 'dahuconcept-composite-products' ),
+			'keptHelpImages'            => __( '%s help image(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of option titles. */
-			'keptOptionTitles'          => __( '%s option title(s)', 'dahuconcept-composite-products' ),
+			'keptOptionTitles'          => __( '%s option title(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of option labels. */
-			'keptOptionLabels'          => __( '%s option label(s)', 'dahuconcept-composite-products' ),
+			'keptOptionLabels'          => __( '%s option label(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of option descriptions. */
-			'keptOptionDescriptions'    => __( '%s option description(s)', 'dahuconcept-composite-products' ),
+			'keptOptionDescriptions'    => __( '%s option description(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of badges. */
-			'keptBadges'                => __( '%s badge(s)', 'dahuconcept-composite-products' ),
+			'keptBadges'                => __( '%s badge(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of component titles. */
-			'keptComponentTitles'       => __( '%s component title(s)', 'dahuconcept-composite-products' ),
+			'keptComponentTitles'       => __( '%s component title(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of component layouts. */
-			'keptComponentLayouts'      => __( '%s component layout(s)', 'dahuconcept-composite-products' ),
+			'keptComponentLayouts'      => __( '%s component layout(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of component descriptions. */
-			'keptComponentDescriptions' => __( '%s component description(s)', 'dahuconcept-composite-products' ),
+			'keptComponentDescriptions' => __( '%s component description(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of component info bubble texts. */
-			'keptComponentInfo'         => __( '%s component info bubble text(s)', 'dahuconcept-composite-products' ),
+			'keptComponentInfo'         => __( '%s component info bubble text(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of “None” card images. */
-			'keptNoneImages'            => __( '%s “None” card image(s)', 'dahuconcept-composite-products' ),
+			'keptNoneImages'            => __( '%s “None” card image(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of range info bubble texts. */
-			'keptRangeInfo'             => __( '%s range info bubble text(s)', 'dahuconcept-composite-products' ),
+			'keptRangeInfo'             => __( '%s range info bubble text(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of range media. */
-			'keptRangeMedia'            => __( '%s range media', 'dahuconcept-composite-products' ),
+			'keptRangeMedia'            => __( '%s range media', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of range video links. */
-			'keptRangeVideoLinks'       => __( '%s range video link(s)', 'dahuconcept-composite-products' ),
+			'keptRangeVideoLinks'       => __( '%s range video link(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of card links. */
-			'keptCardLinks'             => __( '%s card link(s)', 'dahuconcept-composite-products' ),
+			'keptCardLinks'             => __( '%s card link(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of offered variation choices. */
-			'keptOfferedVariations'     => __( '%s offered variation choices', 'dahuconcept-composite-products' ),
+			'keptOfferedVariations'     => __( '%s offered variation choices', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of variant help images. */
-			'keptVariantHelpImages'     => __( '%s variant help images', 'dahuconcept-composite-products' ),
+			'keptVariantHelpImages'     => __( '%s variant help images', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of range colours. */
-			'keptRangeColours'          => __( '%s range colour(s)', 'dahuconcept-composite-products' ),
+			'keptRangeColours'          => __( '%s range colour(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of “On its own line” settings. */
-			'keptRangeNewline'          => __( '%s “On its own line” setting(s)', 'dahuconcept-composite-products' ),
+			'keptRangeNewline'          => __( '%s “On its own line” setting(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of “Badge” settings. */
-			'keptRangeBadge'            => __( '%s “Badge” setting(s)', 'dahuconcept-composite-products' ),
+			'keptRangeBadge'            => __( '%s “Badge” setting(s)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: number of “Coloured background” settings. */
-			'keptRangeTint'             => __( '%s “Coloured background” setting(s)', 'dahuconcept-composite-products' ),
+			'keptRangeTint'             => __( '%s “Coloured background” setting(s)', 'dahuconcept-composite-configurator' ),
 
 			// Scenarios box: fields, actions and conditions.
-			'scenariosBox'              => __( 'Scenarios', 'dahuconcept-composite-products' ),
-			'targetComponentField'      => __( 'Target component', 'dahuconcept-composite-products' ),
-			'targetComponentsField'     => __( 'Target components', 'dahuconcept-composite-products' ),
-			'actionField'               => __( 'Action', 'dahuconcept-composite-products' ),
-			'actionHideOptions'         => __( 'Hide options', 'dahuconcept-composite-products' ),
-			'actionShowOnly'            => __( 'Show only these options', 'dahuconcept-composite-products' ),
-			'actionHideStep'            => __( 'Hide the whole step', 'dahuconcept-composite-products' ),
-			'actionDeadEnd'             => __( 'Dead end (stop the configurator with a message)', 'dahuconcept-composite-products' ),
-			'blockMessageField'         => __( 'Message shown (dead end)', 'dahuconcept-composite-products' ),
-			'restartField'              => __( 'Resume at step', 'dahuconcept-composite-products' ),
+			'scenariosBox'              => __( 'Scenarios', 'dahuconcept-composite-configurator' ),
+			'targetComponentField'      => __( 'Target component', 'dahuconcept-composite-configurator' ),
+			'targetComponentsField'     => __( 'Target components', 'dahuconcept-composite-configurator' ),
+			'actionField'               => __( 'Action', 'dahuconcept-composite-configurator' ),
+			'actionHideOptions'         => __( 'Hide options', 'dahuconcept-composite-configurator' ),
+			'actionShowOnly'            => __( 'Show only these options', 'dahuconcept-composite-configurator' ),
+			'actionHideStep'            => __( 'Hide the whole step', 'dahuconcept-composite-configurator' ),
+			'actionDeadEnd'             => __( 'Dead end (stop the configurator with a message)', 'dahuconcept-composite-configurator' ),
+			'blockMessageField'         => __( 'Message shown (dead end)', 'dahuconcept-composite-configurator' ),
+			'restartField'              => __( 'Resume at step', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the component whose options can be hidden. */
-			'scenMaskedField'           => __( 'Options to hide in “%s”', 'dahuconcept-composite-products' ),
+			'scenMaskedField'           => __( 'Options to hide in “%s”', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the component whose options can be kept visible. */
-			'scenShownField'            => __( 'Options to keep visible in “%s”', 'dahuconcept-composite-products' ),
-			'condOn'                    => __( 'Condition on', 'dahuconcept-composite-products' ),
-			'condIsOneOf'               => __( 'is one of', 'dahuconcept-composite-products' ),
-			'condIsNoneOf'              => __( 'is none of', 'dahuconcept-composite-products' ),
-			'condNone'                  => __( 'No condition possible: always active.', 'dahuconcept-composite-products' ),
+			'scenShownField'            => __( 'Options to keep visible in “%s”', 'dahuconcept-composite-configurator' ),
+			'condOn'                    => __( 'Condition on', 'dahuconcept-composite-configurator' ),
+			'condIsOneOf'               => __( 'is one of', 'dahuconcept-composite-configurator' ),
+			'condIsNoneOf'              => __( 'is none of', 'dahuconcept-composite-configurator' ),
+			'condNone'                  => __( 'No condition possible: always active.', 'dahuconcept-composite-configurator' ),
 			/* translators: %s is the customer condition, written out. */
-			'condCustomerLine'          => __( 'Customer condition: %s (import JSON).', 'dahuconcept-composite-products' ),
-			'badgeDeadEnd'              => __( 'Dead end', 'dahuconcept-composite-products' ),
-			'badgeHidesStep'            => __( 'Hides the step', 'dahuconcept-composite-products' ),
-			'badgeShowsOnly'            => __( 'Shows only', 'dahuconcept-composite-products' ),
-			'badgeHidesOptions'         => __( 'Hides options', 'dahuconcept-composite-products' ),
-			'filterEveryTarget'         => __( 'Every target', 'dahuconcept-composite-products' ),
-			'targetMissing'             => __( '(target missing)', 'dahuconcept-composite-products' ),
+			'condCustomerLine'          => __( 'Customer condition: %s (import JSON).', 'dahuconcept-composite-configurator' ),
+			'badgeDeadEnd'              => __( 'Dead end', 'dahuconcept-composite-configurator' ),
+			'badgeHidesStep'            => __( 'Hides the step', 'dahuconcept-composite-configurator' ),
+			'badgeShowsOnly'            => __( 'Shows only', 'dahuconcept-composite-configurator' ),
+			'badgeHidesOptions'         => __( 'Hides options', 'dahuconcept-composite-configurator' ),
+			'filterEveryTarget'         => __( 'Every target', 'dahuconcept-composite-configurator' ),
+			'targetMissing'             => __( '(target missing)', 'dahuconcept-composite-configurator' ),
 
 			// Scenarios box: readable sentence of a scenario.
-			'scenDeadEnd'               => __( 'Dead end', 'dahuconcept-composite-products' ),
+			'scenDeadEnd'               => __( 'Dead end', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the step that is hidden. */
-			'scenHidesStep'             => __( 'Hides the step %s', 'dahuconcept-composite-products' ),
+			'scenHidesStep'             => __( 'Hides the step %s', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: names of the steps that are hidden. */
-			'scenHidesSteps'            => __( 'Hides the steps %s', 'dahuconcept-composite-products' ),
+			'scenHidesSteps'            => __( 'Hides the steps %s', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the component whose options are hidden. */
-			'scenHidesOptions'          => __( 'Hides options of %s', 'dahuconcept-composite-products' ),
+			'scenHidesOptions'          => __( 'Hides options of %s', 'dahuconcept-composite-configurator' ),
 			/* translators: 1: name of the target component, 2: the list of options kept visible. */
-			'scenShowsOnly'             => __( 'Shows in %1$s only %2$s', 'dahuconcept-composite-products' ),
-			'scenNoOptionChosen'        => __( '(no option chosen)', 'dahuconcept-composite-products' ),
+			'scenShowsOnly'             => __( 'Shows in %1$s only %2$s', 'dahuconcept-composite-configurator' ),
+			'scenNoOptionChosen'        => __( '(no option chosen)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the component that carries no value. */
-			'scenNoValue'               => __( '%s (no value)', 'dahuconcept-composite-products' ),
+			'scenNoValue'               => __( '%s (no value)', 'dahuconcept-composite-configurator' ),
 			/* translators: 1: what the scenario does, 2: the list of its conditions. */
-			'scenIf'                    => __( '%1$s if %2$s', 'dahuconcept-composite-products' ),
+			'scenIf'                    => __( '%1$s if %2$s', 'dahuconcept-composite-configurator' ),
 			/* translators: joins two conditions of a scenario; keep the surrounding spaces. */
-			'scenAnd'                   => __( ' and ', 'dahuconcept-composite-products' ),
+			'scenAnd'                   => __( ' and ', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the scenario. */
-			'scenAlwaysActive'          => __( '%s (always active)', 'dahuconcept-composite-products' ),
+			'scenAlwaysActive'          => __( '%s (always active)', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: the customer number. */
-			'customerNumber'            => __( 'customer #%s', 'dahuconcept-composite-products' ),
+			'customerNumber'            => __( 'customer #%s', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: the list of customers the condition includes. */
-			'customerIn'                => __( 'customer ∈ {%s}', 'dahuconcept-composite-products' ),
+			'customerIn'                => __( 'customer ∈ {%s}', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: the list of customers the condition excludes. */
-			'customerNotIn'             => __( 'customer ∉ {%s}', 'dahuconcept-composite-products' ),
+			'customerNotIn'             => __( 'customer ∉ {%s}', 'dahuconcept-composite-configurator' ),
 
 			// Customer exceptions and the rules the server generates from them.
-			'exceptionsBox'             => __( 'Customer exceptions', 'dahuconcept-composite-products' ),
-			'excNone'                   => __( 'No exception.', 'dahuconcept-composite-products' ),
-			'customerField'             => __( 'Customer', 'dahuconcept-composite-products' ),
-			'searchCustomer'            => __( 'Search for a customer (name, e-mail)…', 'dahuconcept-composite-products' ),
-			'componentField'            => __( 'Component', 'dahuconcept-composite-products' ),
-			'noteField'                 => __( 'Note (internal)', 'dahuconcept-composite-products' ),
-			'notePlaceholder'           => __( 'e.g. loyal customer, agreement of 12/09', 'dahuconcept-composite-products' ),
-			'excAccessAll'              => __( 'Access to every restricted option and variation of this component', 'dahuconcept-composite-products' ),
-			'excAccessList'             => __( 'Only these, on top of the public ones:', 'dahuconcept-composite-products' ),
-			'excNothingRestricted'      => __( 'Nothing is restricted on this component.', 'dahuconcept-composite-products' ),
+			'exceptionsBox'             => __( 'Customer exceptions', 'dahuconcept-composite-configurator' ),
+			'excNone'                   => __( 'No exception.', 'dahuconcept-composite-configurator' ),
+			'customerField'             => __( 'Customer', 'dahuconcept-composite-configurator' ),
+			'searchCustomer'            => __( 'Search for a customer (name, e-mail)…', 'dahuconcept-composite-configurator' ),
+			'componentField'            => __( 'Component', 'dahuconcept-composite-configurator' ),
+			'noteField'                 => __( 'Note (internal)', 'dahuconcept-composite-configurator' ),
+			'notePlaceholder'           => __( 'e.g. loyal customer, agreement of 12/09', 'dahuconcept-composite-configurator' ),
+			'excAccessAll'              => __( 'Access to every restricted option and variation of this component', 'dahuconcept-composite-configurator' ),
+			'excAccessList'             => __( 'Only these, on top of the public ones:', 'dahuconcept-composite-configurator' ),
+			'excNothingRestricted'      => __( 'Nothing is restricted on this component.', 'dahuconcept-composite-configurator' ),
 			/* translators: 1: name of the customer, 2: name of the component. */
-			'excSentenceAll'            => __( '%1$s — %2$s: every restricted option and variation', 'dahuconcept-composite-products' ),
+			'excSentenceAll'            => __( '%1$s — %2$s: every restricted option and variation', 'dahuconcept-composite-configurator' ),
 			/* translators: 1: name of the customer, 2: name of the component, 3: number of reserved values. */
 			'excSentenceList'           => array(
 				/* translators: 1: name of the component, 2: name of the value, 3: number of reserved values. */
-				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 1, 'dahuconcept-composite-products' ),
+				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 1, 'dahuconcept-composite-configurator' ),
 				/* translators: 1: name of the component, 2: name of the value, 3: number of reserved values. */
-				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 2, 'dahuconcept-composite-products' ),
+				_n( '%1$s — %2$s: %3$s reserved value on top of the public ones', '%1$s — %2$s: %3$s reserved values on top of the public ones', 2, 'dahuconcept-composite-configurator' ),
 			),
 			'reservedValues'            => array(
 				/* translators: %s: number of reserved values. */
-				_n( '%s reserved value', '%s reserved values', 1, 'dahuconcept-composite-products' ),
+				_n( '%s reserved value', '%s reserved values', 1, 'dahuconcept-composite-configurator' ),
 				/* translators: %s: number of reserved values. */
-				_n( '%s reserved value', '%s reserved values', 2, 'dahuconcept-composite-products' ),
+				_n( '%s reserved value', '%s reserved values', 2, 'dahuconcept-composite-configurator' ),
 			),
-			'nothingRestricted'         => __( 'nothing restricted', 'dahuconcept-composite-products' ),
-			'everyVariantOfIt'          => __( 'every one of its variants', 'dahuconcept-composite-products' ),
-			'unknownComponent'          => __( '(component?)', 'dahuconcept-composite-products' ),
-			'customerToChoose'          => __( '(customer to be chosen)', 'dahuconcept-composite-products' ),
-			'generatedTitle'            => __( 'Generated rules (read only)', 'dahuconcept-composite-products' ),
-			'generatedNone'             => __( 'Generated rules: none (nothing is restricted).', 'dahuconcept-composite-products' ),
+			'nothingRestricted'         => __( 'nothing restricted', 'dahuconcept-composite-configurator' ),
+			'everyVariantOfIt'          => __( 'every one of its variants', 'dahuconcept-composite-configurator' ),
+			'unknownComponent'          => __( '(component?)', 'dahuconcept-composite-configurator' ),
+			'customerToChoose'          => __( '(customer to be chosen)', 'dahuconcept-composite-configurator' ),
+			'generatedTitle'            => __( 'Generated rules (read only)', 'dahuconcept-composite-configurator' ),
+			'generatedNone'             => __( 'Generated rules: none (nothing is restricted).', 'dahuconcept-composite-configurator' ),
 			/* translators: 1: number of values hidden, 2: name of the component, 3: who the rule applies to, 4: the values. */
 			'generatedLine'             => array(
 				/* translators: 1: number of hidden values, 2: name of the component, 3: who the restriction applies to, 4: the hidden values themselves. */
-				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 1, 'dahuconcept-composite-products' ),
+				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 1, 'dahuconcept-composite-configurator' ),
 				/* translators: 1: number of hidden values, 2: name of the component, 3: who the restriction applies to, 4: the hidden values themselves. */
-				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 2, 'dahuconcept-composite-products' ),
+				_n( ' — hides %1$s value of “%2$s” %3$s: %4$s', ' — hides %1$s values of “%2$s” %3$s: %4$s', 2, 'dahuconcept-composite-configurator' ),
 			),
-			'generatedForEveryone'      => __( 'for everyone', 'dahuconcept-composite-products' ),
+			'generatedForEveryone'      => __( 'for everyone', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: who the generated journey is reserved for. */
-			'generatedOnlyFor'          => __( 'for %s only', 'dahuconcept-composite-products' ),
+			'generatedOnlyFor'          => __( 'for %s only', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: who the generated journey is not offered to. */
-			'generatedExceptFor'        => __( 'for everyone, except %s', 'dahuconcept-composite-products' ),
+			'generatedExceptFor'        => __( 'for everyone, except %s', 'dahuconcept-composite-configurator' ),
 
 			// Simulator: journey, totals and configuration serial.
-			'simComputing'              => __( 'Computing…', 'dahuconcept-composite-products' ),
-			'simNoStepVisible'          => __( 'No step is visible with these choices.', 'dahuconcept-composite-products' ),
+			'simComputing'              => __( 'Computing…', 'dahuconcept-composite-configurator' ),
+			'simNoStepVisible'          => __( 'No step is visible with these choices.', 'dahuconcept-composite-configurator' ),
 			/* translators: 1: screen number, 2: title of the screen. */
-			'simScreenTitle'            => __( 'Screen %1$s — %2$s', 'dahuconcept-composite-products' ),
-			'simSummaryStep'            => __( 'Summary', 'dahuconcept-composite-products' ),
+			'simScreenTitle'            => __( 'Screen %1$s — %2$s', 'dahuconcept-composite-configurator' ),
+			'simSummaryStep'            => __( 'Summary', 'dahuconcept-composite-configurator' ),
 			/* translators: 1: number of steps, 2: the steps, joined by an arrow. */
 			'simPath'                   => array(
 				/* translators: 1: number of steps, 2: the steps themselves. */
-				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 1, 'dahuconcept-composite-products' ),
+				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 1, 'dahuconcept-composite-configurator' ),
 				/* translators: 1: number of steps, 2: the steps themselves. */
-				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 2, 'dahuconcept-composite-products' ),
+				_n( 'Journey shown to the customer (%1$s step): %2$s', 'Journey shown to the customer (%1$s steps): %2$s', 2, 'dahuconcept-composite-configurator' ),
 			),
-			'simDeadEnd'                => __( 'Dead end.', 'dahuconcept-composite-products' ),
+			'simDeadEnd'                => __( 'Dead end.', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the step the customer can resume at. */
-			'simRestartAt'              => __( 'Resume offered at step: %s', 'dahuconcept-composite-products' ),
-			'simOptionsUnavailable'     => __( 'Options unavailable (component renamed?).', 'dahuconcept-composite-products' ),
-			'simNoOptionAvailable'      => __( 'No option available with these choices.', 'dahuconcept-composite-products' ),
+			'simRestartAt'              => __( 'Resume offered at step: %s', 'dahuconcept-composite-configurator' ),
+			'simOptionsUnavailable'     => __( 'Options unavailable (component renamed?).', 'dahuconcept-composite-configurator' ),
+			'simNoOptionAvailable'      => __( 'No option available with these choices.', 'dahuconcept-composite-configurator' ),
 			/* translators: %s: name of the parent product. */
-			'simVariantOf'              => __( '— Variant of %s —', 'dahuconcept-composite-products' ),
-			'simChooseVariant'          => __( '— Choose a variant —', 'dahuconcept-composite-products' ),
-			'simStepToFill'             => __( 'Step to fill in.', 'dahuconcept-composite-products' ),
-			'simTotal'                  => __( 'Total:', 'dahuconcept-composite-products' ),
+			'simVariantOf'              => __( '— Variant of %s —', 'dahuconcept-composite-configurator' ),
+			'simChooseVariant'          => __( '— Choose a variant —', 'dahuconcept-composite-configurator' ),
+			'simStepToFill'             => __( 'Step to fill in.', 'dahuconcept-composite-configurator' ),
+			'simTotal'                  => __( 'Total:', 'dahuconcept-composite-configurator' ),
 			/* translators: 1: weight, 2: unit of weight. */
-			'simWeight'                 => __( 'Estimated weight: %1$s %2$s', 'dahuconcept-composite-products' ),
-			'simValid'                  => __( 'Configuration complete and valid', 'dahuconcept-composite-products' ),
-			'simIncomplete'             => __( 'Configuration incomplete', 'dahuconcept-composite-products' ),
-			'simReset'                  => __( 'Reset', 'dahuconcept-composite-products' ),
-			'simSerialLabel'            => __( 'Configuration serial:', 'dahuconcept-composite-products' ),
-			'simSerialPartialLabel'     => __( 'Configuration serial (partial configuration):', 'dahuconcept-composite-products' ),
-			'simSerialNone'             => __( 'no serial as long as no choice is made.', 'dahuconcept-composite-products' ),
-			'simOpenLink'               => __( 'Open on the site', 'dahuconcept-composite-products' ),
-			'simOpenTitle'              => __( 'Reopens the configurator on these choices', 'dahuconcept-composite-products' ),
-			'simViewVisitor'            => __( 'Visitor / customer with no exception', 'dahuconcept-composite-products' ),
-			'simViewAs'                 => __( 'View as:', 'dahuconcept-composite-products' ),
-			'simViewAsHelp'             => __( '(this customer’s hidden options; prices of the logged-in account)', 'dahuconcept-composite-products' ),
-			'warningsBox'               => __( 'Warnings', 'dahuconcept-composite-products' ),
-			'warningsTitle'             => __( 'Worth checking', 'dahuconcept-composite-products' ),
+			'simWeight'                 => __( 'Estimated weight: %1$s %2$s', 'dahuconcept-composite-configurator' ),
+			'simValid'                  => __( 'Configuration complete and valid', 'dahuconcept-composite-configurator' ),
+			'simIncomplete'             => __( 'Configuration incomplete', 'dahuconcept-composite-configurator' ),
+			'simReset'                  => __( 'Reset', 'dahuconcept-composite-configurator' ),
+			'simSerialLabel'            => __( 'Configuration serial:', 'dahuconcept-composite-configurator' ),
+			'simSerialPartialLabel'     => __( 'Configuration serial (partial configuration):', 'dahuconcept-composite-configurator' ),
+			'simSerialNone'             => __( 'no serial as long as no choice is made.', 'dahuconcept-composite-configurator' ),
+			'simOpenLink'               => __( 'Open on the site', 'dahuconcept-composite-configurator' ),
+			'simOpenTitle'              => __( 'Reopens the configurator on these choices', 'dahuconcept-composite-configurator' ),
+			'simViewVisitor'            => __( 'Visitor / customer with no exception', 'dahuconcept-composite-configurator' ),
+			'simViewAs'                 => __( 'View as:', 'dahuconcept-composite-configurator' ),
+			'simViewAsHelp'             => __( '(this customer’s hidden options; prices of the logged-in account)', 'dahuconcept-composite-configurator' ),
+			'warningsBox'               => __( 'Warnings', 'dahuconcept-composite-configurator' ),
+			'warningsTitle'             => __( 'Worth checking', 'dahuconcept-composite-configurator' ),
 
 			// Simulator: sentence describing the appearance in force.
 			/* translators: 1: card style, 2: corners, 3: icons, 4: info on desktop, 5: info on mobile, 6: click. */
-			'appearanceSentence'        => __( 'Appearance on the product page: %1$s, corners %2$s, icons %3$s, info %4$s (desktop) / %5$s (mobile), click %6$s.', 'dahuconcept-composite-products' ),
-			'appearanceCard'            => __( 'Card', 'dahuconcept-composite-products' ),
-			'appearanceThumbnail'       => __( 'Thumbnail', 'dahuconcept-composite-products' ),
-			'appearanceRounded'         => __( 'rounded', 'dahuconcept-composite-products' ),
-			'appearanceSquare'          => __( 'square', 'dahuconcept-composite-products' ),
-			'appearanceInfoSide'        => __( 'side', 'dahuconcept-composite-products' ),
-			'appearanceInfoCard'        => __( 'card', 'dahuconcept-composite-products' ),
-			'appearanceInfoExtended'    => __( 'extended', 'dahuconcept-composite-products' ),
+			'appearanceSentence'        => __( 'Appearance on the product page: %1$s, corners %2$s, icons %3$s, info %4$s (desktop) / %5$s (mobile), click %6$s.', 'dahuconcept-composite-configurator' ),
+			'appearanceCard'            => __( 'Card', 'dahuconcept-composite-configurator' ),
+			'appearanceThumbnail'       => __( 'Thumbnail', 'dahuconcept-composite-configurator' ),
+			'appearanceRounded'         => __( 'rounded', 'dahuconcept-composite-configurator' ),
+			'appearanceSquare'          => __( 'square', 'dahuconcept-composite-configurator' ),
+			'appearanceInfoSide'        => __( 'side', 'dahuconcept-composite-configurator' ),
+			'appearanceInfoCard'        => __( 'card', 'dahuconcept-composite-configurator' ),
+			'appearanceInfoExtended'    => __( 'extended', 'dahuconcept-composite-configurator' ),
 		);
 	}
 
 	private static function box_titles() {
 		return array(
-			'ubac-kit-appearance-box' => __( 'Appearance', 'dahuconcept-composite-products' ),
-			'ubac-kit-components-box' => __( 'Components', 'dahuconcept-composite-products' ),
-			'ubac-kit-scenarios-box'  => __( 'Scenarios', 'dahuconcept-composite-products' ),
-			'ubac-kit-exceptions-box' => __( 'Customer exceptions', 'dahuconcept-composite-products' ),
-			'ubac-kit-warnings-box'   => __( 'Warnings', 'dahuconcept-composite-products' ),
-			'ubac-kit-simulator-box'  => __( 'Simulator', 'dahuconcept-composite-products' ),
-			'ubac-kit-io-box'         => __( 'Import / export', 'dahuconcept-composite-products' ),
+			'ubac-kit-appearance-box' => __( 'Appearance', 'dahuconcept-composite-configurator' ),
+			'ubac-kit-components-box' => __( 'Components', 'dahuconcept-composite-configurator' ),
+			'ubac-kit-scenarios-box'  => __( 'Scenarios', 'dahuconcept-composite-configurator' ),
+			'ubac-kit-exceptions-box' => __( 'Customer exceptions', 'dahuconcept-composite-configurator' ),
+			'ubac-kit-warnings-box'   => __( 'Warnings', 'dahuconcept-composite-configurator' ),
+			'ubac-kit-simulator-box'  => __( 'Simulator', 'dahuconcept-composite-configurator' ),
+			'ubac-kit-io-box'         => __( 'Import / export', 'dahuconcept-composite-configurator' ),
 		);
 	}
 
@@ -747,55 +747,55 @@ class Ubac_Kits_Admin {
 		$appearance = Ubac_Kits_Appearance::get( (int) get_the_ID() );
 		$choices    = array(
 			'card_style'   => array(
-				'label'   => __( 'Card style', 'dahuconcept-composite-products' ),
+				'label'   => __( 'Card style', 'dahuconcept-composite-configurator' ),
 				'options' => array(
-					'vignette' => __( 'Thumbnail', 'dahuconcept-composite-products' ),
-					'card'     => __( 'Card', 'dahuconcept-composite-products' ),
-					'grid'     => __( 'Grid', 'dahuconcept-composite-products' ),
+					'vignette' => __( 'Thumbnail', 'dahuconcept-composite-configurator' ),
+					'card'     => __( 'Card', 'dahuconcept-composite-configurator' ),
+					'grid'     => __( 'Grid', 'dahuconcept-composite-configurator' ),
 				),
 			),
 			'card_corners' => array(
-				'label'   => __( 'Corner shape', 'dahuconcept-composite-products' ),
+				'label'   => __( 'Corner shape', 'dahuconcept-composite-configurator' ),
 				'options' => array(
-					'square'  => __( 'Square', 'dahuconcept-composite-products' ),
-					'rounded' => __( 'Rounded', 'dahuconcept-composite-products' ),
+					'square'  => __( 'Square', 'dahuconcept-composite-configurator' ),
+					'rounded' => __( 'Rounded', 'dahuconcept-composite-configurator' ),
 				),
 			),
 			'icons'        => array(
-				'label'   => __( 'Icons', 'dahuconcept-composite-products' ),
+				'label'   => __( 'Icons', 'dahuconcept-composite-configurator' ),
 				'options' => array(
-					'on'  => __( 'Yes', 'dahuconcept-composite-products' ),
-					'off' => __( 'No', 'dahuconcept-composite-products' ),
+					'on'  => __( 'Yes', 'dahuconcept-composite-configurator' ),
+					'off' => __( 'No', 'dahuconcept-composite-configurator' ),
 				),
 			),
 			'info_desktop' => array(
-				'label'   => __( 'Info display (desktop)', 'dahuconcept-composite-products' ),
+				'label'   => __( 'Info display (desktop)', 'dahuconcept-composite-configurator' ),
 				'options' => array(
-					'card'     => __( 'Card', 'dahuconcept-composite-products' ),
-					'lateral'  => __( 'Side', 'dahuconcept-composite-products' ),
-					'extended' => __( 'Expanded', 'dahuconcept-composite-products' ),
+					'card'     => __( 'Card', 'dahuconcept-composite-configurator' ),
+					'lateral'  => __( 'Side', 'dahuconcept-composite-configurator' ),
+					'extended' => __( 'Expanded', 'dahuconcept-composite-configurator' ),
 				),
 			),
 			'info_mobile'  => array(
-				'label'   => __( 'Info display (mobile)', 'dahuconcept-composite-products' ),
+				'label'   => __( 'Info display (mobile)', 'dahuconcept-composite-configurator' ),
 				'options' => array(
-					'lateral'  => __( 'Side', 'dahuconcept-composite-products' ),
-					'card'     => __( 'Card', 'dahuconcept-composite-products' ),
-					'extended' => __( 'Expanded', 'dahuconcept-composite-products' ),
+					'lateral'  => __( 'Side', 'dahuconcept-composite-configurator' ),
+					'card'     => __( 'Card', 'dahuconcept-composite-configurator' ),
+					'extended' => __( 'Expanded', 'dahuconcept-composite-configurator' ),
 				),
 			),
 			'click'        => array(
-				'label'   => __( '“Select” button', 'dahuconcept-composite-products' ),
+				'label'   => __( '“Select” button', 'dahuconcept-composite-configurator' ),
 				'options' => array(
-					'on'  => __( 'Yes', 'dahuconcept-composite-products' ),
-					'off' => __( 'No', 'dahuconcept-composite-products' ),
+					'on'  => __( 'Yes', 'dahuconcept-composite-configurator' ),
+					'off' => __( 'No', 'dahuconcept-composite-configurator' ),
 				),
 			),
 			'recap_bg'     => array(
-				'label'   => __( 'Summary background', 'dahuconcept-composite-products' ),
+				'label'   => __( 'Summary background', 'dahuconcept-composite-configurator' ),
 				'options' => array(
-					'light' => __( 'Light', 'dahuconcept-composite-products' ),
-					'dark'  => __( 'Dark', 'dahuconcept-composite-products' ),
+					'light' => __( 'Light', 'dahuconcept-composite-configurator' ),
+					'dark'  => __( 'Dark', 'dahuconcept-composite-configurator' ),
 				),
 			),
 		);
@@ -818,20 +818,20 @@ class Ubac_Kits_Admin {
 					</tr>
 				<?php endforeach; ?>
 			</table>
-			<h4 class="ubac-kit-admin__section-title"><?php esc_html_e( 'Settings shared by every composite product', 'dahuconcept-composite-products' ); ?></h4>
+			<h4 class="ubac-kit-admin__section-title"><?php esc_html_e( 'Settings shared by every composite product', 'dahuconcept-composite-configurator' ); ?></h4>
 			<table class="form-table" role="presentation">
 				<tr>
-					<th scope="row"><?php esc_html_e( 'Show more info', 'dahuconcept-composite-products' ); ?></th>
+					<th scope="row"><?php esc_html_e( 'Show more info', 'dahuconcept-composite-configurator' ); ?></th>
 					<td>
 						<input type="hidden" name="<?php echo esc_attr( self::GLOBALS_MARKER ); ?>" value="1">
 						<label class="ubac-kit-admin__appearance-choice">
 							<input type="checkbox" name="<?php echo esc_attr( Ubac_Kits_Settings::OPTION_MORE_INFO ); ?>" value="yes" <?php checked( Ubac_Kits_Settings::more_info_enabled() ); ?>>
-							<?php esc_html_e( 'Yes', 'dahuconcept-composite-products' ); ?>
+							<?php esc_html_e( 'Yes', 'dahuconcept-composite-configurator' ); ?>
 						</label>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><?php esc_html_e( '“None” card image', 'dahuconcept-composite-products' ); ?></th>
+					<th scope="row"><?php esc_html_e( '“None” card image', 'dahuconcept-composite-configurator' ); ?></th>
 					<td>
 						<input type="hidden" id="ubac-kits-none-image" name="<?php echo esc_attr( Ubac_Kits_Settings::OPTION_NONE_IMAGE ); ?>" value="<?php echo esc_attr( $none_image_id ? (string) $none_image_id : '' ); ?>">
 						<?php
@@ -865,14 +865,14 @@ class Ubac_Kits_Admin {
 						 */
 						?>
 						<img id="ubac-kits-none-preview" class="ubac-kit-settings__preview" alt=""<?php echo $none_preview ? ' src="' . esc_url( $none_preview ) . '"' : ' hidden'; ?>>
-						<button type="button" class="ubac-ui-btn" id="ubac-kits-none-pick" data-frame-title="<?php esc_attr_e( 'Image for the “None” card', 'dahuconcept-composite-products' ); ?>" data-frame-button="<?php esc_attr_e( 'Use this image', 'dahuconcept-composite-products' ); ?>"><?php esc_html_e( 'Choose an image', 'dahuconcept-composite-products' ); ?></button>
-						<button type="button" class="button-link delete" id="ubac-kits-none-clear" <?php echo $none_image_id ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove the image', 'dahuconcept-composite-products' ); ?></button>
+						<button type="button" class="ubac-ui-btn" id="ubac-kits-none-pick" data-frame-title="<?php esc_attr_e( 'Image for the “None” card', 'dahuconcept-composite-configurator' ); ?>" data-frame-button="<?php esc_attr_e( 'Use this image', 'dahuconcept-composite-configurator' ); ?>"><?php esc_html_e( 'Choose an image', 'dahuconcept-composite-configurator' ); ?></button>
+						<button type="button" class="button-link delete" id="ubac-kits-none-clear" <?php echo $none_image_id ? '' : 'hidden'; ?>><?php esc_html_e( 'Remove the image', 'dahuconcept-composite-configurator' ); ?></button>
 					</td>
 				</tr>
 				<tr>
-					<th scope="row"><label for="ubac-kits-none-text"><?php esc_html_e( '“None” card text', 'dahuconcept-composite-products' ); ?></label></th>
+					<th scope="row"><label for="ubac-kits-none-text"><?php esc_html_e( '“None” card text', 'dahuconcept-composite-configurator' ); ?></label></th>
 					<td>
-						<input type="text" class="regular-text" id="ubac-kits-none-text" name="<?php echo esc_attr( Ubac_Kits_Settings::OPTION_NONE_TEXT ); ?>" value="<?php echo esc_attr( (string) get_option( Ubac_Kits_Settings::OPTION_NONE_TEXT, '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. I do not need one', 'dahuconcept-composite-products' ); ?>">
+						<input type="text" class="regular-text" id="ubac-kits-none-text" name="<?php echo esc_attr( Ubac_Kits_Settings::OPTION_NONE_TEXT ); ?>" value="<?php echo esc_attr( (string) get_option( Ubac_Kits_Settings::OPTION_NONE_TEXT, '' ) ); ?>" placeholder="<?php esc_attr_e( 'e.g. I do not need one', 'dahuconcept-composite-configurator' ); ?>">
 					</td>
 				</tr>
 			</table>
@@ -908,7 +908,7 @@ class Ubac_Kits_Admin {
 		<div class="ubac-ui ubac-kit-admin">
 			<?php self::render_fold_bar( 'components' ); ?>
 			<div id="ubac-kit-components"></div>
-			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-component"><?php esc_html_e( 'Add a component', 'dahuconcept-composite-products' ); ?></button></p>
+			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-component"><?php esc_html_e( 'Add a component', 'dahuconcept-composite-configurator' ); ?></button></p>
 		</div>
 		<?php
 	}
@@ -918,19 +918,19 @@ class Ubac_Kits_Admin {
 		<div class="ubac-ui ubac-kit-admin">
 			<div class="ubac-kit-admin__filters">
 				<label class="ubac-kit-admin__filter">
-					<span class="screen-reader-text"><?php esc_html_e( 'Search scenarios', 'dahuconcept-composite-products' ); ?></span>
+					<span class="screen-reader-text"><?php esc_html_e( 'Search scenarios', 'dahuconcept-composite-configurator' ); ?></span>
 					<input type="search" id="ubac-kit-scenario-search" class="regular-text"
-						placeholder="<?php esc_attr_e( 'Search…', 'dahuconcept-composite-products' ); ?>">
+						placeholder="<?php esc_attr_e( 'Search…', 'dahuconcept-composite-configurator' ); ?>">
 				</label>
 				<label class="ubac-kit-admin__filter">
-					<span class="screen-reader-text"><?php esc_html_e( 'Filter by target component', 'dahuconcept-composite-products' ); ?></span>
-					<select id="ubac-kit-scenario-target"><option value=""><?php esc_html_e( 'All targets', 'dahuconcept-composite-products' ); ?></option></select>
+					<span class="screen-reader-text"><?php esc_html_e( 'Filter by target component', 'dahuconcept-composite-configurator' ); ?></span>
+					<select id="ubac-kit-scenario-target"><option value=""><?php esc_html_e( 'All targets', 'dahuconcept-composite-configurator' ); ?></option></select>
 				</label>
 				<span class="ubac-kit-admin__filter-count" id="ubac-kit-scenario-count"></span>
 			</div>
 			<?php self::render_fold_bar( 'scenarios' ); ?>
 			<div id="ubac-kit-scenarios"></div>
-			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-scenario"><?php esc_html_e( 'Add a scenario', 'dahuconcept-composite-products' ); ?></button></p>
+			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-scenario"><?php esc_html_e( 'Add a scenario', 'dahuconcept-composite-configurator' ); ?></button></p>
 		</div>
 		<?php
 	}
@@ -942,7 +942,7 @@ class Ubac_Kits_Admin {
 		?>
 		<div class="ubac-kit-admin">
 			<div id="ubac-kit-exceptions"></div>
-			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-exception"><?php esc_html_e( 'Add an exception', 'dahuconcept-composite-products' ); ?></button></p>
+			<p><button type="button" class="ubac-ui-btn" id="ubac-kit-add-exception"><?php esc_html_e( 'Add an exception', 'dahuconcept-composite-configurator' ); ?></button></p>
 			<div id="ubac-kit-generated" class="ubac-kit-admin__generated"></div>
 		</div>
 		<?php
@@ -969,10 +969,10 @@ class Ubac_Kits_Admin {
 		<div class="ubac-kit-admin">
 			<textarea id="ubac-kit-import" rows="8" class="large-text code"></textarea>
 			<p>
-				<button type="button" class="ubac-ui-btn" id="ubac-kit-import-button"><?php esc_html_e( 'Import', 'dahuconcept-composite-products' ); ?></button>
-				<button type="button" class="ubac-ui-btn" id="ubac-kit-export-button"><?php esc_html_e( 'Show export', 'dahuconcept-composite-products' ); ?></button>
+				<button type="button" class="ubac-ui-btn" id="ubac-kit-import-button"><?php esc_html_e( 'Import', 'dahuconcept-composite-configurator' ); ?></button>
+				<button type="button" class="ubac-ui-btn" id="ubac-kit-export-button"><?php esc_html_e( 'Show export', 'dahuconcept-composite-configurator' ); ?></button>
 				<?php // Downloaded export: same JSON as "Show export", as a file. ?>
-				<button type="button" class="ubac-ui-btn" id="ubac-kit-download-button"><?php esc_html_e( 'Export', 'dahuconcept-composite-products' ); ?></button>
+				<button type="button" class="ubac-ui-btn" id="ubac-kit-download-button"><?php esc_html_e( 'Export', 'dahuconcept-composite-configurator' ); ?></button>
 			</p>
 		</div>
 		<?php
@@ -986,8 +986,8 @@ class Ubac_Kits_Admin {
 	private static function render_fold_bar( $section ) {
 		?>
 		<p class="ubac-kit-admin__foldbar">
-			<button type="button" class="button-link" data-fold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Collapse all', 'dahuconcept-composite-products' ); ?></button>
-			<button type="button" class="button-link" data-unfold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Expand all', 'dahuconcept-composite-products' ); ?></button>
+			<button type="button" class="button-link" data-fold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Collapse all', 'dahuconcept-composite-configurator' ); ?></button>
+			<button type="button" class="button-link" data-unfold-all="<?php echo esc_attr( $section ); ?>"><?php esc_html_e( 'Expand all', 'dahuconcept-composite-configurator' ); ?></button>
 		</p>
 		<?php
 	}
@@ -1022,7 +1022,7 @@ class Ubac_Kits_Admin {
 		// JSON decoded, then fully normalised by Ubac_Kits_Kit_Config.
 		$config = json_decode( wp_unslash( $_POST['ubac_kit_config_json'] ), true ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
 		if ( ! is_array( $config ) ) {
-			self::store_notice( array( __( 'The configuration could not be read: nothing was saved.', 'dahuconcept-composite-products' ) ) );
+			self::store_notice( array( __( 'The configuration could not be read: nothing was saved.', 'dahuconcept-composite-configurator' ) ) );
 			return;
 		}
 
@@ -1044,7 +1044,7 @@ class Ubac_Kits_Admin {
 		// Only a class that was named and cannot be found is worth a word. No
 		// class named at all is a deliberate setting, not a mistake.
 		if ( '' !== Ubac_Kits_Product_Type::get_container_shipping_class_slug() && ! Ubac_Kits_Product_Type::get_container_shipping_class_id() ) {
-			$errors[] = __( 'The shipping class set for composite products (DahuConcept Composite Products settings) does not exist: shipping plugins will not recognise this product.', 'dahuconcept-composite-products' );
+			$errors[] = __( 'The shipping class set for composite products (DahuConcept Composite Products settings) does not exist: shipping plugins will not recognise this product.', 'dahuconcept-composite-configurator' );
 		}
 
 		if ( $errors ) {
@@ -1066,7 +1066,7 @@ class Ubac_Kits_Admin {
 			return;
 		}
 		delete_transient( $key );
-		echo '<div class="notice notice-warning is-dismissible"><p><strong>' . esc_html__( 'DahuConcept Composite Products', 'dahuconcept-composite-products' ) . '</strong></p><ul>';
+		echo '<div class="notice notice-warning is-dismissible"><p><strong>' . esc_html__( 'DahuConcept Composite Products', 'dahuconcept-composite-configurator' ) . '</strong></p><ul>';
 		foreach ( (array) $messages as $message ) {
 			echo '<li>' . esc_html( $message ) . '</li>';
 		}

@@ -198,14 +198,14 @@ class WC_Product_Ubac_Kit extends WC_Product {
 	 * @return string
 	 */
 	public function add_to_cart_text() {
-		return apply_filters( 'woocommerce_product_add_to_cart_text', __( 'Configure', 'dahuconcept-composite-products' ), $this ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter, kept so a theme can reword the button as it does for any product type.
+		return apply_filters( 'woocommerce_product_add_to_cart_text', __( 'Configure', 'dahuconcept-composite-configurator' ), $this ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter, kept so a theme can reword the button as it does for any product type.
 	}
 
 	/**
 	 * @return string
 	 */
 	public function single_add_to_cart_text() {
-		return apply_filters( 'woocommerce_product_single_add_to_cart_text', __( 'Add to cart', 'dahuconcept-composite-products' ), $this ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter, kept for the same reason as the one above.
+		return apply_filters( 'woocommerce_product_single_add_to_cart_text', __( 'Add to cart', 'dahuconcept-composite-configurator' ), $this ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WooCommerce's own filter, kept for the same reason as the one above.
 	}
 
 	/**

@@ -101,19 +101,19 @@ class Ubac_Kits_Admin_Order {
 				'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 				'nonce'   => wp_create_nonce( self::NONCE ),
 				'i18n'    => array(
-					'none'          => __( 'None', 'dahuconcept-composite-products' ),
-					'choose'        => __( 'Choose…', 'dahuconcept-composite-products' ),
-					'optional'      => __( '(optional)', 'dahuconcept-composite-products' ),
-					'quantity'      => __( 'Quantity', 'dahuconcept-composite-products' ),
-					'variation'     => __( 'Variation', 'dahuconcept-composite-products' ),
-					'comingSoon'    => __( 'coming soon', 'dahuconcept-composite-products' ),
+					'none'          => __( 'None', 'dahuconcept-composite-configurator' ),
+					'choose'        => __( 'Choose…', 'dahuconcept-composite-configurator' ),
+					'optional'      => __( '(optional)', 'dahuconcept-composite-configurator' ),
+					'quantity'      => __( 'Quantity', 'dahuconcept-composite-configurator' ),
+					'variation'     => __( 'Variation', 'dahuconcept-composite-configurator' ),
+					'comingSoon'    => __( 'coming soon', 'dahuconcept-composite-configurator' ),
 					// Same text as the configurator of the front end.
-					'missingChoice' => __( 'Choose a variation before continuing.', 'dahuconcept-composite-products' ),
-					'blocked'       => __( 'This combination is not possible.', 'dahuconcept-composite-products' ),
-					'loadError'     => __( 'The product could not be loaded.', 'dahuconcept-composite-products' ),
-					'saveError'     => __( 'The composite product could not be added to the order.', 'dahuconcept-composite-products' ),
-					'product'       => __( 'Product', 'dahuconcept-composite-products' ),
-					'sku'           => __( 'SKU', 'dahuconcept-composite-products' ),
+					'missingChoice' => __( 'Choose a variation before continuing.', 'dahuconcept-composite-configurator' ),
+					'blocked'       => __( 'This combination is not possible.', 'dahuconcept-composite-configurator' ),
+					'loadError'     => __( 'The product could not be loaded.', 'dahuconcept-composite-configurator' ),
+					'saveError'     => __( 'The composite product could not be added to the order.', 'dahuconcept-composite-configurator' ),
+					'product'       => __( 'Product', 'dahuconcept-composite-configurator' ),
+					'sku'           => __( 'SKU', 'dahuconcept-composite-configurator' ),
 				),
 			)
 		);
@@ -167,7 +167,7 @@ class Ubac_Kits_Admin_Order {
 			return;
 		}
 		$configured = 'container' === Ubac_Kits_Order::kit_role( $item );
-		$label      = $configured ? __( 'Edit', 'dahuconcept-composite-products' ) : __( 'Configure', 'dahuconcept-composite-products' );
+		$label      = $configured ? __( 'Edit', 'dahuconcept-composite-configurator' ) : __( 'Configure', 'dahuconcept-composite-configurator' );
 		?>
 		<div class="configure_order_item ubac-kit-configure-item">
 			<button type="button" class="button js-ubac-kit-configure" data-title="<?php echo esc_attr( $label ); ?>"><?php echo esc_html( $label ); ?></button>
@@ -190,7 +190,7 @@ class Ubac_Kits_Admin_Order {
 						<header class="wc-backbone-modal-header">
 							<h1>{{ data.title }}</h1>
 							<button class="modal-close modal-close-link dashicons dashicons-no-alt">
-								<span class="screen-reader-text"><?php esc_html_e( 'Close', 'dahuconcept-composite-products' ); ?></span>
+								<span class="screen-reader-text"><?php esc_html_e( 'Close', 'dahuconcept-composite-configurator' ); ?></span>
 							</button>
 						</header>
 						<article>
@@ -198,7 +198,7 @@ class Ubac_Kits_Admin_Order {
 						</article>
 						<footer>
 							<div class="inner ubac-kit-modal__footer">
-								<button id="btn-ok" type="button" class="button button-primary button-large" disabled><?php esc_html_e( 'Done', 'dahuconcept-composite-products' ); ?></button>
+								<button id="btn-ok" type="button" class="button button-primary button-large" disabled><?php esc_html_e( 'Done', 'dahuconcept-composite-configurator' ); ?></button>
 								<span class="ubac-kit-modal__status" role="status"></span>
 							</div>
 						</footer>
@@ -266,7 +266,7 @@ class Ubac_Kits_Admin_Order {
 		$quantity = max( 1, (int) $item->get_quantity() );
 
 		if ( ! $order->is_editable() ) {
-			wp_send_json_error( array( 'message' => __( 'This order can no longer be edited.', 'dahuconcept-composite-products' ) ) );
+			wp_send_json_error( array( 'message' => __( 'This order can no longer be edited.', 'dahuconcept-composite-configurator' ) ) );
 		}
 
 		$built = Ubac_Kits_Cart::build_kit_lines( $kit, self::posted_selections(), $quantity, array( 'ignore_stock' => true ) );
@@ -293,7 +293,7 @@ class Ubac_Kits_Admin_Order {
 			$changed = wc_maybe_adjust_line_item_product_stock( $old_item, 0 );
 			if ( $changed && ! is_wp_error( $changed ) ) {
 				/* translators: 1: item, 2: stock before → after */
-				$removed[] = sprintf( __( '%1$s (stock adjusted: %2$s)', 'dahuconcept-composite-products' ), $old_item->get_name(), $changed['from'] . '&rarr;' . $changed['to'] );
+				$removed[] = sprintf( __( '%1$s (stock adjusted: %2$s)', 'dahuconcept-composite-configurator' ), $old_item->get_name(), $changed['from'] . '&rarr;' . $changed['to'] );
 			}
 			$order->remove_item( $old_id );
 		}
@@ -310,10 +310,10 @@ class Ubac_Kits_Admin_Order {
 		$order->add_order_note(
 			sprintf(
 				/* translators: 1: kit, 2: components */
-				__( 'Composite product “%1$s” configured from the order screen: %2$s.', 'dahuconcept-composite-products' ),
+				__( 'Composite product “%1$s” configured from the order screen: %2$s.', 'dahuconcept-composite-configurator' ),
 				$kit->get_name(),
 				implode( ', ', $added )
-			) . ( $removed ? ' ' . sprintf( /* translators: %s: rows removed */ __( 'Lines removed: %s.', 'dahuconcept-composite-products' ), implode( ', ', $removed ) ) : '' ),
+			) . ( $removed ? ' ' . sprintf( /* translators: %s: rows removed */ __( 'Lines removed: %s.', 'dahuconcept-composite-configurator' ), implode( ', ', $removed ) ) : '' ),
 			false,
 			true
 		);
@@ -358,21 +358,21 @@ class Ubac_Kits_Admin_Order {
 	 */
 	private static function request_context() {
 		if ( ! check_ajax_referer( self::NONCE, 'security', false ) ) {
-			wp_send_json_error( array( 'message' => __( 'Session expired: reload the page.', 'dahuconcept-composite-products' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'Session expired: reload the page.', 'dahuconcept-composite-configurator' ) ), 403 );
 		}
 		if ( ! current_user_can( 'edit_shop_orders' ) ) {
-			wp_send_json_error( array( 'message' => __( 'Action not allowed.', 'dahuconcept-composite-products' ) ), 403 );
+			wp_send_json_error( array( 'message' => __( 'Action not allowed.', 'dahuconcept-composite-configurator' ) ), 403 );
 		}
 
 		$order = wc_get_order( isset( $_POST['order_id'] ) ? absint( wp_unslash( $_POST['order_id'] ) ) : 0 );
 		$item  = $order ? $order->get_item( isset( $_POST['item_id'] ) ? absint( wp_unslash( $_POST['item_id'] ) ) : 0 ) : null;
 		if ( ! $order instanceof WC_Order || ! $item instanceof WC_Order_Item_Product || (int) $item->get_order_id() !== (int) $order->get_id() ) {
-			wp_send_json_error( array( 'message' => __( 'Order or line item not found.', 'dahuconcept-composite-products' ) ), 404 );
+			wp_send_json_error( array( 'message' => __( 'Order or line item not found.', 'dahuconcept-composite-configurator' ) ), 404 );
 		}
 
 		$kit = $item->get_product();
 		if ( ! $kit instanceof WC_Product_Ubac_Kit || 'child' === Ubac_Kits_Order::kit_role( $item ) ) {
-			wp_send_json_error( array( 'message' => __( 'This line item is not a composite product.', 'dahuconcept-composite-products' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'This line item is not a composite product.', 'dahuconcept-composite-configurator' ) ), 400 );
 		}
 
 		// Customer: the one chosen on the screen (“Customer” field, sent by the

@@ -94,11 +94,11 @@ function ubac_composite_products_uninstall_site() {
 	// a partir du slug, donc elle a change avec lui. Sans ces trois lignes,
 	// une mise a jour depuis la version Ubac laisse des orphelines que plus
 	// rien ne nomme.
-	delete_option( 'ubac_welcome_seen_dahuconcept-composite-products' );
+	delete_option( 'ubac_welcome_seen_dahuconcept-composite-configurator' );
 	delete_option( 'ubac_welcome_pending_ubac-composite-products' );
-	delete_option( 'ubac_welcome_pending_dahuconcept-composite-products' );
+	delete_option( 'ubac_welcome_pending_dahuconcept-composite-configurator' );
 	delete_option( 'ubac_welcome_tour_ubac-composite-products' );
-	delete_option( 'ubac_welcome_tour_dahuconcept-composite-products' );
+	delete_option( 'ubac_welcome_tour_dahuconcept-composite-configurator' );
 
 	// AND THE SAME THREE UNDER THE FORMER SLUG. This plugin was called
 	// `ubac-kits` until 6 November 2026, and an installation from before the

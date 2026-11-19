@@ -154,7 +154,7 @@ class Ubac_Kits_Saved_Configs {
 		$all = self::get_all( $user_id );
 		if ( count( $all ) >= self::MAX ) {
 			/* translators: %d: maximum number */
-			return new WP_Error( 'ubac_kit_saved_limit', sprintf( __( 'You already have %d saved configurations: delete one from My account › My configurations.', 'dahuconcept-composite-products' ), self::MAX ), array( 'status' => 400 ) );
+			return new WP_Error( 'ubac_kit_saved_limit', sprintf( __( 'You already have %d saved configurations: delete one from My account › My configurations.', 'dahuconcept-composite-configurator' ), self::MAX ), array( 'status' => 400 ) );
 		}
 
 		// Same path as a click: selections corrected by the engine. Only
@@ -162,13 +162,13 @@ class Ubac_Kits_Saved_Configs {
 		// added to the cart.
 		$state = Ubac_Kits_Engine::state( $kit, $selections, $quantity );
 		if ( empty( $state['valid'] ) ) {
-			return new WP_Error( 'ubac_kit_saved_invalid', __( 'Incomplete configuration: finish it before saving.', 'dahuconcept-composite-products' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ubac_kit_saved_invalid', __( 'Incomplete configuration: finish it before saving.', 'dahuconcept-composite-configurator' ), array( 'status' => 400 ) );
 		}
 
 		$name = self::clean_name( $name );
 		if ( '' === $name ) {
 			/* translators: %s: date */
-			$name = sprintf( __( 'My configuration of %s', 'dahuconcept-composite-products' ), date_i18n( get_option( 'date_format' ) ) );
+			$name = sprintf( __( 'My configuration of %s', 'dahuconcept-composite-configurator' ), date_i18n( get_option( 'date_format' ) ) );
 		}
 
 		$entry = array(
@@ -263,7 +263,7 @@ class Ubac_Kits_Saved_Configs {
 
 		foreach ( $entry['selections'] as $cid => $selection ) {
 			if ( ! isset( $components[ $cid ] ) || ! is_array( $selection ) ) {
-				$general[] = __( 'A step of your configuration no longer exists in this product: its choice was removed.', 'dahuconcept-composite-products' );
+				$general[] = __( 'A step of your configuration no longer exists in this product: its choice was removed.', 'dahuconcept-composite-configurator' );
 				continue;
 			}
 			$component = $components[ $cid ];
@@ -271,7 +271,7 @@ class Ubac_Kits_Saved_Configs {
 			if ( Ubac_Kits_Engine::is_path( $component ) ) {
 				$option_id = isset( $selection['option_id'] ) ? (string) $selection['option_id'] : '';
 				if ( ! Ubac_Kits_Engine::path_option( $component, $option_id ) ) {
-					$issues[ $cid ][] = __( 'Your choice is no longer offered: please choose again.', 'dahuconcept-composite-products' );
+					$issues[ $cid ][] = __( 'Your choice is no longer offered: please choose again.', 'dahuconcept-composite-configurator' );
 					continue;
 				}
 				$raw[ $cid ] = array( 'option_id' => $option_id );
@@ -309,7 +309,7 @@ class Ubac_Kits_Saved_Configs {
 		foreach ( $raw as $cid => $selection ) {
 			if ( Ubac_Kits_Engine::is_path( $components[ $cid ] ) ) {
 				if ( empty( $after[ $cid ] ) ) {
-					$issues[ $cid ][] = __( 'Your choice is no longer compatible with your other choices: please choose again.', 'dahuconcept-composite-products' );
+					$issues[ $cid ][] = __( 'Your choice is no longer compatible with your other choices: please choose again.', 'dahuconcept-composite-configurator' );
 				}
 				continue;
 			}
@@ -325,18 +325,18 @@ class Ubac_Kits_Saved_Configs {
 					// Variant removed above, replaced automatically by the
 					// engine (the only one possible): we say which one.
 					/* translators: %s: variant */
-					$issues[ $cid ][ $dropped[ $cid ][ $pid ] ] .= ' ' . sprintf( __( '“%s” was chosen instead, as the only variation still available: please check it.', 'dahuconcept-composite-products' ), self::product_name( $chosen ) );
+					$issues[ $cid ][ $dropped[ $cid ][ $pid ] ] .= ' ' . sprintf( __( '“%s” was chosen instead, as the only variation still available: please check it.', 'dahuconcept-composite-configurator' ), self::product_name( $chosen ) );
 					continue;
 				}
 				if ( ! isset( $now[ $pid ] ) ) {
 					/* translators: %s: product */
-					$issues[ $cid ][] = sprintf( __( '“%s” is no longer compatible with your other choices: it was removed.', 'dahuconcept-composite-products' ), $name );
+					$issues[ $cid ][] = sprintf( __( '“%s” is no longer compatible with your other choices: it was removed.', 'dahuconcept-composite-configurator' ), $name );
 				} elseif ( ! empty( $item['variation_id'] ) && $chosen && $chosen !== (int) $item['variation_id'] ) {
 					/* translators: 1: product, 2: variant */
-					$issues[ $cid ][] = sprintf( __( 'The variation chosen for “%1$s” is no longer compatible with your other choices; “%2$s” was chosen instead as the only one possible: please check it.', 'dahuconcept-composite-products' ), $name, self::product_name( $chosen ) );
+					$issues[ $cid ][] = sprintf( __( 'The variation chosen for “%1$s” is no longer compatible with your other choices; “%2$s” was chosen instead as the only one possible: please check it.', 'dahuconcept-composite-configurator' ), $name, self::product_name( $chosen ) );
 				} elseif ( ! empty( $item['variation_id'] ) && ! $chosen ) {
 					/* translators: %s: product */
-					$issues[ $cid ][] = sprintf( __( 'The variation chosen for “%s” is no longer compatible with your other choices: please pick another.', 'dahuconcept-composite-products' ), $name );
+					$issues[ $cid ][] = sprintf( __( 'The variation chosen for “%s” is no longer compatible with your other choices: please pick another.', 'dahuconcept-composite-configurator' ), $name );
 				}
 			}
 		}
@@ -374,12 +374,12 @@ class Ubac_Kits_Saved_Configs {
 
 		if ( ! $offered || ! $product || 'publish' !== $product->get_status() ) {
 			/* translators: %s: product */
-			$issues[] = sprintf( __( '“%s” is no longer offered: it was removed.', 'dahuconcept-composite-products' ), $name );
+			$issues[] = sprintf( __( '“%s” is no longer offered: it was removed.', 'dahuconcept-composite-configurator' ), $name );
 			return null;
 		}
 		if ( ! $product->is_in_stock() ) {
 			/* translators: %s: product */
-			$issues[] = sprintf( __( '“%s” is out of stock: it was removed.', 'dahuconcept-composite-products' ), $name );
+			$issues[] = sprintf( __( '“%s” is out of stock: it was removed.', 'dahuconcept-composite-configurator' ), $name );
 			return null;
 		}
 
@@ -388,11 +388,11 @@ class Ubac_Kits_Saved_Configs {
 			$variation = wc_get_product( $vid );
 			if ( ! $variation || (int) $variation->get_parent_id() !== $pid || ! $variation->variation_is_visible() ) {
 				/* translators: %s: product */
-				$issues[] = sprintf( __( 'The variation chosen for “%s” no longer exists: please pick another.', 'dahuconcept-composite-products' ), $name );
+				$issues[] = sprintf( __( 'The variation chosen for “%s” no longer exists: please pick another.', 'dahuconcept-composite-configurator' ), $name );
 				unset( $item['variation_id'], $item['attributes'] );
 			} elseif ( ! $variation->is_in_stock() ) {
 				/* translators: %s: product */
-				$issues[] = sprintf( __( 'The variation chosen for “%s” is out of stock: please pick another.', 'dahuconcept-composite-products' ), $name );
+				$issues[] = sprintf( __( 'The variation chosen for “%s” is out of stock: please pick another.', 'dahuconcept-composite-configurator' ), $name );
 				unset( $item['variation_id'], $item['attributes'] );
 			}
 		}
@@ -529,7 +529,7 @@ class Ubac_Kits_Saved_Configs {
 	private static function load_kit( $product_id ) {
 		$kit = Ubac_Kits_Engine::get_kit( $product_id );
 		if ( ! $kit || ( 'publish' !== $kit->get_status() && ! current_user_can( 'edit_post', $kit->get_id() ) ) ) {
-			return new WP_Error( 'ubac_kit_not_found', __( 'This product is no longer available.', 'dahuconcept-composite-products' ), array( 'status' => 404 ) );
+			return new WP_Error( 'ubac_kit_not_found', __( 'This product is no longer available.', 'dahuconcept-composite-configurator' ), array( 'status' => 404 ) );
 		}
 		Ubac_Kits_Pricing::ensure_tax_context();
 		return $kit;
@@ -567,7 +567,7 @@ class Ubac_Kits_Saved_Configs {
 		// never found (the same response as an unknown identifier).
 		$entry = self::get( get_current_user_id(), $request['id'] );
 		if ( ! $entry ) {
-			return new WP_Error( 'ubac_kit_saved_not_found', __( 'Configuration not found in your account.', 'dahuconcept-composite-products' ), array( 'status' => 404 ) );
+			return new WP_Error( 'ubac_kit_saved_not_found', __( 'Configuration not found in your account.', 'dahuconcept-composite-configurator' ), array( 'status' => 404 ) );
 		}
 		$kit = self::load_kit( $entry['product_id'] );
 		if ( is_wp_error( $kit ) ) {
@@ -582,7 +582,7 @@ class Ubac_Kits_Saved_Configs {
 	 */
 	public static function rest_delete( WP_REST_Request $request ) {
 		if ( ! self::delete( get_current_user_id(), $request['id'] ) ) {
-			return new WP_Error( 'ubac_kit_saved_not_found', __( 'Configuration not found in your account.', 'dahuconcept-composite-products' ), array( 'status' => 404 ) );
+			return new WP_Error( 'ubac_kit_saved_not_found', __( 'Configuration not found in your account.', 'dahuconcept-composite-configurator' ), array( 'status' => 404 ) );
 		}
 		return self::response( array( 'deleted' => true ) );
 	}
@@ -631,28 +631,28 @@ class Ubac_Kits_Saved_Configs {
 	public static function guest_fields() {
 		$fields = array(
 			'first_name' => array(
-				'label'        => __( 'First name', 'dahuconcept-composite-products' ),
+				'label'        => __( 'First name', 'dahuconcept-composite-configurator' ),
 				'type'         => 'text',
 				'autocomplete' => 'given-name',
 				'max'          => 60,
 				'required'     => true,
 			),
 			'last_name'  => array(
-				'label'        => __( 'Last name', 'dahuconcept-composite-products' ),
+				'label'        => __( 'Last name', 'dahuconcept-composite-configurator' ),
 				'type'         => 'text',
 				'autocomplete' => 'family-name',
 				'max'          => 60,
 				'required'     => true,
 			),
 			'email'      => array(
-				'label'        => __( 'Email address', 'dahuconcept-composite-products' ),
+				'label'        => __( 'Email address', 'dahuconcept-composite-configurator' ),
 				'type'         => 'email',
 				'autocomplete' => 'email',
 				'max'          => 100,
 				'required'     => true,
 			),
 			'phone'      => array(
-				'label'        => __( 'Phone', 'dahuconcept-composite-products' ),
+				'label'        => __( 'Phone', 'dahuconcept-composite-configurator' ),
 				'type'         => 'tel',
 				'autocomplete' => 'tel',
 				'max'          => 30,
@@ -686,7 +686,7 @@ class Ubac_Kits_Saved_Configs {
 
 	/** Wording of the consent checkbox (recorded with the account created). */
 	public static function consent_text() {
-		return __( 'I agree to my details being stored so that I can be contacted about my configuration.', 'dahuconcept-composite-products' );
+		return __( 'I agree to my details being stored so that I can be contacted about my configuration.', 'dahuconcept-composite-configurator' );
 	}
 
 	/** Is the visitor form offered? */
@@ -741,14 +741,14 @@ class Ubac_Kits_Saved_Configs {
 			$long  = function_exists( 'mb_strlen' ) ? mb_strlen( $value ) : strlen( $value );
 
 			if ( 'email' === $key && ( $value !== $raw || ! is_email( $value ) ) && '' !== $raw ) {
-				$errors[ $key ] = __( 'This email address is not valid.', 'dahuconcept-composite-products' );
+				$errors[ $key ] = __( 'This email address is not valid.', 'dahuconcept-composite-configurator' );
 			} elseif ( '' === $value ) {
 				if ( $field['required'] ) {
-					$errors[ $key ] = __( 'This field is required.', 'dahuconcept-composite-products' );
+					$errors[ $key ] = __( 'This field is required.', 'dahuconcept-composite-configurator' );
 				}
 			} elseif ( $long > $field['max'] ) {
 				/* translators: %d: number of characters */
-				$errors[ $key ] = sprintf( __( '%d characters at most.', 'dahuconcept-composite-products' ), $field['max'] );
+				$errors[ $key ] = sprintf( __( '%d characters at most.', 'dahuconcept-composite-configurator' ), $field['max'] );
 			}
 			// Format of the phone: no check of our own here. It is a matter
 			// for the registration rule of the site, the same as for My
@@ -940,7 +940,7 @@ class Ubac_Kits_Saved_Configs {
 		if ( ! self::guest_enabled() ) {
 			return new WP_Error(
 				'ubac_kit_guest_disabled',
-				__( 'Log in to save your configuration.', 'dahuconcept-composite-products' ),
+				__( 'Log in to save your configuration.', 'dahuconcept-composite-configurator' ),
 				array( 'status' => 403 )
 			);
 		}
@@ -950,7 +950,7 @@ class Ubac_Kits_Saved_Configs {
 		if ( ! is_string( $nonce ) || ! wp_verify_nonce( $nonce, self::GUEST_NONCE ) ) {
 			return new WP_Error(
 				'ubac_kit_guest_nonce',
-				__( 'Your session has expired: reload the page and try again.', 'dahuconcept-composite-products' ),
+				__( 'Your session has expired: reload the page and try again.', 'dahuconcept-composite-configurator' ),
 				array( 'status' => 403 )
 			);
 		}
@@ -969,20 +969,20 @@ class Ubac_Kits_Saved_Configs {
 		// Honeypot field filled in: a robot. A deliberately vague response.
 		$trap = $request->get_param( self::GUEST_TRAP );
 		if ( null !== $trap && '' !== $trap ) {
-			return new WP_Error( 'ubac_kit_guest_refused', __( 'Your request could not be saved. Reload the page and try again.', 'dahuconcept-composite-products' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ubac_kit_guest_refused', __( 'Your request could not be saved. Reload the page and try again.', 'dahuconcept-composite-configurator' ), array( 'status' => 400 ) );
 		}
 
 		list( $values, $errors ) = self::guest_values( $request );
 		// Consent: the box is ticked by the customer, never assumed.
 		if ( true !== rest_sanitize_boolean( $request->get_param( 'consent' ) ) ) {
-			$errors['consent'] = __( 'Tick this box so that we may store your details.', 'dahuconcept-composite-products' );
+			$errors['consent'] = __( 'Tick this box so that we may store your details.', 'dahuconcept-composite-configurator' );
 		}
 		if ( $errors ) {
 			return new WP_Error(
 				'ubac_kit_guest_invalid',
 				isset( $errors['consent'] ) && 1 === count( $errors )
 					? $errors['consent']
-					: __( 'Check the fields flagged above.', 'dahuconcept-composite-products' ),
+					: __( 'Check the fields flagged above.', 'dahuconcept-composite-configurator' ),
 				array(
 					'status' => 400,
 					'fields' => $errors,
@@ -996,16 +996,16 @@ class Ubac_Kits_Saved_Configs {
 		}
 		$state = Ubac_Kits_Engine::state( $kit, $request['selections'], $request['quantity'] );
 		if ( empty( $state['valid'] ) ) {
-			return new WP_Error( 'ubac_kit_saved_invalid', __( 'Incomplete configuration: finish it before saving.', 'dahuconcept-composite-products' ), array( 'status' => 400 ) );
+			return new WP_Error( 'ubac_kit_saved_invalid', __( 'Incomplete configuration: finish it before saving.', 'dahuconcept-composite-configurator' ), array( 'status' => 400 ) );
 		}
 
 		if ( self::guest_throttled() ) {
-			return new WP_Error( 'ubac_kit_guest_throttled', __( 'Too many requests from your connection. Try again in an hour.', 'dahuconcept-composite-products' ), array( 'status' => 429 ) );
+			return new WP_Error( 'ubac_kit_guest_throttled', __( 'Too many requests from your connection. Try again in an hour.', 'dahuconcept-composite-configurator' ), array( 'status' => 429 ) );
 		}
 
 		// E-mail already known: never a second account. The script keeps the
 		// configuration and saves it when they come back from logging in.
-		$exists = new WP_Error( 'ubac_kit_account_exists', __( 'An account already exists with this email address. Log in and your configuration will be saved to your account when you come back.', 'dahuconcept-composite-products' ), array( 'status' => 409 ) );
+		$exists = new WP_Error( 'ubac_kit_account_exists', __( 'An account already exists with this email address. Log in and your configuration will be saved to your account when you come back.', 'dahuconcept-composite-configurator' ), array( 'status' => 409 ) );
 		if ( email_exists( $values['email'] ) ) {
 			return $exists;
 		}
@@ -1021,7 +1021,7 @@ class Ubac_Kits_Saved_Configs {
 			if ( $field_errors ) {
 				return new WP_Error(
 					'ubac_kit_guest_invalid',
-					__( 'Check the fields flagged above.', 'dahuconcept-composite-products' ),
+					__( 'Check the fields flagged above.', 'dahuconcept-composite-configurator' ),
 					array(
 						'status' => 400,
 						'fields' => $field_errors,
@@ -1087,7 +1087,7 @@ class Ubac_Kits_Saved_Configs {
 	public static function menu_items( $items ) {
 		$logout = isset( $items['customer-logout'] ) ? $items['customer-logout'] : null;
 		unset( $items['customer-logout'] );
-		$items[ self::ENDPOINT ] = __( 'My configurations', 'dahuconcept-composite-products' );
+		$items[ self::ENDPOINT ] = __( 'My configurations', 'dahuconcept-composite-configurator' );
 		if ( null !== $logout ) {
 			$items['customer-logout'] = $logout;
 		}
@@ -1096,7 +1096,7 @@ class Ubac_Kits_Saved_Configs {
 
 	/** @return string */
 	public static function endpoint_title() {
-		return __( 'My configurations', 'dahuconcept-composite-products' );
+		return __( 'My configurations', 'dahuconcept-composite-configurator' );
 	}
 
 	/**
@@ -1123,7 +1123,7 @@ class Ubac_Kits_Saved_Configs {
 			return;
 		}
 		if ( self::delete( get_current_user_id(), $id ) && function_exists( 'wc_add_notice' ) ) {
-			wc_add_notice( __( 'Configuration deleted.', 'dahuconcept-composite-products' ) );
+			wc_add_notice( __( 'Configuration deleted.', 'dahuconcept-composite-configurator' ) );
 		}
 		wp_safe_redirect( self::account_url() );
 		exit;
@@ -1138,39 +1138,39 @@ class Ubac_Kits_Saved_Configs {
 	public static function render_account() {
 		$entries = self::get_all( get_current_user_id() );
 		if ( ! $entries ) {
-			echo '<p class="ubac-kit-saved__empty">' . esc_html__( 'No saved configuration yet. On the Summary step, “Save my configuration” files it here.', 'dahuconcept-composite-products' ) . '</p>';
+			echo '<p class="ubac-kit-saved__empty">' . esc_html__( 'No saved configuration yet. On the Summary step, “Save my configuration” files it here.', 'dahuconcept-composite-configurator' ) . '</p>';
 			return;
 		}
 		echo '<table class="shop_table shop_table_responsive ubac-kit-saved"><thead><tr>';
-		echo '<th>' . esc_html__( 'Configuration', 'dahuconcept-composite-products' ) . '</th>';
-		echo '<th>' . esc_html__( 'Product', 'dahuconcept-composite-products' ) . '</th>';
-		echo '<th>' . esc_html__( 'Saved on', 'dahuconcept-composite-products' ) . '</th>';
-		echo '<th><span class="screen-reader-text">' . esc_html__( 'Actions', 'dahuconcept-composite-products' ) . '</span></th>';
+		echo '<th>' . esc_html__( 'Configuration', 'dahuconcept-composite-configurator' ) . '</th>';
+		echo '<th>' . esc_html__( 'Product', 'dahuconcept-composite-configurator' ) . '</th>';
+		echo '<th>' . esc_html__( 'Saved on', 'dahuconcept-composite-configurator' ) . '</th>';
+		echo '<th><span class="screen-reader-text">' . esc_html__( 'Actions', 'dahuconcept-composite-configurator' ) . '</span></th>';
 		echo '</tr></thead><tbody>';
 		foreach ( $entries as $entry ) {
 			$kit  = wc_get_product( (int) $entry['product_id'] );
 			$live = $kit && $kit->is_type( UBAC_KITS_PRODUCT_TYPE ) && 'publish' === $kit->get_status();
 			$url  = $live ? self::reopen_url( $entry ) : '';
 			echo '<tr>';
-			echo '<td data-title="' . esc_attr__( 'Configuration', 'dahuconcept-composite-products' ) . '"><strong>' . esc_html( $entry['name'] ) . '</strong>';
+			echo '<td data-title="' . esc_attr__( 'Configuration', 'dahuconcept-composite-configurator' ) . '"><strong>' . esc_html( $entry['name'] ) . '</strong>';
 			if ( ! empty( $entry['summary'] ) && is_array( $entry['summary'] ) ) {
-				echo '<details class="ubac-kit-saved__details"><summary>' . esc_html__( 'Details', 'dahuconcept-composite-products' ) . '</summary><ul>';
+				echo '<details class="ubac-kit-saved__details"><summary>' . esc_html__( 'Details', 'dahuconcept-composite-configurator' ) . '</summary><ul>';
 				foreach ( $entry['summary'] as $line ) {
 					echo '<li>' . esc_html( $line ) . '</li>';
 				}
 				echo '</ul></details>';
 			}
 			echo '</td>';
-			echo '<td data-title="' . esc_attr__( 'Product', 'dahuconcept-composite-products' ) . '">' . ( $kit ? esc_html( $kit->get_name() ) : '—' ) . ( $live ? '' : ' <em>(' . esc_html__( 'no longer available', 'dahuconcept-composite-products' ) . ')</em>' ) . '</td>';
-			echo '<td data-title="' . esc_attr__( 'Saved on', 'dahuconcept-composite-products' ) . '">' . esc_html( date_i18n( get_option( 'date_format' ), (int) $entry['created'] ) ) . '</td>';
+			echo '<td data-title="' . esc_attr__( 'Product', 'dahuconcept-composite-configurator' ) . '">' . ( $kit ? esc_html( $kit->get_name() ) : '—' ) . ( $live ? '' : ' <em>(' . esc_html__( 'no longer available', 'dahuconcept-composite-configurator' ) . ')</em>' ) . '</td>';
+			echo '<td data-title="' . esc_attr__( 'Saved on', 'dahuconcept-composite-configurator' ) . '">' . esc_html( date_i18n( get_option( 'date_format' ), (int) $entry['created'] ) ) . '</td>';
 			echo '<td class="ubac-kit-saved__actions">';
 			if ( $url ) {
-				echo '<a class="woocommerce-button button ubac-kit-saved__open" href="' . esc_url( $url ) . '">' . esc_html__( 'Open', 'dahuconcept-composite-products' ) . '</a> ';
+				echo '<a class="woocommerce-button button ubac-kit-saved__open" href="' . esc_url( $url ) . '">' . esc_html__( 'Open', 'dahuconcept-composite-configurator' ) . '</a> ';
 			}
 			echo '<form method="post" class="ubac-kit-saved__delete">';
 			echo '<input type="hidden" name="ubac_kit_saved_delete" value="' . esc_attr( $entry['id'] ) . '">';
 			wp_nonce_field( 'ubac_kit_saved_delete_' . $entry['id'], '_ubac_kit_saved_nonce', false );
-			echo '<button type="submit" class="woocommerce-button button ubac-kit-saved__remove" onclick="return window.confirm(this.getAttribute(\'data-confirm\'));" data-confirm="' . esc_attr__( 'Delete this configuration?', 'dahuconcept-composite-products' ) . '">' . esc_html__( 'Delete', 'dahuconcept-composite-products' ) . '</button>';
+			echo '<button type="submit" class="woocommerce-button button ubac-kit-saved__remove" onclick="return window.confirm(this.getAttribute(\'data-confirm\'));" data-confirm="' . esc_attr__( 'Delete this configuration?', 'dahuconcept-composite-configurator' ) . '">' . esc_html__( 'Delete', 'dahuconcept-composite-configurator' ) . '</button>';
 			echo '</form></td>';
 			echo '</tr>';
 		}
