@@ -1,0 +1,48 @@
+/*
+ * Child rows of a kit on the order screen, the order list and the "Preview"
+ * window of the order list.
+ *
+ * These rules used to be echoed as an inline <style> block on admin_head.
+ * They are a file now because the directory asks for wp_enqueue_style(), and
+ * it is right to: a stylesheet is cached, versioned and overridable by a
+ * child theme, an echoed block is none of those.
+ *
+ * It is a sheet of its own rather than a few lines added to
+ * ubac-kits-admin-order.css, because that one is enqueued on the single order
+ * screen alone while these rules are also needed on the list and in its
+ * preview modal.
+ */
+
+#order_line_items tr.ubac-kit-child td.name,
+#order_line_items tr.ubac-supply-child td.name {
+	padding-left: 2.5em;
+}
+
+#order_line_items tr.ubac-kit-child td.name:before,
+#order_line_items tr.ubac-supply-child td.name:before {
+	content: "\21B3";
+	margin-right: .4em;
+	opacity: .6;
+}
+
+#order_line_items tr.ubac-supply-child * {
+	font-size: 12px;
+}
+
+#order_line_items tr.ubac-supply-parent td,
+#order_line_items tr.ubac-supply-child:not(.last) td {
+	border-bottom-color: #f8f8ff;
+}
+
+table.wc-order-preview-table tr.ubac-supply-child * {
+	font-size: .94em;
+}
+
+table.wc-order-preview-table tr.ubac-supply-child td.wc-order-preview-table__column--product {
+	padding-left: 3em;
+}
+
+table.wc-order-preview-table tr.ubac-supply-parent td,
+table.wc-order-preview-table tr.ubac-supply-child:not(.last) td {
+	border-bottom-color: #f8f8ff;
+}

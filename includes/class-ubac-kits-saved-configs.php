@@ -691,6 +691,28 @@ class Ubac_Kits_Saved_Configs {
 
 	/** Is the visitor form offered? */
 	public static function guest_enabled() {
+
+		/*
+		 * THE SHOP'S OWN POLICY DECIDES, NOT THE PRESENCE OF WOOCOMMERCE.
+		 *
+		 * This used to default to `function_exists( 'wc_create_new_customer' )`
+		 * alone, which is true on every WooCommerce site. A shop that had
+		 * deliberately switched customer registration off still got an account
+		 * created from the configurator Summary, and the nonce on the public
+		 * route proves the form was ours, not that the shop wanted accounts.
+		 * Reported by the directory's pre-review on 19/11/2026; the finding
+		 * was correct.
+		 *
+		 * Either of WooCommerce's two registration settings is enough, because
+		 * either one means the shop accepts customer-created accounts. A shop
+		 * with both off gets the invitation to log in and a 403 on the route.
+		 */
+		$ouvert = function_exists( 'wc_create_new_customer' )
+			&& (
+				'yes' === get_option( 'woocommerce_enable_myaccount_registration' )
+				|| 'yes' === get_option( 'woocommerce_enable_signup_and_login_from_checkout' )
+			);
+
 		/**
 		 * Offer the visitor the chance to create their account from the Summary.
 		 * When false, the block falls back to the invitation to log in alone and
@@ -698,7 +720,7 @@ class Ubac_Kits_Saved_Configs {
 		 *
 		 * @param bool $enabled Offered.
 		 */
-		return (bool) apply_filters( 'ubac_kits_guest_save_enabled', function_exists( 'wc_create_new_customer' ) );
+		return (bool) apply_filters( 'ubac_kits_guest_save_enabled', $ouvert );
 	}
 
 	/**

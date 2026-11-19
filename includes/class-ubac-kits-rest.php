@@ -248,6 +248,39 @@ class Ubac_Kits_Rest {
 	}
 
 	/**
+	 * Is this product readable by whoever is asking?
+	 *
+	 * Someone who could edit it always may -- that is how a draft gets
+	 * previewed. Otherwise the product must be published AND not behind a
+	 * password.
+	 *
+	 * THE PASSWORD WAS THE HOLE. `'publish' === get_status()` is true for a
+	 * password-protected product: its page shows a password form and nothing
+	 * else, while these routes went on returning the configuration schema,
+	 * the detail tabs, the computed state and the prices to anyone who asked.
+	 * A shop that puts a kit behind a password usually does it for a reason --
+	 * a quote for one customer, a product not yet announced -- and the
+	 * configurator leaked exactly what the password was meant to hide.
+	 * Reported by the directory's pre-review on 19/11/2026; the finding was
+	 * correct.
+	 *
+	 * `post_password_required()` returns false once the visitor has entered
+	 * the password, so a legitimate customer is unaffected.
+	 *
+	 * @param int    $product_id Product.
+	 * @param string $status     Post status.
+	 * @return bool
+	 */
+	private static function readable( $product_id, $status ) {
+
+		if ( current_user_can( 'edit_post', $product_id ) ) {
+			return true;
+		}
+
+		return 'publish' === $status && ! post_password_required( $product_id );
+	}
+
+	/**
 	 * Permission for reading a kit's schema.
 	 *
 	 * A published kit is readable by anyone, since its page is public. An
@@ -273,7 +306,7 @@ class Ubac_Kits_Rest {
 		$product_id = absint( $request['product_id'] );
 		$product    = $product_id ? wc_get_product( $product_id ) : null;
 
-		if ( $product && ( 'publish' === $product->get_status() || current_user_can( 'edit_post', $product_id ) ) ) {
+		if ( $product && self::readable( $product_id, $product->get_status() ) ) {
 			return true;
 		}
 
@@ -289,8 +322,7 @@ class Ubac_Kits_Rest {
 		if ( ! $kit ) {
 			return new WP_Error( 'ubac_kit_not_found', __( 'Product not found.', 'dahuconcept-composite-products' ), array( 'status' => 404 ) );
 		}
-		$visible = 'publish' === $kit->get_status() || current_user_can( 'edit_post', $kit->get_id() );
-		if ( ! $visible ) {
+		if ( ! self::readable( $kit->get_id(), $kit->get_status() ) ) {
 			return new WP_Error( 'ubac_kit_not_found', __( 'Product not found.', 'dahuconcept-composite-products' ), array( 'status' => 404 ) );
 		}
 

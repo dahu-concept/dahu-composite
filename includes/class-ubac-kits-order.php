@@ -96,7 +96,7 @@ class Ubac_Kits_Order {
 		add_filter( 'woocommerce_admin_html_order_preview_item_class', array( __CLASS__, 'admin_order_item_class' ), 10, 3 );
 		add_filter( 'woocommerce_order_item_name', array( __CLASS__, 'order_item_name' ), 10, 2 );
 		add_filter( 'woocommerce_email_styles', array( __CLASS__, 'email_styles' ) );
-		add_action( 'admin_head', array( __CLASS__, 'admin_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( __CLASS__, 'admin_styles' ) );
 	}
 
 	/**
@@ -952,11 +952,25 @@ class Ubac_Kits_Order {
 		if ( ! $screen || ! in_array( $screen->id, array( 'shop_order', 'edit-shop_order', 'woocommerce_page_wc-orders' ), true ) ) {
 			return;
 		}
-		echo '<style>#order_line_items tr.ubac-kit-child td.name,#order_line_items tr.ubac-supply-child td.name{padding-left:2.5em;}#order_line_items tr.ubac-kit-child td.name:before,#order_line_items tr.ubac-supply-child td.name:before{content:"\21B3";margin-right:.4em;opacity:.6;}'
-			. '#order_line_items tr.ubac-supply-child *{font-size:12px;}'
-			. '#order_line_items tr.ubac-supply-parent td,#order_line_items tr.ubac-supply-child:not(.last) td{border-bottom-color:#f8f8ff;}'
-			. 'table.wc-order-preview-table tr.ubac-supply-child *{font-size:.94em;}'
-			. 'table.wc-order-preview-table tr.ubac-supply-child td.wc-order-preview-table__column--product{padding-left:3em;}'
-			. 'table.wc-order-preview-table tr.ubac-supply-parent td,table.wc-order-preview-table tr.ubac-supply-child:not(.last) td{border-bottom-color:#f8f8ff;}</style>';
+
+		/*
+		 * A file and wp_enqueue_style(), not an echoed <style> on admin_head.
+		 * The directory's pre-review of 19/11/2026 asked for it, and the
+		 * reason holds beyond the review: an enqueued sheet is cached,
+		 * carries a version for cache-busting, and can be dequeued or
+		 * overridden by a shop that wants its own order rows. An echoed block
+		 * is none of those, and it reprints on every admin page load of
+		 * these screens.
+		 *
+		 * The hook moves from `admin_head` to `admin_enqueue_scripts` for the
+		 * same reason: `get_current_screen()` is already available there, so
+		 * the three-screen test is unchanged.
+		 */
+		wp_enqueue_style(
+			'ubac-kits-order-rows',
+			UBAC_KITS_URL . 'assets/css/ubac-kits-order-rows.css',
+			array(),
+			UBAC_KITS_VERSION
+		);
 	}
 }
