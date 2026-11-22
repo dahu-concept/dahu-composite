@@ -528,7 +528,12 @@ class Ubac_Kits_Saved_Configs {
 	 */
 	private static function load_kit( $product_id ) {
 		$kit = Ubac_Kits_Engine::get_kit( $product_id );
-		if ( ! $kit || ( 'publish' !== $kit->get_status() && ! current_user_can( 'edit_post', $kit->get_id() ) ) ) {
+
+		// The shared gate, not a second copy of it. This method carried its
+		// own -- and weaker -- test until 22/11/2026: it let a
+		// password-protected kit through, which is how `/saved-guest` accepted
+		// configurations for a product the visitor was never shown.
+		if ( ! $kit || ! Ubac_Kits_Engine::readable_by_requester( $kit->get_id() ) ) {
 			return new WP_Error( 'ubac_kit_not_found', __( 'This product is no longer available.', 'dahuconcept-composite-configurator' ), array( 'status' => 404 ) );
 		}
 		Ubac_Kits_Pricing::ensure_tax_context();
@@ -765,6 +770,53 @@ class Ubac_Kits_Saved_Configs {
 	 *
 	 * @return bool True when the quota is reached.
 	 */
+	/**
+	 * The address the quota is counted against.
+	 *
+	 * REMOTE_ADDR, AND NOT WooCommerce's lookup. `WC_Geolocation::get_ip_address()`
+	 * reads `X-Real-IP`, then `X-Forwarded-For`, before falling back to
+	 * REMOTE_ADDR. Those headers are written by whoever sends the request:
+	 * on a shop that sits directly on the internet they come from the caller,
+	 * so rotating them gave a fresh quota bucket every time -- on a route
+	 * whose whole point is to stop it becoming a relay for account e-mails to
+	 * unverified addresses. Reported by the directory's reviewer on
+	 * 22/11/2026; the finding was correct.
+	 *
+	 * REMOTE_ADDR is the TCP peer. A client cannot choose it.
+	 *
+	 * Behind a real reverse proxy REMOTE_ADDR is the proxy, so every visitor
+	 * shares one bucket. That fails CLOSED -- the brake grips too hard rather
+	 * than not at all -- and a shop that knows its proxy can opt back in to
+	 * the forwarded address through the filter below. The default is not to
+	 * trust it, because a default that trusts a client-supplied header is not
+	 * a default a shop should have to discover.
+	 *
+	 * When no address can be read at all, the key becomes a constant: one
+	 * shared bucket rather than no quota.
+	 *
+	 * @return string
+	 */
+	private static function requester_ip() {
+
+		/**
+		 * Trust a proxy-supplied address (X-Real-IP, X-Forwarded-For) for the
+		 * quota key. False by default: those headers are client-controlled
+		 * unless a proxy in front of the shop overwrites them.
+		 *
+		 * @param bool $trust Trust the forwarded address.
+		 */
+		if ( apply_filters( 'ubac_kits_guest_trust_proxy_ip', false ) && class_exists( 'WC_Geolocation' ) ) {
+			$forwarded = (string) WC_Geolocation::get_ip_address();
+			if ( '' !== $forwarded ) {
+				return $forwarded;
+			}
+		}
+
+		$ip = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '';
+
+		return '' !== $ip ? $ip : 'sans-adresse';
+	}
+
 	private static function guest_throttled() {
 		/**
 		 * Account creation requests accepted per hour and per IP address from the
@@ -773,11 +825,12 @@ class Ubac_Kits_Saved_Configs {
 		 * @param int $limit Quota.
 		 */
 		$limit = (int) apply_filters( 'ubac_kits_guest_save_limit', 10 );
-		$ip    = class_exists( 'WC_Geolocation' ) ? (string) WC_Geolocation::get_ip_address() : '';
-		if ( $limit < 1 || '' === $ip ) {
+
+		if ( $limit < 1 ) {
 			return false;
 		}
-		$key   = 'ubac_kit_gs_' . md5( wp_salt( 'nonce' ) . $ip );
+
+		$key   = 'ubac_kit_gs_' . md5( wp_salt( 'nonce' ) . self::requester_ip() );
 		$count = (int) get_transient( $key );
 		if ( $count >= $limit ) {
 			return true;
@@ -952,6 +1005,19 @@ class Ubac_Kits_Saved_Configs {
 				'ubac_kit_guest_nonce',
 				__( 'Your session has expired: reload the page and try again.', 'dahuconcept-composite-configurator' ),
 				array( 'status' => 403 )
+			);
+		}
+
+		// The product, refused here rather than ten steps further down. The
+		// nonce proves the form came from us; it says nothing about which
+		// product the caller is entitled to, and `product_id` is simply a
+		// parameter. A kit behind a password is not readable, so it is not
+		// saveable either.
+		if ( ! Ubac_Kits_Engine::readable_by_requester( $request->get_param( 'product_id' ) ) ) {
+			return new WP_Error(
+				'ubac_kit_not_found',
+				__( 'This product is no longer available.', 'dahuconcept-composite-configurator' ),
+				array( 'status' => 404 )
 			);
 		}
 

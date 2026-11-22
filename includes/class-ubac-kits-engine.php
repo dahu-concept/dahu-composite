@@ -842,6 +842,53 @@ class Ubac_Kits_Engine {
 	}
 
 	/**
+	 * May whoever is asking read this product at all?
+	 *
+	 * The one definition. Someone who could edit it always may -- that is how
+	 * a draft gets previewed. Otherwise the product must be published AND not
+	 * behind a password.
+	 *
+	 * WHY IT LIVES HERE, AND ALONE. `'publish' === get_status()` is true for a
+	 * password-protected product: its page shows a password form and nothing
+	 * else. On 19/11/2026 that test was replaced in `Ubac_Kits_Rest`, but an
+	 * identically-named `load_kit()` in `Ubac_Kits_Saved_Configs` kept the old
+	 * one, and the directory's reviewer found it three days later: a
+	 * password-protected kit still accepted saved configurations from a
+	 * visitor who had never seen the password. The fix had been applied by
+	 * file instead of by behaviour. A single definition is what makes that
+	 * mistake impossible to repeat.
+	 *
+	 * It takes an id and loads the product itself, so that no caller can hand
+	 * it a status read somewhere else and now stale.
+	 *
+	 * `post_password_required()` returns false once the visitor has entered
+	 * the password, so a legitimate customer is unaffected.
+	 *
+	 * @param int $product_id Product.
+	 * @return bool
+	 */
+	public static function readable_by_requester( $product_id ) {
+
+		$product_id = absint( $product_id );
+
+		if ( ! $product_id ) {
+			return false;
+		}
+
+		if ( current_user_can( 'edit_post', $product_id ) ) {
+			return true;
+		}
+
+		$product = wc_get_product( $product_id );
+
+		if ( ! $product || 'publish' !== $product->get_status() ) {
+			return false;
+		}
+
+		return ! post_password_required( $product_id );
+	}
+
+	/**
 	 * @param WC_Product $product Product.
 	 * @return bool
 	 */

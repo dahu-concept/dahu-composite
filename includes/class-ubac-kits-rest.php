@@ -271,13 +271,9 @@ class Ubac_Kits_Rest {
 	 * @param string $status     Post status.
 	 * @return bool
 	 */
-	private static function readable( $product_id, $status ) {
-
-		if ( current_user_can( 'edit_post', $product_id ) ) {
-			return true;
-		}
-
-		return 'publish' === $status && ! post_password_required( $product_id );
+	private static function readable( $product_id, $status = null ) {
+		unset( $status ); // kept for callers; the engine reads the product itself.
+		return Ubac_Kits_Engine::readable_by_requester( $product_id );
 	}
 
 	/**
@@ -368,7 +364,10 @@ class Ubac_Kits_Rest {
 	public static function get_product_tabs( WP_REST_Request $request ) {
 		$product = wc_get_product( absint( $request['product_id'] ) );
 
-		if ( ! $product || 'publish' !== $product->get_status() ) {
+		// Same gate as the permission callback, and the same one as
+		// everywhere else. A handler that tests less than its own callback is
+		// a trap for whoever later calls it from somewhere without one.
+		if ( ! $product || ! self::readable( $product->get_id() ) ) {
 			return new WP_Error( 'ubac_product_not_found', __( 'Product not found.', 'dahuconcept-composite-configurator' ), array( 'status' => 404 ) );
 		}
 
